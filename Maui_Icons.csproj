@@ -27,8 +27,8 @@
 		<Product>Maui.Icons (net6.0)</Product>
 		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/AathifMahir/Maui_Icons</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/AathifMahir/Maui_Icons</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/AathifMahir/Maui.Icons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AathifMahir/Maui.Icons</RepositoryUrl>
 		<PackageReleaseNotes>TBD</PackageReleaseNotes>
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
