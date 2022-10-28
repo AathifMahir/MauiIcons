@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui_Icons", "Maui_Icons.csproj", "{FC44D97F-ACA2-490C-B10A-1CF6C8DE0F54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Icons", "Maui.Icons.csproj", "{FC44D97F-ACA2-490C-B10A-1CF6C8DE0F54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maui.Icons.Test", "..\Maui.Icons.Test\Maui.Icons.Test.csproj", "{71F28CC6-59AC-4290-ACE3-259033F08BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,12 @@ Global
 		{FC44D97F-ACA2-490C-B10A-1CF6C8DE0F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC44D97F-ACA2-490C-B10A-1CF6C8DE0F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC44D97F-ACA2-490C-B10A-1CF6C8DE0F54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F28CC6-59AC-4290-ACE3-259033F08BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71F28CC6-59AC-4290-ACE3-259033F08BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71F28CC6-59AC-4290-ACE3-259033F08BA0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{71F28CC6-59AC-4290-ACE3-259033F08BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71F28CC6-59AC-4290-ACE3-259033F08BA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71F28CC6-59AC-4290-ACE3-259033F08BA0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
