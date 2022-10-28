@@ -9,9 +9,10 @@ public static class AppBuilderExtensions
 	/// <param name="iconType"><see cref="IconType"/></param>
 	/// <returns><see cref="MauiAppBuilder"/> initialized for <see cref="Maui.Icons"/></returns>
     /// 
-    public static MauiAppBuilder UseMauiIcons(this MauiAppBuilder builder, IconType iconType = IconType.FluentIcons)
+    public static MauiAppBuilder UseMauiIcons(this MauiAppBuilder builder)
     {
         // Global Var to Find User Selected Icon Type
+        IconType iconType = IconType.FluentIcons;
         SelectedIconType = iconType;
         return builder.ConfigureFonts(fonts =>
         {
