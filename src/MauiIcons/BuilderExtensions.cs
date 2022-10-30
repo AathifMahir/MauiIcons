@@ -21,10 +21,10 @@ public static class BuilderExtensions
             switch (iconType)
             {
                 case IconType.Fluent:
-                    fonts.AddFont(Constants.TtfFluentIcons, Constants.FluentIcons);
+                    fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfFluentIcons, Constants.FluentIcons);
                     break;
                 case IconType.Material:
-                    fonts.AddFont(Constants.TtfMaterialIcons, Constants.MaterialIcons);
+                    fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfMaterialIcons, Constants.MaterialIcons);
                     break;
                     // TODO Add Cuppertino and Default Icons
                 //case IconType.Cuppertino:
@@ -36,11 +36,11 @@ public static class BuilderExtensions
                 //    fonts.AddFont(Constants.TtfCuppertinoIcons, Constants.CuppertinoIcons);
                 //    break;
                 case IconType.FluentandMaterial:
-                    fonts.AddFont(Constants.TtfFluentIcons, Constants.FluentIcons);
-                    fonts.AddFont(Constants.TtfMaterialIcons, Constants.MaterialIcons);
+                    fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfFluentIcons, Constants.FluentIcons);
+                    fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfMaterialIcons, Constants.MaterialIcons);
                     break;
                 default:
-                    fonts.AddFont(Constants.TtfFluentIcons, Constants.FluentIcons);
+                    fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfFluentIcons, Constants.FluentIcons);
                     break;
             }
             

@@ -29,7 +29,7 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <icons:Material Icon="AddHome"/>
+            <!--<icons:Material Icon="AddHome"/>-->
             <icons:Fluent Icon="RevealPasswordMedium"/>
 
 
