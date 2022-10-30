@@ -1,5 +1,5 @@
-﻿namespace Maui.Icons;
-public sealed class Constants
+﻿namespace MauiIcons.Common;
+internal sealed class Constants
 {
     // Font Family
     public static readonly string FluentIcons = "FluentIcons";

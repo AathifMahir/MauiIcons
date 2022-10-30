@@ -24,7 +24,7 @@
 		<Authors>Aathif Mahir</Authors>
 		<Owners>Aathif Mahir</Owners>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Product>Maui.Icons (net6.0)</Product>
+		<Product>MauiIcons (net6.0)</Product>
 		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/AathifMahir/Maui.Icons</PackageProjectUrl>
@@ -33,7 +33,7 @@
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>Maui.Icons</Title>
-		<Description>The Maui.Icons Library Solves Issue with Not Having a Default Icon System and Brings Extra Addons to Fill the Gap on Dotnet Maui</Description>
+		<Description>The MauiIcons Library Solves Issue with Not Having a Default Icon System and Brings Extra Addons to Fill the Gap on Dotnet Maui</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -50,13 +50,39 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Controls\MauiIcon.xaml.cs">
-	    <DependentUpon>MauiIcon.xaml</DependentUpon>
+	  <Compile Remove="Controls\MauiIconTest.xaml.cs" />
+	  <Compile Remove="Converters\IconTypeConverter.cs" />
+	  <Compile Remove="Icons\Icon.cs" />
+	  <Compile Remove="Icons\IconTest.cs" />
+	  <Compile Remove="Icons\TestIcons.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiFont Remove="Fonts\CupertinoIcons.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="Controls\MauiIconTest.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Fonts\CupertinoIcons.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\Material.xaml.cs">
+	    <DependentUpon>Material.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Controls\Fluent.xaml.cs">
+	    <DependentUpon>Fluent.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Controls\MauiIcon.xaml">
+	  <MauiXaml Update="Controls\Material.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Controls\Fluent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

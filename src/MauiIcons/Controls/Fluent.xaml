@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiIcons"
+             xmlns:converters="clr-namespace:MauiIcons.Converters"
+             x:DataType="local:Fluent"
+             x:Class="MauiIcons.Fluent">
+    <ContentView.Resources>
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter"/>
+    </ContentView.Resources>
+
+    <Image Aspect="Center">
+        <Image.Source>
+            <FontImageSource FontAutoScalingEnabled="{x:Binding IconAutoScaling}" Glyph="{x:Binding Icon, Converter={StaticResource EnumToStringConverter}}" FontFamily="{x:Binding CustomFontFamily}" Color="{x:Binding IconColor, FallbackValue='White'}" Size="{x:Binding IconSize, FallbackValue=30.0}"/>
+        </Image.Source>
+    </Image>
+
+</ContentView>
