@@ -14,7 +14,7 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		
-		// Initialise the toolkit
+		// Initialise the .Net Maui Icons
 		builder.UseMauiApp<App>().UseMauiIcons();
 	}
 }
