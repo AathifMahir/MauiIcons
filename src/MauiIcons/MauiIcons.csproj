@@ -34,15 +34,16 @@
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>Maui.Icons</Title>
 		<Description>The MauiIcons Library Solves Issue with Not Having a Default Icon System and Brings Extra Addons to Fill the Gap on Dotnet Maui</Description>
-		<PackageIcon>icon.png</PackageIcon>
+		<!--<PackageIcon>icon.png</PackageIcon>-->
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>1.0.0.0</AssemblyVersion>
-		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
 		<Version>0.1.0-pre1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon</PackageTags>
 		<Configurations>Debug;Release</Configurations>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
