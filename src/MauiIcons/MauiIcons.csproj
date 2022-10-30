@@ -27,18 +27,18 @@
 		<Product>MauiIcons (net6.0)</Product>
 		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-		<PackageProjectUrl>https://github.com/AathifMahir/Maui.Icons</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/AathifMahir/Maui.Icons</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/AathifMahir/MauiIcons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AathifMahir/MauiIcons</RepositoryUrl>
 		<PackageReleaseNotes>TBD</PackageReleaseNotes>
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
-		<Title>Maui.Icons</Title>
+		<Title>MauiIcons</Title>
 		<Description>The MauiIcons Library Solves Issue with Not Having a Default Icon System and Brings Extra Addons to Fill the Gap on Dotnet Maui</Description>
 		<!--<PackageIcon>icon.png</PackageIcon>-->
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0-pre1</Version>
+		<Version>0.1.0-pre2</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon</PackageTags>
@@ -86,6 +86,15 @@
 	  <MauiXaml Update="Controls\Fluent.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\"/>
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
 	</ItemGroup>
 
 </Project>
