@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace MauiIcons.Helpers;
+namespace MauiIcons.Core.Helpers;
 internal static class EnumHelper
 {
     internal static string GetEnumDescription(this Enum enumValue)

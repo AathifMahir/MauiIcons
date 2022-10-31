@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MauiIcons;
+namespace MauiIcons.Material;
 public enum MaterialIcons
 {
     [Description("\ue951")] TenK,

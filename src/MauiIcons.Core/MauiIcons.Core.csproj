@@ -19,8 +19,8 @@
 
 	<PropertyGroup>
 		<GitInfoReportImportance>high</GitInfoReportImportance>
-		<PackageId>AathifMahir.Controls.Maui.MauiIcons</PackageId>
-		<Summary>Maui Icons is a Library to Solve Icons or Font Icon Management Across the Different Platforms on Dotnet Maui</Summary>
+		<PackageId>AathifMahir.Maui.MauiIcons.Core</PackageId>
+		<Summary>Core Library for .Net Maui Icons</Summary>
 		<Authors>Aathif Mahir</Authors>
 		<Owners>Aathif Mahir</Owners>
 		<NeutralLanguage>en</NeutralLanguage>
@@ -29,78 +29,44 @@
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/AathifMahir/MauiIcons</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AathifMahir/MauiIcons</RepositoryUrl>
-		<PackageReleaseNotes>TBD</PackageReleaseNotes>
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>MauiIcons</Title>
-		<Description>The MauiIcons Library Solves Issue with Not Having a Default Icon System and Brings Extra Addons to Fill the Gap on Dotnet Maui</Description>
+		<Description>Core Library for .Net Maui Icons</Description>
 		<!--<PackageIcon>icon.png</PackageIcon>-->
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0-pre4</Version>
+		<Version>0.1.0-pre6</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon</PackageTags>
+		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
 		<Configurations>Debug;Release</Configurations>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageReleaseNotes>Fixed Initial Bugs, Embedded Icons in the Assembly</PackageReleaseNotes>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageReleaseNotes>Decoupled Into Maultiple Libraries</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<MauiFont Include="Fonts\*"/>
+	  <Compile Remove="Controls\**" />
+	  <Compile Remove="Fonts\**" />
+	  <Compile Remove="Icons\**" />
+	  <EmbeddedResource Remove="Controls\**" />
+	  <EmbeddedResource Remove="Fonts\**" />
+	  <EmbeddedResource Remove="Icons\**" />
+	  <MauiCss Remove="Controls\**" />
+	  <MauiCss Remove="Fonts\**" />
+	  <MauiCss Remove="Icons\**" />
+	  <MauiXaml Remove="Controls\**" />
+	  <MauiXaml Remove="Fonts\**" />
+	  <MauiXaml Remove="Icons\**" />
+	  <None Remove="Controls\**" />
+	  <None Remove="Fonts\**" />
+	  <None Remove="Icons\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<EmbeddedResource Include="Fonts\Fluent_Icons.ttf"/>
-		<EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf"/>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Remove="Controls\MauiIconTest.xaml.cs" />
+	  <Compile Remove="BuilderExtensions.Shared.cs" />
 	  <Compile Remove="Converters\IconTypeConverter.cs" />
-	  <Compile Remove="Icons\Icon.cs" />
-	  <Compile Remove="Icons\IconTest.cs" />
-	  <Compile Remove="Icons\TestIcons.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiFont Remove="Fonts\CupertinoIcons.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Remove="Controls\MauiIconTest.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Fonts\CupertinoIcons.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Controls\Material.xaml.cs">
-	    <DependentUpon>Material.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Controls\Fluent.xaml.cs">
-	    <DependentUpon>Fluent.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Controls\Material.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Controls\Fluent.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
-	<PropertyGroup>
-		<PackageReadmeFile>readme.md</PackageReadmeFile>
-	</PropertyGroup>
-
-	<ItemGroup>
-		<None Include="readme.md" Pack="true" PackagePath="\"/>
-		<None Include="ReadMe.txt" pack="true" PackagePath="." />
 	</ItemGroup>
 
 </Project>

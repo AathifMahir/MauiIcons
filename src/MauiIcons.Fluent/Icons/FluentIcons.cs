@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MauiIcons;
+namespace MauiIcons.Fluent;
 public enum FluentIcons
 {
     [Description("\ue700")] GlobalNavButton,

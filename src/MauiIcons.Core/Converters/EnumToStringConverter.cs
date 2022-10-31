@@ -1,8 +1,8 @@
-﻿using MauiIcons.Helpers;
+﻿using MauiIcons.Core.Helpers;
 using System.Globalization;
 
-namespace MauiIcons.Converters;
-internal sealed class EnumToStringConverter : IValueConverter
+namespace MauiIcons.Core.Converters;
+public sealed class EnumToStringConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
