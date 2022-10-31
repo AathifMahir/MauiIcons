@@ -1,4 +1,7 @@
-﻿namespace MauiIcons.Sample;
+﻿using MauiIcons.Fluent;
+using MauiIcons.Material;
+
+namespace MauiIcons.Sample;
 
 public static class MauiProgram
 {
@@ -7,7 +10,8 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMauiIcons()
+            .UseMaterialMauiIcons()
+            .UseFluentMauiIcons()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
