@@ -1,0 +1,82 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0;net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<GitInfoReportImportance>high</GitInfoReportImportance>
+		<PackageId>AathifMahir.Maui.MauiIcons.Material</PackageId>
+		<Summary>Maui Icons - Material is Icon Library for .Net Maui</Summary>
+		<Authors>Aathif Mahir</Authors>
+		<Owners>Aathif Mahir</Owners>
+		<NeutralLanguage>en</NeutralLanguage>
+		<Product>MauiIcons - Material (net6.0)</Product>
+		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/AathifMahir/MauiIcons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AathifMahir/MauiIcons</RepositoryUrl>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<Title>MauiIcons</Title>
+		<Description>Maui Icons - Material is a Library to Resoves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.</Description>
+		<!--<PackageIcon>icon.png</PackageIcon>-->
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<AssemblyVersion>0.1.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
+		<Version>0.1.0-pre6</Version>
+		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
+		<Configurations>Debug;Release</Configurations>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<PackageReleaseNotes>Decoupled Into Multiple Libraries</PackageReleaseNotes>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Fonts\MaterialIcons-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MauiIcons.Core\MauiIcons.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\MauiIcon.xaml.cs">
+	    <DependentUpon>MauiIcon.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\MauiIcon.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<PropertyGroup>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+	</ItemGroup>
+
+</Project>
