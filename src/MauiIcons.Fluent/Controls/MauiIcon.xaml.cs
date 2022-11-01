@@ -4,15 +4,15 @@ namespace MauiIcons.Fluent;
 
 public sealed partial class MauiIcon : ContentView
 {
-    public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(FluentIcons), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(FluentIcons?), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MauiIcon), 30.0);
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(MauiIcon), Colors.White);
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(MauiIcon), Colors.Transparent);
     public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(MauiIcon), false);
 
-    public FluentIcons Icon
+    public FluentIcons? Icon
     {
-        get => (FluentIcons)GetValue(IconProperty);
+        get => (FluentIcons?)GetValue(IconProperty);
         set => SetValue(IconProperty, value);
     }
     public double IconSize

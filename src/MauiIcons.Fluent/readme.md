@@ -22,7 +22,7 @@ public static class MauiProgram
 
 ### XAML usage
 
-In order to make use of the .Net Maui Icons - Material within XAML you can use this namespace:
+In order to make use of the .Net Maui Icons - Fluent within XAML you can use this namespace:
 
 ```xml
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
