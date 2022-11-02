@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:icons="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+             xmlns:local="clr-namespace:MauiIcons.Sample"
+             xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
              xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
+             x:DataType="local:MainPage"
              x:Class="MauiIcons.Sample.MainPage">
 
     <ScrollView>
@@ -30,9 +32,17 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <!--<icons:Material Icon="AddHome"/>-->
-            <icons:MauiIcon Icon="RevealPasswordMedium"/>
-            <material:MauiIcon Icon="ABC"/>
+            <HorizontalStackLayout Spacing="25" HorizontalOptions="Center">
+                <!--Maui Icons Built in Controls-->
+                <fluent:MauiIcon Icon="Accounts" IconColor="Red"/>
+                <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
+
+                <!--Image Extension-->
+                <Image Aspect="Center" Source="{fluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
+
+            </HorizontalStackLayout>
+            
 
 
 
