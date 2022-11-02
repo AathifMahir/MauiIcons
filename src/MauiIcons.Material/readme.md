@@ -1,6 +1,6 @@
 # .Net Maui Icons
 
-.Net Maui Icons - Material is a Library to Resoves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
+.Net Maui Icons - Material is a Lightweight Library That Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
 
 # Get Started
 In order to use the .NET MAUI Icons - Material you need to call the extension method in your `MauiProgram.cs` file as follows:

@@ -37,13 +37,13 @@
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0-pre7</Version>
+		<Version>0.1.0-pre9</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
 		<Configurations>Debug;Release</Configurations>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<PackageReleaseNotes>Bug Fixes</PackageReleaseNotes>
+		<PackageReleaseNotes>New Icon Extension, Improved Icon Control, Package Size Reductions</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -56,18 +56,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\MauiIcons.Core\MauiIcons.Core.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Controls\MauiIcon.xaml.cs">
-	    <DependentUpon>MauiIcon.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Controls\MauiIcon.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 	<PropertyGroup>

@@ -37,29 +37,29 @@
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>0.1.0.0</AssemblyVersion>
 		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0-pre7</Version>
+		<Version>0.1.0-pre9</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
 		<Configurations>Debug;Release</Configurations>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<PackageReleaseNotes>Bug Fixes</PackageReleaseNotes>
+		<PackageReleaseNotes>New Icon Extension, Improved Icon Control, Package Size Reductions</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Controls\**" />
+	  <Compile Remove="Common\**" />
 	  <Compile Remove="Fonts\**" />
 	  <Compile Remove="Icons\**" />
-	  <EmbeddedResource Remove="Controls\**" />
+	  <EmbeddedResource Remove="Common\**" />
 	  <EmbeddedResource Remove="Fonts\**" />
 	  <EmbeddedResource Remove="Icons\**" />
-	  <MauiCss Remove="Controls\**" />
+	  <MauiCss Remove="Common\**" />
 	  <MauiCss Remove="Fonts\**" />
 	  <MauiCss Remove="Icons\**" />
-	  <MauiXaml Remove="Controls\**" />
+	  <MauiXaml Remove="Common\**" />
 	  <MauiXaml Remove="Fonts\**" />
 	  <MauiXaml Remove="Icons\**" />
-	  <None Remove="Controls\**" />
+	  <None Remove="Common\**" />
 	  <None Remove="Fonts\**" />
 	  <None Remove="Icons\**" />
 	</ItemGroup>
@@ -67,6 +67,18 @@
 	<ItemGroup>
 	  <Compile Remove="BuilderExtensions.Shared.cs" />
 	  <Compile Remove="Converters\IconTypeConverter.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Controls\BaseMauiIcon.xaml.cs">
+	    <DependentUpon>BaseMauiIcon.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\BaseMauiIcon.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
