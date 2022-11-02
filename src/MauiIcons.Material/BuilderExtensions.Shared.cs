@@ -1,7 +1,5 @@
 ﻿
 
-using MauiIcons.Core.Common;
-
 namespace MauiIcons.Material;
 public static class BuilderExtensions
 {
@@ -16,7 +14,7 @@ public static class BuilderExtensions
 
         return builder.ConfigureFonts(fonts =>
         {
-            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfMaterialIcons, Constants.MaterialIcons);
+            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfFontFamily, Constants.FontFamily);
         });
     }
 
