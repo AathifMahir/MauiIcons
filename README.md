@@ -37,4 +37,16 @@ In order to make use of the toolkit within XAML you can use this namespace:
 ```xml
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
 xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
+
+<!-- Fluent Icon Control -->
+<fluent:MauiIcon Icon="Accounts"/>
+
+<!-- Fluent Icon Image Extension -->
+<Image Aspect="Center" Source="{fluent:Icon Icon=ActionCenterQuiet}"/>
+
+<!-- Material Icon Control -->
+<material:MauiIcon Icon="ABC"/>
+
+<!-- Material Icon Image Extension -->
+<Image Aspect="Center" Source="{material:Icon Icon=AddRoad}"/>
 ```
