@@ -1,0 +1,4 @@
+﻿v0.1.0
+• First Stable Build
+• Added New Attributes to Icon Extension
+• Improvements to Documentation
