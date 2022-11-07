@@ -1,0 +1,10 @@
+﻿v0.2.0-pre1
+• Breaking Changes: MauiIcons.Fluent is Switched to MauiIcons.SegoeFluent
+  You'll need to download the MauiIcons.SegoeFluent Package to using the below link use the Old Fluent Icon Package
+  https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.SegoeFluent
+• Add New Icon Collection for New Fluent Package
+
+v0.1.0
+• First Stable Build
+• Added New Attributes to Icon Extension
+• Improvements to Documentation
