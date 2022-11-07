@@ -47,10 +47,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Fonts\MaterialIcons-Regular.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
 	</ItemGroup>
 
