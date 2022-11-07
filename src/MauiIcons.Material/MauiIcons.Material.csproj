@@ -35,9 +35,9 @@
 		<Description>Maui Icons - Material is a Library to Resoves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.</Description>
 		<!--<PackageIcon>icon.png</PackageIcon>-->
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>0.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0</Version>
+		<AssemblyVersion>0.2.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.2.0.0</AssemblyFileVersion>
+		<Version>0.2.0-pre1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
@@ -45,10 +45,6 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
 	</PropertyGroup>
-
-	<ItemGroup>
-	  <None Remove="Fonts\MaterialIcons-Regular.ttf" />
-	</ItemGroup>
 
 	<ItemGroup>
 	  <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />

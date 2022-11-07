@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
-namespace MauiIcons.Fluent;
-public enum FluentIcons
+namespace MauiIcons.SegoeFluent;
+public enum SegoeFluentIcons
 {
     [Description("\ue700")] GlobalNavButton,
     [Description("\ue701")] Wifi,

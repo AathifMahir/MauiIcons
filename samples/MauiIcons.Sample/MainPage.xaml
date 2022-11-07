@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiIcons.Sample"
-             xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+             xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
              xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
              x:DataType="local:MainPage"
              x:Class="MauiIcons.Sample.MainPage">
@@ -34,11 +34,11 @@
 
             <HorizontalStackLayout Spacing="25" HorizontalOptions="Center">
                 <!--Maui Icons Built in Controls-->
-                <fluent:MauiIcon Icon="Accounts" IconColor="Red"/>
+                <segoeFluent:MauiIcon Icon="Accounts" IconColor="Red"/>
                 <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
 
                 <!--Image Extension-->
-                <Image Aspect="Center" Source="{fluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
+                <Image Aspect="Center" Source="{segoeFluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
                 <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
 
             </HorizontalStackLayout>

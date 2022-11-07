@@ -1,12 +1,12 @@
 # .Net Maui Icons
 
-.Net Maui Icons - Fluent is a Lightweight Library That Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Fluent Icon Collection Built into Library.
+.Net Maui Icons - Segoe Fluent is a Lightweight Windows Default Icon Library That Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Segoe Fluent Icon Collection Built into Library.
 
 # Get Started
 In order to use the .Net Maui Icons - Fluent you need to call the extension method in your `MauiProgram.cs` file as follows:
 
 ```csharp
-using MauiIcons.Fluent;
+using MauiIcons.SegoeFluent;
 
 public static class MauiProgram
 {
@@ -15,7 +15,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		
 		// Initialise the .Net Maui Icons - Fluent
-		builder.UseMauiApp<App>().UseFluentMauiIcons();
+		builder.UseMauiApp<App>().UseSegoeFluentMauiIcons();
 	}
 }
 ```
@@ -25,12 +25,12 @@ public static class MauiProgram
 In order to make use of the .Net Maui Icons - Fluent within XAML you can use this namespace:
 
 ```xml
-xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
 
 Maui Icons Built in Custom Control Usage:
-<fluent:MauiIcon Icon="Accounts"/>
+<segoeFluent:MauiIcon Icon="Accounts"/>
 
 Image Extension Usage:
-<Image Aspect="Center" Source="{fluent:Icon Icon=Accounts}"/>
+<Image Aspect="Center" Source="{segoeFluent:Icon Icon=Accounts}"/>
 
 ```

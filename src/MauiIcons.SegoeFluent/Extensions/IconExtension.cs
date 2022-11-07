@@ -1,11 +1,11 @@
 ﻿using MauiIcons.Core;
 
-namespace MauiIcons.Fluent;
+namespace MauiIcons.SegoeFluent;
 public sealed class IconExtension : BaseIconExtension
 {
-    public new FluentIcons? Icon 
+    public new SegoeFluentIcons? Icon 
     { 
-        get => (FluentIcons?)base.Icon;
+        get => (SegoeFluentIcons?)base.Icon;
         set => base.Icon = value;
     }
     protected override string IconFontFamily { get; set; } = Constants.FontFamily;

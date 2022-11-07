@@ -19,12 +19,12 @@
 
 	<PropertyGroup>
 		<GitInfoReportImportance>high</GitInfoReportImportance>
-		<PackageId>AathifMahir.Maui.MauiIcons.Fluent</PackageId>
-		<Summary>Maui Icons - Fluent is Icon Library for .Net Maui</Summary>
+		<PackageId>AathifMahir.Maui.MauiIcons.SegoeFluent</PackageId>
+		<Summary>Maui Icons - Segoe Fluent is a Windows Default Icon Library for .Net Maui</Summary>
 		<Authors>Aathif Mahir</Authors>
 		<Owners>Aathif Mahir</Owners>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Product>MauiIcons - Fluent (net6.0)</Product>
+		<Product>MauiIcons - Segoe Fluent (net6.0)</Product>
 		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/AathifMahir/MauiIcons</PackageProjectUrl>
@@ -32,36 +32,24 @@
 		<DefineConstants>$(DefineConstants);</DefineConstants>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>MauiIcons</Title>
-		<Description>Maui Icons - Fluent is a Library to Resoves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Fluent Icon Collection Built into Library.</Description>
+		<Description>Maui Icons - Segoe Fluent is a Windows Default Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Fluent Icon Collection Built into Library.</Description>
 		<!--<PackageIcon>icon.png</PackageIcon>-->
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>0.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>0.1.0.0</AssemblyFileVersion>
-		<Version>0.1.0</Version>
+		<AssemblyVersion>0.2.0.0</AssemblyVersion>
+		<AssemblyFileVersion>0.2.0.0</AssemblyFileVersion>
+		<Version>0.2.0-pre1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
+		<PackageTags>Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
 		<Configurations>Debug;Release</Configurations>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
 	</PropertyGroup>
-
+	
 	<ItemGroup>
-	  <Compile Remove="Extensions\MauiFluentIconExtension.cs" />
-	  <Compile Remove="Extensions\MauiFontImageExtension.cs" />
+	  <EmbeddedResource Include="Fonts\Segoe_Fluent_Icons.ttf" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Remove="Fonts\Fluent_Icons.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Include="Fonts\Fluent_Icons.ttf" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\MauiIcons.Core\MauiIcons.Core.csproj" />
-	</ItemGroup>
+		
 
 	<PropertyGroup>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
@@ -70,5 +58,9 @@
 	<ItemGroup>
 		<None Include="readme.md" Pack="true" PackagePath="\" />
 		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MauiIcons.Core\MauiIcons.Core.csproj" />
 	</ItemGroup>
 </Project>
