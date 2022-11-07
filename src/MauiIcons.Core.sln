@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Core", "MauiIcons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Sample", "..\samples\MauiIcons.Sample\MauiIcons.Sample.csproj", "{54DA6251-0371-4AD2-94D7-4C72185BE132}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.Fluent", "MauiIcons.Fluent\MauiIcons.Fluent.csproj", "{C9952ACC-5F56-4147-A866-66738C9F6CB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.SegoeFluent", "MauiIcons.SegoeFluent\MauiIcons.SegoeFluent.csproj", "{C9952ACC-5F56-4147-A866-66738C9F6CB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.Material", "MauiIcons.Material\MauiIcons.Material.csproj", "{A9916AF9-0BA4-4E99-A3DC-DFC389DF5071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Material", "MauiIcons.Material\MauiIcons.Material.csproj", "{A9916AF9-0BA4-4E99-A3DC-DFC389DF5071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
