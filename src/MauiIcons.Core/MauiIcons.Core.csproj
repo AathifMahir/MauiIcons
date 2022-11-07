@@ -43,12 +43,7 @@
 		<PackageTags>dotnet,maui,Icons,Icon,MauiIcon,iosIcon,androidIcon,Material,Fluent,Cuppertino</PackageTags>
 		<Configurations>Debug;Release</Configurations>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-		<PackageReleaseNotes>
-v0.1.0
-• First Stable Build
-• Added New Attributes to Icon Extension,
-• Improvements to Documentation
-		</PackageReleaseNotes>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<ItemGroup>
