@@ -50,6 +50,15 @@
 		<EmbeddedResource Include="Fonts\Fluent_Icons_Regular.ttf" />
 	</ItemGroup>
 
+	<PropertyGroup>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+	</ItemGroup>
+
 	<ItemGroup>
 	  <ProjectReference Include="..\MauiIcons.Core\MauiIcons.Core.csproj" />
 	</ItemGroup>
