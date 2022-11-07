@@ -26,4 +26,11 @@ In order to make use of the .Net Maui Icons - Material within XAML you can use t
 
 ```xml
 xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
+
+<!--Maui Icons Built in Custom Control Usage-->
+<material:MauiIcon Icon="Accounts"/>
+
+<!--Image Extension Usage-->
+<Image Aspect="Center" Source="{material:Icon Icon=Accounts}"/>
+
 ```
