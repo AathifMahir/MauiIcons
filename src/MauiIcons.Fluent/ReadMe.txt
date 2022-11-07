@@ -1,6 +1,6 @@
 ﻿.NET MAUI Icons
 
-## Initializing
+Initializing
 
 In order to use the .NET MAUI Icons - Fluent you need to call the extension method in your `MauiProgram.cs` file as follows:
 
@@ -14,11 +14,25 @@ public static MauiApp CreateMauiApp()
 	builder.UseMauiApp<App>().UseFluentMauiIcons();
 }
 
-## XAML usage
+XAML usage
 
 In order to make use of the .Net Maui Icons - Material within XAML you can use this namespace:
 
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+
+----------------------------------------------------------------------------------------------
+
+Built in Custom Control Usage:
+
+<fluent:MauiIcon Icon="Accounts"/>
+
+----------------------------------------------------------------------------------------------
+
+Image Extension Usage:
+
+<Image Aspect="Center" Source="{fluent:Icon Icon=Accounts}"/>
+
+----------------------------------------------------------------------------------------------
 
 ## Further information
 
