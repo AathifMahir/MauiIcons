@@ -27,10 +27,10 @@ In order to make use of the .Net Maui Icons - Fluent within XAML you can use thi
 ```xml
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
 
-<!--Maui Icons Built in Custom Control Usage-->
+Maui Icons Built in Custom Control Usage:
 <fluent:MauiIcon Icon="Accounts"/>
 
-<!--Image Extension Usage-->
+Image Extension Usage:
 <Image Aspect="Center" Source="{fluent:Icon Icon=Accounts}"/>
 
 ```
