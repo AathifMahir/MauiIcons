@@ -1,4 +1,8 @@
-﻿v0.1.0
+﻿v0.1.1
+• Critical Fix on MauiIcon Custom Control
+• Minor Enhancements and Fixes
+
+v0.1.0
 • First Stable Build
 • Added New Attributes to Icon Extension
 • Improvements to Documentation
