@@ -9,8 +9,11 @@ public abstract partial class BaseMauiIcon : ContentView
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(BaseMauiIcon), Colors.Transparent);
     public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(BaseMauiIcon), false);
     
-    public virtual Enum Icon { get; set; }
-    public abstract string CustomFontFamily { get; set; }
+    public virtual Enum Icon 
+    {
+        get => (Enum)GetValue(IconProperty);
+        set => SetValue(IconProperty, value);
+    }
     public double IconSize
     {
         get => (double)GetValue(IconSizeProperty);
@@ -32,10 +35,10 @@ public abstract partial class BaseMauiIcon : ContentView
         get => (bool)GetValue(IconAutoScalingProperty);
         set => SetValue(IconAutoScalingProperty, value);
     }
+    public abstract string IconFontFamily { get; set; }
 
-    
 
-    
+
     public BaseMauiIcon()
 	{
 		InitializeComponent();
