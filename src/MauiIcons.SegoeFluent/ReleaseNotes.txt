@@ -1,4 +1,7 @@
-﻿v0.2.0-pre1
+﻿v0.2.0-pre2
+• Ported Critical Fix from Stable Build
+
+v0.2.0-pre1
 • New Default Windows Fluent Icon Package with New Namespace
 • Enhancements and Fixes
 

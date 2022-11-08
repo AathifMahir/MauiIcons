@@ -11,7 +11,7 @@
 
     <Image Aspect="Center">
         <Image.Source>
-            <FontImageSource FontAutoScalingEnabled="{x:Binding IconAutoScaling}" Glyph="{x:Binding Icon, Converter={StaticResource EnumToStringConverter}}" FontFamily="{x:Binding CustomFontFamily}" Color="{x:Binding IconColor, FallbackValue='White'}" Size="{x:Binding IconSize, FallbackValue=30.0}"/>
+            <FontImageSource FontAutoScalingEnabled="{x:Binding IconAutoScaling}" Glyph="{x:Binding Icon, Converter={StaticResource EnumToStringConverter}}" FontFamily="{x:Binding IconFontFamily}" Color="{x:Binding IconColor, FallbackValue='White'}" Size="{x:Binding IconSize, FallbackValue=30.0}"/>
         </Image.Source>
     </Image>
 
