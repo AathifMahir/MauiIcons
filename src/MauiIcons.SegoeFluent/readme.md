@@ -34,3 +34,13 @@ Image Extension Usage:
 <Image Aspect="Center" Source="{segoeFluent:Icon Icon=Accounts}"/>
 
 ```
+
+# License
+
+**MauiIcons.SegoeFluent**
+MauiIcons.SegoeFluent is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
+
+**Segoe Fluent Icons**
+Segoe FLuent Icons is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
+
+

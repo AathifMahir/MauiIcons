@@ -34,3 +34,13 @@ Image Extension Usage
 <Image Aspect="Center" Source="{material:Icon Icon=Accounts}"/>
 
 ```
+
+# License
+
+**MauiIcons.Material**
+MauiIcons.Material is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
+
+**Material Design Icons**
+Material Design Icons is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
+
+

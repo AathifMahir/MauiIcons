@@ -1,4 +1,10 @@
-﻿v0.2.0-pre2
+﻿v1.0.0
+• First Milestone Build and Production App Ready
+• Breaking Changes: MauiIcons.Fluent is Replaced by MauiIcons.SegoeFluent
+  You'll need to download the MauiIcons.SegoeFluent Package using the below link for Continueing to use Windows Fluent Icons
+  https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.SegoeFluent
+
+v0.2.0-pre2
 • Ported Critical Fix from Stable Build
 
 v0.2.0-pre1
