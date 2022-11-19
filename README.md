@@ -58,14 +58,14 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 
 # License
 
-**MauiIcons**
+**MauiIcons**\
 MauiIcons is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
 
-**Fluent UI System Icons**
+**Fluent UI System Icons**\
 Fluent UI System Icons is Licensed Under [MIT License](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE).
 
-**Material Design Icons**
+**Material Design Icons**\
 Material Design Icons is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
 
-**Segoe Fluent Icons**
+**Segoe Fluent Icons**\
 Segoe FLuent Icons is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
