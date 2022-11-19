@@ -1,3 +1,7 @@
+<img src="https://github.com/AathifMahir/MauiIcons/blob/89f13e4a26bb9b486048b07f9d67cad12df677c1/images/icon_with_text.png" alt="MauiIcons_logo" height=175>
+
+
+
 # .Net Maui Icons
 
 .Net Maui Icons - Fluent & Material is a Library to Resoves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
@@ -51,3 +55,17 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 <!-- Material Icon Image Extension -->
 <Image Aspect="Center" Source="{material:Icon Icon=AddRoad}"/>
 ```
+
+# License
+
+**MauiIcons**
+MauiIcons is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
+
+**Fluent UI System Icons**
+Fluent UI System Icons is Licensed Under [MIT License](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE).
+
+**Material Design Icons**
+Material Design Icons is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
+
+**Segoe Fluent Icons**
+Segoe FLuent Icons is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
