@@ -34,3 +34,12 @@ Image Extension Usage:
 <Image Aspect="Center" Source="{fluent:Icon Icon=Accounts}"/>
 
 ```
+
+# License
+
+**MauiIcons.Fluent**
+MauiIcons.Fluent is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
+
+**Fluent UI System Icons**
+Fluent UI System Icons is Licensed Under [MIT License](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE).
+
