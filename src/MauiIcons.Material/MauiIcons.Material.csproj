@@ -33,7 +33,7 @@
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>MauiIcons</Title>
 		<Description>Maui Icons - Material is a Library to Resoves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.</Description>
-		<!--<PackageIcon>icon.png</PackageIcon>-->
+		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
@@ -61,6 +61,7 @@
 	<ItemGroup>
 		<None Include="readme.md" Pack="true" PackagePath="\" />
 		<None Include="ReadMe.txt" pack="true" PackagePath="." />
+		<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />
 	</ItemGroup>
 
 </Project>

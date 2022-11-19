@@ -33,7 +33,7 @@
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
 		<Title>MauiIcons</Title>
 		<Description>Core Library for .Net Maui Icons</Description>
-		<!--<PackageIcon>icon.png</PackageIcon>-->
+		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>1.0.0.0</AssemblyVersion>
 		<AssemblyFileVersion>1.0.0.0</AssemblyFileVersion>
@@ -45,6 +45,10 @@
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />
+	</ItemGroup>
 
 	<ItemGroup>
 	  <Compile Update="Controls\BaseMauiIcon.xaml.cs">
