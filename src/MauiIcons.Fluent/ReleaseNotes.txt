@@ -1,4 +1,7 @@
-﻿v1.0.0
+﻿v1.0.1
+• Fixed Missing Cast
+
+v1.0.0
 • First Milestone Build and Production App Ready
 • Breaking Changes: MauiIcons.Fluent is Replaced by MauiIcons.SegoeFluent
   You'll need to download the MauiIcons.SegoeFluent Package using the below link for Continueing to use Windows Fluent Icons

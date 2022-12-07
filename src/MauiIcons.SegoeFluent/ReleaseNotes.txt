@@ -1,4 +1,7 @@
-﻿v1.0.0
+﻿v1.0.1
+• Fixed Missing Cast
+
+v1.0.0
 • First Milestone Build and Production App Ready
 
 v0.2.0-pre2
