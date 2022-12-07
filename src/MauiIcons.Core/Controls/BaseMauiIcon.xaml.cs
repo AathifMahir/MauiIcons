@@ -45,4 +45,16 @@ public abstract partial class BaseMauiIcon : ContentView
         BindingContext = this;
     }
 
+    public static explicit operator FontImageSource(BaseMauiIcon baseIcon)
+    {
+        return new FontImageSource()
+        {
+            Glyph = baseIcon.Icon != null ? EnumHelper.GetEnumDescription(baseIcon.Icon) : string.Empty,
+            Color = baseIcon.IconColor ?? ThemeHelper.SetDefaultIconColor(),
+            FontFamily = baseIcon.IconFontFamily,
+            Size = baseIcon.IconSize,
+            FontAutoScalingEnabled = baseIcon.IconAutoScaling
+        };
+    }
+
 }
