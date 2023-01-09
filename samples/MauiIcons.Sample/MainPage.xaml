@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:MauiIcons.Sample"
              xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
              xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+             xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
              xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
              x:DataType="local:MainPage"
              x:Class="MauiIcons.Sample.MainPage">
@@ -38,11 +39,13 @@
                 <segoeFluent:MauiIcon Icon="Accounts" IconColor="Red"/>
                 <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
                 <fluent:MauiIcon Icon="Accessibility48"/>
+                <fluentFilled:MauiIcon Icon="Accessibility48Filled" IconColor="BlueViolet"/>
 
                 <!--Image Extension-->
                 <Image Aspect="Center" Source="{segoeFluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
                 <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
                 <Image Aspect="Center" Source="{fluent:Icon Icon=AddSquare20}"/>
+                <Image Aspect="Center" Source="{fluentFilled:Icon Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
 
             </HorizontalStackLayout>
             
