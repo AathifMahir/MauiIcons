@@ -4,7 +4,7 @@
 
 # .Net Maui Icons
 
-.Net Maui Icons - Fluent & Material is a Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
+>.Net Maui Icons - Fluent & Material is a Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
 
 # Packages
 
@@ -17,7 +17,7 @@ Package | Latest stable | Latest Preview | Description
 
 
 # Get Started
-In order to use the .NET MAUI Icons you need to call the extension method in your `MauiProgram.cs` file as follows:
+>In order to use the .NET MAUI Icons you need to call the extension method in your `MauiProgram.cs` file as follows:
 
 ```csharp
 public static class MauiProgram
@@ -37,7 +37,7 @@ public static class MauiProgram
 
 ### XAML usage
 
-In order to make use of the toolkit within XAML you can use this namespace:
+>In order to make use of the toolkit within XAML you can use this namespace:
 
 ```xml
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
@@ -58,14 +58,10 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 
 # License
 
-**MauiIcons**\
-MauiIcons is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
+>**MauiIcons** is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
 
-**Fluent UI System Icons**\
-Fluent UI System Icons is Licensed Under [MIT License](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE).
+>**Fluent UI System Icons** is Licensed Under [MIT License](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE).
 
-**Material Design Icons**\
-Material Design Icons is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
+>**Material Design Icons** is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
 
-**Segoe Fluent Icons**\
-Segoe FLuent Icons is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
+>**Segoe Fluent Icons** is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
