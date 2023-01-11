@@ -37,7 +37,7 @@
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<AssemblyVersion>1.0.1.0</AssemblyVersion>
 		<AssemblyFileVersion>1.0.1.0</AssemblyFileVersion>
-		<Version>1.0.1-preview1</Version>
+		<Version>1.0.1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,FluentFilled,Cuppertino,SegoeFluent</PackageTags>
