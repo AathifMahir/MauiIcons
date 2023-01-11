@@ -1,19 +1,5 @@
-﻿v1.1.0-preview
-• Added Fluent Filled Icons
+﻿v1.1.0-pre
+• Dotnet 7 Support
 
-v1.0.1
-• Fixed Missing Cast
-
-v1.0.0
-• First Milestone Build and Production App Ready
-
-v0.2.0-pre2
-• Ported Critical Fix from Stable Build
-
-v0.2.0-pre1
-• Minor Enhancements and Fixes
-
-v0.1.0
-• First Stable Build
-• Added New Attributes to Icon Extension
-• Improvements to Documentation
+v1.0.1-pre1
+• FluentFilled Icons Support
