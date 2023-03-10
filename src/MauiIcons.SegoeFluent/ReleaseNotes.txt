@@ -1,4 +1,8 @@
-﻿v1.0.1
+﻿v1.1.0
+• Dotnet 7 Support
+• Minor Enhancements and Fixes
+
+v1.0.1
 • Fixed Missing Cast
 
 v1.0.0
