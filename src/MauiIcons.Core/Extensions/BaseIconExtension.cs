@@ -10,7 +10,7 @@ public abstract class BaseIconExtension : IMarkupExtension<ImageSource>
     protected abstract string IconFontFamily { get; set; }
     public ImageSource ProvideValue(IServiceProvider serviceProvider)
     {
-        return new FontImageSource() { Glyph = Icon != null ? EnumHelper.GetEnumDescription(Icon) : string.Empty, 
+        return new FontImageSource() { Glyph = Icon is not null ? EnumHelper.GetEnumDescription(Icon) : string.Empty, 
             Color = IconColor ?? ThemeHelper.SetDefaultIconColor(), FontFamily = IconFontFamily, Size = IconSize, 
             FontAutoScalingEnabled = IconAutoScaling };
     }
