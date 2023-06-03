@@ -37,9 +37,9 @@
 		<Description>Core Library for .Net Maui Icons</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>1.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>1.1.0.0</AssemblyFileVersion>
-		<Version>1.1.0</Version>
+		<AssemblyVersion>1.1.1.0</AssemblyVersion>
+		<AssemblyFileVersion>1.1.1.0</AssemblyFileVersion>
+		<Version>1.1.1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
@@ -50,18 +50,6 @@
 
 	<ItemGroup>
 		<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Update="Controls\BaseMauiIcon.xaml.cs">
-			<DependentUpon>BaseMauiIcon.xaml</DependentUpon>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-		<MauiXaml Update="Controls\BaseMauiIcon.xaml">
-			<Generator>MSBuild:Compile</Generator>
-		</MauiXaml>
 	</ItemGroup>
 
 </Project>

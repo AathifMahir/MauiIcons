@@ -37,9 +37,9 @@
 		<Description>Maui Icons - Fluent Filled is a Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Open Source Fluent Icon Collection Built into Library.</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>1.1.0.0</AssemblyVersion>
-		<AssemblyFileVersion>1.1.0.0</AssemblyFileVersion>
-		<Version>1.1.0</Version>
+		<AssemblyVersion>1.1.1.0</AssemblyVersion>
+		<AssemblyFileVersion>1.1.1.0</AssemblyFileVersion>
+		<Version>1.1.1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,FluentFilled,Cuppertino,SegoeFluent</PackageTags>
