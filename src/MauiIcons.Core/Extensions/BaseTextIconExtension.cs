@@ -4,7 +4,6 @@ namespace MauiIcons.Core;
 public abstract class BaseTextIconExtension : IMarkupExtension<string>
 {
     public virtual Enum Icon { get; set; }
-    protected abstract string IconFontFamily { get; set; }
     public string ProvideValue(IServiceProvider serviceProvider)
     {
         return Icon != null ? EnumHelper.GetEnumDescription(Icon) : string.Empty;

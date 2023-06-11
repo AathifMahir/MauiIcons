@@ -9,6 +9,5 @@ public sealed class TextIconExtension : BaseTextIconExtension
         get => (FluentFilledIcons?)base.Icon;
         set => base.Icon = value;
     }
-    protected override string IconFontFamily { get; set; } = Constants.FontFamily;
 }
 
