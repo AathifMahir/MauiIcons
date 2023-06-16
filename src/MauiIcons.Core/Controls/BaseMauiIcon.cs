@@ -3,6 +3,7 @@ using MauiIcons.Core.Helpers;
 
 namespace MauiIcons.Core;
 
+[ContentProperty(nameof(Icon))]
 public abstract class BaseMauiIcon : ContentView
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(Enum), typeof(BaseMauiIcon), null);
