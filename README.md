@@ -71,4 +71,4 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 
 Want to Contribute this project, Feel free to Create an Issue or Else Want to Contribute to the Project on Resources, Feel Free to Donate Me Via Below Url or You just want use Package, Feel Free to Do So, No Worries!!!
 
-<a href="https://www.buymeacoffee.com/aathifmahir"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=aathifmahir&button_colour=40DCA5&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00" /></a>
+<a href="https://www.buymeacoffee.com/aathifmahir"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=aathifmahir&button_colour=6b4fdc&font_colour=ffffff&font_family=Lato&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
