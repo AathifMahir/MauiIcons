@@ -1,6 +1,7 @@
 ﻿v1.1.5
 • Added Icon Unicode Support for Icon Extension
 • Added Direct Content Support
+• Minor Enhancements and Fixes
 
 v1.1.1
 • Minor Enhancements and Fixes
