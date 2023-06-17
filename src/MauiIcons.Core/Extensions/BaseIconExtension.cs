@@ -1,4 +1,5 @@
 ﻿using MauiIcons.Core.Helpers;
+using System.ComponentModel;
 
 namespace MauiIcons.Core;
 
@@ -7,6 +8,8 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
 {
     public virtual Enum Icon { get; set; }
     public Color IconColor { get; set; }
+
+    [TypeConverter(typeof(FontSizeConverter))]
     public double IconSize { get; set; } = 30.0;
     public bool IconAutoScaling { get; set; }
     protected abstract string IconFontFamily { get; set; }
@@ -34,24 +37,34 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
         throw new NotSupportedException($"Icon Extension Doesn't Support {returnType}");
     }
 
-    public void AssignFontFamily(object targetObject)
+    void AssignFontFamily(object targetObject)
     {
         switch (targetObject)
         {
             case Button button:
                 button.FontFamily = IconFontFamily;
+                button.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
+                button.FontSize = IconSize;
                 break;
             case Label label:
                 label.FontFamily = IconFontFamily;
+                label.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
+                label.FontSize = IconSize;
                 break;
             case Entry entry:
                 entry.FontFamily = IconFontFamily;
+                entry.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
+                entry.FontSize = IconSize;
                 break;
             case Editor editor:
                 editor.FontFamily = IconFontFamily;
+                editor.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
+                editor.FontSize = IconSize;
                 break;
             case SearchBar searchBar:
                 searchBar.FontFamily = IconFontFamily;
+                searchBar.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
+                searchBar.FontSize = IconSize;
                 break;
             default:
                 throw new NotSupportedException($"Icon Extension Doesn't Support this Control {targetObject}");
