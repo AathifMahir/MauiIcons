@@ -50,10 +50,10 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="{fluent:Icon AddCircle20}" TextColor="BlueViolet" FontSize="Large"/>
-                <Button Text="{fluentFilled:Icon Icon=AccessibilityCheckmark24Filled}" TextColor="BlueViolet" FontFamily="FluentFilledIcons" FontSize="Large"/>
-                <Button Text="{material:Icon Icon=ABC}" TextColor="BlueViolet" FontFamily="MaterialIcons" FontSize="Large"/>
-                <Button Text="{segoeFluent:Icon Icon=AdjustHologram}" TextColor="BlueViolet" FontFamily="SegoeFluentIcons" FontSize="Large"/>
+                <Button Text="{fluent:Icon AddCircle20, IconColor=Violet, IconSize=Large}"/>
+                <Button Text="{fluentFilled:Icon AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{material:Icon ABC, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{segoeFluent:Icon AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
             </HorizontalStackLayout>
 
 
