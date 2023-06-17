@@ -17,6 +17,8 @@ public abstract class BaseMauiIcon : ContentView
         get => (Enum)GetValue(IconProperty);
         set => SetValue(IconProperty, value);
     }
+
+    [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
     public double IconSize
     {
         get => (double)GetValue(IconSizeProperty);
