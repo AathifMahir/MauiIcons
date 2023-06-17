@@ -1,5 +1,4 @@
 ﻿using MauiIcons.Core.Helpers;
-using System.ComponentModel;
 
 namespace MauiIcons.Core;
 
@@ -9,7 +8,7 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
     public virtual Enum Icon { get; set; }
     public Color IconColor { get; set; }
 
-    [TypeConverter(typeof(FontSizeConverter))]
+    [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
     public double IconSize { get; set; } = 30.0;
     public bool IconAutoScaling { get; set; }
     protected abstract string IconFontFamily { get; set; }
@@ -67,7 +66,7 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
                 searchBar.FontSize = IconSize;
                 break;
             default:
-                throw new NotSupportedException($"Icon Extension Doesn't Support this Control {targetObject}");
+                throw new NotSupportedException($"Icon Extension using Text Doesn't Support this Control {targetObject}");
         }
     }
 }
