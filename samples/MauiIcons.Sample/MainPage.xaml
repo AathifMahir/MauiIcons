@@ -48,7 +48,13 @@
                 <Image Aspect="Center" Source="{fluentFilled:Icon Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
 
             </HorizontalStackLayout>
-            
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Text="{fluent:Icon AddCircle20, IconColor=Violet, IconSize=Large}"/>
+                <Button Text="{fluentFilled:Icon AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{material:Icon ABC, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{segoeFluent:Icon AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
+            </HorizontalStackLayout>
 
 
 
