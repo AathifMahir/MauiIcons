@@ -4,7 +4,7 @@
 
 # .Net Maui Icons
 
->.Net Maui Icons - Fluent & Material is a Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
+>.Net Maui Icons - Fluent, Material & Cupertino is a Collection of Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.
 
 # Packages
 
