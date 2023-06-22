@@ -15,6 +15,7 @@ Package | Latest stable | Latest Preview | Description
 `AathifMahir.Maui.MauiIcons.Fluent` | [![AathifMahir.Maui.MauiIcons.Fluent](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.Fluent)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Fluent/) | [![AathifMahir.Maui.MauiIcons.Fluent](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.Fluent)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Fluent/absoluteLatest) | Maui Icons - Fluent Package Contains Complete Collection of Open Source Version Fluent Icons from Microsoft.
 `AathifMahir.Maui.MauiIcons.FluentFilled` | [![AathifMahir.Maui.MauiIcons.FluentFilled](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.FluentFilled)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FluentFilled/) | [![AathifMahir.Maui.MauiIcons.FluentFilled](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.FluentFilled)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FluentFilled/absoluteLatest) | Maui Icons - Fluent Filled Package Contains Complete Collection of Open Source Version Fluent Icons from Microsoft.
 `AathifMahir.Maui.MauiIcons.Material` | [![AathifMahir.Maui.MauiIcons.Material](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.Material)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Material/) | [![AathifMahir.Maui.MauiIcons.Material](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.Material)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Material/absoluteLatest) | Maui Icons - Material Package Contains Complete Collection of Material Icons.
+`AathifMahir.Maui.MauiIcons.Cupertino` | [![AathifMahir.Maui.MauiIcons.Cupertino](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.Cupertino)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Cupertino/) | [![AathifMahir.Maui.MauiIcons.Cupertino](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.Cupertino)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Cupertino/absoluteLatest) | Maui Icons - Cupertino Package Contains Complete Collection of Open Source Version Framework 7's iOS Icons.
 
 
 # Get Started
@@ -66,6 +67,8 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 >**Material Design Icons** is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
 
 >**Segoe Fluent Icons** is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
+
+>**Cupertino Icons** is Licensed Under [MIT License](https://github.com/framework7io/framework7-icons/blob/master/LICENSE).
 
 # Wanna Help
 
