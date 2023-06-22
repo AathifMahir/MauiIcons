@@ -37,9 +37,9 @@
 		<Description>Maui Icons - Cupertino is a Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Open Source Version Of Framework 7 IOS Icon Collection Built into Library.</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>1.1.5.0</AssemblyVersion>
-		<AssemblyFileVersion>1.1.5.0</AssemblyFileVersion>
-		<Version>1.1.5</Version>
+		<AssemblyVersion>1.1.6.0</AssemblyVersion>
+		<AssemblyFileVersion>1.1.6.0</AssemblyFileVersion>
+		<Version>1.1.6</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>MauiIcons,Icon,Cuppertino,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,SegoeFluent</PackageTags>
