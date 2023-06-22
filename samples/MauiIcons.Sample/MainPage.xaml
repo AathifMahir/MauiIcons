@@ -48,7 +48,7 @@
                 <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
                 <Image Aspect="Center" Source="{fluent:Icon Icon=AddSquare20}"/>
                 <Image Aspect="Center" Source="{fluentFilled:Icon Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
-                <Image Aspect="Center" Source="{cuppertino:Icon Icon=Airplane}"/>
+                <Image Aspect="Center" Source="{cuppertino:Icon Icon=ArchiveboxFill, IconColor=LightBlue}"/>
 
             </HorizontalStackLayout>
 
@@ -57,6 +57,7 @@
                 <Button Text="{fluentFilled:Icon AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{material:Icon ABC, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{segoeFluent:Icon AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{cuppertino:Icon Icon=Alarm, IconColor=Blue}"/>
             </HorizontalStackLayout>
 
 
