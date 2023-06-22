@@ -1,4 +1,5 @@
-﻿using MauiIcons.Fluent;
+﻿using MauiIcons.Cupertino;
+using MauiIcons.Fluent;
 using MauiIcons.FluentFilled;
 using MauiIcons.Material;
 using MauiIcons.SegoeFluent;
@@ -16,6 +17,7 @@ public static class MauiProgram
             .UseSegoeFluentMauiIcons()
             .UseFluentMauiIcons()
             .UseFluentFilledMauiIcons()
+            .UseCupertinoMauiIcons()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

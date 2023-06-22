@@ -6,6 +6,7 @@
              xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
              xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
              xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
+             xmlns:cuppertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
              x:DataType="local:MainPage"
              x:Class="MauiIcons.Sample.MainPage">
 
@@ -40,12 +41,14 @@
                 <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
                 <fluent:MauiIcon Icon="Accessibility48"/>
                 <fluentFilled:MauiIcon Icon="Accessibility48Filled" IconColor="BlueViolet"/>
+                <cuppertino:MauiIcon Icon="Airplane"/>
 
                 <!--Image Extension-->
                 <Image Aspect="Center" Source="{segoeFluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
                 <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
                 <Image Aspect="Center" Source="{fluent:Icon Icon=AddSquare20}"/>
                 <Image Aspect="Center" Source="{fluentFilled:Icon Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
+                <Image Aspect="Center" Source="{cuppertino:Icon Icon=ArchiveboxFill, IconColor=LightBlue}"/>
 
             </HorizontalStackLayout>
 
@@ -54,6 +57,7 @@
                 <Button Text="{fluentFilled:Icon AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{material:Icon ABC, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{segoeFluent:Icon AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{cuppertino:Icon Icon=Alarm, IconColor=Blue}"/>
             </HorizontalStackLayout>
 
 
