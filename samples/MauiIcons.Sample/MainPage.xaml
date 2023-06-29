@@ -60,7 +60,23 @@
                 <Button Text="{cuppertino:Icon Icon=Alarm, IconColor=Blue}"/>
             </HorizontalStackLayout>
 
+            <Label Text="Material Variant" HorizontalOptions="Center"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <material:MauiIcon Icon="AccountCircle" IconColor="LightGreen"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Outlined" IconColor="Aqua"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="Aquamarine"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Sharp" IconColor="Beige"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="TwoTone" IconColor="Yellow"/>
+            </HorizontalStackLayout>
 
+            <Label Text="Material Variant Extension" HorizontalOptions="Center"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=TwoTone}"/>
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>
