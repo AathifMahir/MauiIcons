@@ -1,4 +1,4 @@
-﻿namespace MauiIcons.Material.Common;
+﻿namespace MauiIcons.Material;
 public enum MaterialVariant
 {
     Regular,
