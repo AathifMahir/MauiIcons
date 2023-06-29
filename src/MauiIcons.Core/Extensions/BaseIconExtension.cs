@@ -1,6 +1,4 @@
 ﻿using MauiIcons.Core.Helpers;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 
 namespace MauiIcons.Core;
 
