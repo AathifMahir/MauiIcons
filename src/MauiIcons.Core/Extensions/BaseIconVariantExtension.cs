@@ -13,7 +13,7 @@ public abstract class BaseIconVariantExtension : BaseIconExtension, INotifyPrope
             if (value != _variant)
             {
                 _variant = value;
-                IconFontFamily = NotifyVariantChanges();
+                IconFontFamily = GetVariantFontFamily(value);
                 OnPropertyChanged();
             }
         }
@@ -34,12 +34,11 @@ public abstract class BaseIconVariantExtension : BaseIconExtension, INotifyPrope
         } 
     }
 
-    public string NotifyVariantChanges()
+    string GetVariantFontFamily(Enum variant)
     {
-        if (VariantType is null) return default;
-        if (!VariantType.ContainsKey(Variant)) return default;
-        VariantType.TryGetValue(Variant, out string fontFamily);
-        return fontFamily;
+        if (variant is null || VariantType is null) return string.Empty;
+        if (VariantType.ContainsKey(variant) && VariantType.TryGetValue(variant, out string fontFamily)) return fontFamily;
+        return Icon.GetType().Name;
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
