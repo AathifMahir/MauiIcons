@@ -8,5 +8,4 @@ public sealed class MauiIcon : BaseMauiIcon
         get => (SegoeFluentIcons?)GetValue(IconProperty); 
         set => SetValue(IconProperty, value);
     }
-    public override string IconFontFamily { get; set; } = Constants.FontFamily;
 }
