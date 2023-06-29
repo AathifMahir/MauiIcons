@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Fluent", "MauiIco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.FluentFilled", "MauiIcons.FluentFilled\MauiIcons.FluentFilled.csproj", "{E62E2357-9EF0-4A5C-9A04-84B440881120}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.Cupertino", "MauiIcons.Cupertino\MauiIcons.Cupertino.csproj", "{1535A68E-A148-4CBE-8C8D-68E4A2B272A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Cupertino", "MauiIcons.Cupertino\MauiIcons.Cupertino.csproj", "{1535A68E-A148-4CBE-8C8D-68E4A2B272A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
