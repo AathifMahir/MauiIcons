@@ -8,5 +8,4 @@ public sealed class IconExtension : BaseIconExtension
         get => (CupertinoIcons?)base.Icon;
         set => base.Icon = value;
     }
-    protected override string IconFontFamily { get; set; } = Constants.FontFamily;
 }
