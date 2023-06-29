@@ -14,8 +14,6 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
     public double IconSize { get; set; } = 30.0;
     public bool IconAutoScaling { get; set; }
     protected virtual string IconFontFamily { get; set; }
-
-    FontImageSource fontImageSource;
     public object ProvideValue(IServiceProvider serviceProvider)
     {
         IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
@@ -28,7 +26,7 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
         }
         if(returnType == typeof(ImageSource))
         {
-            fontImageSource = new FontImageSource()
+            return new FontImageSource()
             {
                 Glyph = Icon is not null ? EnumHelper.GetEnumDescription(Icon) : string.Empty,
                 Color = IconColor ?? ThemeHelper.SetDefaultIconColor(),
@@ -36,8 +34,6 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
                 Size = IconSize,
                 FontAutoScalingEnabled = IconAutoScaling
             };
-            
-            return fontImageSource;
         }
         throw new NotSupportedException($"Icon Extension Doesn't Support {returnType}");
     }
