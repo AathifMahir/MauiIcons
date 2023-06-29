@@ -86,6 +86,11 @@
                 <Button Text="{material:Icon Icon=Home, IconColor=Blue, Variant=TwoTone}"/>
             </HorizontalStackLayout>
 
+            <Label Text="Material Variant Code Behind" HorizontalOptions="Center"/>
+            <HorizontalStackLayout x:Name="StackMaterialCodeBehind" HorizontalOptions="Center">
+                
+            </HorizontalStackLayout>
+
         </VerticalStackLayout>
     </ScrollView>
 

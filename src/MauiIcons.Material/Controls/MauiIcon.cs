@@ -1,5 +1,4 @@
 ﻿using MauiIcons.Core;
-using MauiIcons.Material.Common;
 
 namespace MauiIcons.Material;
 public sealed class MauiIcon : BaseMauiIconVariant
