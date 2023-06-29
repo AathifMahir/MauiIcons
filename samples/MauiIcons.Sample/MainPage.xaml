@@ -78,6 +78,14 @@
                 <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=TwoTone}"/>
             </HorizontalStackLayout>
 
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Text="{material:Icon Home, IconColor=Violet, IconSize=Large, Variant=Regular}"/>
+                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Outlined}"/>
+                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Rounded}"/>
+                <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large, Variant=Sharp}"/>
+                <Button Text="{material:Icon Icon=Home, IconColor=Blue, Variant=TwoTone}"/>
+            </HorizontalStackLayout>
+
         </VerticalStackLayout>
     </ScrollView>
 
