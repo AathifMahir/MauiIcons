@@ -40,20 +40,19 @@ public abstract class BaseMauiIcon : ContentView
         get => (bool)GetValue(IconAutoScalingProperty);
         set => SetValue(IconAutoScalingProperty, value);
     }
-    public abstract string IconFontFamily { get; set; }
-
     public BaseMauiIcon()
     {
         Content = BuildControl();
+        Loaded += (s, r) => { fontImageSource.FontFamily = AssignDefaultFontFamily(); };
     }
 
+    FontImageSource fontImageSource;
     private Image BuildControl()
     {
         Image image = new() { Aspect = Aspect.Center };
-        FontImageSource fontImageSource = new();
+        fontImageSource = new();
         fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), source: this, converter: new EnumToStringConverter()));
         fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
-        fontImageSource.SetBinding(FontImageSource.FontFamilyProperty, new Binding(nameof(IconFontFamily), source: this));
         fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this));
         fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this));
         image.Source = fontImageSource;
@@ -66,10 +65,24 @@ public abstract class BaseMauiIcon : ContentView
         {
             Glyph = baseIcon.Icon is not null ? EnumHelper.GetEnumDescription(baseIcon.Icon) : string.Empty,
             Color = baseIcon.IconColor ?? ThemeHelper.SetDefaultIconColor(),
-            FontFamily = baseIcon.IconFontFamily,
+            FontFamily = baseIcon.AssignDefaultFontFamily(),
             Size = baseIcon.IconSize,
             FontAutoScalingEnabled = baseIcon.IconAutoScaling
         };
+    }
+
+    public void NotifyFontFamilyChanged(string fontFamily)
+    {
+        if (fontImageSource is null) return;
+        if (fontImageSource.FontFamily == fontFamily) return;
+        fontImageSource.FontFamily = fontFamily;
+    }
+
+    string AssignDefaultFontFamily()
+    {
+        if(fontImageSource is null) return string.Empty;
+        if (fontImageSource.FontFamily is not null) return fontImageSource.FontFamily;
+        return Icon.GetType().Name;
     }
 
 }
