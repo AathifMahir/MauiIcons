@@ -1,5 +1,6 @@
-﻿v1.2.0-pre
+﻿v1.2.0
 • Added Variant Support Base Control and Extension
+• New and Improved Icon Control
 • Material Icon Variant Support eg: Round, Outline, TwoTone
 
 v1.1.5
