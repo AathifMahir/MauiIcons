@@ -11,7 +11,7 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
     [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
     public double IconSize { get; set; } = 30.0;
     public bool IconAutoScaling { get; set; }
-    protected abstract string IconFontFamily { get; set; }
+    protected virtual string IconFontFamily { get; set; }
     public object ProvideValue(IServiceProvider serviceProvider)
     {
         IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
@@ -19,7 +19,7 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
 
         if (returnType == typeof(string))
         {
-            AssignFontFamily(provideValueTarget.TargetObject);
+            AssignFontProperties(provideValueTarget.TargetObject);
             return Icon is not null ? EnumHelper.GetEnumDescription(Icon) : string.Empty;
         }
         if(returnType == typeof(ImageSource))
@@ -28,7 +28,7 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
             {
                 Glyph = Icon is not null ? EnumHelper.GetEnumDescription(Icon) : string.Empty,
                 Color = IconColor ?? ThemeHelper.SetDefaultIconColor(),
-                FontFamily = IconFontFamily,
+                FontFamily = AssignDefaultFontFamily(),
                 Size = IconSize,
                 FontAutoScalingEnabled = IconAutoScaling
             };
@@ -36,37 +36,49 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
         throw new NotSupportedException($"Icon Extension Doesn't Support {returnType}");
     }
 
-    void AssignFontFamily(object targetObject)
+    void AssignFontProperties(object targetObject)
     {
         switch (targetObject)
         {
             case Button button:
-                button.FontFamily = IconFontFamily;
+                button.FontFamily = AssignDefaultFontFamily();
                 button.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 button.FontSize = IconSize;
+                button.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Label label:
-                label.FontFamily = IconFontFamily;
+                label.FontFamily = AssignDefaultFontFamily();
                 label.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 label.FontSize = IconSize;
+                label.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Entry entry:
-                entry.FontFamily = IconFontFamily;
+                entry.FontFamily = AssignDefaultFontFamily();
                 entry.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 entry.FontSize = IconSize;
+                entry.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Editor editor:
-                editor.FontFamily = IconFontFamily;
+                editor.FontFamily = AssignDefaultFontFamily();
                 editor.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 editor.FontSize = IconSize;
+                editor.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case SearchBar searchBar:
-                searchBar.FontFamily = IconFontFamily;
+                searchBar.FontFamily = AssignDefaultFontFamily();
                 searchBar.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 searchBar.FontSize = IconSize;
+                searchBar.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             default:
                 throw new NotSupportedException($"Icon Extension using Text Doesn't Support this Control {targetObject}");
         }
+    }
+
+    string AssignDefaultFontFamily()
+    {
+        if (IconFontFamily is not null) return IconFontFamily;
+        if(Icon is not null) return Icon.GetType().Name;
+        return string.Empty;
     }
 }

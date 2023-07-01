@@ -5,8 +5,7 @@ public sealed class MauiIcon : BaseMauiIcon
 {
     public new CupertinoIcons? Icon
     {
-        get => (CupertinoIcons?)GetValue(IconProperty);
-        set => SetValue(IconProperty, value);
+        get => (CupertinoIcons?)base.Icon;
+        set => base.Icon = value;
     }
-    public override string IconFontFamily { get; set; } = Constants.FontFamily;
 }

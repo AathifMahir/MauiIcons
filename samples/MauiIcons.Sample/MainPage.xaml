@@ -36,14 +36,14 @@
                 HorizontalOptions="Center" />
 
             <HorizontalStackLayout Spacing="25" HorizontalOptions="Center">
-                <!--Maui Icons Built in Controls-->
+                <!--  Icons Built in Controls -->
+                <fluent:MauiIcon Icon="Accessibility48"/>
                 <segoeFluent:MauiIcon Icon="Accounts" IconColor="Red"/>
                 <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
-                <fluent:MauiIcon Icon="Accessibility48"/>
                 <fluentFilled:MauiIcon Icon="Accessibility48Filled" IconColor="BlueViolet"/>
                 <cuppertino:MauiIcon Icon="Airplane"/>
 
-                <!--Image Extension-->
+                <!-- Extension -->
                 <Image Aspect="Center" Source="{segoeFluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
                 <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
                 <Image Aspect="Center" Source="{fluent:Icon Icon=AddSquare20}"/>
@@ -60,7 +60,45 @@
                 <Button Text="{cuppertino:Icon Icon=Alarm, IconColor=Blue}"/>
             </HorizontalStackLayout>
 
+            <Label HorizontalOptions="Center">Label Based Icons</Label>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Label  Text="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
+                <Label Text="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
+                <Label Text="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
+                <Label Text="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
+                <Label Text="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=Rounded}"/>
+            </HorizontalStackLayout>
 
+            <Label Text="Material Variant" HorizontalOptions="Center"/>
+            <HorizontalStackLayout HorizontalOptions="Center" BackgroundColor="White" Padding="12,12">
+                <material:MauiIcon Icon="AccountCircle" IconColor="LightGreen"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Outlined" IconColor="Aqua"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="Aquamarine"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Sharp" IconColor="Blue"/>
+                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="DarkCyan"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Material Variant Extension" HorizontalOptions="Center"/>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=Rounded}"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Text="{material:Icon Home, IconColor=Violet, IconSize=Large, Variant=Regular}"/>
+                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Outlined}"/>
+                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Rounded}"/>
+                <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large, Variant=Sharp}"/>
+                <Button Text="{material:Icon Icon=AccountCircle, IconColor=Blue, Variant=Rounded}"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Material Variant Code Behind" HorizontalOptions="Center"/>
+            <HorizontalStackLayout x:Name="StackMaterialCodeBehind" HorizontalOptions="Center">
+                
+            </HorizontalStackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

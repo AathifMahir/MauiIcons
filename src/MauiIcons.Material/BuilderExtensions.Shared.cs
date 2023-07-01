@@ -14,7 +14,10 @@ public static class BuilderExtensions
 
         return builder.ConfigureFonts(fonts =>
         {
-            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfFontFamily, Constants.FontFamily);
+            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfRegularFontFamily, Constants.RegularFontFamily);
+            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfOutlinedFontFamily, Constants.OutlinedFontFamily);
+            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfRoundedFontFamily, Constants.RoundedFontFamily);
+            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfSharpFontFamily, Constants.SharpFontFamily);
         });
     }
 

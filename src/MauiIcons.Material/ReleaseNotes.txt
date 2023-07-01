@@ -1,4 +1,9 @@
-﻿v1.1.5
+﻿v1.2.0
+• Added Variant Support Base Control and Extension
+• New and Improved Icon Control
+• Material Icon Variant Support eg: Round, Outline, TwoTone
+
+v1.1.5
 • Added Icon Unicode Support for Icon Extension
 • Added Direct Content Support
 • Minor Enhancements and Fixes
