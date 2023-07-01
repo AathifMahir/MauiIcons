@@ -5,13 +5,13 @@ public sealed class MauiIcon : BaseMauiIconVariant
 {
     public new MaterialIcons? Icon
     {
-        get => (MaterialIcons?)GetValue(IconProperty);
-        set => SetValue(IconProperty, value);
+        get => (MaterialIcons?)base.Icon;
+        set => base.Icon = value;
     }
     public new MaterialVariant Variant
     {
-        get => (MaterialVariant)GetValue(VariantProperty);
-        set => SetValue(VariantProperty, value);
+        get => (MaterialVariant)base.Variant;
+        set => base.Variant = value;
     }
     protected override Dictionary<Enum, string> VariantType { get; set; } = new Dictionary<Enum, string>()
     {
