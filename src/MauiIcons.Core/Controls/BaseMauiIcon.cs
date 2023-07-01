@@ -1,5 +1,6 @@
 using MauiIcons.Core.Converters;
 using MauiIcons.Core.Helpers;
+using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
@@ -24,12 +25,15 @@ public abstract class BaseMauiIcon : ContentView
         get => (double)GetValue(IconSizeProperty);
         set => SetValue(IconSizeProperty, value);
     }
+
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
     public Color IconColor
     {
         get => (Color)GetValue(IconColorProperty);
         set => SetValue(IconColorProperty, value);
     }
 
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
     public Color IconBackgroundColor
     {
         get => (Color)GetValue(IconBackgroundColorProperty);
@@ -43,20 +47,19 @@ public abstract class BaseMauiIcon : ContentView
     public BaseMauiIcon()
     {
         Content = BuildControl();
-        Loaded += (s, r) => { fontImageSource.FontFamily = AssignDefaultFontFamily(); };
+        Loaded += (s, r) => { label.FontFamily = SetDefaultFontFamily(); };
     }
 
-    FontImageSource fontImageSource;
-    private Image BuildControl()
+    Label label;
+    private Label BuildControl()
     {
-        Image image = new() { Aspect = Aspect.Center };
-        fontImageSource = new();
-        fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), source: this, converter: new EnumToStringConverter()));
-        fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
-        fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this));
-        fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this));
-        image.Source = fontImageSource;
-        return image;
+        label = new();
+        label.SetBinding(Label.TextProperty, new Binding(nameof(Icon), converter: new EnumToStringConverter(), source: this));
+        label.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
+        label.SetBinding(Label.FontSizeProperty, new Binding(nameof(IconSize), source: this));
+        label.SetBinding(Label.TextColorProperty, new Binding(nameof(IconColor), source: this));
+        label.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
+        return label;
     }
 
     public static explicit operator FontImageSource(BaseMauiIcon baseIcon)
@@ -65,24 +68,22 @@ public abstract class BaseMauiIcon : ContentView
         {
             Glyph = baseIcon.Icon is not null ? EnumHelper.GetEnumDescription(baseIcon.Icon) : string.Empty,
             Color = baseIcon.IconColor ?? ThemeHelper.SetDefaultIconColor(),
-            FontFamily = baseIcon.AssignDefaultFontFamily(),
+            FontFamily = baseIcon.SetDefaultFontFamily(),
             Size = baseIcon.IconSize,
             FontAutoScalingEnabled = baseIcon.IconAutoScaling
         };
     }
 
+    string SetDefaultFontFamily()
+    {
+        if (label is null) return string.Empty;
+        if (label.FontFamily is not null && label.FontFamily.Contains(Icon?.GetType().Name)) return label.FontFamily;
+        return Icon?.GetType().Name;
+    }
     public void NotifyFontFamilyChanged(string fontFamily)
     {
-        if (fontImageSource is null) return;
-        if (fontImageSource.FontFamily == fontFamily) return;
-        fontImageSource.FontFamily = fontFamily;
+        if (label is null) return;
+        if (label.FontFamily == fontFamily) return;
+        label.FontFamily = fontFamily;
     }
-
-    string AssignDefaultFontFamily()
-    {
-        if(fontImageSource is null) return string.Empty;
-        if (fontImageSource.FontFamily is not null) return fontImageSource.FontFamily;
-        return Icon.GetType().Name;
-    }
-
 }

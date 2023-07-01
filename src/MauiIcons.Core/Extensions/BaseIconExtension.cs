@@ -44,26 +44,31 @@ public abstract class BaseIconExtension : IMarkupExtension<object>
                 button.FontFamily = AssignDefaultFontFamily();
                 button.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 button.FontSize = IconSize;
+                button.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Label label:
                 label.FontFamily = AssignDefaultFontFamily();
                 label.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 label.FontSize = IconSize;
+                label.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Entry entry:
                 entry.FontFamily = AssignDefaultFontFamily();
                 entry.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 entry.FontSize = IconSize;
+                entry.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Editor editor:
                 editor.FontFamily = AssignDefaultFontFamily();
                 editor.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 editor.FontSize = IconSize;
+                editor.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case SearchBar searchBar:
                 searchBar.FontFamily = AssignDefaultFontFamily();
                 searchBar.TextColor = IconColor ?? ThemeHelper.SetDefaultIconColor();
                 searchBar.FontSize = IconSize;
+                searchBar.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             default:
                 throw new NotSupportedException($"Icon Extension using Text Doesn't Support this Control {targetObject}");
