@@ -49,11 +49,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
+		<EmbeddedResource Include="Fonts\MaterialIcons-Regular.ttf" />
 		<EmbeddedResource Include="Fonts\MaterialIconsOutlined-Regular.otf" />
 		<EmbeddedResource Include="Fonts\MaterialIconsRound-Regular.otf" />
 		<EmbeddedResource Include="Fonts\MaterialIconsSharp-Regular.otf" />
-		<EmbeddedResource Include="Fonts\MaterialIconsTwoTone-Regular.otf" />
 	</ItemGroup>
 
 	<ItemGroup>
