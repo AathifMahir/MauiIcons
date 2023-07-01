@@ -18,7 +18,6 @@ public static class BuilderExtensions
             fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfOutlinedFontFamily, Constants.OutlinedFontFamily);
             fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfRoundedFontFamily, Constants.RoundedFontFamily);
             fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfSharpFontFamily, Constants.SharpFontFamily);
-            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfTwoToneFontFamily, Constants.TwoToneFontFamily);
         });
     }
 

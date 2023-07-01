@@ -16,7 +16,7 @@ public partial class MainPage : ContentPage
         var MauiIcon = new MauiIcon() { Icon = MaterialIcons.AddComment, IconColor = Colors.LightYellow, Variant = MaterialVariant.Outlined };
         var MauiIcon1 = new MauiIcon() { Icon = MaterialIcons.AddComment, IconColor = Colors.LightBlue, Variant = MaterialVariant.Rounded };
         var MauiIcon2 = new MauiIcon() { Icon = MaterialIcons.AddComment, IconColor = Colors.LightSteelBlue, Variant = MaterialVariant.Sharp };
-        var MauiIcon3 = new Image() { Source = (ImageSource)new MauiIcon() { Icon = MaterialIcons.AddComment, IconColor = Colors.LimeGreen, Variant = MaterialVariant.TwoTone } };
+        var MauiIcon3 = new Image() { Source = (ImageSource)new MauiIcon() { Icon = MaterialIcons.AddComment, IconColor = Colors.LimeGreen, Variant = MaterialVariant.Rounded } };
 
         StackMaterialCodeBehind.Add(image);
         StackMaterialCodeBehind.Add(MauiIcon);

@@ -6,11 +6,9 @@ internal sealed class Constants
     internal static readonly string OutlinedFontFamily = "MaterialIcons-Outlined";
     internal static readonly string RoundedFontFamily = "MaterialIcons-Rounded";
     internal static readonly string SharpFontFamily = "MaterialIcons-Sharp";
-    internal static readonly string TwoToneFontFamily = "MaterialIcons-TwoTone";
     // Font Asset TTF
     internal static readonly string TtfRegularFontFamily = "MaterialIcons-Regular.ttf";
     internal static readonly string TtfOutlinedFontFamily = "MaterialIconsOutlined-Regular.otf";
     internal static readonly string TtfRoundedFontFamily = "MaterialIconsRound-Regular.otf";
     internal static readonly string TtfSharpFontFamily = "MaterialIconsSharp-Regular.otf";
-    internal static readonly string TtfTwoToneFontFamily = "MaterialIconsTwoTone-Regular.otf";
 }
