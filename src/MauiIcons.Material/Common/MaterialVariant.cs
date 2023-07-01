@@ -4,6 +4,5 @@ public enum MaterialVariant
     Regular,
     Outlined,
     Rounded,
-    Sharp,
-    TwoTone
+    Sharp
 }
