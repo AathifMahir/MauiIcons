@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst;net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net6.0;net7.0;net6.0-android;net6.0-ios;net6.0-maccatalyst;net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0;net7.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -37,9 +37,9 @@
 		<Description>Maui Icons - Cupertino is a Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Open Source Version Of Framework 7 IOS Icon Collection Built into Library.</Description>
 		<PackageIcon>icon.png</PackageIcon>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
-		<AssemblyVersion>1.2.0.0</AssemblyVersion>
-		<AssemblyFileVersion>1.2.0.0</AssemblyFileVersion>
-		<Version>1.2.0</Version>
+		<AssemblyVersion>1.2.1.0</AssemblyVersion>
+		<AssemblyFileVersion>1.2.1.0</AssemblyFileVersion>
+		<Version>1.2.1</Version>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>MauiIcons,Icon,Cuppertino,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,SegoeFluent</PackageTags>
