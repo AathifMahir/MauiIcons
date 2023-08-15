@@ -26,7 +26,7 @@
 		<Authors>Aathif Mahir</Authors>
 		<Owners>Aathif Mahir</Owners>
 		<NeutralLanguage>en</NeutralLanguage>
-		<Product>MauiIcons - Material (net6.0)(net7.0)</Product>
+		<Product>MauiIcons - Material (net7.0)</Product>
 		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageProjectUrl>https://github.com/AathifMahir/MauiIcons</PackageProjectUrl>
