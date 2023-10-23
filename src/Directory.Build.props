@@ -1,0 +1,47 @@
+<Project>
+
+	<PropertyGroup>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+		<!-- <TargetFrameworks>$(TargetFrameworks);net6.0-tizen</TargetFrameworks> -->
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' And $([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) == 'net7.0'">11.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' And $([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) == 'net7.0'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+	</PropertyGroup>
+	
+	<PropertyGroup>
+		<Title>MauiIcons</Title>
+		<PackageIcon>icon.png</PackageIcon>
+		<AssemblyVersion>2.0.0.0</AssemblyVersion>
+		<AssemblyFileVersion>2.0.0.0</AssemblyFileVersion>
+		<Version>2.0.0-pre</Version>
+		<Product>$(AssemblyName) ($(TargetFramework))</Product>
+		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
+		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<Authors>Aathif Mahir</Authors>
+		<Owners>Aathif Mahir</Owners>
+		<NeutralLanguage>en</NeutralLanguage>
+		<DefineConstants>$(DefineConstants);</DefineConstants>
+		<Configurations>Debug;Release</Configurations>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<GitInfoReportImportance>high</GitInfoReportImportance>
+		<PackageReleaseNotes>$([System.IO.File]::ReadAllText("$(MSBuildProjectDirectory)/ReleaseNotes.txt"))</PackageReleaseNotes>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/AathifMahir/MauiIcons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/AathifMahir/MauiIcons</RepositoryUrl>
+		<Copyright>© Aathif Mahir. All rights reserved.</Copyright>
+	</PropertyGroup>
+	
+</Project>
