@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>AathifMahir.Maui.MauiIcons.Material.Sharp</PackageId>
+		<Summary>Maui Icons - Material is Icon Library for .Net Maui</Summary>
+		<Product>MauiIcons - Material (net7.0)</Product>
+		<Description>Maui Icons - Material is a Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.</Description>
+		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
+	</PropertyGroup>
+
+</Project>
