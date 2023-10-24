@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:MauiIcons.Sample"
              xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
              xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
-             xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
+             xmlns:fluentFilled="clr-namespace:MauiIcons.Fluent.Filled;assembly=MauiIcons.Fluent.Filled"
              xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
              xmlns:cuppertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
              x:DataType="local:MainPage"

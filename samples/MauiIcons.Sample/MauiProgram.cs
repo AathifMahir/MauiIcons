@@ -1,6 +1,6 @@
 ﻿using MauiIcons.Cupertino;
 using MauiIcons.Fluent;
-using MauiIcons.FluentFilled;
+using MauiIcons.Fluent.Filled;
 using MauiIcons.Material;
 using MauiIcons.SegoeFluent;
 
