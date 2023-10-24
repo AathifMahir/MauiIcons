@@ -47,11 +47,11 @@
 
 	<ItemGroup Condition="'$(MSBuildProjectName)' != 'MauiIcons.Sample'">
 		<None Include="readme.md" Pack="true" PackagePath="\" />
-		<None Include="ReadMe.txt" pack="true" PackagePath="." />
 		<None Include="..\..\images\icon.png" PackagePath="icon.png" Pack="true" />
 	</ItemGroup>
 
 	<ItemGroup  Condition="'$(MSBuildProjectName)' != 'MauiIcons.Sample' And '$(MSBuildProjectName)' != 'MauiIcons.Core'">
+		<None Include="ReadMe.txt" pack="true" PackagePath="." />
 		<ProjectReference Include="..\MauiIcons.Core\MauiIcons.Core.csproj" />
 	</ItemGroup>
 	
