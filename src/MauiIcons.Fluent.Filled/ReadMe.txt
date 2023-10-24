@@ -4,7 +4,7 @@ Initializing
 
 In order to use the .NET MAUI Icons - Fluent Filled you need to call the extension method in your `MauiProgram.cs` file as follows:
 
-using MauiIcons.FluentFilled;
+using MauiIcons.Fluent.Filled;
 
 public static MauiApp CreateMauiApp()
 {
@@ -18,7 +18,7 @@ XAML usage
 
 In order to make use of the .Net Maui Icons - Fluent Filled within XAML you can use this namespace:
 
-xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
+xmlns:fluentFilled="clr-namespace:MauiIcons.Fluent.Filled;assembly=MauiIcons.Fluent.Filled"
 
 ----------------------------------------------------------------------------------------------
 

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MauiIcons.FluentFilled;
+namespace MauiIcons.Fluent.Filled;
 public enum FluentFilledIcons
 {
     [Description("\uF101")] AccessTime24Filled,

@@ -1,7 +1,7 @@
 ﻿
-using MauiIcons.FluentFilled.Common;
+using MauiIcons.Fluent.Filled.Common;
 
-namespace MauiIcons.FluentFilled;
+namespace MauiIcons.Fluent.Filled;
 public static class BuilderExtensions
 {
     /// <summary>

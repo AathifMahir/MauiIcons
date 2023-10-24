@@ -1,6 +1,6 @@
 ﻿using MauiIcons.Core;
 
-namespace MauiIcons.FluentFilled;
+namespace MauiIcons.Fluent.Filled;
 public sealed class MauiIcon : BaseMauiIcon
 {
     public new FluentFilledIcons? Icon

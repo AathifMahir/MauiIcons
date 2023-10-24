@@ -1,4 +1,4 @@
-﻿namespace MauiIcons.FluentFilled.Common;
+﻿namespace MauiIcons.Fluent.Filled.Common;
 internal sealed class Constants
 {
     // Font Family
