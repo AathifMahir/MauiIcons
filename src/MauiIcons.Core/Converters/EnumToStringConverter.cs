@@ -8,7 +8,7 @@ internal sealed class EnumToStringConverter : IValueConverter
     {
         if(value != null)
         {
-            return EnumHelper.GetEnumDescription((Enum)value);
+            return EnumHelper.GetDescription((Enum)value);
         }
         return null;
     }
