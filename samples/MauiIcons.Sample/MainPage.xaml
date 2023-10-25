@@ -2,11 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiIcons.Sample"
-             xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
-             xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
-             xmlns:fluentFilled="clr-namespace:MauiIcons.Fluent.Filled;assembly=MauiIcons.Fluent.Filled"
-             xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
-             xmlns:cuppertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
              x:DataType="local:MainPage"
              x:Class="MauiIcons.Sample.MainPage">
 
@@ -37,68 +33,88 @@
 
             <HorizontalStackLayout Spacing="25" HorizontalOptions="Center">
                 <!--  Icons Built in Controls -->
-                <fluent:MauiIcon Icon="Accessibility48"/>
-                <segoeFluent:MauiIcon Icon="Accounts" IconColor="Red"/>
-                <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
-                <fluentFilled:MauiIcon Icon="Accessibility48Filled" IconColor="BlueViolet"/>
-                <cuppertino:MauiIcon Icon="Airplane"/>
+                <mi:MauiIcon Icon="{mi:Fluent Accessibility48}"/>
+                <mi:MauiIcon Icon="{mi:SegoeFluent Accounts}" IconColor="Red"/>
+                <mi:MauiIcon Icon="{mi:Material ABC}" IconColor="Cyan"/>
+                <mi:MauiIcon Icon="{mi:FluentFilled Accessibility48Filled}" IconColor="BlueViolet"/>
+                <mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+
+                <!--Icons Built in Controls-->
+                <mi:MauiIcon IconColor="Blue">
+                    <mi:MauiIcon.Icon>
+                        <mi:Fluent Icon="AddCircle32"/>
+                    </mi:MauiIcon.Icon>
+                </mi:MauiIcon>
+
+                <mi:MauiIcon Icon="{mi:SegoeFluent Accounts}" IconColor="Red"/>
+                <mi:MauiIcon Icon="{mi:Material ABC}" IconColor="Cyan"/>
+                <mi:MauiIcon Icon="{mi:FluentFilled Accessibility48Filled}" IconColor="BlueViolet"/>
+                <mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
 
                 <!-- Extension -->
-                <Image Aspect="Center" Source="{segoeFluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
-                <Image Aspect="Center" Source="{fluent:Icon Icon=AddSquare20}"/>
-                <Image Aspect="Center" Source="{fluentFilled:Icon Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
-                <Image Aspect="Center" Source="{cuppertino:Icon Icon=ArchiveboxFill, IconColor=LightBlue}"/>
+                <Image Aspect="Center" Source="{mi:SegoeFluent Icon=ActionCenterQuiet, IconColor=Yellow}"/>
+                <Image Aspect="Center" Source="{mi:Material Icon=AddRoad, IconColor=BlueViolet}"/>
+                <Image Aspect="Center" Source="{mi:Fluent Icon=AddSquare20}"/>
+                <Image Aspect="Center" Source="{mi:FluentFilled Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
+                <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill, IconColor=LightBlue}"/>
 
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="{fluent:Icon AddCircle20, IconColor=Violet, IconSize=Large}"/>
-                <Button Text="{fluentFilled:Icon AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{material:Icon ABC, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{segoeFluent:Icon AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{cuppertino:Icon Icon=Alarm, IconColor=Blue}"/>
-            </HorizontalStackLayout>
+                <Button Text="{mi:Fluent AddCircle20, IconColor=Violet, IconSize=Large}"/>
+                <Button Text="{mi:FluentFilled AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{mi:Material ABC, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{mi:SegoeFluent AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
+
+             </HorizontalStackLayout>
+                
 
             <Label HorizontalOptions="Center">Label Based Icons</Label>
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Label  Text="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=Rounded}"/>
+                <Label  Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}"/>
+                <Label Text="{mi:MaterialOutlined Icon=AccountCircle, IconColor=BlueViolet}"/>
+                <Label Text="{mi:MaterialRounded Icon=AccountCircle}"/>
+                <Label Text="{mi:MaterialSharp Icon=AccountCircle, IconColor=DarkGreen}"/>
+                <Label Text="{mi:MaterialOutlined Icon=AccountCircle, IconColor=LightBlue}"/>
             </HorizontalStackLayout>
 
-            <Label Text="Material Variant" HorizontalOptions="Center"/>
+            <!--<Label Text="Material Variant" HorizontalOptions="Center"/>
             <HorizontalStackLayout HorizontalOptions="Center" BackgroundColor="White" Padding="12,12">
                 <material:MauiIcon Icon="AccountCircle" IconColor="LightGreen"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Outlined" IconColor="Aqua"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="Aquamarine"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Sharp" IconColor="Blue"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="DarkCyan"/>
+                <material:MauiIcon Icon="AccountCircle" IconColor="Aqua"/>
+                <material:MauiIcon Icon="AccountCircle" IconColor="Aquamarine"/>
+                <material:MauiIcon Icon="AccountCircle" IconColor="Blue"/>
+                <material:MauiIcon Icon="AccountCircle" IconColor="DarkCyan"/>
             </HorizontalStackLayout>
 
             <Label Text="Material Variant Extension" HorizontalOptions="Center"/>
             <HorizontalStackLayout HorizontalOptions="Center">
                 <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=Rounded}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=BlueViolet}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=DarkGreen}"/>
+                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=LightBlue}"/>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="{material:Icon Home, IconColor=Violet, IconSize=Large, Variant=Regular}"/>
-                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Outlined}"/>
-                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Rounded}"/>
-                <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large, Variant=Sharp}"/>
-                <Button Text="{material:Icon Icon=AccountCircle, IconColor=Blue, Variant=Rounded}"/>
+                <Button Text="{material:Icon Home, IconColor=Violet, IconSize=Large}"/>
+                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{material:Icon Icon=AccountCircle, IconColor=Blue}"/>
             </HorizontalStackLayout>
 
             <Label Text="Material Variant Code Behind" HorizontalOptions="Center"/>
             <HorizontalStackLayout x:Name="StackMaterialCodeBehind" HorizontalOptions="Center">
                 
             </HorizontalStackLayout>
+
+            <Label HorizontalOptions="Center">V2 Test</Label>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <core:MauiIcon Icon="{fluent:Icon Accessibility16}"/>
+                <core:MauiIcon Icon="{material:Icon Accessibility}" IconColor="red"/>
+                <core:MauiIcon Icon="{core:Cupertino Icon=AntCircleFill}"/>
+            </HorizontalStackLayout>-->
 
         </VerticalStackLayout>
     </ScrollView>

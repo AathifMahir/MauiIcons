@@ -2,6 +2,9 @@
 using MauiIcons.Fluent;
 using MauiIcons.Fluent.Filled;
 using MauiIcons.Material;
+using MauiIcons.Material.Outlined;
+using MauiIcons.Material.Rounded;
+using MauiIcons.Material.Sharp;
 using MauiIcons.SegoeFluent;
 
 namespace MauiIcons.Sample;
@@ -13,11 +16,14 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMaterialMauiIcons()
-            .UseSegoeFluentMauiIcons()
-            .UseFluentMauiIcons()
-            .UseFluentFilledMauiIcons()
-            .UseCupertinoMauiIcons()
+            .UseMaterialIcons()
+            .UseMaterialOutlinedIcons()
+            .UseMaterialRoundedIcons()
+            .UseMaterialSharpIcons()
+            .UseSegoeFluentIcons()
+            .UseFluentIcons()
+            .UseFluentFilledIcons()
+            .UseCupertinoIcons()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

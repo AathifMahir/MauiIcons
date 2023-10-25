@@ -50,9 +50,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\src\MauiIcons.Core\MauiIcons.Core.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Cupertino\MauiIcons.Cupertino.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Fluent.Filled\MauiIcons.Fluent.Filled.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Fluent\MauiIcons.Fluent.csproj" />
+	  <ProjectReference Include="..\..\src\MauiIcons.Material.Outlined\MauiIcons.Material.Outlined.csproj" />
+	  <ProjectReference Include="..\..\src\MauiIcons.Material.Rounded\MauiIcons.Material.Rounded.csproj" />
+	  <ProjectReference Include="..\..\src\MauiIcons.Material.Sharp\MauiIcons.Material.Sharp.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Material\MauiIcons.Material.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.SegoeFluent\MauiIcons.SegoeFluent.csproj" />
 	</ItemGroup>
