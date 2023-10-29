@@ -10,6 +10,14 @@ public sealed class MauiIcon : ContentView
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(MauiIcon), ThemeHelper.SetThemeAwareIconColor());
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(MauiIcon), Colors.Transparent);
     public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(MauiIcon), false);
+    public static readonly BindableProperty IconSuffixProperty = BindableProperty.Create(nameof(IconSuffix), typeof(string), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconSuffixFontFamilyProperty = BindableProperty.Create(nameof(IconSuffixFontFamily), typeof(string), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconSuffixFontSizeProperty = BindableProperty.Create(nameof(IconSuffixFontSize), typeof(double), typeof(MauiIcon), 20.0);
+    public static readonly BindableProperty IconSuffixTextColorProperty = BindableProperty.Create(nameof(IconSuffixTextColor), typeof(Color), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconSuffixAutoScalingProperty = BindableProperty.Create(nameof(IconSuffixAutoScaling), typeof(bool), typeof(MauiIcon), false);
+    public static readonly BindableProperty EntranceAnimationTypeProperty = BindableProperty.Create(nameof(EntranceAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None);
+    public static readonly BindableProperty EntranceAnimationDurationProperty = BindableProperty.Create(nameof(EntranceAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
+    
 
 #nullable enable
     public Enum? Icon
@@ -45,32 +53,137 @@ public sealed class MauiIcon : ContentView
         get => (bool)GetValue(IconAutoScalingProperty);
         set => SetValue(IconAutoScalingProperty, value);
     }
+    public string IconSuffix
+    {
+        get => (string)GetValue(IconSuffixProperty);
+        set => SetValue(IconSuffixProperty, value);
+    }
+
+    public string IconSuffixFontFamily
+    {
+        get => (string)GetValue(IconSuffixFontFamilyProperty);
+        set => SetValue(IconSuffixFontFamilyProperty, value);
+    }
+
+    [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
+    public double IconSuffixFontSize
+    {
+        get => (double)GetValue(IconSuffixFontSizeProperty);
+        set => SetValue(IconSuffixFontSizeProperty, value);
+
+    }
+
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
+    public Color IconSuffixTextColor
+    {
+        get => (Color)GetValue(IconSuffixTextColorProperty);
+        set => SetValue(IconSuffixTextColorProperty, value);
+    }
+
+    public bool IconSuffixAutoScaling
+    {
+        get => (bool)GetValue(IconSuffixAutoScalingProperty);
+        set => SetValue(IconSuffixAutoScalingProperty, value);
+    }
+
+    public AnimationType EntranceAnimationType
+    {
+        get => (AnimationType)GetValue(EntranceAnimationTypeProperty);
+        set => SetValue(EntranceAnimationTypeProperty, value);
+    }
+
+    public uint EntranceAnimationDuration
+    {
+        get => (uint)GetValue(EntranceAnimationDurationProperty);
+        set => SetValue(EntranceAnimationDurationProperty, value);
+    }
     public MauiIcon()
     {
-        Content = BuildControl();
-        Loaded += (s, r) => { label.FontFamily = Icon.GetType().Name; };
+        Content = BuildIconControl();
+        Loaded += async (s, r) =>
+        {
+            iconSpan.FontFamily = Icon.GetType().Name;
+            await AnimateIcon();
+        };
     }
 
     Label label;
-    private Label BuildControl()
+    Span iconSpan;
+    Span suffixSpan;
+    private Label BuildIconControl()
     {
-        label = new();
-        label.SetBinding(Label.TextProperty, new Binding(nameof(Icon), converter: new EnumToStringConverter(), source: this));
-        label.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
-        label.SetBinding(Label.FontSizeProperty, new Binding(nameof(IconSize), source: this));
-        label.SetBinding(Label.TextColorProperty, new Binding(nameof(IconColor), source: this));
-        label.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
+        iconSpan = new Span();
+        iconSpan.SetBinding(Span.TextProperty, new Binding(nameof(Icon), converter: new EnumToStringConverter(), source: this));
+        iconSpan.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
+        iconSpan.SetBinding(Span.FontSizeProperty, new Binding(nameof(IconSize), source: this));
+        iconSpan.SetBinding(Span.TextColorProperty, new Binding(nameof(IconColor), source: this));
+        iconSpan.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
+
+        suffixSpan = new Span();
+        suffixSpan.SetBinding(Span.TextProperty, new Binding(nameof(IconSuffix), source: this));
+        suffixSpan.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconSuffixAutoScaling), source: this));
+        suffixSpan.SetBinding(Span.FontSizeProperty, new Binding(nameof(IconSuffixFontSize), source: this));
+        suffixSpan.SetBinding(Span.FontFamilyProperty, new Binding(nameof(IconSuffixFontFamily), source: this));
+        suffixSpan.SetBinding(Span.TextColorProperty, new Binding(nameof(IconSuffixTextColor), source: this));
+
+        label = new Label{ FormattedText = new FormattedString() };
+        label.FormattedText.Spans.Add(iconSpan);
+        label.FormattedText.Spans.Add(new Span { Text = " " });
+        label.FormattedText.Spans.Add(suffixSpan);
+
         return label;
     }
 
-    public static explicit operator FontImageSource(MauiIcon baseIcon) => new()
+    async Task AnimateIcon()
     {
-        Glyph = baseIcon.Icon.GetDescription(),
-        Color = baseIcon.IconColor.SetDefaultOrAssignedColor(),
-        FontFamily = baseIcon.Icon.GetType().Name,
-        Size = baseIcon.IconSize,
-        FontAutoScalingEnabled = baseIcon.IconAutoScaling
+        switch (EntranceAnimationType)
+        {
+            case AnimationType.None:
+                return;
+            case AnimationType.Fade:
+                label.Opacity = 0;
+                await label.FadeTo(1, EntranceAnimationDuration);
+                return;
+            case AnimationType.Scale:
+                await label.ScaleTo(1.5, EntranceAnimationDuration);
+                await label.ScaleTo(1, EntranceAnimationDuration);
+                return;
+            case AnimationType.Rotate:
+                await label.RotateTo(360, EntranceAnimationDuration);
+                label.Rotation = 0;
+                return;
+        }
+    }
+
+    public static explicit operator Image(MauiIcon baseIcon) => new()
+    {
+        Source = new FontImageSource()
+        {
+            Glyph = baseIcon.Icon.GetDescription(),
+            Color = baseIcon.IconColor.SetDefaultOrAssignedColor(),
+            FontFamily = baseIcon.Icon.GetType().Name,
+            Size = baseIcon.IconSize,
+            FontAutoScalingEnabled = baseIcon.IconAutoScaling,
+        },
+        BackgroundColor = baseIcon.IconBackgroundColor,
     };
 
-    public static explicit operator string(MauiIcon baseIcon) => baseIcon.Icon.GetDescription();
+    public static explicit operator FontImageSource(MauiIcon mi) => new()
+    {
+        Glyph = mi.Icon.GetDescription(),
+        Color = mi.IconColor.SetDefaultOrAssignedColor(),
+        FontFamily = mi.Icon.GetType().Name,
+        Size = mi.IconSize,
+        FontAutoScalingEnabled = mi.IconAutoScaling,
+    };
+
+    public static explicit operator Label(MauiIcon mi)
+    {
+        var label = new Label(){ FormattedText = new FormattedString() };
+        label.FormattedText.Spans.Add(mi.iconSpan);
+        label.FormattedText.Spans.Add(new Span() { Text = " " });
+        label.FormattedText.Spans.Add(mi.suffixSpan);
+        mi.iconSpan.FontFamily = mi.Icon.GetType().Name;
+        return label;
+    }
 }
