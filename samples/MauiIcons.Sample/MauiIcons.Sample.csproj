@@ -50,7 +50,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\MauiIcons.Core\MauiIcons.Core.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Cupertino\MauiIcons.Cupertino.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Fluent.Filled\MauiIcons.Fluent.Filled.csproj" />
 	  <ProjectReference Include="..\..\src\MauiIcons.Fluent\MauiIcons.Fluent.csproj" />
