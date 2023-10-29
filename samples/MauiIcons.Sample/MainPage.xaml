@@ -31,13 +31,13 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <HorizontalStackLayout Spacing="25" HorizontalOptions="Center">
+            <HorizontalStackLayout HorizontalOptions="Center">
                 <!--  Icons Built in Controls -->
-                <mi:MauiIcon Icon="{mi:Fluent Accessibility48}"/>
-                <mi:MauiIcon Icon="{mi:SegoeFluent Accounts}" IconColor="Red"/>
-                <mi:MauiIcon Icon="{mi:Material ABC}" IconColor="Cyan"/>
-                <mi:MauiIcon Icon="{mi:FluentFilled Accessibility48Filled}" IconColor="BlueViolet"/>
-                <mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+                <mi:MauiIcon Icon="{mi:Fluent Accessibility48}" EntranceAnimationType="Fade" IconSuffix="Test Suffix"/>
+                <mi:MauiIcon Icon="{mi:SegoeFluent Accounts}" IconColor="Red" EntranceAnimationType="Scale"/>
+                <mi:MauiIcon Icon="{mi:Material ABC}" IconColor="Cyan" EntranceAnimationType="Fade"/>
+                <mi:MauiIcon Icon="{mi:FluentFilled Accessibility48Filled}" IconColor="BlueViolet" EntranceAnimationType="Rotate"/>
+                <mi:MauiIcon Icon="{mi:Cupertino Airplane}" EntranceAnimationType="Rotate"/>
 
                 <!--Icons Built in Controls-->
                 <mi:MauiIcon IconColor="Blue">
@@ -71,12 +71,18 @@
 
             <Label HorizontalOptions="Center">Label Based Icons</Label>
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Label  Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}"/>
+                <Label Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}"/>
                 <Label Text="{mi:MaterialOutlined Icon=AccountCircle, IconColor=BlueViolet}"/>
                 <Label Text="{mi:MaterialRounded Icon=AccountCircle}"/>
                 <Label Text="{mi:MaterialSharp Icon=AccountCircle, IconColor=DarkGreen}"/>
                 <Label Text="{mi:MaterialOutlined Icon=AccountCircle, IconColor=LightBlue}"/>
             </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <SearchBar Placeholder="{mi:Fluent Icon=Accessibility48}" />
+            </HorizontalStackLayout>
+
+           
 
             <!--<Label Text="Material Variant" HorizontalOptions="Center"/>
             <HorizontalStackLayout HorizontalOptions="Center" BackgroundColor="White" Padding="12,12">
@@ -102,14 +108,14 @@
                 <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{material:Icon Icon=AccountCircle, IconColor=Blue}"/>
-            </HorizontalStackLayout>
+            </HorizontalStackLayout>-->
 
             <Label Text="Material Variant Code Behind" HorizontalOptions="Center"/>
             <HorizontalStackLayout x:Name="StackMaterialCodeBehind" HorizontalOptions="Center">
                 
             </HorizontalStackLayout>
 
-            <Label HorizontalOptions="Center">V2 Test</Label>
+            <!--<Label HorizontalOptions="Center">V2 Test</Label>
             <HorizontalStackLayout HorizontalOptions="Center">
                 <core:MauiIcon Icon="{fluent:Icon Accessibility16}"/>
                 <core:MauiIcon Icon="{material:Icon Accessibility}" IconColor="red"/>
