@@ -52,6 +52,13 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
                 label.FontSize = IconSize;
                 label.FontAutoScalingEnabled = IconAutoScaling;
                 break;
+            case Span span:
+                span.FontFamily = Icon.GetFontFamily();
+                span.TextColor = IconColor.SetDefaultOrAssignedColor();
+                span.BackgroundColor = IconBackgroundColor;
+                span.FontSize = IconSize;
+                span.FontAutoScalingEnabled = IconAutoScaling;
+                break;
             case Entry entry:
                 entry.FontFamily = Icon.GetFontFamily();
                 entry.TextColor = IconColor.SetDefaultOrAssignedColor();
