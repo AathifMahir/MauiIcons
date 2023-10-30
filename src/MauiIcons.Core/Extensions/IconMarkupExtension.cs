@@ -1,10 +1,10 @@
 ﻿using System.Runtime.CompilerServices;
 
 namespace MauiIcons.Core;
-public static class ElementExtension
+public static class IconMarkupExtension
 {
 #nullable enable
-    public static TIcon Icon<TIcon>(this TIcon bindable, Enum? text) where TIcon : BindableObject
+    public static TIcon Icon<TIcon>(this TIcon bindable, Enum? text) where TIcon : BindableObject, IMauiIcon
     {
         if(IsMauiIconType(bindable))
         {
@@ -14,7 +14,7 @@ public static class ElementExtension
     }
 #nullable disable
 
-    public static TSize IconSize<TSize>(this TSize bindable, double size) where TSize : BindableObject
+    public static TSize IconSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IMauiIcon
     {
         if(IsMauiIconType(bindable))
         {
@@ -23,7 +23,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TColor IconColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject
+    public static TColor IconColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -32,7 +32,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject
+    public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -41,7 +41,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject
+    public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -50,7 +50,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TText IconSuffix<TText>(this TText bindable, string suffix) where TText : BindableObject
+    public static TText IconSuffix<TText>(this TText bindable, string suffix) where TText : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -59,7 +59,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TText IconSuffixFontFamily<TText>(this TText bindable, string fontFamily) where TText : BindableObject
+    public static TText IconSuffixFontFamily<TText>(this TText bindable, string fontFamily) where TText : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -68,7 +68,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TSize IconSuffixFontSize<TSize>(this TSize bindable, double size) where TSize : BindableObject
+    public static TSize IconSuffixFontSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -77,7 +77,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TColor IconSuffixTextColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject
+    public static TColor IconSuffixTextColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -86,7 +86,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TBool IconSuffixAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject
+    public static TBool IconSuffixAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -95,7 +95,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TAnimation EntranceAnimationType<TAnimation>(this TAnimation bindable, AnimationType animationType) where TAnimation : BindableObject
+    public static TAnimation EntranceAnimationType<TAnimation>(this TAnimation bindable, AnimationType animationType) where TAnimation : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -104,7 +104,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    public static TDuration EntranceAnimationDuration<TDuration>(this TDuration bindable, uint duration) where TDuration : BindableObject
+    public static TDuration EntranceAnimationDuration<TDuration>(this TDuration bindable, uint duration) where TDuration : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
@@ -113,7 +113,7 @@ public static class ElementExtension
         return bindable;
     }
 
-    static bool IsMauiIconType<TType>(TType bindable) where TType : BindableObject
+    static bool IsMauiIconType<TType>(TType bindable) where TType : BindableObject, IMauiIcon
     {
         if (bindable is not MauiIcon)
         {
