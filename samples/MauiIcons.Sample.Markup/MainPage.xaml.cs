@@ -1,4 +1,5 @@
-﻿using MauiIcons.Core;
+﻿using CommunityToolkit.Maui.Markup;
+using MauiIcons.Core;
 using MauiIcons.Cupertino;
 using MauiIcons.Fluent;
 using MauiIcons.Fluent.Filled;
@@ -27,6 +28,7 @@ public partial class MainPage : ContentPage
                 {
                     Margin = new Thickness(0,12,0,12),
                     HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
                     Children =
                     {
                          new MauiIcon().Icon(FluentIcons.Accessibility48).IconColor(Colors.Cyan),
@@ -36,6 +38,8 @@ public partial class MainPage : ContentPage
                          new MauiIcon().Icon(MaterialOutlinedIcons.Accessibility).IconColor(Colors.Magenta),
                          new MauiIcon().Icon(MaterialSharpIcons.Accessibility).IconColor(Colors.Violet),
                          new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple),
+                         new ImageButton().Source((ImageSource)new MauiIcon().Icon(MaterialOutlinedIcons.SmokingRooms)),
+                         
                     }
                 }
             }
