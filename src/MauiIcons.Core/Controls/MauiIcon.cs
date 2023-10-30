@@ -3,7 +3,7 @@ using MauiIcons.Core.Helpers;
 using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
-public sealed class MauiIcon : ContentView
+public sealed class MauiIcon : ContentView, IMauiIcon
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(Enum), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MauiIcon), 30.0);
@@ -186,4 +186,15 @@ public sealed class MauiIcon : ContentView
         mi.iconSpan.FontFamily = mi.Icon.GetType().Name;
         return label;
     }
+
+    public static explicit operator Button(MauiIcon mi) => new()
+    {
+        Text = mi.Icon.GetDescription(),
+        TextColor = mi.IconColor.SetDefaultOrAssignedColor(),
+        FontFamily = mi.Icon.GetType().Name,
+        BackgroundColor = mi.IconBackgroundColor,
+        FontSize = mi.IconSize,
+        FontAutoScalingEnabled = mi.IconAutoScaling,
+    };
+
 }
