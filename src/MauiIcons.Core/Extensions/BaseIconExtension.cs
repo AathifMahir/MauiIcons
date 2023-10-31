@@ -27,7 +27,7 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         {
             return AssignFontProperties(provideValueTarget.TargetObject);
         }
-        if (returnType == typeof(ImageSource))
+        if (returnType == typeof(ImageSource) || returnType == typeof(FontImageSource))
         {
             return AssignFontImageSource();
         }

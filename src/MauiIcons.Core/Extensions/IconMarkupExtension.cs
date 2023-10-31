@@ -3,16 +3,14 @@
 namespace MauiIcons.Core;
 public static class IconMarkupExtension
 {
-#nullable enable
-    public static TIcon Icon<TIcon>(this TIcon bindable, Enum? text) where TIcon : BindableObject, IMauiIcon
+    public static TIcon Icon<TIcon>(this TIcon bindable, Enum Icon) where TIcon : BindableObject, IMauiIcon
     {
-        if(IsMauiIconType(bindable))
+        if(bindable is IMauiIcon)
         {
-            bindable.SetValue(MauiIcon.IconProperty, text);
+            bindable.SetValue(MauiIcon.IconProperty, Icon);
         }
         return bindable;
     }
-#nullable disable
 
     public static TSize IconSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IMauiIcon
     {
@@ -115,13 +113,14 @@ public static class IconMarkupExtension
 
     static bool IsMauiIconType<TType>(TType bindable) where TType : BindableObject, IMauiIcon
     {
-        if (bindable is not MauiIcon)
+        if (bindable is IMauiIcon mi)
         {
-            DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
-            defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
-            defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
-            throw new NotSupportedException(defaultInterpolatedStringHandler.ToStringAndClear());
+            if (mi.Icon is null) throw new MauiIconsExpection("The Icon Has Not Been Assigned. Please Ensure That You Assign the Icon Before Configuring Other Icon-Based Properties.");
+            return true;
         }
-        return true;
+        DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
+        defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
+        defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
+        throw new MauiIconsExpection(defaultInterpolatedStringHandler.ToStringAndClear());
     }
 }
