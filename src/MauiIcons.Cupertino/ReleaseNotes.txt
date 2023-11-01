@@ -1,4 +1,10 @@
-﻿v1.2.1
+﻿v2.0.0-pre
+• Major Core Control Enhancements
+• Major Core Extension Enhanecements
+• New C# Markup Extension
+• New Modular Core
+
+v1.2.1
 • Added Support for Vanilla Version of Dotnet to Unit Test the Project
 
 v1.2.0

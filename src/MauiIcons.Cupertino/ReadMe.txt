@@ -18,19 +18,38 @@ XAML usage
 
 In order to make use of the .Net Maui Icons - Material within XAML you can use this namespace:
 
-xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 ----------------------------------------------------------------------------------------------
 
 Built in Custom Control Usage:
 
-<cupertino:MauiIcon Icon="Accessibility48"/>
+Xaml:
+
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+
+C#:
+
+new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
 
 ----------------------------------------------------------------------------------------------
 
-Image Extension Usage:
+Xaml Extension Usage:
 
-<Image Aspect="Center" Source="{cupertino:Icon Icon=AddSquare20}"/>
+<Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
+<Label Text="{mi:Cupertino Icon=Airplane}"/>
+
+----------------------------------------------------------------------------------------------
+
+C# Markup Usage:
+
+new ImageButton().Icon(CupertinoIcons.AntFill),
+
+new Image().Icon(CupertinoIcons.AntFill),
+
+new Label().Icon(CupertinoIcons.AntFill).IconSize(40.0).IconColor(Colors.Red),
+
+new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua),
 
 ----------------------------------------------------------------------------------------------
 

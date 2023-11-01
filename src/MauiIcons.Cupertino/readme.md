@@ -1,6 +1,7 @@
 # .Net Maui Icons
 
-.Net Maui Icons - Cupertino is a Lightweight Icon Library That Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Open Source Version of FrameWork 7 IOS Icon Collection Built into Library.
+The **.NET MAUI Icons - Cupertino** library serves as a lightweight icon library, addressing icon and font icon management in .NET MAUI by offering controls that utilize the comprehensive open-source version of the Framework 7 iOS Icon Collection, seamlessly integrated into the library.
+**[Readmore](https://github.com/AathifMahir/MauiIcons)**
 
 # Get Started
 In order to use the .Net Maui Icons - Cupertino you need to call the extension method in your `MauiProgram.cs` file as follows:
@@ -20,21 +21,52 @@ public static class MauiProgram
 }
 ```
 
-### XAML usage
+XAML usage
 
-In order to make use of the .Net Maui Icons - Cupertino within XAML you can use this namespace:
+In order to make use of the .Net Maui Icons - Material within XAML you can use this namespace:
 
 ```xml
-xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+```
+----------------------------------------------------------------------------------------------
 
-Maui Icons Built in Custom Control Usage:
-<cupertino:MauiIcon Icon="Accounts"/>
+Built in Control Usage:
 
-Image Extension Usage:
-<Image Aspect="Center" Source="{cupertino:Icon Icon=Accounts}"/>
-
+Xaml
+```xml
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+```
+C#
+```csharp
+new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
 ```
 
+All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons)**
+
+----------------------------------------------------------------------------------------------
+
+Xaml Extension Usage:
+```xml
+<Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
+<Label Text="{mi:Cupertino Icon=Airplane}"/>
+```
+----------------------------------------------------------------------------------------------
+
+C# Markup Usage:
+
+```csharp
+new ImageButton().Icon(CupertinoIcons.AntFill),
+
+new Image().Icon(CupertinoIcons.AntFill),
+
+new Label().Icon(CupertinoIcons.AntFill).IconSize(40.0).IconColor(Colors.Red),
+
+new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua),
+```
+
+**Disclaimer:** Not all controls support C# markup. We have tested **Label**, **Image**, **ImageButton**, and **Entry** controls with the current release. Of course, the built-in **MauiIcon** control with C# markup can be used in various scenarios.
+
+----------------------------------------------------------------------------------------------
 # License
 
 **MauiIcons.Cupertino**
