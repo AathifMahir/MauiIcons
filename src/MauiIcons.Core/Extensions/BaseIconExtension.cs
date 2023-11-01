@@ -31,7 +31,7 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         {
             return AssignFontImageSource();
         }
-        throw new NotSupportedException($"Maui Icon Extension Doesn't Support {returnType}");
+        throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support {returnType}");
     }
 
     string AssignFontProperties(object targetObject)
@@ -87,7 +87,7 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
                 mauiIcon.IconAutoScaling = IconAutoScaling;
                 break;
             default:
-                throw new NotSupportedException($"Maui Icon Extension using Text Doesn't Support this Control {targetObject}");
+                throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
         }
         return Icon.GetDescription();
     }
