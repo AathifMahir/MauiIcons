@@ -17,14 +17,14 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMaterialIcons()
-            .UseMaterialOutlinedIcons()
-            .UseMaterialRoundedIcons()
-            .UseMaterialSharpIcons()
-            .UseSegoeFluentIcons()
-            .UseFluentIcons()
-            .UseFluentFilledIcons()
-            .UseCupertinoIcons()
+            .UseMaterialMauiIcons()
+            .UseMaterialOutlinedMauiIcons()
+            .UseMaterialRoundedMauiIcons()
+            .UseMaterialSharpMauiIcons()
+            .UseSegoeFluentMauiIcons()
+            .UseFluentMauiIcons()
+            .UseFluentFilledMauiIcons()
+            .UseCupertinoMauiIcons()
             .UseMauiCommunityToolkitMarkup()
             .ConfigureFonts(fonts =>
             {
