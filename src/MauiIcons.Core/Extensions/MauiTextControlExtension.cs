@@ -58,7 +58,7 @@ public static class MauiTextControlExtension
         return ThrowCustomExpection<TIcon>();
     }
 
-    public static TSize IconSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IText
+    public static TSize IconSize<TSize>(this TSize bindable, double size, bool isPlaceHolder = true) where TSize : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -138,7 +138,7 @@ public static class MauiTextControlExtension
         return ThrowCustomExpection<TColor>();
     }
 
-    public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IText
+    public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -174,7 +174,7 @@ public static class MauiTextControlExtension
         return ThrowCustomExpection<TColor>();
     }
 
-    public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IText
+    public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value, bool isPlaceHolder = true) where TBool : BindableObject, IText
     {
         if (bindable is ILabel)
         {
