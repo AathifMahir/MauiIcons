@@ -12,25 +12,6 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Hello, World MauiIcons!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Testing Purpose Only"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
             <HorizontalStackLayout HorizontalOptions="Center">
                 <!--  Icons Built in Controls -->
                 <mi:MauiIcon Icon="{mi:Fluent Accessibility48}" EntranceAnimationType="Fade" IconSuffix="Test Suffix"/>
@@ -61,12 +42,12 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Text="{mi:Cupertino Icon=Airplane}"/>
                 <Button Text="{mi:Fluent AddCircle20, IconColor=Violet, IconSize=Large}"/>
                 <Button Text="{mi:FluentFilled AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{mi:Material ABC, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{mi:SegoeFluent AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
-
-             </HorizontalStackLayout>
+            </HorizontalStackLayout>
                 
 
             <Label HorizontalOptions="Center">Label Based Icons</Label>
@@ -109,11 +90,6 @@
                 <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large}"/>
                 <Button Text="{material:Icon Icon=AccountCircle, IconColor=Blue}"/>
             </HorizontalStackLayout>-->
-
-            <Label Text="Material Variant Code Behind" HorizontalOptions="Center"/>
-            <HorizontalStackLayout x:Name="StackMaterialCodeBehind" HorizontalOptions="Center">
-                
-            </HorizontalStackLayout>
 
             <!--<Label HorizontalOptions="Center">V2 Test</Label>
             <HorizontalStackLayout HorizontalOptions="Center">

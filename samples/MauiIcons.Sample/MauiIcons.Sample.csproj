@@ -60,4 +60,8 @@
 	  <ProjectReference Include="..\..\src\MauiIcons.SegoeFluent\MauiIcons.SegoeFluent.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="3.3.0" />
+	</ItemGroup>
+
 </Project>

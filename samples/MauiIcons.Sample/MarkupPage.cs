@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Maui.Markup;
+using CommunityToolkit.Maui.Markup;
 using MauiIcons.Core;
 using MauiIcons.Cupertino;
 using MauiIcons.Fluent;
@@ -8,15 +8,15 @@ using MauiIcons.Material.Outlined;
 using MauiIcons.Material.Rounded;
 using MauiIcons.Material.Sharp;
 
-namespace MauiIcons.Sample.Markup;
+namespace MauiIcons.Sample;
 
-public partial class MainPage : ContentPage
+public class MarkupPage : ContentPage
 {
-    public MainPage()
-    {
-        InitializeComponent();
+	public MarkupPage()
+	{
         AddMarkup();
-    }
+	}
+
     private void AddMarkup()
     {
         Content = new VerticalStackLayout()
@@ -44,14 +44,12 @@ public partial class MainPage : ContentPage
                          new Image().Icon(MaterialIcons.AccessAlarm).IconSize(40.0).IconColor(Colors.Cyan).IconBackgroundColor(Colors.White),
                          new Label().Icon(FluentIcons.Accessibility24).IconSize(40.0).IconColor(Colors.Red),
                          new Entry().Icon(FluentIcons.Airplane20).IconSize(20.0).IconColor(Colors.Aqua),
-                         //new Button().Text(CupertinoIcons.Alarm).IconColor(Colors.Red),
+                         new Button().Icon(CupertinoIcons.Alarm),
+                         new Button().Text("Test"),
                     }
                 }
             }
 
         };
     }
-
-
 }
-
