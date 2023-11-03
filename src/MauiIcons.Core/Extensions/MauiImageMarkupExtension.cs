@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using IImage = Microsoft.Maui.IImage;
 
 namespace MauiIcons.Core;
-public static class MauiImageControlExtension
+public static class MauiImageMarkupExtension
 {
     public static TImage Icon<TImage>(this TImage bindable, Enum icon) where TImage : BindableObject, IImageSourcePart
     {

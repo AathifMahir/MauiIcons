@@ -80,12 +80,6 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
                 searchBar.FontSize = IconSize;
                 searchBar.FontAutoScalingEnabled = IconAutoScaling;
                 break;
-            case MauiIcon mauiIcon:
-                mauiIcon.IconColor = IconColor.SetDefaultOrAssignedColor();
-                mauiIcon.IconBackgroundColor = IconBackgroundColor;
-                mauiIcon.IconSize = IconSize;
-                mauiIcon.IconAutoScaling = IconAutoScaling;
-                break;
             default:
                 throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
         }

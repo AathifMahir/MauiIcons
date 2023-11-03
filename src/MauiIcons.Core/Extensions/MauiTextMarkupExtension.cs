@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 
 namespace MauiIcons.Core;
-public static class MauiTextControlExtension
+public static class MauiTextMarkupExtension
 {
     public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, bool isPlaceHolder = true) where TIcon : BindableObject, IText
     {

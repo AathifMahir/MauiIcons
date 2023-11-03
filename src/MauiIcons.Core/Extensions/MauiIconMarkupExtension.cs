@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 namespace MauiIcons.Core;
-public static class IconMarkupExtension
+public static class MauiIconMarkupExtension
 {
     public static TIcon Icon<TIcon>(this TIcon bindable, Enum Icon) where TIcon : BindableObject, IMauiIcon
     {
