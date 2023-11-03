@@ -1,4 +1,4 @@
-﻿namespace MauiIcons.Cupertino.UnitTest.Mocks;
+﻿namespace MauiIcons.Modules.UnitTest.Mocks;
 
 class MockPage : Page
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Dispatching;
 
-namespace MauiIcons.Cupertino.UnitTest.Mocks;
+namespace MauiIcons.Modules.UnitTest.Mocks;
 
 // Inspired by https://github.com/dotnet/maui/blob/main/src/Core/tests/UnitTests/TestClasses/DispatcherStub.cs
 sealed class MockDispatcherProvider : IDispatcherProvider, IDisposable

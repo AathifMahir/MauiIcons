@@ -1,6 +1,14 @@
-﻿using MauiIcons.Cupertino.UnitTest.Mocks;
+﻿using MauiIcons.Cupertino;
+using MauiIcons.Fluent;
+using MauiIcons.Fluent.Filled;
+using MauiIcons.Material;
+using MauiIcons.Material.Outlined;
+using MauiIcons.Material.Rounded;
+using MauiIcons.Material.Sharp;
+using MauiIcons.Modules.UnitTest.Mocks;
+using MauiIcons.SegoeFluent;
 
-namespace MauiIcons.Cupertino.UnitTest;
+namespace MauiIcons.Modules.UnitTest;
 public abstract class BaseHandlerTest : BaseTest
 {
 
@@ -43,6 +51,13 @@ public abstract class BaseHandlerTest : BaseTest
     static void CreateAndSetMockApplication(out IServiceProvider serviceProvider)
     {
         var appBuilder = MauiApp.CreateBuilder()
+                                .UseMaterialMauiIcons()
+                                .UseMaterialOutlinedMauiIcons()
+                                .UseMaterialRoundedMauiIcons()
+                                .UseMaterialSharpMauiIcons()
+                                .UseSegoeFluentMauiIcons()
+                                .UseFluentMauiIcons()
+                                .UseFluentFilledMauiIcons()
                                 .UseCupertinoMauiIcons()
                                 .UseMauiApp<MockApplication>();
 

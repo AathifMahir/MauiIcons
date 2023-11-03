@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace MauiIcons.Cupertino.UnitTest.Mocks;
+namespace MauiIcons.Modules.UnitTest.Mocks;
 
 class MockValueConverter : IValueConverter
 {

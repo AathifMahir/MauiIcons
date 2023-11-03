@@ -1,6 +1,6 @@
 ﻿using Microsoft.Maui.Handlers;
 
-namespace MauiIcons.Cupertino.UnitTest.Mocks;
+namespace MauiIcons.Modules.UnitTest.Mocks;
 
 class MockApplication : Application
 {

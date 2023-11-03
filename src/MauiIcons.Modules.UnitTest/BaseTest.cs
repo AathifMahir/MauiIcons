@@ -1,8 +1,7 @@
-﻿
-using MauiIcons.Cupertino.UnitTest.Mocks;
+﻿using MauiIcons.Modules.UnitTest.Mocks;
 using System.Globalization;
 
-namespace MauiIcons.Cupertino.UnitTest;
+namespace MauiIcons.Modules.UnitTest;
 public abstract class BaseTest : IDisposable
 {
     readonly CultureInfo defaultCulture, defaultUiCulture;

@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 using System.Resources;
 
-namespace MauiIcons.Cupertino.UnitTest.Mocks;
+namespace MauiIcons.Modules.UnitTest.Mocks;
 
 public class MockResourceManager : ResourceManager
 {

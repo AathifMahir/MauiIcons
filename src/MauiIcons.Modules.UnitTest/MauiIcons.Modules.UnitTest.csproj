@@ -23,6 +23,13 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\MauiIcons.Cupertino\MauiIcons.Cupertino.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Fluent.Filled\MauiIcons.Fluent.Filled.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Fluent\MauiIcons.Fluent.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material.Outlined\MauiIcons.Material.Outlined.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material.Rounded\MauiIcons.Material.Rounded.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material.Sharp\MauiIcons.Material.Sharp.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material\MauiIcons.Material.csproj" />
+	  <ProjectReference Include="..\MauiIcons.SegoeFluent\MauiIcons.SegoeFluent.csproj" />
 	</ItemGroup>
 
 </Project>

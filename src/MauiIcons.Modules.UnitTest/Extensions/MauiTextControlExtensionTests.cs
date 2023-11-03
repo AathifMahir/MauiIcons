@@ -1,4 +1,4 @@
-﻿namespace MauiIcons.Cupertino.UnitTest.Extensions;
+﻿namespace MauiIcons.Modules.UnitTest.Extensions;
 public class MauiTextControlExtensionTests : BaseTest
 {
 
