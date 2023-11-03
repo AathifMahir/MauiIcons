@@ -19,6 +19,8 @@ public class MarkupPage : ContentPage
 
     private void AddMarkup()
     {
+        Label label;
+        label = new MauiIcon().Icon(FluentFilledIcons.Alert28Filled).IconSuffix("Label Test").IconColor(Colors.Magenta).EntranceAnimationType(AnimationType.Rotate);
         Content = new VerticalStackLayout()
         {
             HorizontalOptions = LayoutOptions.Center,
@@ -43,6 +45,7 @@ public class MarkupPage : ContentPage
                          new Image().Icon(FluentIcons.Accessibility24).IconColor(Colors.Blue),
                          new Image().Icon(MaterialIcons.AccessAlarm).IconSize(40.0).IconColor(Colors.Cyan).IconBackgroundColor(Colors.White),
                          new Label().Icon(FluentIcons.Accessibility24).IconSize(40.0).IconColor(Colors.Red),
+                         label,
                          new Entry().Icon(FluentIcons.Airplane20).IconSize(20.0).IconColor(Colors.Aqua),
                          new Button().Icon(CupertinoIcons.Alarm).IconSize(30).BackgroundColor(default),
                          new Button().Text("Test"),
