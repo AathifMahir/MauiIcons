@@ -39,7 +39,7 @@ public class MarkupPage : ContentPage
                          new MauiIcon().Icon(MaterialRoundedIcons.Accessibility).IconColor(Colors.Yellow),
                          new MauiIcon().Icon(MaterialOutlinedIcons.Accessibility).IconColor(Colors.Magenta),
                          new MauiIcon().Icon(MaterialSharpIcons.Accessibility).IconColor(Colors.Violet),
-                         new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple),
+                         new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple).IconSuffix("Background Color").IconSuffixTextColor(Colors.Purple).IconSuffixBackgroundColor(Colors.White).IconBackgroundColor(Colors.White).BackgroundColor(Colors.White),
                          new ImageButton().Icon(MaterialOutlinedIcons.SmokingRooms),
                          new Image().Icon(FluentIcons.Accessibility24),
                          new Image().Icon(FluentIcons.Accessibility24).IconColor(Colors.Blue),
