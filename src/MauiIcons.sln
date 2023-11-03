@@ -34,7 +34,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Material.Sharp", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{83957CA1-BCBE-4744-BDE7-D0EF877B99C3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.Cupertino.UnitTest", "MauiIcons.Cupertino.UnitTest\MauiIcons.Cupertino.UnitTest.csproj", "{4932175B-3C62-47AB-819E-FD22A18DEF9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Modules.UnitTest", "MauiIcons.Modules.UnitTest\MauiIcons.Modules.UnitTest.csproj", "{4932175B-3C62-47AB-819E-FD22A18DEF9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
