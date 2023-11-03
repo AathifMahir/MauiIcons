@@ -3,7 +3,7 @@ using MauiIcons.Core.Helpers;
 using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
-public sealed class MauiIcon : ContentView, IMauiIcon
+public sealed class MauiIcon : Label, IMauiIcon, ILabel
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(Enum), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MauiIcon), 30.0);
@@ -97,9 +97,10 @@ public sealed class MauiIcon : ContentView, IMauiIcon
         get => (uint)GetValue(EntranceAnimationDurationProperty);
         set => SetValue(EntranceAnimationDurationProperty, value);
     }
+
     public MauiIcon()
     {
-        Content = BuildIconControl();
+        BuildIconControl();
         Loaded += async (s, r) =>
         {
             iconSpan.FontFamily = Icon.GetType().Name;
@@ -107,10 +108,9 @@ public sealed class MauiIcon : ContentView, IMauiIcon
         };
     }
 
-    Label label;
     Span iconSpan;
     Span suffixSpan;
-    private Label BuildIconControl()
+    private void BuildIconControl()
     {
         iconSpan = new Span();
         iconSpan.SetBinding(Span.TextProperty, new Binding(nameof(Icon), converter: new EnumToStringConverter(), source: this));
@@ -126,12 +126,10 @@ public sealed class MauiIcon : ContentView, IMauiIcon
         suffixSpan.SetBinding(Span.FontFamilyProperty, new Binding(nameof(IconSuffixFontFamily), source: this));
         suffixSpan.SetBinding(Span.TextColorProperty, new Binding(nameof(IconSuffixTextColor), source: this));
 
-        label = new Label{ FormattedText = new FormattedString() };
-        label.FormattedText.Spans.Add(iconSpan);
-        label.FormattedText.Spans.Add(new Span { Text = " " });
-        label.FormattedText.Spans.Add(suffixSpan);
-
-        return label;
+        FormattedText = new FormattedString();
+        FormattedText.Spans.Add(iconSpan);
+        FormattedText.Spans.Add(new Span { Text = " " });
+        FormattedText.Spans.Add(suffixSpan);
     }
 
     async Task AnimateIcon()
@@ -141,16 +139,16 @@ public sealed class MauiIcon : ContentView, IMauiIcon
             case AnimationType.None:
                 return;
             case AnimationType.Fade:
-                label.Opacity = 0;
-                await label.FadeTo(1, EntranceAnimationDuration);
+                Opacity = 0;
+                await this.FadeTo(1, EntranceAnimationDuration);
                 return;
             case AnimationType.Scale:
-                await label.ScaleTo(1.5, EntranceAnimationDuration);
-                await label.ScaleTo(1, EntranceAnimationDuration);
+                await this.ScaleTo(1.5, EntranceAnimationDuration);
+                await this.ScaleTo(1, EntranceAnimationDuration);
                 return;
             case AnimationType.Rotate:
-                await label.RotateTo(360, EntranceAnimationDuration);
-                label.Rotation = 0;
+                await this.RotateTo(360, EntranceAnimationDuration);
+                Rotation = 0;
                 return;
         }
     }
@@ -176,16 +174,6 @@ public sealed class MauiIcon : ContentView, IMauiIcon
         Size = mi.IconSize,
         FontAutoScalingEnabled = mi.IconAutoScaling,
     };
-
-    public static explicit operator Label(MauiIcon mi)
-    {
-        var label = new Label(){ FormattedText = new FormattedString() };
-        label.FormattedText.Spans.Add(mi.iconSpan);
-        label.FormattedText.Spans.Add(new Span() { Text = " " });
-        label.FormattedText.Spans.Add(mi.suffixSpan);
-        mi.iconSpan.FontFamily = mi.Icon.GetType().Name;
-        return label;
-    }
 
     public static explicit operator Button(MauiIcon mi) => new()
     {
