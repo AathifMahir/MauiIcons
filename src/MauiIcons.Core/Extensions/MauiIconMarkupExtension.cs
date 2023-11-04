@@ -39,6 +39,15 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    public static TColor IconAndSuffixBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, color);
+        }
+        return bindable;
+    }
+
     public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
