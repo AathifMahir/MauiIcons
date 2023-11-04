@@ -14,12 +14,6 @@ public class MauiIconTest : BaseHandlerTest
     }
 
     [Fact]
-    public void ShouldBeAssignedToILabel()
-    {
-        Assert.IsAssignableFrom<ILabel>(new MauiIcon());
-    }
-
-    [Fact]
     public void DefaultProperties()
     {
         // Arrange
@@ -97,6 +91,7 @@ public class MauiIconTest : BaseHandlerTest
         mauiiIcon.Icon.Should().BeNull();
     }
 
+
     [Fact]
     public void IconChangedToDifferentEnumeration()
     {
@@ -111,6 +106,83 @@ public class MauiIconTest : BaseHandlerTest
         // Assert
         mauiiIcon.Icon.Should().NotBeNull();
         mauiiIcon.Icon.Should().Be(newIcon);
+    }
+
+    [Fact]
+    public void IconChangedToDifferentEnumerationThatDontHaveIconCode()
+    {
+        // Arrange
+        MauiIcon mauiiIcon;
+        var newIcon = EnumTest.Two;
+
+        // Act
+        mauiiIcon = new MauiIcon() { Icon = CupertinoIcons.Airplane };
+        mauiiIcon.Icon = newIcon;
+
+        // Assert
+        mauiiIcon.Icon.Should().NotBeNull();
+        mauiiIcon.Icon.Should().Be(newIcon);
+    }
+
+    [Fact]
+    public void CastingToLabel()
+    {
+        // Arrange
+        Label label;
+
+        // Act
+        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane };
+
+        // Assert
+        label.FormattedText.Should().NotBeNull();
+        label.FormattedText.Spans[0].Should().NotBeNull();
+        label.FormattedText.Spans[0].Text.Should().NotBeNull();
+        label.FormattedText.Spans[0].Text.Should().Be("\ue900");
+        label.FormattedText.Spans[0].FontFamily.Should().NotBeNull();
+        label.FormattedText.Spans[0].FontFamily.Should().Be("CupertinoIcons");
+    }
+
+    [Fact]
+    public void CastingLabelSpacer()
+    {
+        // Arrange
+        Label label;
+
+        // Act
+        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane };
+
+        // Assert
+        label.FormattedText.Should().NotBeNull();
+        label.FormattedText.Spans[1].Should().NotBeNull();
+        label.FormattedText.Spans[1].Text.Should().NotBeNull();
+        label.FormattedText.Spans[1].Text.Should().Be(" ");
+    }
+
+    [Fact]
+    public void CastingToLabelWithSuffixProperties()
+    {
+        // Arrange
+        Label label;
+        string iconSuffixText = "Suffix Test";
+        var iconSuffixTextColor = Colors.Green;
+        var iconSuffixBackgroundColor = Colors.DarkBlue;
+        var iconSuffixFontFamily = "OpenSansSemibold";
+        var iconSuffixFontSize = 35.0;
+
+        // Act
+        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconSuffix = iconSuffixText, 
+            IconSuffixTextColor = iconSuffixTextColor, IconSuffixBackgroundColor = iconSuffixBackgroundColor, 
+            IconSuffixFontSize = iconSuffixFontSize, IconSuffixFontFamily = iconSuffixFontFamily };
+
+        // Assert
+        label.FormattedText.Should().NotBeNull();
+        label.FormattedText.Spans[2].Should().NotBeNull();
+        label.FormattedText.Spans[2].Text.Should().NotBeNull();
+        label.FormattedText.Spans[2].Text.Should().Be(iconSuffixText);
+        label.FormattedText.Spans[2].TextColor.Should().Be(iconSuffixTextColor);
+        label.FormattedText.Spans[2].BackgroundColor.Should().Be(iconSuffixBackgroundColor);
+        label.FormattedText.Spans[2].FontSize.Should().Be(iconSuffixFontSize);
+        label.FormattedText.Spans[2].FontFamily.Should().Be(iconSuffixFontFamily);
     }
 
     [Fact]
@@ -252,17 +324,17 @@ public class MauiIconTest : BaseHandlerTest
         mauiiIcon = new MauiIcon();
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
-            if (e.PropertyName == "BackgroundColor")
+            if (e.PropertyName == "IconAndSuffixBackgroundColor")
             {
                 changedSignaled = true;
             }
         };
-        mauiiIcon.BackgroundColor = assignedColor;
+        mauiiIcon.IconAndSuffixBackgroundColor = assignedColor;
 
 
         // Assert
-        mauiiIcon.BackgroundColor.Should().NotBeNull();
-        mauiiIcon.BackgroundColor.Should().Be(assignedColor);
+        mauiiIcon.IconAndSuffixBackgroundColor.Should().NotBeNull();
+        mauiiIcon.IconAndSuffixBackgroundColor.Should().Be(assignedColor);
         changedSignaled.Should().BeTrue();
     }
 
@@ -274,12 +346,12 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon() { BackgroundColor = Colors.Green };
-        mauiiIcon.BackgroundColor = assignedColor;
+        mauiiIcon = new MauiIcon() { IconAndSuffixBackgroundColor = Colors.Green };
+        mauiiIcon.IconAndSuffixBackgroundColor = assignedColor;
 
 
         // Assert
-        mauiiIcon.BackgroundColor.Should().BeNull();
+        mauiiIcon.IconAndSuffixBackgroundColor.Should().BeNull();
     }
 
     [Fact]
