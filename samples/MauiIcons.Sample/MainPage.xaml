@@ -14,9 +14,9 @@
 
             <HorizontalStackLayout HorizontalOptions="Center">
                 <!--  Icons Built in Controls -->
-                <mi:MauiIcon Icon="{mi:Fluent Accessibility48}" EntranceAnimationType="Fade" IconSuffix="Test Suffix"/>
-                <mi:MauiIcon Icon="{mi:SegoeFluent Accounts}" IconColor="Red" EntranceAnimationType="Scale"/>
-                <mi:MauiIcon Icon="{mi:Material ABC}" IconColor="Cyan" EntranceAnimationType="Fade"/>
+                <mi:MauiIcon Icon="{mi:Fluent Icon=Accessibility32}" IconColor="White" EntranceAnimationType="Fade" IconSuffix="Test Suffix"/>
+                <mi:MauiIcon Icon="{mi:SegoeFluent Icon=Accounts}" IconColor="Red" EntranceAnimationType="Scale"/>
+                <mi:MauiIcon Icon="{mi:Material Icon=ABC}" IconColor="Cyan" EntranceAnimationType="Fade"/>
                 <mi:MauiIcon Icon="{mi:FluentFilled Accessibility48Filled}" IconColor="BlueViolet" EntranceAnimationType="Rotate"/>
                 <mi:MauiIcon Icon="{mi:Cupertino Airplane}" EntranceAnimationType="Rotate"/>
 
