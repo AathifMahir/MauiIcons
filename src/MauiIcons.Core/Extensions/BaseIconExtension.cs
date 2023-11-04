@@ -3,9 +3,11 @@
 namespace MauiIcons.Core;
 
 [ContentProperty(nameof(Icon))]
-public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where TEnum : struct, Enum
+public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where TEnum : Enum
 {
+#nullable enable
     public TEnum? Icon { get; set; }
+#nullable disable
     public Color IconColor { get; set; }
     public Color IconBackgroundColor { get; set; }
 
@@ -95,6 +97,7 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         FontAutoScalingEnabled = IconAutoScaling
     };
 
+#nullable enable
     TEnum? AssignMauiIconProperties(object targetObject)
     {
         bool isIconPropertyChanged = IconColor is not null
@@ -108,5 +111,7 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         }
         return Icon;
     }
+
+#nullable disable
 
 }

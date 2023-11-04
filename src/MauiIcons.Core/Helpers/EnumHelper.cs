@@ -11,7 +11,7 @@ internal static class EnumHelper
         string? description = value.ToString();
 
         FieldInfo? fieldInfo = value.GetType().GetField(value.ToString() ?? "");
-        if (fieldInfo != null)
+        if (fieldInfo is not null)
         {
             object[]? attributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), true);
             if (attributes?.Length > 0)
@@ -22,13 +22,21 @@ internal static class EnumHelper
         return description;
     }
 
-    public static TEnum? GetEnumByDescription<TEnum>(this string? description, bool ignoreCase = false) where TEnum : struct, Enum
+    public static TEnum? GetEnumByDescription<TEnum>(this string? description) where TEnum : Enum 
     {
-        return Enum.GetValues<TEnum>()
-                .FirstOrDefault(i => string.Compare(GetDescription(i), description, ignoreCase) == 0);
+        if (description is null) return default;
+
+        foreach (Enum enumItem in Enum.GetValues(typeof(TEnum)))
+        {
+            if (enumItem.GetDescription() == description)
+            {
+                return (TEnum)enumItem;
+            }
+        }
+        return default;
     }
 
-    public static string GetFontFamily<TEnum>(this TEnum? value) where TEnum : struct, Enum
+    public static string GetFontFamily<TEnum>(this TEnum? value) where TEnum : Enum
     {
         if(value is null) return string.Empty;
         return value.GetType().Name;
