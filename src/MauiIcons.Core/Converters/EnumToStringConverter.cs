@@ -15,6 +15,10 @@ internal sealed class EnumToStringConverter : IValueConverter
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        throw new NotImplementedException();
+        if(value != null && value is string str)
+        {
+            return str.GetEnumByDescription<Enum>();
+        }
+        return null;
     }
 }
