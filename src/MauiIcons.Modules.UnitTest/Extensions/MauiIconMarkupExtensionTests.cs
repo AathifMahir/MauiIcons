@@ -1,65 +1,30 @@
 ﻿using FluentAssertions;
 using MauiIcons.Core;
+using MauiIcons.Fluent.Filled;
 using MauiIcons.Cupertino;
 using MauiIcons.Material;
 
-namespace MauiIcons.Modules.UnitTest.Controls;
-public class MauiIconTest : BaseHandlerTest
+namespace MauiIcons.Modules.UnitTest.Extensions;
+public class MauiIconMarkupExtensionTests : BaseHandlerTest
 {
-    
     [Fact]
-    public void ShouldBeAssignedToIMauiIcon()
+    public void Icon()
     {
-        Assert.IsAssignableFrom<IMauiIcon>(new MauiIcon());
-    }
+		// Arrange
+		MauiIcon mauiIcon;
+		var icon = FluentFilledIcons.Accessibility16Filled;
 
-    [Fact]
-    public void ShouldBeAssignedToILabel()
-    {
-        Assert.IsAssignableFrom<ILabel>(new MauiIcon());
-    }
+		// Act
+		mauiIcon = new MauiIcon().Icon(icon);
 
-    [Fact]
-    public void DefaultProperties()
-    {
-        // Arrange
-        MauiIcon mauiiIcon;
+		// Assert
+		mauiIcon.Icon.Should().NotBeNull();
+		mauiIcon.Icon.Should().Be(icon);
+	}
 
-        // Act
-        mauiiIcon = new MauiIcon();
-
-        // Assert
-        mauiiIcon.Icon.Should().BeNull();
-        mauiiIcon.IconColor.Should().Be(Colors.Black);
-        mauiiIcon.IconBackgroundColor.Should().Be(Colors.Transparent);
-        mauiiIcon.IconSize.Should().Be(30.0);
-        mauiiIcon.IconAutoScaling.Should().BeFalse();
-        mauiiIcon.IconSuffix.Should().BeNull();
-        mauiiIcon.IconSuffixFontSize.Should().Be(20.0);
-        mauiiIcon.IconSuffixFontFamily.Should().BeNull();
-        mauiiIcon.IconSuffixTextColor.Should().BeNull();
-        mauiiIcon.IconSuffixBackgroundColor.Should().BeNull();
-        mauiiIcon.IconSuffixAutoScaling.Should().BeFalse();
-        mauiiIcon.EntranceAnimationDuration.Should().Be(1500);
-        mauiiIcon.EntranceAnimationType.Should().Be(AnimationType.None);
-    }
-
-    [Fact]
-    public void DefaultIcon()
-    {
-        // Arrange
-        MauiIcon mi;
-
-        // Act
-        mi = new MauiIcon();
-
-        // Assert
-        mi.Icon.Should().BeNull();
-    }
-
-    [Fact]
-    public void IconChanged()
-    {
+	[Fact]
+	public void IconChanged()
+	{
         // Arrange
         MauiIcon mauiiIcon;
         bool changedSignaled = false;
@@ -74,43 +39,13 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.Icon = assignedIcon;
+        mauiiIcon.Icon(assignedIcon);
 
 
         // Assert
         mauiiIcon.Icon.Should().NotBeNull();
         mauiiIcon.Icon.Should().Be(assignedIcon);
         changedSignaled.Should().BeTrue();
-    }
-
-    [Fact]
-    public void IconChangedToNull()
-    {
-        // Arrange
-        MauiIcon mauiiIcon;
-
-        // Act
-        mauiiIcon = new MauiIcon() { Icon = CupertinoIcons.Airplane };
-        mauiiIcon.Icon = null;
-
-        // Assert
-        mauiiIcon.Icon.Should().BeNull();
-    }
-
-    [Fact]
-    public void IconChangedToDifferentEnumeration()
-    {
-        // Arrange
-        MauiIcon mauiiIcon;
-        var newIcon = MaterialIcons.ZoomIn;
-
-        // Act
-        mauiiIcon = new MauiIcon() { Icon = CupertinoIcons.Airplane };
-        mauiiIcon.Icon = newIcon;
-
-        // Assert
-        mauiiIcon.Icon.Should().NotBeNull();
-        mauiiIcon.Icon.Should().Be(newIcon);
     }
 
     [Fact]
@@ -122,7 +57,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedColor = Colors.Blue;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconColor")
@@ -130,7 +65,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconColor = assignedColor;
+        mauiiIcon.IconColor(assignedColor);
 
 
         // Assert
@@ -147,7 +82,7 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = default!;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconColor =  Colors.Green };
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconColor(Colors.Green);
         mauiiIcon.IconColor = assignedColor;
 
 
@@ -165,7 +100,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedSize = 25.0;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSize")
@@ -173,7 +108,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSize = assignedSize;
+        mauiiIcon.IconSize(assignedSize);
 
 
         // Assert
@@ -190,8 +125,8 @@ public class MauiIconTest : BaseHandlerTest
         var assignedSize = 40.0;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSize = assignedSize };
-        mauiiIcon.IconSize = defaultSize;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSize(assignedSize);
+        mauiiIcon.IconSize(defaultSize);
 
         // Assert
         mauiiIcon.IconSize.Should().NotBe(assignedSize);
@@ -207,7 +142,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedColor = Colors.Blue;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconBackgroundColor")
@@ -215,7 +150,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconBackgroundColor = assignedColor;
+        mauiiIcon.IconBackgroundColor(assignedColor);
 
 
         // Assert
@@ -232,8 +167,8 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconBackgroundColor = Colors.Green };
-        mauiiIcon.IconBackgroundColor = assignedColor;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconBackgroundColor(Colors.Green);
+        mauiiIcon.IconBackgroundColor(assignedColor);
 
 
         // Assert
@@ -249,7 +184,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedColor = Colors.Blue;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "BackgroundColor")
@@ -257,7 +192,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.BackgroundColor = assignedColor;
+        mauiiIcon.IconAndSuffixBackgroundColor(assignedColor);
 
 
         // Assert
@@ -274,8 +209,8 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon() { BackgroundColor = Colors.Green };
-        mauiiIcon.BackgroundColor = assignedColor;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconAndSuffixBackgroundColor(Colors.Green);
+        mauiiIcon.IconAndSuffixBackgroundColor(assignedColor);
 
 
         // Assert
@@ -291,7 +226,7 @@ public class MauiIconTest : BaseHandlerTest
         var autoScale = true;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconAutoScaling")
@@ -299,7 +234,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconAutoScaling = autoScale;
+        mauiiIcon.IconAutoScaling(autoScale);
 
 
         // Assert
@@ -315,8 +250,8 @@ public class MauiIconTest : BaseHandlerTest
         var autoScale = false;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconAutoScaling = true };
-        mauiiIcon.IconAutoScaling = autoScale;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconAutoScaling(true);
+        mauiiIcon.IconAutoScaling(autoScale);
 
 
         // Assert
@@ -332,7 +267,7 @@ public class MauiIconTest : BaseHandlerTest
         var suffix = "Test";
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSuffix")
@@ -340,7 +275,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSuffix = suffix;
+        mauiiIcon.IconSuffix(suffix);
 
 
         // Assert
@@ -356,7 +291,7 @@ public class MauiIconTest : BaseHandlerTest
         var suffix = "Test";
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSuffix = suffix };
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSuffix(suffix);
         mauiiIcon.IconSuffix = null;
 
 
@@ -373,7 +308,7 @@ public class MauiIconTest : BaseHandlerTest
         var suffixFontFamily = "OpenSansRegular";
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSuffixFontFamily")
@@ -381,7 +316,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSuffixFontFamily = suffixFontFamily;
+        mauiiIcon.IconSuffixFontFamily(suffixFontFamily);
 
 
         // Assert
@@ -397,8 +332,8 @@ public class MauiIconTest : BaseHandlerTest
         var suffixFontFamily = "OpenSansRegular";
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSuffixFontFamily = suffixFontFamily };
-        mauiiIcon.IconSuffixFontFamily = null;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSuffixFontFamily(suffixFontFamily);
+        mauiiIcon.IconSuffixFontFamily(null);
 
 
         // Assert
@@ -414,7 +349,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedSize = 25.0;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSuffixFontSize")
@@ -422,7 +357,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSuffixFontSize = assignedSize;
+        mauiiIcon.IconSuffixFontSize(assignedSize);
 
 
         // Assert
@@ -439,8 +374,8 @@ public class MauiIconTest : BaseHandlerTest
         var assignedSize = 40.0;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSuffixFontSize = assignedSize };
-        mauiiIcon.IconSuffixFontSize = defaultSize;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSuffixFontSize(assignedSize);
+        mauiiIcon.IconSuffixFontSize(defaultSize);
 
         // Assert
         mauiiIcon.IconSuffixFontSize.Should().NotBe(assignedSize);
@@ -456,7 +391,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedColor = Colors.Blue;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSuffixTextColor")
@@ -464,7 +399,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSuffixTextColor = assignedColor;
+        mauiiIcon.IconSuffixTextColor(assignedColor);
 
 
         // Assert
@@ -481,8 +416,8 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSuffixTextColor = Colors.Green };
-        mauiiIcon.IconSuffixTextColor = assignedColor;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSuffixTextColor(Colors.Green);
+        mauiiIcon.IconSuffixTextColor(assignedColor);
 
 
         // Assert
@@ -498,7 +433,7 @@ public class MauiIconTest : BaseHandlerTest
         var assignedColor = Colors.Blue;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSuffixBackgroundColor")
@@ -506,7 +441,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSuffixBackgroundColor = assignedColor;
+        mauiiIcon.IconSuffixBackgroundColor(assignedColor);
 
 
         // Assert
@@ -523,8 +458,8 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSuffixBackgroundColor = Colors.Green };
-        mauiiIcon.IconSuffixBackgroundColor = assignedColor;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSuffixBackgroundColor(Colors.Green);
+        mauiiIcon.IconSuffixBackgroundColor(assignedColor);
 
         // Assert
         mauiiIcon.IconSuffixBackgroundColor.Should().BeNull();
@@ -539,7 +474,7 @@ public class MauiIconTest : BaseHandlerTest
         var autoScale = true;
 
         // Act
-        mauiiIcon = new MauiIcon();
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream);
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
             if (e.PropertyName == "IconSuffixAutoScaling")
@@ -547,7 +482,7 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconSuffixAutoScaling = autoScale;
+        mauiiIcon.IconSuffixAutoScaling(autoScale);
 
 
         // Assert
@@ -563,8 +498,8 @@ public class MauiIconTest : BaseHandlerTest
         var autoScale = false;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconSuffixAutoScaling = true };
-        mauiiIcon.IconSuffixAutoScaling = autoScale;
+        mauiiIcon = new MauiIcon().Icon(MaterialIcons.Icecream).IconSuffixAutoScaling(true);
+        mauiiIcon.IconSuffixAutoScaling(autoScale);
 
 
         // Assert
