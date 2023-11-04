@@ -107,7 +107,8 @@ public static class MauiImageMarkupExtension
     {
         if(bindable is Image fontImage)
         {
-            if(fontImage.Source is null) throw new MauiIconsExpection("Icon Not Assigned Yet. Please Ensure You Assign the Icon Before Configuring Other Icon-Based Properties.");
+            if(fontImage.Source is null) return new FontImageSource();
+
             return (FontImageSource)fontImage.Source;
         }
         throw new MauiIconsExpection("This Image Element Does Not Support Maui Icon Extensions.");

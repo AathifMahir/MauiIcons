@@ -131,11 +131,8 @@ public static class MauiIconMarkupExtension
 
     static bool IsMauiIconType<TType>(TType bindable) where TType : BindableObject, IMauiIcon
     {
-        if (bindable is IMauiIcon mi)
-        {
-            if (mi.Icon is null) throw new MauiIconsExpection("The Icon Has Not Been Assigned. Please Ensure That You Assign the Icon Before Configuring Other Icon-Based Properties.");
-            return true;
-        }
+        if (bindable is IMauiIcon) return true;
+
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
         defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
         defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
