@@ -15,6 +15,7 @@ public sealed class MauiIcon : Label, IMauiIcon
     public static readonly BindableProperty IconSuffixFontSizeProperty = BindableProperty.Create(nameof(IconSuffixFontSize), typeof(double), typeof(MauiIcon), 20.0);
     public static readonly BindableProperty IconSuffixTextColorProperty = BindableProperty.Create(nameof(IconSuffixTextColor), typeof(Color), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixBackgroundColorProperty = BindableProperty.Create(nameof(IconSuffixBackgroundColor), typeof(Color), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconAndSuffixBackgroundColorProperty = Label.BackgroundColorProperty;
     public static readonly BindableProperty IconSuffixAutoScalingProperty = BindableProperty.Create(nameof(IconSuffixAutoScaling), typeof(bool), typeof(MauiIcon), false);
     public static readonly BindableProperty EntranceAnimationTypeProperty = BindableProperty.Create(nameof(EntranceAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None);
     public static readonly BindableProperty EntranceAnimationDurationProperty = BindableProperty.Create(nameof(EntranceAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
@@ -84,6 +85,13 @@ public sealed class MauiIcon : Label, IMauiIcon
     {
         get => (Color)GetValue(IconSuffixBackgroundColorProperty);
         set => SetValue(IconSuffixBackgroundColorProperty, value);
+    }
+
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
+    public Color IconAndSuffixBackgroundColor
+    {
+        get => (Color)GetValue(IconAndSuffixBackgroundColorProperty);
+        set => SetValue(IconAndSuffixBackgroundColorProperty, value);
     }
 
     public bool IconSuffixAutoScaling
