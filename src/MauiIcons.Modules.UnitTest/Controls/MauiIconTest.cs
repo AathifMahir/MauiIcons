@@ -114,14 +114,19 @@ public class MauiIconTest : BaseHandlerTest
         // Arrange
         MauiIcon mauiiIcon;
         var newIcon = EnumTest.Two;
+        Label baseLabel;
 
         // Act
         mauiiIcon = new MauiIcon() { Icon = CupertinoIcons.Airplane };
         mauiiIcon.Icon = newIcon;
+        baseLabel = (Label)mauiiIcon;
 
         // Assert
         mauiiIcon.Icon.Should().NotBeNull();
         mauiiIcon.Icon.Should().Be(newIcon);
+        baseLabel.FormattedText.Spans[0].Should().NotBeNull();
+        baseLabel.FormattedText.Spans[0].Text.Should().Be(string.Empty);
+        baseLabel.FormattedText.Spans[0].FontFamily.Should().Be("EnumTest");
     }
 
     [Fact]
