@@ -98,7 +98,7 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 
         // Act
         mauiiIcon = new MauiIcon().IconColor(Colors.Green);
-        mauiiIcon.IconColor = assignedColor;
+        mauiiIcon.IconColor(assignedColor);
 
 
         // Assert
@@ -307,7 +307,7 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 
         // Act
         mauiiIcon = new MauiIcon().IconSuffix(suffix);
-        mauiiIcon.IconSuffix = null;
+        mauiiIcon.IconSuffix(null);
 
 
         // Assert
