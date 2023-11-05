@@ -22,7 +22,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 ----------------------------------------------------------------------------------------------
 
-Built in Custom Control Usage:
+Built in Control Usage:
 
 Xaml:
 

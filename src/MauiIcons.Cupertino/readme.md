@@ -80,9 +80,9 @@ new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua),
 
 # License
 
-**MauiIcons.Cupertino**
+**MauiIcons.Cupertino**</br>
 The MauiIcons.Cupertino library is distributed under the [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
 
-**Cupertino Icons**
+**Cupertino Icons**</br>
 The Cupertino Icons library is distributed under the [MIT License](https://github.com/framework7io/framework7-icons/blob/master/LICENSE).
 
