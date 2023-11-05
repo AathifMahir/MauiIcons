@@ -30,6 +30,8 @@ Xaml:
 
 C#:
 
+new MauiIcon() {Icon = CupertinoIcons.AppBadge, IconColor = Colors.Green};
+
 new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
 
 ----------------------------------------------------------------------------------------------
@@ -37,6 +39,7 @@ new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
 Xaml Extension Usage:
 
 <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
+
 <Label Text="{mi:Cupertino Icon=Airplane}"/>
 
 ----------------------------------------------------------------------------------------------
@@ -50,6 +53,11 @@ new Image().Icon(CupertinoIcons.AntFill),
 new Label().Icon(CupertinoIcons.AntFill).IconSize(40.0).IconColor(Colors.Red),
 
 new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua),
+
+
+Disclaimer: It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: 
+Label, Image, ImageButton, SearchBar, Editor, and Entry. Additionally, the native MauiIcon control, when combined with C# markup, 
+can prove to be quite versatile and offer extra features for various scenarios.
 
 ----------------------------------------------------------------------------------------------
 
