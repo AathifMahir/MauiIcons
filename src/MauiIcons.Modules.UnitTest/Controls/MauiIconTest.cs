@@ -125,21 +125,28 @@ public class MauiIconTest : BaseHandlerTest
     }
 
     [Fact]
-    public void CastingToLabel()
+    public void CastingToLabelWithIconProperties()
     {
         // Arrange
         Label label;
+        var iconColor = Colors.Red;
+        var iconSize = 35.0;
+        var iconBackgroundColor = Colors.DarkCyan;
+        var iconAutoScaling = true;
 
         // Act
-        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane };
+        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconColor = iconColor, IconSize = iconSize, 
+            IconBackgroundColor = iconBackgroundColor, IconAutoScaling = iconAutoScaling };
 
         // Assert
         label.FormattedText.Should().NotBeNull();
         label.FormattedText.Spans[0].Should().NotBeNull();
-        label.FormattedText.Spans[0].Text.Should().NotBeNull();
         label.FormattedText.Spans[0].Text.Should().Be("\ue900");
-        label.FormattedText.Spans[0].FontFamily.Should().NotBeNull();
         label.FormattedText.Spans[0].FontFamily.Should().Be("CupertinoIcons");
+        label.FormattedText.Spans[0].TextColor.Should().Be(iconColor);
+        label.FormattedText.Spans[0].FontSize.Should().Be(iconSize);
+        label.FormattedText.Spans[0].BackgroundColor.Should().Be(iconBackgroundColor);
+        label.FormattedText.Spans[0].FontAutoScalingEnabled.Should().Be(iconAutoScaling);
     }
 
     [Fact]
@@ -154,7 +161,6 @@ public class MauiIconTest : BaseHandlerTest
         // Assert
         label.FormattedText.Should().NotBeNull();
         label.FormattedText.Spans[1].Should().NotBeNull();
-        label.FormattedText.Spans[1].Text.Should().NotBeNull();
         label.FormattedText.Spans[1].Text.Should().Be(" ");
     }
 
@@ -177,12 +183,50 @@ public class MauiIconTest : BaseHandlerTest
         // Assert
         label.FormattedText.Should().NotBeNull();
         label.FormattedText.Spans[2].Should().NotBeNull();
-        label.FormattedText.Spans[2].Text.Should().NotBeNull();
         label.FormattedText.Spans[2].Text.Should().Be(iconSuffixText);
         label.FormattedText.Spans[2].TextColor.Should().Be(iconSuffixTextColor);
         label.FormattedText.Spans[2].BackgroundColor.Should().Be(iconSuffixBackgroundColor);
         label.FormattedText.Spans[2].FontSize.Should().Be(iconSuffixFontSize);
         label.FormattedText.Spans[2].FontFamily.Should().Be(iconSuffixFontFamily);
+    }
+
+    [Fact]
+    public void CastingToImage()
+    {
+        // Arrange
+        Image image;
+        var iconBackgroundColor = Colors.DarkCyan;
+
+        // Act
+        image = (Image)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconBackgroundColor = iconBackgroundColor };
+
+        // Assert
+        image.Source.Should().NotBeNull();
+        image.Source.Should().BeOfType<FontImageSource>();
+        image.BackgroundColor.Should().Be(iconBackgroundColor);
+    }
+
+    [Fact]
+    public void CastingToFontImageSource()
+    {
+        // Arrange
+        FontImageSource fontImage;
+        var iconColor = Colors.Red;
+        var iconSize = 35.0;
+        var iconAutoScaling = true;
+
+        // Act
+        fontImage = (FontImageSource)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconColor = iconColor, 
+            IconSize = iconSize, IconAutoScaling = iconAutoScaling };
+
+        // Assert
+        fontImage.Should().NotBeNull();
+        fontImage.Glyph.Should().NotBeNull();
+        fontImage.Glyph.Should().Be("\ue900");
+        fontImage.FontFamily.Should().Be("CupertinoIcons");
+        fontImage.Color.Should().Be(iconColor);
+        fontImage.Size.Should().Be(iconSize);
+        fontImage.FontAutoScalingEnabled.Should().Be(iconAutoScaling);
     }
 
     [Fact]
