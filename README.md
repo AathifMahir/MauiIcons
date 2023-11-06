@@ -142,6 +142,4 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 # Contribute
 
-Want to Contribute this project, Feel free to Create an Issue or Else Want to Contribute to the Project on Resources, Feel Free to Donate Me Via Below Url or Becaming a Sponser.
-
-<iframe src="https://github.com/sponsors/AathifMahir/card" title="Sponsor AathifMahir" height="225" width="600" style="border: 0;"></iframe>
+If you wish to contribute to this project, please don't hesitate to create an issue or request. Your input and feedback are highly appreciated. Additionally, if you're interested in supporting the project by providing resources or [**becoming a sponsor**](https://github.com/sponsors/AathifMahir), your contributions would be welcomed and instrumental in its continued development and success. Thank you for your interest in contributing to this endeavor.
