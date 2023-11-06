@@ -1,4 +1,4 @@
-<img src="https://github.com/AathifMahir/MauiIcons/blob/89f13e4a26bb9b486048b07f9d67cad12df677c1/images/icon_with_text.png" alt="MauiIcons_logo" height=175 width=815>
+<img src="https://raw.githubusercontent.com/AathifMahir/MauiIcons/v2/images/mauiicons_splash.png" alt="MauiIcons_logo" height=250 width=1150>
 
 
 
