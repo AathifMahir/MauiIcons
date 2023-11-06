@@ -3,6 +3,9 @@
 namespace MauiIcons.Core;
 public static class MauiIconMarkupExtension
 {
+    /// <summary>
+    /// Sets the icon.
+    /// </summary>
     public static TIcon Icon<TIcon>(this TIcon bindable, Enum Icon) where TIcon : BindableObject, IMauiIcon
     {
         if(bindable is IMauiIcon)
@@ -12,6 +15,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the size of the icon.
+    /// </summary>
     public static TSize IconSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IMauiIcon
     {
         if(IsMauiIconType(bindable))
@@ -21,6 +27,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the color of the icon.
+    /// </summary>
     public static TColor IconColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -30,6 +39,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the background color of the icon.
+    /// </summary>
     public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -39,15 +51,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
-    public static TColor IconAndSuffixBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
-    {
-        if (IsMauiIconType(bindable))
-        {
-            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, color);
-        }
-        return bindable;
-    }
-
+    /// <summary>
+    /// Sets a value indicating whether the icon should automatically scale.
+    /// </summary>
     public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -57,6 +63,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the suffix for the icon.
+    /// </summary>
     public static TText IconSuffix<TText>(this TText bindable, string suffix) where TText : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -66,6 +75,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the font family for the icon suffix.
+    /// </summary>
     public static TText IconSuffixFontFamily<TText>(this TText bindable, string fontFamily) where TText : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -75,6 +87,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the font size for the icon suffix.
+    /// </summary>
     public static TSize IconSuffixFontSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -84,6 +99,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the text color for the icon suffix.
+    /// </summary>
     public static TColor IconSuffixTextColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -93,6 +111,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the background color for the icon suffix.
+    /// </summary>
     public static TColor IconSuffixBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -101,6 +122,22 @@ public static class MauiIconMarkupExtension
         }
         return bindable;
     }
+
+    /// <summary>
+    /// Sets the background color for the icon and Suffix, It applies the color to whole control.
+    /// </summary>
+    public static TColor IconAndSuffixBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, color);
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets a value indicating whether the icon suffix should automatically scale.
+    /// </summary>
 
     public static TBool IconSuffixAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IMauiIcon
     {
@@ -111,6 +148,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the type of entrance animation for the element.
+    /// </summary>
     public static TAnimation EntranceAnimationType<TAnimation>(this TAnimation bindable, AnimationType animationType) where TAnimation : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
@@ -120,6 +160,9 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets the duration of the entrance animation for the element.
+    /// </summary>
     public static TDuration EntranceAnimationDuration<TDuration>(this TDuration bindable, uint duration) where TDuration : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))

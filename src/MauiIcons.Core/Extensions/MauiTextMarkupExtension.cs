@@ -4,6 +4,9 @@ using System.Runtime.CompilerServices;
 namespace MauiIcons.Core;
 public static class MauiTextMarkupExtension
 {
+    /// <summary>
+    /// Gets or sets the icon.
+    /// </summary>
     public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, bool isPlaceHolder = true) where TIcon : BindableObject, IText
     {
         if (bindable is ILabel)
@@ -58,6 +61,10 @@ public static class MauiTextMarkupExtension
         return ThrowCustomExpection<TIcon>();
     }
 
+    /// <summary>
+    /// Gets or sets the size of the icon.
+    /// </summary>
+
     public static TSize IconSize<TSize>(this TSize bindable, double size, bool isPlaceHolder = true) where TSize : BindableObject, IText
     {
         if (bindable is ILabel)
@@ -94,6 +101,9 @@ public static class MauiTextMarkupExtension
         return ThrowCustomExpection<TSize>();
     }
 
+    /// <summary>
+    /// Gets or sets the color of the icon.
+    /// </summary>
     public static TColor IconColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
     {
         if (bindable is ILabel)
@@ -138,6 +148,9 @@ public static class MauiTextMarkupExtension
         return ThrowCustomExpection<TColor>();
     }
 
+    /// <summary>
+    /// Gets or sets the background color of the icon.
+    /// </summary>
     public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
     {
         if (bindable is ILabel)
@@ -174,6 +187,9 @@ public static class MauiTextMarkupExtension
         return ThrowCustomExpection<TColor>();
     }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the icon should automatically scale.
+    /// </summary>
     public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value, bool isPlaceHolder = true) where TBool : BindableObject, IText
     {
         if (bindable is ILabel)

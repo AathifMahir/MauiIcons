@@ -5,6 +5,9 @@ using IImage = Microsoft.Maui.IImage;
 namespace MauiIcons.Core;
 public static class MauiImageMarkupExtension
 {
+    /// <summary>
+    /// Gets or sets the icon.
+    /// </summary>
     public static TImage Icon<TImage>(this TImage bindable, Enum icon) where TImage : BindableObject, IImageSourcePart
     {
         if (bindable is Button)
@@ -26,6 +29,9 @@ public static class MauiImageMarkupExtension
         return ThrowCustomExpection<TImage>();
     }
 
+    /// <summary>
+    /// Gets or sets the size of the icon.
+    /// </summary>
     public static TSize IconSize<TSize>(this TSize bindable, double size) where TSize : BindableObject, IImage
     {
         if (bindable is Button)
@@ -44,6 +50,9 @@ public static class MauiImageMarkupExtension
         return ThrowCustomExpection<TSize>();
     }
 
+    /// <summary>
+    /// Gets or sets the color of the icon.
+    /// </summary>
     public static TColor IconColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IImage
     {
         if (bindable is Button)
@@ -62,6 +71,9 @@ public static class MauiImageMarkupExtension
         return ThrowCustomExpection<TColor>();
     }
 
+    /// <summary>
+    /// Gets or sets the background color of the icon.
+    /// </summary>
     public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IImage
     {
         if (bindable is Button)
@@ -77,6 +89,9 @@ public static class MauiImageMarkupExtension
         return ThrowCustomExpection<TColor>();
     }
 
+    /// <summary>
+    /// Gets or sets a value indicating whether the icon should automatically scale.
+    /// </summary>
     public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value) where TBool : BindableObject, IImage
     {
         if (bindable is Button)
