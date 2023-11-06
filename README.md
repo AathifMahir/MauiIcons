@@ -49,7 +49,6 @@ In order to make use of the **.Net Maui Icons** you can use the below namespace:
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 ```
---------
 
 ### Built in Control Usage
 
@@ -60,7 +59,6 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <mi:MauiIcon Icon="{mi:material ABC}"/>
 <mi:MauiIcon Icon="{mi:fluent Accounts}"/>
 ```
-
 `C#`
 ```csharp
 // Traditional C#
@@ -73,28 +71,57 @@ new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
 new MauiIcon().Icon(FluentIcons.Accounts).IconColor(Colors.Magenta);
 new MauiIcon().Icon(MaterialIcons.ABC).IconColor(Colors.Violet);
 ```
---------
 
 ### Xaml Extension Usage
 ```xml
 <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
-<Label Text="{mi:Cupertino Icon=Airplane}"/>
+<Label Text="{mi:Fluent Icon=Accounts}"/>
 ```
---------
+
 ### C# Markup Usage
 
 ```csharp
-new ImageButton().Icon(CupertinoIcons.AntFill),
+new ImageButton().Icon(FluentIcons.Accounts);
 
-new Image().Icon(CupertinoIcons.AntFill),
+new Image().Icon(CupertinoIcons.AntFill);
 
-new Label().Icon(CupertinoIcons.AntFill).IconSize(40.0).IconColor(Colors.Red),
+new Label().Icon(MaterialIcons.Home).IconSize(40.0).IconColor(Colors.Red);
 
-new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua),
+new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua);
+
+new SearchBar().Icon(MaterialIcons.ABC);
+```
+
+#### Applying Icon To Text or Placeholder
+Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
+Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
+
+```csharp
+new Entry().Icon(CupertinoIcons.AntFill, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
+
+new SearchBar().Icon(MaterialIcons.ABC, isPlaceHolder: false);
 ```
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
+
+### Animation Usage
+<img src="https://raw.githubusercontent.com/AathifMahir/MauiIcons/v2/images/MauiIcons_Animations.gif" alt="MauiIcons_logo" height=240 width=560>
+
+`Xaml`
+
+```xml
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}" EntranceAnimationType="Fade"/>
+<mi:MauiIcon Icon="{mi:material ABC}" EntranceAnimationType="Rotate" EntranceAnimationDuration="4000"/>
+<mi:MauiIcon Icon="{mi:fluent Accounts}" EntranceAnimationType="Scale"/>
+```
+
+`C#`
+```csharp
+new MauiIcon().Icon(CupertinoIcons.AntFill).EntranceAnimationType(AnimationType.Fade);
+new MauiIcon().Icon(FluentIcons.Accounts).EntranceAnimationType(AnimationType.Rotate);
+new MauiIcon().Icon(MaterialIcons.ABC).EntranceAnimationType(AnimationType.Scale).EntranceAnimationDuration(4000);
+```
 
 ### Breaking Changes from v2
 
