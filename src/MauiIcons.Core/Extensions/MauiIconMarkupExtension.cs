@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using MauiIcons.Core.Helpers;
+using System.Runtime.CompilerServices;
 
 namespace MauiIcons.Core;
 public static class MauiIconMarkupExtension
@@ -168,6 +169,64 @@ public static class MauiIconMarkupExtension
         if (IsMauiIconType(bindable))
         {
             bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, duration);
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets a value for platform that this should render.
+    /// </summary>
+    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform) where TPlatform : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable) && PlatformHelper.IsValidPlatform(platform))
+            return bindable;
+
+        else if(IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.IconProperty, null);
+            bindable.SetValue(MauiIcon.IconSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconColorProperty, null);
+            bindable.SetValue(MauiIcon.IconBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.IconSuffixProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontFamilyProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixTextColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.EntranceAnimationTypeProperty, null);
+            bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, null);
+            return bindable;
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets a value for Idiom that this should render.
+    /// </summary>
+    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom) where TIdiom : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable) && PlatformHelper.IsValidIdiom(idiom))
+            return bindable;
+
+        else if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.IconProperty, null);
+            bindable.SetValue(MauiIcon.IconSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconColorProperty, null);
+            bindable.SetValue(MauiIcon.IconBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.IconSuffixProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontFamilyProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixTextColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.EntranceAnimationTypeProperty, null);
+            bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, null);
+            return bindable;
         }
         return bindable;
     }
