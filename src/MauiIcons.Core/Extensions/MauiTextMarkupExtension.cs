@@ -5,7 +5,7 @@ namespace MauiIcons.Core;
 public static class MauiTextMarkupExtension
 {
     /// <summary>
-    /// Gets or sets the icon.
+    /// Sets the icon.
     /// </summary>
     public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, bool isPlaceHolder = true) where TIcon : BindableObject, IText
     {
@@ -62,7 +62,7 @@ public static class MauiTextMarkupExtension
     }
 
     /// <summary>
-    /// Gets or sets the size of the icon.
+    /// Sets the size of the icon.
     /// </summary>
 
     public static TSize IconSize<TSize>(this TSize bindable, double size, bool isPlaceHolder = true) where TSize : BindableObject, IText
@@ -102,7 +102,7 @@ public static class MauiTextMarkupExtension
     }
 
     /// <summary>
-    /// Gets or sets the color of the icon.
+    /// Sets the color of the icon.
     /// </summary>
     public static TColor IconColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
     {
@@ -149,7 +149,7 @@ public static class MauiTextMarkupExtension
     }
 
     /// <summary>
-    /// Gets or sets the background color of the icon.
+    /// Sets the background color of the icon.
     /// </summary>
     public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
     {
@@ -188,7 +188,7 @@ public static class MauiTextMarkupExtension
     }
 
     /// <summary>
-    /// Gets or sets a value indicating whether the icon should automatically scale.
+    /// Sets a value indicating whether the icon should automatically scale.
     /// </summary>
     public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value, bool isPlaceHolder = true) where TBool : BindableObject, IText
     {
@@ -223,6 +223,206 @@ public static class MauiTextMarkupExtension
             return bindable;
         }
         return ThrowCustomExpection<TBool>();
+    }
+
+    /// <summary>
+    /// Sets a value for platform that this should render.
+    /// </summary>
+    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform) where TPlatform : BindableObject, IText
+    {
+        if (bindable is ILabel && IsValidPlatform(platform))
+            return bindable;
+
+        else if(bindable is ILabel)
+        {
+            bindable.SetValue(Label.TextProperty, null);
+            bindable.SetValue(Label.FontFamilyProperty, null);
+            bindable.SetValue(Label.FontSizeProperty, null);
+            bindable.SetValue(Label.TextColorProperty, null);
+            bindable.SetValue(Label.BackgroundColorProperty, null);
+            bindable.SetValue(Label.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IButton && IsValidPlatform(platform)) 
+            return bindable;
+
+        else if(bindable is IButton)
+        {
+            bindable.SetValue(Button.TextProperty, null);
+            bindable.SetValue(Button.FontFamilyProperty, null);
+            bindable.SetValue(Button.FontSizeProperty, null);
+            bindable.SetValue(Button.TextColorProperty, null);
+            bindable.SetValue(Button.BackgroundColorProperty, null);
+            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is Span && IsValidPlatform(platform))
+            return bindable;
+
+        else if(bindable is Span)
+        {
+            bindable.SetValue(Span.TextProperty, null);
+            bindable.SetValue(Span.FontFamilyProperty, null);
+            bindable.SetValue(Span.FontSizeProperty, null);
+            bindable.SetValue(Span.TextColorProperty, null);
+            bindable.SetValue(Span.BackgroundColorProperty, null);
+            bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
+        }
+        if (bindable is IEntry && IsValidPlatform(platform))
+            return bindable;
+
+        else if(bindable is IEntry)
+        {
+            bindable.SetValue(Entry.TextProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.FontFamilyProperty, null);
+            bindable.SetValue(Entry.FontSizeProperty, null);
+            bindable.SetValue(Entry.TextColorProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.BackgroundColorProperty, null);
+            bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
+        }
+        if (bindable is ISearchBar && IsValidPlatform(platform))
+            return bindable;
+
+        else if(bindable is ISearchBar)
+        {
+            bindable.SetValue(SearchBar.TextProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.FontFamilyProperty, null);
+            bindable.SetValue(SearchBar.FontSizeProperty, null);
+            bindable.SetValue(SearchBar.TextColorProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.BackgroundColorProperty, null);
+            bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
+
+        }
+        if (bindable is IEditor && IsValidPlatform(platform))
+            return bindable;
+
+        else if(bindable is IEditor)
+        {
+            bindable.SetValue(Editor.TextProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.FontFamilyProperty, null);
+            bindable.SetValue(Editor.FontSizeProperty, null);
+            bindable.SetValue(Editor.TextColorProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.BackgroundColorProperty, null);
+            bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
+        }
+        return ThrowCustomExpection<TPlatform>();
+    }
+
+    /// <summary>
+    /// Sets a value for Idiom that this should render.
+    /// </summary>
+    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom) where TIdiom : BindableObject, IText
+    {
+        if (bindable is ILabel && IsValidIdiom(idiom))
+            return bindable;
+
+        else if (bindable is ILabel)
+        {
+            bindable.SetValue(Label.TextProperty, null);
+            bindable.SetValue(Label.FontFamilyProperty, null);
+            bindable.SetValue(Label.FontSizeProperty, null);
+            bindable.SetValue(Label.TextColorProperty, null);
+            bindable.SetValue(Label.BackgroundColorProperty, null);
+            bindable.SetValue(Label.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IButton && IsValidIdiom(idiom))
+            return bindable;
+
+        else if (bindable is IButton)
+        {
+            bindable.SetValue(Button.TextProperty, null);
+            bindable.SetValue(Button.FontFamilyProperty, null);
+            bindable.SetValue(Button.FontSizeProperty, null);
+            bindable.SetValue(Button.TextColorProperty, null);
+            bindable.SetValue(Button.BackgroundColorProperty, null);
+            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is Span && IsValidIdiom(idiom))
+            return bindable;
+
+        else if (bindable is Span)
+        {
+            bindable.SetValue(Span.TextProperty, null);
+            bindable.SetValue(Span.FontFamilyProperty, null);
+            bindable.SetValue(Span.FontSizeProperty, null);
+            bindable.SetValue(Span.TextColorProperty, null);
+            bindable.SetValue(Span.BackgroundColorProperty, null);
+            bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
+        }
+        if (bindable is IEntry && IsValidIdiom(idiom))
+            return bindable;
+
+        else if (bindable is IEntry)
+        {
+            bindable.SetValue(Entry.TextProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.FontFamilyProperty, null);
+            bindable.SetValue(Entry.FontSizeProperty, null);
+            bindable.SetValue(Entry.TextColorProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.BackgroundColorProperty, null);
+            bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
+        }
+        if (bindable is ISearchBar && IsValidIdiom(idiom))
+            return bindable;
+
+        else if (bindable is ISearchBar)
+        {
+            bindable.SetValue(SearchBar.TextProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.FontFamilyProperty, null);
+            bindable.SetValue(SearchBar.FontSizeProperty, null);
+            bindable.SetValue(SearchBar.TextColorProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.BackgroundColorProperty, null);
+            bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
+
+        }
+        if (bindable is IEditor && IsValidIdiom(idiom))
+            return bindable;
+
+        else if (bindable is IEditor)
+        {
+            bindable.SetValue(Editor.TextProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.FontFamilyProperty, null);
+            bindable.SetValue(Editor.FontSizeProperty, null);
+            bindable.SetValue(Editor.TextColorProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.BackgroundColorProperty, null);
+            bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
+        }
+        return ThrowCustomExpection<TIdiom>();
+    }
+
+    static bool IsValidPlatform(PlatformType platform)
+    {
+        var devicePlatform = DeviceInfo.Platform;
+        var currentPlatform = Constants.PlatformMapping.ContainsKey(devicePlatform) ? Constants.PlatformMapping[devicePlatform] : PlatformType.All;
+
+        if (platform is PlatformType.All || currentPlatform == platform)
+            return true;
+
+        return false;
+    }
+
+    static bool IsValidIdiom(IdiomType idiom)
+    {
+        var deviceIdiom = DeviceInfo.Idiom;
+        var currentIdiom = Constants.IdiomMapping.ContainsKey(deviceIdiom) ? Constants.IdiomMapping[deviceIdiom] : IdiomType.All;
+
+        if (idiom is IdiomType.All || currentIdiom == idiom)
+            return true;
+
+        return false;
     }
 
     static TType ThrowCustomExpection<TType>()
