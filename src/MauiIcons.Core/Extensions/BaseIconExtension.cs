@@ -13,7 +13,9 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
 
     [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
     public double IconSize { get; set; } = DefaultIconSize;
-    public bool IconAutoScaling { get; set; }
+    public bool IconAutoScaling { get; set; } = false;
+    public PlatformType OnPlatform { get; set; } = PlatformType.All;
+    public IdiomType OnIdiom { get; set; } = IdiomType.All;
 
     const double DefaultIconSize = 30.0;
     public object ProvideValue(IServiceProvider serviceProvider)
@@ -21,19 +23,38 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         Type returnType = (provideValueTarget.TargetProperty as BindableProperty)?.ReturnType;
 
+        return AssignOnPlatformAndIdiom(provideValueTarget.TargetObject, returnType);
+    }
+
+    object AssignOnPlatformAndIdiom(object targetObject, Type returnType)
+    {
+        var devicePlatform = DeviceInfo.Platform;
+        var deviceIdiom = DeviceInfo.Idiom;
+        var currentPlatform = Constants.PlatformMapping.ContainsKey(devicePlatform) ? Constants.PlatformMapping[devicePlatform] : PlatformType.All;
+        var currentIdiom = Constants.IdiomMapping.ContainsKey(deviceIdiom) ? Constants.IdiomMapping[deviceIdiom] : IdiomType.All;
+
+        if ((OnPlatform is PlatformType.All || currentPlatform == OnPlatform) &&
+        (OnIdiom is IdiomType.All || currentIdiom == OnIdiom))
+            return AssignIconsBasedOnType(targetObject, returnType);
+
+        return null;
+    }
+
+    object AssignIconsBasedOnType(object targetObject, Type returnType)
+    {
         if (returnType == typeof(Enum))
-        {
-            return AssignMauiIconProperties(provideValueTarget.TargetObject);
-        }
+            return AssignMauiIconProperties(targetObject);
+
         if (returnType == typeof(string))
-        {
-            return AssignFontProperties(provideValueTarget.TargetObject);
-        }
+            return AssignFontProperties(targetObject);
+
         if (returnType == typeof(ImageSource) || returnType == typeof(FontImageSource))
-        {
             return AssignFontImageSource();
-        }
-        throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support {returnType}");
+
+        if (returnType is null && targetObject is On)
+            throw new MauiIconsExpection("OnPlatform and OnIdiom is Built into MauiIcons, Therefore Set OnPlatform or OnIdiom Using Built in Properties");
+
+        throw new MauiIconsExpection($"Maui Icon Extension Does Not Provide {returnType} Support");
     }
 
     string AssignFontProperties(object targetObject)
@@ -42,45 +63,52 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         {
             case Button button:
                 button.FontFamily = Icon.GetFontFamily();
-                button.TextColor = IconColor.SetDefaultOrAssignedColor();
-                button.BackgroundColor = IconBackgroundColor;
+                button.TextColor = IconColor.SetDefaultOrAssignedColor(button.TextColor);
+                button.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(button.BackgroundColor);
                 button.FontSize = IconSize;
                 button.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Label label:
                 label.FontFamily = Icon.GetFontFamily();
-                label.TextColor = IconColor.SetDefaultOrAssignedColor();
-                label.BackgroundColor = IconBackgroundColor;
+                label.TextColor = IconColor.SetDefaultOrAssignedColor(label.TextColor);
+                label.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(label.BackgroundColor);
                 label.FontSize = IconSize;
                 label.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Span span:
                 span.FontFamily = Icon.GetFontFamily();
-                span.TextColor = IconColor.SetDefaultOrAssignedColor();
-                span.BackgroundColor = IconBackgroundColor;
+                span.TextColor = IconColor.SetDefaultOrAssignedColor(span.TextColor);
+                span.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(span.BackgroundColor);
                 span.FontSize = IconSize;
                 span.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Entry entry:
                 entry.FontFamily = Icon.GetFontFamily();
-                entry.TextColor = IconColor.SetDefaultOrAssignedColor();
-                entry.BackgroundColor = IconBackgroundColor;
+                entry.TextColor = IconColor.SetDefaultOrAssignedColor(entry.TextColor);
+                entry.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(entry.BackgroundColor);
                 entry.FontSize = IconSize;
                 entry.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case Editor editor:
                 editor.FontFamily = Icon.GetFontFamily();
-                editor.TextColor = IconColor.SetDefaultOrAssignedColor();
-                editor.BackgroundColor = IconBackgroundColor;
+                editor.TextColor = IconColor.SetDefaultOrAssignedColor(editor.TextColor);
+                editor.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(editor.BackgroundColor);
                 editor.FontSize = IconSize;
                 editor.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             case SearchBar searchBar:
                 searchBar.FontFamily = Icon.GetFontFamily();
-                searchBar.TextColor = IconColor.SetDefaultOrAssignedColor();
-                searchBar.BackgroundColor = IconBackgroundColor;
+                searchBar.TextColor = IconColor.SetDefaultOrAssignedColor(searchBar.TextColor);
+                searchBar.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(searchBar.BackgroundColor);
                 searchBar.FontSize = IconSize;
                 searchBar.FontAutoScalingEnabled = IconAutoScaling;
+                break;
+            case MauiIcon mauiIcon:
+                mauiIcon.Icon = Icon;
+                mauiIcon.IconColor = IconColor.SetDefaultOrAssignedColor(mauiIcon.IconColor);
+                mauiIcon.IconBackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(mauiIcon.IconBackgroundColor);
+                mauiIcon.IconSize = IconSize;
+                mauiIcon.IconAutoScaling = IconAutoScaling;
                 break;
             default:
                 throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
