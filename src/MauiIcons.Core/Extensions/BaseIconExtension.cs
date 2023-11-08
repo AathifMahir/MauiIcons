@@ -23,19 +23,8 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         Type returnType = (provideValueTarget.TargetProperty as BindableProperty)?.ReturnType;
 
-        return AssignOnPlatformAndIdiom(provideValueTarget.TargetObject, returnType);
-    }
-
-    object AssignOnPlatformAndIdiom(object targetObject, Type returnType)
-    {
-        var devicePlatform = DeviceInfo.Platform;
-        var deviceIdiom = DeviceInfo.Idiom;
-        var currentPlatform = Constants.PlatformMapping.ContainsKey(devicePlatform) ? Constants.PlatformMapping[devicePlatform] : PlatformType.All;
-        var currentIdiom = Constants.IdiomMapping.ContainsKey(deviceIdiom) ? Constants.IdiomMapping[deviceIdiom] : IdiomType.All;
-
-        if ((OnPlatform is PlatformType.All || currentPlatform == OnPlatform) &&
-        (OnIdiom is IdiomType.All || currentIdiom == OnIdiom))
-            return AssignIconsBasedOnType(targetObject, returnType);
+        if (PlatformHelper.IsValidPlatformAndIdiom(OnPlatform, OnIdiom))
+            return AssignIconsBasedOnType(provideValueTarget.TargetObject, returnType);
 
         return null;
     }
