@@ -7,8 +7,8 @@ public sealed class MauiIcon : ContentView, IMauiIcon
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(Enum), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MauiIcon), 30.0);
-    public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(MauiIcon), ThemeHelper.SetThemeAwareIconColor());
-    public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(MauiIcon), Colors.Transparent);
+    public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(MauiIcon), null);
     public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(MauiIcon), false);
     public static readonly BindableProperty IconSuffixProperty = BindableProperty.Create(nameof(IconSuffix), typeof(string), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixFontFamilyProperty = BindableProperty.Create(nameof(IconSuffixFontFamily), typeof(string), typeof(MauiIcon), null);
@@ -19,7 +19,7 @@ public sealed class MauiIcon : ContentView, IMauiIcon
     public static readonly BindableProperty IconSuffixAutoScalingProperty = BindableProperty.Create(nameof(IconSuffixAutoScaling), typeof(bool), typeof(MauiIcon), false);
     public static readonly BindableProperty EntranceAnimationTypeProperty = BindableProperty.Create(nameof(EntranceAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None);
     public static readonly BindableProperty EntranceAnimationDurationProperty = BindableProperty.Create(nameof(EntranceAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
-    
+
 
 #nullable enable
     public Enum? Icon
@@ -204,14 +204,18 @@ public sealed class MauiIcon : ContentView, IMauiIcon
         return label;
     }
 
-    public static explicit operator Button(MauiIcon mi) => new()
+    public static explicit operator Button(MauiIcon mi)
     {
-        Text = mi.Icon.GetDescription(),
-        TextColor = mi.IconColor.SetDefaultOrAssignedColor(),
-        FontFamily = mi.Icon.GetFontFamily(),
-        BackgroundColor = mi.IconBackgroundColor,
-        FontSize = mi.IconSize,
-        FontAutoScalingEnabled = mi.IconAutoScaling,
-    };
+        var button = new Button
+        {
+            Text = mi.Icon.GetDescription(),
+            FontFamily = mi.Icon.GetFontFamily(),
+            FontSize = mi.IconSize,
+            FontAutoScalingEnabled = mi.IconAutoScaling
+        };
+        button.TextColor = mi.IconColor.SetDefaultOrAssignedColor(button.TextColor);
+        button.BackgroundColor = mi.IconBackgroundColor.SetDefaultOrAssignedColor(button.BackgroundColor);
+        return button;
+    }
 
 }
