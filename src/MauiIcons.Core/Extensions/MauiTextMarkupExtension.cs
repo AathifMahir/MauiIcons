@@ -228,9 +228,9 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets a value for platform that this should render.
     /// </summary>
-    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform) where TPlatform : BindableObject, IText
+    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform, bool isPlaceHolder = true) where TPlatform : BindableObject, IText
     {
-        if (bindable is ILabel && IsValidPlatform(platform))
+        if (bindable is ILabel && PlatformHelper.IsValidPlatform(platform))
             return bindable;
 
         else if(bindable is ILabel)
@@ -243,7 +243,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Label.FontAutoScalingEnabledProperty, false);
             return bindable;
         }
-        if (bindable is IButton && IsValidPlatform(platform)) 
+        if (bindable is IButton && PlatformHelper.IsValidPlatform(platform)) 
             return bindable;
 
         else if(bindable is IButton)
@@ -256,7 +256,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
             return bindable;
         }
-        if (bindable is Span && IsValidPlatform(platform))
+        if (bindable is Span && PlatformHelper.IsValidPlatform(platform))
             return bindable;
 
         else if(bindable is Span)
@@ -268,7 +268,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Span.BackgroundColorProperty, null);
             bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
         }
-        if (bindable is IEntry && IsValidPlatform(platform))
+        if (bindable is IEntry && PlatformHelper.IsValidPlatform(platform))
             return bindable;
 
         else if(bindable is IEntry)
@@ -282,7 +282,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Entry.BackgroundColorProperty, null);
             bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
         }
-        if (bindable is ISearchBar && IsValidPlatform(platform))
+        if (bindable is ISearchBar && PlatformHelper.IsValidPlatform(platform))
             return bindable;
 
         else if(bindable is ISearchBar)
@@ -297,7 +297,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
 
         }
-        if (bindable is IEditor && IsValidPlatform(platform))
+        if (bindable is IEditor && PlatformHelper.IsValidPlatform(platform))
             return bindable;
 
         else if(bindable is IEditor)
@@ -317,9 +317,9 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets a value for Idiom that this should render.
     /// </summary>
-    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom) where TIdiom : BindableObject, IText
+    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom, bool isPlaceHolder = true) where TIdiom : BindableObject, IText
     {
-        if (bindable is ILabel && IsValidIdiom(idiom))
+        if (bindable is ILabel && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
 
         else if (bindable is ILabel)
@@ -332,7 +332,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Label.FontAutoScalingEnabledProperty, false);
             return bindable;
         }
-        if (bindable is IButton && IsValidIdiom(idiom))
+        if (bindable is IButton && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
 
         else if (bindable is IButton)
@@ -345,7 +345,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
             return bindable;
         }
-        if (bindable is Span && IsValidIdiom(idiom))
+        if (bindable is Span && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
 
         else if (bindable is Span)
@@ -357,7 +357,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Span.BackgroundColorProperty, null);
             bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
         }
-        if (bindable is IEntry && IsValidIdiom(idiom))
+        if (bindable is IEntry && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
 
         else if (bindable is IEntry)
@@ -371,7 +371,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Entry.BackgroundColorProperty, null);
             bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
         }
-        if (bindable is ISearchBar && IsValidIdiom(idiom))
+        if (bindable is ISearchBar && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
 
         else if (bindable is ISearchBar)
@@ -386,7 +386,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
 
         }
-        if (bindable is IEditor && IsValidIdiom(idiom))
+        if (bindable is IEditor && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
 
         else if (bindable is IEditor)
@@ -401,28 +401,6 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
         }
         return ThrowCustomExpection<TIdiom>();
-    }
-
-    static bool IsValidPlatform(PlatformType platform)
-    {
-        var devicePlatform = DeviceInfo.Platform;
-        var currentPlatform = Constants.PlatformMapping.ContainsKey(devicePlatform) ? Constants.PlatformMapping[devicePlatform] : PlatformType.All;
-
-        if (platform is PlatformType.All || currentPlatform == platform)
-            return true;
-
-        return false;
-    }
-
-    static bool IsValidIdiom(IdiomType idiom)
-    {
-        var deviceIdiom = DeviceInfo.Idiom;
-        var currentIdiom = Constants.IdiomMapping.ContainsKey(deviceIdiom) ? Constants.IdiomMapping[deviceIdiom] : IdiomType.All;
-
-        if (idiom is IdiomType.All || currentIdiom == idiom)
-            return true;
-
-        return false;
     }
 
     static TType ThrowCustomExpection<TType>()
