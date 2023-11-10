@@ -267,6 +267,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Span.TextColorProperty, null);
             bindable.SetValue(Span.BackgroundColorProperty, null);
             bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
+            return bindable;
         }
         if (bindable is IEntry && PlatformHelper.IsValidPlatform(platform))
             return bindable;
@@ -281,6 +282,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Entry.PlaceholderProperty, null);
             bindable.SetValue(Entry.BackgroundColorProperty, null);
             bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
+            return bindable;
         }
         if (bindable is ISearchBar && PlatformHelper.IsValidPlatform(platform))
             return bindable;
@@ -295,6 +297,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(SearchBar.PlaceholderProperty, null);
             bindable.SetValue(SearchBar.BackgroundColorProperty, null);
             bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
+            return bindable;
 
         }
         if (bindable is IEditor && PlatformHelper.IsValidPlatform(platform))
@@ -310,6 +313,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Editor.PlaceholderProperty, null);
             bindable.SetValue(Editor.BackgroundColorProperty, null);
             bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
+            return bindable;
         }
         return ThrowCustomExpection<TPlatform>();
     }
@@ -356,6 +360,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Span.TextColorProperty, null);
             bindable.SetValue(Span.BackgroundColorProperty, null);
             bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
+            return bindable;
         }
         if (bindable is IEntry && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
@@ -370,6 +375,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Entry.PlaceholderProperty, null);
             bindable.SetValue(Entry.BackgroundColorProperty, null);
             bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
+            return bindable;
         }
         if (bindable is ISearchBar && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
@@ -384,7 +390,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(SearchBar.PlaceholderProperty, null);
             bindable.SetValue(SearchBar.BackgroundColorProperty, null);
             bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
-
+            return bindable;
         }
         if (bindable is IEditor && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
@@ -399,6 +405,7 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Editor.PlaceholderProperty, null);
             bindable.SetValue(Editor.BackgroundColorProperty, null);
             bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
+            return bindable;
         }
         return ThrowCustomExpection<TIdiom>();
     }
