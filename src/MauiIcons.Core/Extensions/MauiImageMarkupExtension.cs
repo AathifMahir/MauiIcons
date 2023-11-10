@@ -113,7 +113,7 @@ public static class MauiImageMarkupExtension
     /// <summary>
     /// Sets a value for platform that this should render.
     /// </summary>
-    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform) where TPlatform : BindableObject, IText
+    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform) where TPlatform : BindableObject, IImage
     {
         if (bindable is Button && PlatformHelper.IsValidPlatform(platform))
             return bindable;
@@ -143,7 +143,7 @@ public static class MauiImageMarkupExtension
     /// <summary>
     /// Sets a value for Idiom that this should render.
     /// </summary>
-    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom) where TIdiom : BindableObject, IText
+    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom) where TIdiom : BindableObject, IImage
     {
         if (bindable is Button && PlatformHelper.IsValidIdiom(idiom))
             return bindable;
