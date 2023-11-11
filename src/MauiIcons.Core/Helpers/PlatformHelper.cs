@@ -67,10 +67,10 @@ internal static class PlatformHelper
             if (i <= indexMin && platforms[i].Contains(DeviceInfo.Platform.ToString()) && idioms[i].Contains(DeviceInfo.Idiom.ToString()))
                 return true;
 
-            if (i < platforms.Count && platforms[i].Contains(DeviceInfo.Platform.ToString()))
+            if (i <= platforms.Count && platforms[i].Contains(DeviceInfo.Platform.ToString()))
                 return true;
 
-            if (i < idioms.Count && idioms[i].Contains(DeviceInfo.Idiom.ToString()))
+            if (i <= idioms.Count && idioms[i].Contains(DeviceInfo.Idiom.ToString()))
                 return true;
         }
         return false;
