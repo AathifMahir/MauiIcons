@@ -12,6 +12,16 @@ internal static class PlatformHelper
         return false;
     }
 
+    public static bool IsValidPlatform(IList<string> platforms)
+    {
+        foreach(var value in platforms)
+        {
+            if (value.Contains(DeviceInfo.Platform.ToString()))
+                return true;
+        }
+        return false;
+    }
+
     public static bool IsValidIdiom(IdiomType idiom)
     {
         var deviceIdiom = DeviceInfo.Idiom;
@@ -20,6 +30,16 @@ internal static class PlatformHelper
         if (idiom is IdiomType.All || currentIdiom == idiom)
             return true;
 
+        return false;
+    }
+
+    public static bool IsValidIdiom(IList<string> idioms)
+    {
+        foreach (var value in idioms)
+        {
+            if (value.Contains(DeviceInfo.Idiom.ToString()))
+                return true;
+        }
         return false;
     }
 
@@ -34,6 +54,25 @@ internal static class PlatformHelper
         (idiom is IdiomType.All || currentIdiom == idiom))
             return true;
 
+        return false;
+    }
+
+    public static bool IsValidPlatformAndIdiom(IList<string> platforms, IList<string> idioms)
+    {
+        int indexMin = Math.Min(platforms.Count, idioms.Count);
+        int indexMax = Math.Max(platforms.Count, idioms.Count);
+
+        for (int i = 0; i < indexMax; i++)
+        {
+            if (i <= indexMin && platforms[i].Contains(DeviceInfo.Platform.ToString()) && idioms[i].Contains(DeviceInfo.Idiom.ToString()))
+                return true;
+
+            if (i < platforms.Count && platforms[i].Contains(DeviceInfo.Platform.ToString()))
+                return true;
+
+            if (i < idioms.Count && idioms[i].Contains(DeviceInfo.Idiom.ToString()))
+                return true;
+        }
         return false;
     }
 }
