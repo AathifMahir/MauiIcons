@@ -20,7 +20,10 @@ public class MarkupPage : ContentPage
     private void AddMarkup()
     {
         Label label;
-        label = (Label)new MauiIcon().Icon(FluentFilledIcons.Alert28Filled).IconSuffix("Label Test").IconColor(Colors.Magenta).EntranceAnimationType(AnimationType.Rotate);
+        label = (Label)new MauiIcon().Icon(FluentFilledIcons.Alert28Filled).IconSuffix("Label Test").EntranceAnimationType(AnimationType.Rotate);
+        Button button = (Button)new MauiIcon().Icon(FluentFilledIcons.Apps20Filled).IconSuffix("Test Button").IconSuffixFontSize(15);
+        Image image;
+        image = (Image)new MauiIcon().Icon(FluentFilledIcons.Apps20Filled).IconSuffix("Test Button").IconSuffixFontSize(15);
         Content = new VerticalStackLayout()
         {
             HorizontalOptions = LayoutOptions.Center,
@@ -33,23 +36,25 @@ public class MarkupPage : ContentPage
                     Spacing = 15,
                     Children =
                     {
-                         new MauiIcon().Icon(FluentFilledIcons.Accessibility48Filled).IconColor(Colors.Cyan),
+                         new MauiIcon().Icon(FluentFilledIcons.Accessibility48Filled).IconColor(Colors.Cyan).OnIdiom(IdiomType.Phone).OnPlatform(PlatformType.WinUI),
                          new MauiIcon().Icon(FluentFilledIcons.Accessibility48Filled).IconColor(Colors.Green),
                          new MauiIcon().Icon(MaterialIcons.Accessibility).IconColor(Colors.Blue),
                          new MauiIcon().Icon(MaterialRoundedIcons.Accessibility).IconColor(Colors.Yellow),
                          new MauiIcon().Icon(MaterialOutlinedIcons.Accessibility).IconColor(Colors.Magenta),
                          new MauiIcon().Icon(MaterialSharpIcons.Accessibility).IconColor(Colors.Violet),
                          new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple).IconSuffix("Background Color").IconSuffixTextColor(Colors.Purple).IconSuffixBackgroundColor(Colors.Green).IconBackgroundColor(Colors.Yellow).IconAndSuffixBackgroundColor(Colors.White),
-                         new ImageButton().Icon(MaterialOutlinedIcons.SmokingRooms),
+                         new ImageButton().Icon(MaterialOutlinedIcons.SmokingRooms).OnIdiom(IdiomType.Desktop).OnPlatform(PlatformType.WinUI),
+                         new Image().Icon(FluentIcons.Accessibility24).IconColor(Colors.Pink).IconSize(50.0).OnIdiom(IdiomType.Desktop).OnPlatforms(new List<string>(){ "Android", "WinUI"}),
                          new Image().Icon(FluentIcons.Accessibility24),
-                         new Image().Icon(FluentIcons.Accessibility24).IconColor(Colors.Blue),
-                         new Image().Icon(MaterialIcons.AccessAlarm).IconSize(40.0).IconColor(Colors.Cyan).IconBackgroundColor(Colors.White),
-                         new Label().Icon(FluentIcons.Accessibility24).IconSize(40.0).IconColor(Colors.Red),
-                         label,
-                         new Entry().Icon(FluentIcons.Airplane20).IconSize(20.0).IconColor(Colors.Aqua),
-                         new Button().Icon(CupertinoIcons.Alarm).IconSize(30).BackgroundColor(default),
+                         new Image().Icon(MaterialIcons.AccessAlarm).IconSize(40.0),
+                         new Label().Icon(FluentIcons.Accessibility24).IconSize(40.0),
+                         new Entry().Icon(FluentIcons.Airplane20).IconSize(20.0),
+                         new Button().Icon(CupertinoIcons.Alarm).IconSize(30),
                          new Button().Text("Test"),
-
+                         label,
+                         button,
+                         image,
+                         new Label().Icon(FluentIcons.Accessibility24).IconSize(40.0).IconColor(Colors.Pink).OnIdiom(IdiomType.Desktop).OnPlatform(PlatformType.WinUI),
                     }
                 }
             }
