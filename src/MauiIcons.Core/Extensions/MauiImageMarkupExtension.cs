@@ -170,6 +170,66 @@ public static class MauiImageMarkupExtension
         return ThrowCustomExpection<TIdiom>();
     }
 
+    /// <summary>
+    /// Sets a value for multiple platforms that this should render.
+    /// </summary>
+    public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms) where TPlatform : BindableObject, IImage
+    {
+        if (bindable is Button && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is Button)
+        {
+            bindable.SetValue(Button.TextProperty, null);
+            bindable.SetValue(Button.FontFamilyProperty, null);
+            bindable.SetValue(Button.FontSizeProperty, null);
+            bindable.SetValue(Button.TextColorProperty, null);
+            bindable.SetValue(Button.BackgroundColorProperty, null);
+            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IImage && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is IImage)
+        {
+            bindable.SetValue(Image.SourceProperty, null);
+            bindable.SetValue(Image.BackgroundColorProperty, null);
+            return bindable;
+        }
+        return ThrowCustomExpection<TPlatform>();
+    }
+
+    /// <summary>
+    /// Sets a value for multiple Idioms that this should render.
+    /// </summary>
+    public static TIdiom OnIdioms<TIdiom>(this TIdiom bindable, IList<string> idioms) where TIdiom : BindableObject, IImage
+    {
+        if (bindable is Button && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is Button)
+        {
+            bindable.SetValue(Button.TextProperty, null);
+            bindable.SetValue(Button.FontFamilyProperty, null);
+            bindable.SetValue(Button.FontSizeProperty, null);
+            bindable.SetValue(Button.TextColorProperty, null);
+            bindable.SetValue(Button.BackgroundColorProperty, null);
+            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IImage && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is IImage)
+        {
+            bindable.SetValue(Image.SourceProperty, null);
+            bindable.SetValue(Image.BackgroundColorProperty, null);
+            return bindable;
+        }
+        return ThrowCustomExpection<TIdiom>();
+    }
+
     static TType ThrowCustomExpection<TType>()
     {
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);

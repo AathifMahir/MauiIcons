@@ -231,6 +231,64 @@ public static class MauiIconMarkupExtension
         return bindable;
     }
 
+    /// <summary>
+    /// Sets a value for multiple platforms that this should render.
+    /// </summary>
+    public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms) where TPlatform : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable) && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.IconProperty, null);
+            bindable.SetValue(MauiIcon.IconSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconColorProperty, null);
+            bindable.SetValue(MauiIcon.IconBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.IconSuffixProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontFamilyProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixTextColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.EntranceAnimationTypeProperty, null);
+            bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, null);
+            return bindable;
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets a value for multiple Idioms that this should render.
+    /// </summary>
+    public static TIdiom OnIdioms<TIdiom>(this TIdiom bindable, IList<string> idioms) where TIdiom : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable) && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.IconProperty, null);
+            bindable.SetValue(MauiIcon.IconSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconColorProperty, null);
+            bindable.SetValue(MauiIcon.IconBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.IconSuffixProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontFamilyProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixFontSizeProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixTextColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, null);
+            bindable.SetValue(MauiIcon.IconSuffixAutoScalingProperty, false);
+            bindable.SetValue(MauiIcon.EntranceAnimationTypeProperty, null);
+            bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, null);
+            return bindable;
+        }
+        return bindable;
+    }
+
     static bool IsMauiIconType<TType>(TType bindable) where TType : BindableObject, IMauiIcon
     {
         if (bindable is IMauiIcon) return true;

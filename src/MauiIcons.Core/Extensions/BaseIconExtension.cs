@@ -15,7 +15,14 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
     public double IconSize { get; set; } = DefaultIconSize;
     public bool IconAutoScaling { get; set; } = false;
     public PlatformType OnPlatform { get; set; } = PlatformType.All;
+
+    [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
+    public IList<string> OnPlatforms { get; set; } = new List<string>();
     public IdiomType OnIdiom { get; set; } = IdiomType.All;
+
+    [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
+    public IList<string> OnIdioms { get; set; } = new List<string>();
+    public Type TypeArgument { get; set; }
 
     const double DefaultIconSize = 30.0;
     public object ProvideValue(IServiceProvider serviceProvider)
@@ -23,9 +30,13 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         Type returnType = (provideValueTarget.TargetProperty as BindableProperty)?.ReturnType;
 
-        if (PlatformHelper.IsValidPlatformAndIdiom(OnPlatform, OnIdiom))
+        if ((OnPlatforms.Any() && OnIdioms.Any() && PlatformHelper.IsValidPlatformAndIdiom(OnPlatforms, OnIdioms)) ||
+            (OnPlatforms.Any() && PlatformHelper.IsValidPlatform(OnPlatforms) && PlatformHelper.IsValidIdiom(OnIdiom)) ||
+            (OnIdioms.Any() && PlatformHelper.IsValidIdiom(OnIdioms) && PlatformHelper.IsValidPlatform(OnPlatform)) ||
+            PlatformHelper.IsValidPlatformAndIdiom(OnPlatform, OnIdiom))
+        {
             return AssignIconsBasedOnType(provideValueTarget.TargetObject, returnType);
-
+        }
         return null;
     }
 
@@ -40,10 +51,18 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         if (returnType == typeof(ImageSource) || returnType == typeof(FontImageSource))
             return AssignFontImageSource();
 
-        if (returnType is null && targetObject is On)
-            throw new MauiIconsExpection("OnPlatform and OnIdiom is Built into MauiIcons, Therefore Set OnPlatform or OnIdiom Using Built in Properties");
+        if (returnType is null && (targetObject is On || targetObject is OnPlatform<ImageSource>
+            || targetObject is OnPlatform<FontImageSource> || targetObject is OnPlatformExtension 
+            || targetObject is OnIdiom<ImageSource> || targetObject is OnIdiom<FontImageSource> 
+            || targetObject is OnIdiomExtension) && 
+            (TypeArgument == typeof(ImageSource) || TypeArgument == typeof(FontImageSource)))
+            return AssignFontImageSource();
 
-        throw new MauiIconsExpection($"Maui Icon Extension Does Not Provide {returnType} Support");
+        else if(returnType is null && targetObject is On && (TypeArgument is null || TypeArgument != typeof(ImageSource) || TypeArgument != typeof(FontImageSource)))
+            throw new MauiIconsExpection("MauiIcons only supports ImageSource or FontImageSource in conjunction with OnPlatform and OnIdiom After Assigning TypeArgument." +
+                "it is recommended to utilize MauiIcon's integrated OnPlatform or OnIdiom functionalities for optimal compatibility.");
+
+        throw new MauiIconsExpection($"MauiIcons extension does not provide {returnType} support");
     }
 
     string AssignFontProperties(object targetObject)
@@ -103,6 +122,57 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
                 throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
         }
         return Icon.GetDescription();
+    }
+
+    object RemoveTheControl(object targetObject)
+    {
+        switch (targetObject)
+        {
+            case Button button:
+                button.FontFamily = Icon.GetFontFamily();
+                button.TextColor = IconColor.SetDefaultOrAssignedColor(button.TextColor);
+                button.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(button.BackgroundColor);
+                button.FontSize = IconSize;
+                button.FontAutoScalingEnabled = IconAutoScaling;
+                break;
+            case Label label:
+                label.FontFamily = Icon.GetFontFamily();
+                label.TextColor = IconColor.SetDefaultOrAssignedColor(label.TextColor);
+                label.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(label.BackgroundColor);
+                label.FontSize = IconSize;
+                label.FontAutoScalingEnabled = IconAutoScaling;
+                break;
+            case Span span:
+                span.FontFamily = Icon.GetFontFamily();
+                span.TextColor = IconColor.SetDefaultOrAssignedColor(span.TextColor);
+                span.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(span.BackgroundColor);
+                span.FontSize = IconSize;
+                span.FontAutoScalingEnabled = IconAutoScaling;
+                break;
+            case Entry entry:
+                entry.FontFamily = null;
+                entry.TextColor = null;
+                entry.BackgroundColor = null;
+                break;
+            case Editor editor:
+                editor.FontFamily = null;
+                editor.TextColor = null;
+                editor.BackgroundColor = null;
+                break;
+            case SearchBar searchBar:
+                searchBar.FontFamily = null;
+                searchBar.TextColor = null;
+                searchBar.BackgroundColor = null;
+                break;
+            case MauiIcon mauiIcon:
+                mauiIcon.Icon = null;
+                mauiIcon.IconColor = null;
+                mauiIcon.IconBackgroundColor = null;
+                break;
+            default:
+                throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
+        }
+        return null;
     }
 
     FontImageSource AssignFontImageSource() => new()

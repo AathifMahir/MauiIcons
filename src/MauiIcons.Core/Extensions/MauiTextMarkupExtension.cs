@@ -410,6 +410,191 @@ public static class MauiTextMarkupExtension
         return ThrowCustomExpection<TIdiom>();
     }
 
+    /// <summary>
+    /// Sets a value for multiple platforms that this should render.
+    /// </summary>
+    public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms, bool isPlaceHolder = true) where TPlatform : BindableObject, IText
+    {
+        if (bindable is ILabel && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is ILabel)
+        {
+            bindable.SetValue(Label.TextProperty, null);
+            bindable.SetValue(Label.FontFamilyProperty, null);
+            bindable.SetValue(Label.FontSizeProperty, null);
+            bindable.SetValue(Label.TextColorProperty, null);
+            bindable.SetValue(Label.BackgroundColorProperty, null);
+            bindable.SetValue(Label.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IButton && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is IButton)
+        {
+            bindable.SetValue(Button.TextProperty, null);
+            bindable.SetValue(Button.FontFamilyProperty, null);
+            bindable.SetValue(Button.FontSizeProperty, null);
+            bindable.SetValue(Button.TextColorProperty, null);
+            bindable.SetValue(Button.BackgroundColorProperty, null);
+            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is Span && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is Span)
+        {
+            bindable.SetValue(Span.TextProperty, null);
+            bindable.SetValue(Span.FontFamilyProperty, null);
+            bindable.SetValue(Span.FontSizeProperty, null);
+            bindable.SetValue(Span.TextColorProperty, null);
+            bindable.SetValue(Span.BackgroundColorProperty, null);
+            bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IEntry && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is IEntry)
+        {
+            bindable.SetValue(Entry.TextProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.FontFamilyProperty, null);
+            bindable.SetValue(Entry.FontSizeProperty, null);
+            bindable.SetValue(Entry.TextColorProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.BackgroundColorProperty, null);
+            bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is ISearchBar && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is ISearchBar)
+        {
+            bindable.SetValue(SearchBar.TextProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.FontFamilyProperty, null);
+            bindable.SetValue(SearchBar.FontSizeProperty, null);
+            bindable.SetValue(SearchBar.TextColorProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.BackgroundColorProperty, null);
+            bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
+            return bindable;
+
+        }
+        if (bindable is IEditor && PlatformHelper.IsValidPlatform(platforms))
+            return bindable;
+
+        else if (bindable is IEditor)
+        {
+            bindable.SetValue(Editor.TextProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.FontFamilyProperty, null);
+            bindable.SetValue(Editor.FontSizeProperty, null);
+            bindable.SetValue(Editor.TextColorProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.BackgroundColorProperty, null);
+            bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        return ThrowCustomExpection<TPlatform>();
+    }
+
+    /// <summary>
+    /// Sets a value for multiple Idioms that this should render.
+    /// </summary>
+    public static TIdiom OnIdioms<TIdiom>(this TIdiom bindable, IList<string> idioms, bool isPlaceHolder = true) where TIdiom : BindableObject, IText
+    {
+        if (bindable is ILabel && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is ILabel)
+        {
+            bindable.SetValue(Label.TextProperty, null);
+            bindable.SetValue(Label.FontFamilyProperty, null);
+            bindable.SetValue(Label.FontSizeProperty, null);
+            bindable.SetValue(Label.TextColorProperty, null);
+            bindable.SetValue(Label.BackgroundColorProperty, null);
+            bindable.SetValue(Label.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IButton && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is IButton)
+        {
+            bindable.SetValue(Button.TextProperty, null);
+            bindable.SetValue(Button.FontFamilyProperty, null);
+            bindable.SetValue(Button.FontSizeProperty, null);
+            bindable.SetValue(Button.TextColorProperty, null);
+            bindable.SetValue(Button.BackgroundColorProperty, null);
+            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is Span && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is Span)
+        {
+            bindable.SetValue(Span.TextProperty, null);
+            bindable.SetValue(Span.FontFamilyProperty, null);
+            bindable.SetValue(Span.FontSizeProperty, null);
+            bindable.SetValue(Span.TextColorProperty, null);
+            bindable.SetValue(Span.BackgroundColorProperty, null);
+            bindable.SetValue(Span.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IEntry && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is IEntry)
+        {
+            bindable.SetValue(Entry.TextProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.FontFamilyProperty, null);
+            bindable.SetValue(Entry.FontSizeProperty, null);
+            bindable.SetValue(Entry.TextColorProperty, null);
+            bindable.SetValue(Entry.PlaceholderProperty, null);
+            bindable.SetValue(Entry.BackgroundColorProperty, null);
+            bindable.SetValue(Entry.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is ISearchBar && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is ISearchBar)
+        {
+            bindable.SetValue(SearchBar.TextProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.FontFamilyProperty, null);
+            bindable.SetValue(SearchBar.FontSizeProperty, null);
+            bindable.SetValue(SearchBar.TextColorProperty, null);
+            bindable.SetValue(SearchBar.PlaceholderProperty, null);
+            bindable.SetValue(SearchBar.BackgroundColorProperty, null);
+            bindable.SetValue(SearchBar.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        if (bindable is IEditor && PlatformHelper.IsValidIdiom(idioms))
+            return bindable;
+
+        else if (bindable is IEditor)
+        {
+            bindable.SetValue(Editor.TextProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.FontFamilyProperty, null);
+            bindable.SetValue(Editor.FontSizeProperty, null);
+            bindable.SetValue(Editor.TextColorProperty, null);
+            bindable.SetValue(Editor.PlaceholderProperty, null);
+            bindable.SetValue(Editor.BackgroundColorProperty, null);
+            bindable.SetValue(Editor.FontAutoScalingEnabledProperty, false);
+            return bindable;
+        }
+        return ThrowCustomExpection<TIdiom>();
+    }
+
     static TType ThrowCustomExpection<TType>()
     {
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
