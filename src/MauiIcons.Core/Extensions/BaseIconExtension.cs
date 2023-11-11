@@ -123,58 +123,6 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         }
         return Icon.GetDescription();
     }
-
-    object RemoveTheControl(object targetObject)
-    {
-        switch (targetObject)
-        {
-            case Button button:
-                button.FontFamily = Icon.GetFontFamily();
-                button.TextColor = IconColor.SetDefaultOrAssignedColor(button.TextColor);
-                button.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(button.BackgroundColor);
-                button.FontSize = IconSize;
-                button.FontAutoScalingEnabled = IconAutoScaling;
-                break;
-            case Label label:
-                label.FontFamily = Icon.GetFontFamily();
-                label.TextColor = IconColor.SetDefaultOrAssignedColor(label.TextColor);
-                label.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(label.BackgroundColor);
-                label.FontSize = IconSize;
-                label.FontAutoScalingEnabled = IconAutoScaling;
-                break;
-            case Span span:
-                span.FontFamily = Icon.GetFontFamily();
-                span.TextColor = IconColor.SetDefaultOrAssignedColor(span.TextColor);
-                span.BackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(span.BackgroundColor);
-                span.FontSize = IconSize;
-                span.FontAutoScalingEnabled = IconAutoScaling;
-                break;
-            case Entry entry:
-                entry.FontFamily = null;
-                entry.TextColor = null;
-                entry.BackgroundColor = null;
-                break;
-            case Editor editor:
-                editor.FontFamily = null;
-                editor.TextColor = null;
-                editor.BackgroundColor = null;
-                break;
-            case SearchBar searchBar:
-                searchBar.FontFamily = null;
-                searchBar.TextColor = null;
-                searchBar.BackgroundColor = null;
-                break;
-            case MauiIcon mauiIcon:
-                mauiIcon.Icon = null;
-                mauiIcon.IconColor = null;
-                mauiIcon.IconBackgroundColor = null;
-                break;
-            default:
-                throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
-        }
-        return null;
-    }
-
     FontImageSource AssignFontImageSource() => new()
     {
         Glyph = Icon.GetDescription(),
