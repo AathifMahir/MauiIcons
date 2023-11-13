@@ -111,66 +111,6 @@ public static class MauiImageMarkupExtension
     }
 
     /// <summary>
-    /// Sets a value for platform that this should render.
-    /// </summary>
-    public static TPlatform OnPlatform<TPlatform>(this TPlatform bindable, PlatformType platform) where TPlatform : BindableObject, IImage
-    {
-        if (bindable is Button && PlatformHelper.IsValidPlatform(platform))
-            return bindable;
-
-        else if (bindable is Button)
-        {
-            bindable.SetValue(Button.TextProperty, null);
-            bindable.SetValue(Button.FontFamilyProperty, null);
-            bindable.SetValue(Button.FontSizeProperty, null);
-            bindable.SetValue(Button.TextColorProperty, null);
-            bindable.SetValue(Button.BackgroundColorProperty, null);
-            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
-            return bindable;
-        }
-        if (bindable is IImage && PlatformHelper.IsValidPlatform(platform))
-            return bindable;
-
-        else if (bindable is IImage)
-        {
-            bindable.SetValue(Image.SourceProperty, null);
-            bindable.SetValue(Image.BackgroundColorProperty, null);
-            return bindable;
-        }
-        return ThrowCustomExpection<TPlatform>();
-    }
-
-    /// <summary>
-    /// Sets a value for Idiom that this should render.
-    /// </summary>
-    public static TIdiom OnIdiom<TIdiom>(this TIdiom bindable, IdiomType idiom) where TIdiom : BindableObject, IImage
-    {
-        if (bindable is Button && PlatformHelper.IsValidIdiom(idiom))
-            return bindable;
-
-        else if (bindable is Button)
-        {
-            bindable.SetValue(Button.TextProperty, null);
-            bindable.SetValue(Button.FontFamilyProperty, null);
-            bindable.SetValue(Button.FontSizeProperty, null);
-            bindable.SetValue(Button.TextColorProperty, null);
-            bindable.SetValue(Button.BackgroundColorProperty, null);
-            bindable.SetValue(Button.FontAutoScalingEnabledProperty, false);
-            return bindable;
-        }
-        if (bindable is IImage && PlatformHelper.IsValidIdiom(idiom))
-            return bindable;
-
-        else if (bindable is IImage)
-        {
-            bindable.SetValue(Image.SourceProperty, null);
-            bindable.SetValue(Image.BackgroundColorProperty, null);
-            return bindable;
-        }
-        return ThrowCustomExpection<TIdiom>();
-    }
-
-    /// <summary>
     /// Sets a value for multiple platforms that this should render.
     /// </summary>
     public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms) where TPlatform : BindableObject, IImage
