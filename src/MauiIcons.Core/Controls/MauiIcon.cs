@@ -19,8 +19,6 @@ public sealed class MauiIcon : ContentView, IMauiIcon
     public static readonly BindableProperty IconSuffixAutoScalingProperty = BindableProperty.Create(nameof(IconSuffixAutoScaling), typeof(bool), typeof(MauiIcon), false);
     public static readonly BindableProperty EntranceAnimationTypeProperty = BindableProperty.Create(nameof(EntranceAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None);
     public static readonly BindableProperty EntranceAnimationDurationProperty = BindableProperty.Create(nameof(EntranceAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
-    public static readonly BindableProperty OnPlatformProperty = BindableProperty.Create(nameof(OnPlatform), typeof(PlatformType), typeof(MauiIcon), PlatformType.All);
-    public static readonly BindableProperty OnIdiomProperty = BindableProperty.Create(nameof(OnIdiom), typeof(PlatformType), typeof(MauiIcon), PlatformType.All);
     public static readonly BindableProperty OnPlatformsProperty = BindableProperty.Create(nameof(OnPlatforms), typeof(IList<string>), typeof(MauiIcon), null);
     public static readonly BindableProperty OnIdiomsProperty = BindableProperty.Create(nameof(OnIdioms), typeof(IList<string>), typeof(MauiIcon), null);
 
@@ -113,16 +111,6 @@ public sealed class MauiIcon : ContentView, IMauiIcon
     {
         get => (uint)GetValue(EntranceAnimationDurationProperty);
         set => SetValue(EntranceAnimationDurationProperty, value);
-    }
-    public PlatformType OnPlatform
-    {
-        get => (PlatformType)GetValue(OnPlatformProperty);
-        set => SetValue(OnPlatformProperty, value);
-    }
-    public IdiomType OnIdiom
-    {
-        get => (IdiomType)GetValue(OnIdiomProperty);
-        set => SetValue(OnIdiomProperty, value);
     }
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
@@ -249,7 +237,7 @@ public sealed class MauiIcon : ContentView, IMauiIcon
 
     void RemoveContentBasedOnPlatformAndIdiom()
     {
-        if (!PlatformHelper.IsValidPlatformAndIdiom(OnPlatform, OnIdiom))
+        if (!PlatformHelper.IsValidPlatformsAndIdioms(OnPlatforms, OnIdioms))
             Content = null;
 
         return;
