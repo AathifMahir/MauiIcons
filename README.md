@@ -123,6 +123,45 @@ new MauiIcon().Icon(FluentIcons.Accounts).EntranceAnimationType(AnimationType.Ro
 new MauiIcon().Icon(MaterialIcons.ABC).EntranceAnimationType(AnimationType.Scale).EntranceAnimationDuration(4000);
 ```
 
+### Custom OnPlatform and OnIdiom Usage
+`Xaml`
+
+```xml
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Icon="{mi:material ABC}" OnIdioms="Desktop, Phone, Tablet"/>
+<mi:MauiIcon Icon="{mi:fluent Accounts}" OnPlatforms="Android" OnIdioms="Phone"/>
+```
+
+`C#`
+```csharp
+new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI", "Android"});
+new MauiIcon().Icon(FluentIcons.Accounts).OnIdioms(new List<string>{"Desktop", "Phone"});
+new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
+```
+
+### Maui Built in OnPlatform and OnIdiom Usage
+
+```xml
+<Image>
+    <Image.Source>
+        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
+            <On Platform="MacCatalyst, WinUI" 
+			Value="{mi:Cupertino Icon=Airplane, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
+        </OnPlatform>
+    </Image.Source>
+</Image>
+
+<Image>
+    <Image.Source>
+        <OnIdiom Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" 
+		Desktop="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
+        </OnIdiom>
+    </Image.Source>
+</Image>
+
+```
+**Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
+
 ### Breaking Changes from v2
 
 ```xml
@@ -153,7 +192,8 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 | **IconSuffixAutoScaling** | `bool` | Gets or sets a value indicating whether the icon suffix should automatically scale. |
 | **EntranceAnimationType** | `AnimationType` | Gets or Sets the type of entrance animation for the element |
 | **EntranceAnimationDuration** | `uint` | Gets or sets the duration of the entrance animation for the element |
-
+| **OnPlatforms** | `IList<string>` | Gets or sets the supported platforms |
+| **OnIdioms** | `IList<string>` | Gets or sets the supported idioms |
 # License
 
 >**MauiIcons** is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
