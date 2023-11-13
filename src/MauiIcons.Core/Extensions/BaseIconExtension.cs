@@ -14,14 +14,12 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
     [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
     public double IconSize { get; set; } = DefaultIconSize;
     public bool IconAutoScaling { get; set; } = false;
-    public PlatformType OnPlatform { get; set; } = PlatformType.All;
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
-    public IList<string> OnPlatforms { get; set; } = new List<string>();
-    public IdiomType OnIdiom { get; set; } = IdiomType.All;
+    public IList<string> OnPlatforms { get; set; }
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
-    public IList<string> OnIdioms { get; set; } = new List<string>();
+    public IList<string> OnIdioms { get; set; }
     public Type TypeArgument { get; set; }
 
     const double DefaultIconSize = 30.0;
@@ -30,13 +28,9 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
         Type returnType = (provideValueTarget.TargetProperty as BindableProperty)?.ReturnType;
 
-        if ((OnPlatforms.Any() && OnIdioms.Any() && PlatformHelper.IsValidPlatformAndIdiom(OnPlatforms, OnIdioms)) ||
-            (OnPlatforms.Any() && PlatformHelper.IsValidPlatform(OnPlatforms) && PlatformHelper.IsValidIdiom(OnIdiom)) ||
-            (OnIdioms.Any() && PlatformHelper.IsValidIdiom(OnIdioms) && PlatformHelper.IsValidPlatform(OnPlatform)) ||
-            PlatformHelper.IsValidPlatformAndIdiom(OnPlatform, OnIdiom))
-        {
+        if (PlatformHelper.IsValidPlatformsAndIdioms(OnPlatforms, OnIdioms))
             return AssignIconsBasedOnType(provideValueTarget.TargetObject, returnType);
-        }
+
         return null;
     }
 
@@ -52,13 +46,13 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
             return AssignFontImageSource();
 
         if (returnType is null && (targetObject is On || targetObject is OnPlatform<ImageSource>
-            || targetObject is OnPlatform<FontImageSource> || targetObject is OnPlatformExtension 
-            || targetObject is OnIdiom<ImageSource> || targetObject is OnIdiom<FontImageSource> 
-            || targetObject is OnIdiomExtension) && 
+            || targetObject is OnPlatform<FontImageSource> || targetObject is OnPlatformExtension
+            || targetObject is OnIdiom<ImageSource> || targetObject is OnIdiom<FontImageSource>
+            || targetObject is OnIdiomExtension) &&
             (TypeArgument == typeof(ImageSource) || TypeArgument == typeof(FontImageSource)))
             return AssignFontImageSource();
 
-        else if(returnType is null && targetObject is On && (TypeArgument is null || TypeArgument != typeof(ImageSource) || TypeArgument != typeof(FontImageSource)))
+        else if (returnType is null && targetObject is On && (TypeArgument is null || TypeArgument != typeof(ImageSource) || TypeArgument != typeof(FontImageSource)))
             throw new MauiIconsExpection("MauiIcons only supports ImageSource or FontImageSource in conjunction with OnPlatform and OnIdiom After Assigning TypeArgument." +
                 "it is recommended to utilize MauiIcon's integrated OnPlatform or OnIdiom functionalities for optimal compatibility.");
 
@@ -119,7 +113,7 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
                 mauiIcon.IconAutoScaling = IconAutoScaling;
                 break;
             default:
-                throw new MauiIconsExpection($"Maui Icon Extension Doesn't Support this Control {targetObject}");
+                throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
         }
         return Icon.GetDescription();
     }
