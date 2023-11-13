@@ -24,8 +24,8 @@ public class MauiIconTest : BaseHandlerTest
 
         // Assert
         mauiiIcon.Icon.Should().BeNull();
-        mauiiIcon.IconColor.Should().Be(Colors.Black);
-        mauiiIcon.IconBackgroundColor.Should().Be(Colors.Transparent);
+        mauiiIcon.IconColor.Should().BeNull();
+        mauiiIcon.IconBackgroundColor.Should().BeNull();
         mauiiIcon.IconSize.Should().Be(30.0);
         mauiiIcon.IconAutoScaling.Should().BeFalse();
         mauiiIcon.IconSuffix.Should().BeNull();
@@ -36,6 +36,8 @@ public class MauiIconTest : BaseHandlerTest
         mauiiIcon.IconSuffixAutoScaling.Should().BeFalse();
         mauiiIcon.EntranceAnimationDuration.Should().Be(1500);
         mauiiIcon.EntranceAnimationType.Should().Be(AnimationType.None);
+        mauiiIcon.OnPlatforms.Should().BeNull();
+        mauiiIcon.OnIdioms.Should().BeNull();
     }
 
     [Fact]
