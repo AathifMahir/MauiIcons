@@ -26,19 +26,19 @@ Built in Control Usage:
 
 Xaml:
 
-<mi:MauiIcon Icon="{mi:Fluent Accounts}"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 
 C#:
 
 new MauiIcon() {Icon = FluentIcons.Airplane20, IconColor = Colors.Green};
 
-new MauiIcon().Icon(FluentIcons.Accounts).IconColor(Colors.Purple);
+new MauiIcon().Icon(FluentIcons.AppFolder48).IconColor(Colors.Purple);
 
 ----------------------------------------------------------------------------------------------
 
 Xaml Extension Usage:
 
-<Image Aspect="Center" Source="{mi:Fluent Icon=Accounts}"/>
+<Image Aspect="Center" Source="{mi:Fluent Icon=AppFolder48}"/>
 
 <Label Text="{mi:Fluent Icon=Airplane20}"/>
 
@@ -48,11 +48,11 @@ C# Markup Usage:
 
 new ImageButton().Icon(FluentIcons.Airplane20),
 
-new Image().Icon(FluentIcons.Accounts),
+new Image().Icon(FluentIcons.AppFolder48),
 
 new Label().Icon(FluentIcons.Airplane20).IconSize(40.0).IconColor(Colors.Red),
 
-new Entry().Icon(FluentIcons.Accounts).IconSize(20.0).IconColor(Colors.Aqua),
+new Entry().Icon(FluentIcons.AppFolder48).IconSize(20.0).IconColor(Colors.Aqua),
 
 
 Disclaimer: It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: 

@@ -44,7 +44,7 @@ using MauiIcons.Fluent;
 ```xml
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
 
-<fluent:MauiIcon Icon="Accounts"/>
+<fluent:MauiIcon Icon="AppFolder48"/>
 ```
 
 `New`
@@ -52,18 +52,18 @@ xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
-<mi:MauiIcon Icon="{mi:Fluent Accounts}"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 ```
 
 ## Built in Control Usage
 
 `Xaml`
 ```xml
-<mi:MauiIcon Icon="{mi:Fluent Accounts}"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 ```
 `C#`
 ```csharp
-new MauiIcon() {Icon = Fluent.Accounts, IconColor = Colors.Green};
+new MauiIcon() {Icon = Fluent.AppFolder48, IconColor = Colors.Green};
 
 new MauiIcon().Icon(FluentIcons.Accessibility48).IconColor(Colors.Purple);
 ```
@@ -75,17 +75,17 @@ All the Properties and Features of Built in Control, **[Check Here](https://gith
 ```xml
 <Image Aspect="Center" Source="{mi:Fluent Icon=Accessibility48}"/>
 
-<Label Text="{mi:Fluent Icon=Accounts}"/>
+<Label Text="{mi:Fluent Icon=AppFolder48}"/>
 ```
 
 ## C# Markup Usage
 
 ```csharp
-new ImageButton().Icon(FluentIcons.Accounts),
+new ImageButton().Icon(FluentIcons.AppFolder48),
 
 new Image().Icon(FluentIcons.Accessibility48),
 
-new Label().Icon(FluentIcons.Accounts).IconSize(40.0).IconColor(Colors.Red),
+new Label().Icon(FluentIcons.AppFolder48).IconSize(40.0).IconColor(Colors.Red),
 
 new Entry().Icon(FluentIcons.Accessibility48).IconSize(20.0).IconColor(Colors.Aqua),
 ```
@@ -99,7 +99,7 @@ Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Paramete
 ```csharp
 new Entry().Icon(FluentIcons.Accessibility48, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
 
-new SearchBar().Icon(FluentIcons.Accounts, isPlaceHolder: false);
+new SearchBar().Icon(FluentIcons.AppFolder48, isPlaceHolder: false);
 ```
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
@@ -108,16 +108,16 @@ new SearchBar().Icon(FluentIcons.Accounts, isPlaceHolder: false);
 `Xaml`
 
 ```xml
-<mi:MauiIcon Icon="{mi:Fluent Accounts}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}" OnPlatforms="WinUI, Android, MacCatalyst"/>
 <mi:MauiIcon Icon="{mi:Fluent Accessibility48}" OnIdioms="Desktop, Phone, Tablet"/>
-<mi:MauiIcon Icon="{mi:Fluent Accounts}" OnPlatforms="Android" OnIdioms="Phone"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}" OnPlatforms="Android" OnIdioms="Phone"/>
 ```
 
 `C#`
 ```csharp
-new MauiIcon().Icon(FluentIcons.Accounts).OnPlatforms(new List<string>{"WinUI", "Android"});
+new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI", "Android"});
 new MauiIcon().Icon(FluentIcons.Accessibility48).OnIdioms(new List<string>{"Desktop", "Phone"});
-new MauiIcon().Icon(FluentIcons.Accounts).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
+new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
 
 ## Maui Built in OnPlatform and OnIdiom Usage
@@ -127,14 +127,14 @@ new MauiIcon().Icon(FluentIcons.Accounts).OnPlatforms(new List<string>{"WinUI", 
     <Image.Source>
         <OnPlatform x:TypeArguments="ImageSource" Default="{mi:Fluent Icon=Accessibility48, TypeArgument={x:Type ImageSource}}">
             <On Platform="MacCatalyst, WinUI" 
-			Value="{mi:Fluent Icon=Accounts, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
+			Value="{mi:Fluent Icon=AppFolder48, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
         </OnPlatform>
     </Image.Source>
 </Image>
 
 <Image>
     <Image.Source>
-        <OnIdiom Default="{mi:Fluent Icon=Accounts, TypeArgument={x:Type ImageSource}}" 
+        <OnIdiom Default="{mi:Fluent Icon=AppFolder48, TypeArgument={x:Type ImageSource}}" 
 		Desktop="{mi:Fluent Icon=Accessibility48, TypeArgument={x:Type ImageSource}}">
         </OnIdiom>
     </Image.Source>
