@@ -50,7 +50,31 @@ In order to make use of the **.Net Maui Icons** you can use the below namespace:
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 ```
 
-### Built in Control Usage
+## Breaking Changes from v2
+
+`Old (v1)`
+
+```xml
+xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
+
+<cupertino:MauiIcon Icon="Airplane"/>
+<fluent:MauiIcon Icon="Accounts"/>
+<material:MauiIcon Icon="ABC"/>
+```
+
+`New (v2)`
+
+```xml
+xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+<mi:MauiIcon Icon="{mi:Fluent Accounts}"/>
+<mi:MauiIcon Icon="{mi:Material ABC}"/>
+```
+
+## Built in Control Usage
 
 `Xaml`
 
@@ -72,14 +96,14 @@ new MauiIcon().Icon(FluentIcons.Accounts).IconColor(Colors.Magenta);
 new MauiIcon().Icon(MaterialIcons.ABC).IconColor(Colors.Violet);
 ```
 
-### Xaml Extension Usage
+## Xaml Extension Usage
 ```xml
 <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
 <Label Text="{mi:Fluent Icon=Accounts}"/>
 ```
 
-### C# Markup Usage
+## C# Markup Usage
 
 ```csharp
 new ImageButton().Icon(FluentIcons.Accounts);
@@ -93,7 +117,7 @@ new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua);
 new SearchBar().Icon(MaterialIcons.ABC);
 ```
 
-#### Applying Icon To Text or Placeholder
+## Applying Icon To Text or Placeholder
 Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
 Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
 
@@ -105,7 +129,7 @@ new SearchBar().Icon(MaterialIcons.ABC, isPlaceHolder: false);
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
 
-### Animation Usage
+## Animation Usage
 <img src="https://raw.githubusercontent.com/AathifMahir/MauiIcons/v2/images/MauiIcons_Animations.gif" alt="MauiIcons_logo" height=240 width=560>
 
 `Xaml`
@@ -123,7 +147,7 @@ new MauiIcon().Icon(FluentIcons.Accounts).EntranceAnimationType(AnimationType.Ro
 new MauiIcon().Icon(MaterialIcons.ABC).EntranceAnimationType(AnimationType.Scale).EntranceAnimationDuration(4000);
 ```
 
-### Custom OnPlatform and OnIdiom Usage
+## Custom OnPlatform and OnIdiom Usage
 `Xaml`
 
 ```xml
@@ -139,7 +163,7 @@ new MauiIcon().Icon(FluentIcons.Accounts).OnIdioms(new List<string>{"Desktop", "
 new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
 
-### Maui Built in OnPlatform and OnIdiom Usage
+## Maui Built in OnPlatform and OnIdiom Usage
 
 ```xml
 <Image>
@@ -162,7 +186,7 @@ new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "An
 ```
 **Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
 
-### Breaking Changes from v2
+## Breaking Changes from v2
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
@@ -194,6 +218,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 | **EntranceAnimationDuration** | `uint` | Gets or sets the duration of the entrance animation for the element |
 | **OnPlatforms** | `IList<string>` | Gets or sets the supported platforms |
 | **OnIdioms** | `IList<string>` | Gets or sets the supported idioms |
+
 # License
 
 >**MauiIcons** is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
