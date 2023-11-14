@@ -1,36 +1,8 @@
-﻿v1.2.1
-• Added Support for Vanilla Version of Dotnet to Unit Test the Project
-
-v1.2.0
-• Added Variant Support Base Control and Extension
-• New and Improved Icon Control
-• Material Icon Variant Support eg: Round, Outline, TwoTone
-
-v1.1.5
-• Added Icon Unicode Support for Icon Extension
-• Added Direct Content Support
-• Minor Enhancements and Fixes
-
-v1.1.1
-• Minor Enhancements and Fixes
-
-v1.1.0
-• Dotnet 7 Support
-• Minor Enhancements and Fixes
-
-v1.0.1
-• Fixed Missing Cast
-
-v1.0.0
-• First Milestone Build and Production App Ready
-
-v0.2.0-pre2
-• Ported Critical Fix from Stable Build
-
-v0.2.0-pre1
-• Minor Enhancements and Fixes
-
-v0.1.0
-• First Stable Build
-• Added New Attributes to Icon Extension
-• Improvements to Documentation
+﻿v2.0.0-rc1
+• New Modular Core
+• Major Core Control Enhancements
+• Icon Suffix Support on Core Control
+• Major Core Extension Enhanecements and Support for C# Markup Extension
+• New C# Markup Extension for Maui Built in Controls
+• New OnPlatform and OnIdioms Support
+• Improved Docs

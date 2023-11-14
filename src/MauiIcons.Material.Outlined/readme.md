@@ -145,10 +145,10 @@ new MauiIcon().Icon(MaterialOutlinedIcons.AddRoad).OnPlatforms(new List<string>{
 
 # License
 
-**MauiIcons.Material.Outlined**
+**MauiIcons.Material.Outlined**  
 MauiIcons.Material.Outlined is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
 
-**Material Design Icons**
+**Material Design Icons**  
 Material Design Icons is Licensed Under [Apache License 2.0](https://github.com/google/material-design-icons/blob/master/LICENSE).
 
 
