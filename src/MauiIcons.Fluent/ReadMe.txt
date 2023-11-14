@@ -63,6 +63,6 @@ can prove to be quite versatile and offer extra features for various scenarios.
 
 ## Further information
 
-For more information please visit:
+For more information and Complete Docs please visit:
 
 - Our GitHub repository: https://github.com/AathifMahir/MauiIcons
