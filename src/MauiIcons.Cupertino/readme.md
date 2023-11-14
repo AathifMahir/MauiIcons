@@ -36,9 +36,26 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 ```csharp
 using MauiIcons.Cupertino;
 ```
---------
 
-### Built in Control Usage
+## Breaking Changes from v2
+
+`Old`
+
+```xml
+xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+
+<cupertino:MauiIcon Icon="Airplane"/>
+```
+
+`New`
+
+```xml
+xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+```
+
+## Built in Control Usage
 
 `Xaml`
 ```xml
@@ -53,17 +70,15 @@ new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
 
 All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons)**
 
---------
 
-### Xaml Extension Usage
+## Xaml Extension Usage
 ```xml
 <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
 <Label Text="{mi:Cupertino Icon=Airplane}"/>
 ```
---------
 
-### C# Markup Usage
+## C# Markup Usage
 
 ```csharp
 new ImageButton().Icon(CupertinoIcons.AntFill),
@@ -77,6 +92,56 @@ new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua),
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
 
+## Applying Icon To Text or Placeholder
+Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
+Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
+
+```csharp
+new Entry().Icon(CupertinoIcons.AntFill, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
+
+new SearchBar().Icon(MaterialIcons.ABC, isPlaceHolder: false);
+```
+
+**Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
+
+## Custom OnPlatform and OnIdiom Usage
+`Xaml`
+
+```xml
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Icon="{mi:Cupertino AntFill}" OnIdioms="Desktop, Phone, Tablet"/>
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}" OnPlatforms="Android" OnIdioms="Phone"/>
+```
+
+`C#`
+```csharp
+new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI", "Android"});
+new MauiIcon().Icon(CupertinoIcons.Airplane).OnIdioms(new List<string>{"Desktop", "Phone"});
+new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
+```
+
+## Maui Built in OnPlatform and OnIdiom Usage
+
+```xml
+<Image>
+    <Image.Source>
+        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:Cupertino Icon=Airplane, TypeArgument={x:Type ImageSource}}">
+            <On Platform="MacCatalyst, WinUI" 
+			Value="{mi:Cupertino Icon=AntFill, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
+        </OnPlatform>
+    </Image.Source>
+</Image>
+
+<Image>
+    <Image.Source>
+        <OnIdiom Default="{mi:Cupertino Icon=AntFill, TypeArgument={x:Type ImageSource}}" 
+		Desktop="{mi:Cupertino Icon=Airplane, TypeArgument={x:Type ImageSource}}">
+        </OnIdiom>
+    </Image.Source>
+</Image>
+
+```
+**Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
 
 # License
 
