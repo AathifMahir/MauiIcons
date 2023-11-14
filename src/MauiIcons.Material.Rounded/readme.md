@@ -4,7 +4,7 @@ The **.NET MAUI Icons - Material Rounded** library serves as a lightweight icon 
 **[Check out the Repository for Docs](https://github.com/AathifMahir/MauiIcons)**
 
 # Get Started
-In order to use the .NET MAUI Icons - Material you need to call the extension method in your `MauiProgram.cs` file as follows:
+In order to use the .NET MAUI Icons - Material Rounded you need to call the extension method in your `MauiProgram.cs` file as follows:
 
 ```csharp
 using MauiIcons.Material;
@@ -22,7 +22,6 @@ public static class MauiProgram
 ```
 
 # Usage
-
 
 In order to make use of the **.Net Maui Icons - Material Rounded** you can use the below namespace:
 
