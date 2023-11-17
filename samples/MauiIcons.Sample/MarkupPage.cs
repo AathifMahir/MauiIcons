@@ -38,7 +38,7 @@ public class MarkupPage : ContentPage
                     VerticalOptions = LayoutOptions.Center,
                     Children =
                     {
-                         new MauiIcon().Icon(FluentFilledIcons.Accessibility48Filled).IconColor(Colors.Cyan).OnIdioms(new List<string>{"Phone"}).OnPlatforms(new List<string>{"WinUI"}),
+                         new MauiIcon().Icon(FluentFilledIcons.Accessibility48Filled).IconColor(Colors.Cyan).OnIdioms(new List<string>{"Desktop"}).OnPlatforms(new List<string>{"Android"}),
                          new MauiIcon().Icon(FluentFilledIcons.Accessibility48Filled).IconColor(Colors.Green),
                          new MauiIcon().Icon(MaterialIcons.Accessibility).IconColor(Colors.Blue),
                          new MauiIcon().Icon(MaterialRoundedIcons.Accessibility).IconColor(Colors.Yellow),
