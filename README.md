@@ -6,7 +6,6 @@
 
 >The **.NET Maui Icons** is a comprehensive library collection that facilitates icon and font icon management within the .NET Maui framework. This library includes controls that seamlessly integrate three iconic design systems: Fluent, Material, and Cupertino. These controls offer complete access to the Material Icon Collection, delivering a rich and versatile iconography solution for .NET Maui applications.
 
-
 Package | Latest stable | Latest Preview | Description
 ---------|---------------|---------------|------------
 `AathifMahir.Maui.MauiIcons.SegoeFluent` | [![AathifMahir.Maui.MauiIcons.SegoeFluent](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.SegoeFluent)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.SegoeFluent/) | [![AathifMahir.Maui.MauiIcons.SegoeFluent](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.SegoeFluent)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.SegoeFluent/absoluteLatest) | Maui Icons - Segoe Fluent Package Contains Complete Collection of Built in Windows Segoe Fluent Icons.
