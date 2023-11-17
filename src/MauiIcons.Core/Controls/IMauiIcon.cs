@@ -83,4 +83,17 @@ public interface IMauiIcon
     /// Gets or sets the duration of the entrance animation for the element.
     /// </summary>
     uint EntranceAnimationDuration { get; }
+
+    /// <summary>
+    /// Gets or sets the Platforms that control should render.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
+    IList<string> OnPlatforms { get; set; }
+
+    /// <summary>
+    /// Gets or sets the Idioms that control should render.
+    /// </summary>
+    [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
+    IList<string> OnIdioms { get; set; }
+    
 }
