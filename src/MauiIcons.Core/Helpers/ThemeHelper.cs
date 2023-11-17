@@ -14,7 +14,7 @@ internal static class ThemeHelper
     {
         if (value is null)
         {
-            return Application.Current.RequestedTheme == AppTheme.Dark
+            return Application.Current is null ? Colors.Black : Application.Current.RequestedTheme == AppTheme.Dark
                ? Colors.White
                : Colors.Black;
         }

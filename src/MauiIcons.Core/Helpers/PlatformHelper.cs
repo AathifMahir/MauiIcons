@@ -35,15 +35,16 @@ internal static class PlatformHelper
 
     public static bool IsValidPlatformsAndIdioms(IList<string> onPlatforms, IList<string> onIdioms)
     {
-        bool isPlatformsPresent = onPlatforms is not null;
-        bool isIdiomsPresent = onIdioms is not null;
+        if(onPlatforms is null &&  onIdioms is null) return true;
+
+        bool isPlatformsPresent = onPlatforms is not null && onPlatforms.Count > 0;
+        bool isIdiomsPresent = onIdioms is not null && onIdioms.Count > 0;
 
         bool isPlatformAndIdiomDefault = !isPlatformsPresent && !isIdiomsPresent;
-        bool isPlatformsAndIdioms = isPlatformsPresent && isIdiomsPresent && IsValidPlatformAndIdiom(onPlatforms, onIdioms);
-        bool isPlatformsOnly = (isPlatformsPresent && !isIdiomsPresent) && IsValidPlatform(onPlatforms);
-        bool isIdiomsOnly = (isIdiomsPresent && !isPlatformsPresent) && IsValidIdiom(onIdioms);
+        bool isPlatformsAndIdioms = isPlatformsPresent && isIdiomsPresent && IsValidPlatformAndIdiom(onPlatforms!, onIdioms!);
+        bool isPlatformsOnly = isPlatformsPresent && !isIdiomsPresent && IsValidPlatform(onPlatforms!);
+        bool isIdiomsOnly = isIdiomsPresent && !isPlatformsPresent && IsValidIdiom(onIdioms!);
         
-
         return isPlatformAndIdiomDefault 
             || isPlatformsAndIdioms
             || isPlatformsOnly
