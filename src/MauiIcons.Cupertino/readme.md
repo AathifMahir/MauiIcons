@@ -145,9 +145,9 @@ new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI"
 
 # License
 
-**MauiIcons.Cupertino**</br>
+**MauiIcons.Cupertino**  
 The MauiIcons.Cupertino library is distributed under the [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
 
-**Cupertino Icons**</br>
+**Cupertino Icons**  
 The Cupertino Icons library is distributed under the [MIT License](https://github.com/framework7io/framework7-icons/blob/master/LICENSE).
 
