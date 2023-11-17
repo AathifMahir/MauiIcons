@@ -39,7 +39,7 @@ using MauiIcons.Fluent.Filled;
 
 ## Breaking Changes from v2
 
-`Old`
+`Old (v1)`
 
 ```xml
 xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
@@ -47,13 +47,17 @@ xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.Flue
 <fluentFilled:MauiIcon Icon="AppFolder48Filled"/>
 ```
 
-`New`
+`New (v2)`
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 <mi:MauiIcon Icon="{mi:FluentFilled AppFolder48Filled}"/>
 ```
+
+### Nuget Package Changes
+
+- **`AathifMahir.Maui.MauiIcons.FluentFilled`** is Depcrecated and Replaced by [`AathifMahir.Maui.MauiIcons.Fluent.Filled`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Fluent.Filled/)
 
 ## Built in Control Usage
 

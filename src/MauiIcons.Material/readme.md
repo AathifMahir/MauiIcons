@@ -39,7 +39,7 @@ using MauiIcons.Material;
 
 ## Breaking Changes from v2
 
-`Old`
+`Old (v1)`
 
 ```xml
 xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
@@ -47,13 +47,21 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 <material:MauiIcon Icon="AddRoad"/>
 ```
 
-`New`
+`New (v2)`
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 <mi:MauiIcon Icon="{mi:Material AddRoad}"/>
 ```
+
+### Nuget Package Changes
+
+- **`AathifMahir.Maui.MauiIcons.Material`** doesn't contain all the Variants anymore, Now only contains **Regular version** of Material Icons. Other Variants Decoupled into Seperate Packages Like Below
+	- [`AathifMahir.Maui.MauiIcons.Material.Outlined`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Outlined/)
+	- [`AathifMahir.Maui.MauiIcons.Material.Rounded`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Rounded/)
+	- [`AathifMahir.Maui.MauiIcons.Material.Sharp`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Sharp/)
+
 
 ## Built in Control Usage
 

@@ -39,7 +39,7 @@ using MauiIcons.Fluent;
 
 ## Breaking Changes from v2
 
-`Old`
+`Old (v1)`
 
 ```xml
 xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
@@ -47,7 +47,7 @@ xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
 <fluent:MauiIcon Icon="AppFolder48"/>
 ```
 
-`New`
+`New (v2)`
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"

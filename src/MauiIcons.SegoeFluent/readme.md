@@ -39,7 +39,7 @@ using MauiIcons.SegoeFluent;
 
 ## Breaking Changes from v2
 
-`Old`
+`Old (v1)`
 
 ```xml
 xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
@@ -47,7 +47,7 @@ xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeF
 <segoeFluent:MauiIcon Icon="ActionCenterQuiet"/>
 ```
 
-`New`
+`New (v2)`
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"

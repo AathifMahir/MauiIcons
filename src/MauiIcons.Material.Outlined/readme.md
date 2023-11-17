@@ -37,24 +37,6 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 using MauiIcons.Material.Outlined;
 ```
 
-## Breaking Changes from v2
-
-`Old`
-
-```xml
-xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
-
-<material:MauiIcon Icon="AddRoad" Variant="Outlined"/>
-```
-
-`New`
-
-```xml
-xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-
-<mi:MauiIcon Icon="{mi:MaterialOutlined AddRoad}"/>
-```
-
 ## Built in Control Usage
 
 `Xaml`

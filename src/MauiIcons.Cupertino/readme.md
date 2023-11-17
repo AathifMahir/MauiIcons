@@ -39,7 +39,7 @@ using MauiIcons.Cupertino;
 
 ## Breaking Changes from v2
 
-`Old`
+`Old (v1)`
 
 ```xml
 xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
@@ -47,7 +47,7 @@ xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
 <cupertino:MauiIcon Icon="Airplane"/>
 ```
 
-`New`
+`New (v2)`
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"

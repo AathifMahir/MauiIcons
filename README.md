@@ -74,6 +74,16 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <mi:MauiIcon Icon="{mi:Material ABC}"/>
 ```
 
+### Nuget Package Changes
+
+- **`AathifMahir.Maui.MauiIcons.Material`** doesn't contain all the Variants anymore, Now only contains **Regular version** of Material Icons. Other Variants Decoupled into Seperate Packages Like Below
+	- [`AathifMahir.Maui.MauiIcons.Material.Outlined`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Outlined/)
+	- [`AathifMahir.Maui.MauiIcons.Material.Rounded`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Rounded/)
+	- [`AathifMahir.Maui.MauiIcons.Material.Sharp`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Sharp/)
+
+- **`AathifMahir.Maui.MauiIcons.FluentFilled`** is Depcrecated and Replaced by [`AathifMahir.Maui.MauiIcons.Fluent.Filled`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Fluent.Filled/)
+
+
 ## Built in Control Usage
 
 `Xaml`

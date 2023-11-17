@@ -37,24 +37,6 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 using MauiIcons.Material.Sharp;
 ```
 
-## Breaking Changes from v2
-
-`Old`
-
-```xml
-xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
-
-<material:MauiIcon Icon="AddRoad" Variant="Sharp"/>
-```
-
-`New`
-
-```xml
-xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-
-<mi:MauiIcon Icon="{mi:MaterialSharp AddRoad}"/>
-```
-
 ## Built in Control Usage
 
 `Xaml`
