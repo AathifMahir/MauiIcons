@@ -177,26 +177,9 @@ public static class MauiIconMarkupExtension
     /// </summary>
     public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms) where TPlatform : BindableObject, IMauiIcon
     {
-        if (IsMauiIconType(bindable) && PlatformHelper.IsValidPlatform(platforms))
-            return bindable;
-
-        else if (IsMauiIconType(bindable))
+        if (IsMauiIconType(bindable))
         {
-            bindable.SetValue(MauiIcon.IconProperty, null);
-            bindable.SetValue(MauiIcon.IconSizeProperty, null);
-            bindable.SetValue(MauiIcon.IconColorProperty, null);
-            bindable.SetValue(MauiIcon.IconBackgroundColorProperty, null);
-            bindable.SetValue(MauiIcon.IconAutoScalingProperty, false);
-            bindable.SetValue(MauiIcon.IconSuffixProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixFontFamilyProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixFontSizeProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixTextColorProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixBackgroundColorProperty, null);
-            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixAutoScalingProperty, false);
-            bindable.SetValue(MauiIcon.EntranceAnimationTypeProperty, null);
-            bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, null);
-            return bindable;
+            bindable.SetValue(MauiIcon.OnPlatformsProperty, platforms);
         }
         return bindable;
     }
@@ -206,26 +189,9 @@ public static class MauiIconMarkupExtension
     /// </summary>
     public static TIdiom OnIdioms<TIdiom>(this TIdiom bindable, IList<string> idioms) where TIdiom : BindableObject, IMauiIcon
     {
-        if (IsMauiIconType(bindable) && PlatformHelper.IsValidIdiom(idioms))
-            return bindable;
-
-        else if (IsMauiIconType(bindable))
+        if (IsMauiIconType(bindable))
         {
-            bindable.SetValue(MauiIcon.IconProperty, null);
-            bindable.SetValue(MauiIcon.IconSizeProperty, null);
-            bindable.SetValue(MauiIcon.IconColorProperty, null);
-            bindable.SetValue(MauiIcon.IconBackgroundColorProperty, null);
-            bindable.SetValue(MauiIcon.IconAutoScalingProperty, false);
-            bindable.SetValue(MauiIcon.IconSuffixProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixFontFamilyProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixFontSizeProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixTextColorProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixBackgroundColorProperty, null);
-            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, null);
-            bindable.SetValue(MauiIcon.IconSuffixAutoScalingProperty, false);
-            bindable.SetValue(MauiIcon.EntranceAnimationTypeProperty, null);
-            bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, null);
-            return bindable;
+            bindable.SetValue(MauiIcon.OnIdiomsProperty, idioms);
         }
         return bindable;
     }
