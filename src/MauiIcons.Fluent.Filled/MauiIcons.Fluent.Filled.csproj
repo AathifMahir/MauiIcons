@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>AathifMahir.Maui.MauiIcons.Fluent.Filled</PackageId>
+		<Summary>Maui Icons - Fluent Filled is a Icon Library for .Net Maui based Open Source Microsoft Fluent Icons</Summary>
+		<Product>MauiIcons - Fluent (net8.0)</Product>
+		<Description>Maui Icons - Fluent Filled is a Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Open Source Fluent Icon Collection Built into Library.</Description>
+		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,FluentFilled,Cuppertino,SegoeFluent</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Fonts\FluentSystemIcons-Filled.ttf" />
+	</ItemGroup>
+
+</Project>

@@ -1,6 +1,4 @@
-﻿
-
-namespace MauiIcons.Cupertino;
+﻿namespace MauiIcons.Cupertino;
 public static class BuilderExtensions
 {
     /// <summary>

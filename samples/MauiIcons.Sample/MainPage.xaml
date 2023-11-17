@@ -2,11 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiIcons.Sample"
-             xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
-             xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
-             xmlns:fluentFilled="clr-namespace:MauiIcons.FluentFilled;assembly=MauiIcons.FluentFilled"
-             xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
-             xmlns:cuppertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
              x:DataType="local:MainPage"
              x:Class="MauiIcons.Sample.MainPage">
 
@@ -16,88 +12,53 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
 
-            <Label
-                Text="Hello, World MauiIcons!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
-
-            <Label
-                Text="Testing Purpose Only"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
-
-            <HorizontalStackLayout Spacing="25" HorizontalOptions="Center">
-                <!--  Icons Built in Controls -->
-                <fluent:MauiIcon Icon="Accessibility48"/>
-                <segoeFluent:MauiIcon Icon="Accounts" IconColor="Red"/>
-                <material:MauiIcon Icon="ABC" IconColor="Cyan"/>
-                <fluentFilled:MauiIcon Icon="Accessibility48Filled" IconColor="BlueViolet"/>
-                <cuppertino:MauiIcon Icon="Airplane"/>
-
-                <!-- Extension -->
-                <Image Aspect="Center" Source="{segoeFluent:Icon Icon=ActionCenterQuiet, IconColor=Yellow}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AddRoad, IconColor=BlueViolet}"/>
-                <Image Aspect="Center" Source="{fluent:Icon Icon=AddSquare20}"/>
-                <Image Aspect="Center" Source="{fluentFilled:Icon Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
-                <Image Aspect="Center" Source="{cuppertino:Icon Icon=ArchiveboxFill, IconColor=LightBlue}"/>
+                <mi:MauiIcon Icon="{mi:Fluent Icon=Airplane20}" IconColor="Cyan" EntranceAnimationType="Fade"/>
+                <mi:MauiIcon Icon="{mi:SegoeFluent Icon=Airplane}" EntranceAnimationType="Scale"/>
+                <mi:MauiIcon Icon="{mi:Material Icon=AirplanemodeActive}" EntranceAnimationType="Fade"/>
+                <mi:MauiIcon Icon="{mi:FluentFilled Icon=Airplane20Filled}" EntranceAnimationType="Rotate"/>
+                <mi:MauiIcon Icon="{mi:Cupertino Airplane}" EntranceAnimationType="Scale"/>
+                <mi:MauiIcon Icon="{mi:Fluent Icon=Airplane20}"  EntranceAnimationType="Fade"/>
+                <mi:MauiIcon Icon="{mi:SegoeFluent Icon=Airplane}" EntranceAnimationType="Scale"/>
+                <mi:MauiIcon Icon="{mi:Material Icon=AirplanemodeActive}"  EntranceAnimationType="Fade"/>
+                <mi:MauiIcon Icon="{mi:FluentFilled Icon=Airplane20Filled}" EntranceAnimationType="Rotate"/>
+                <mi:MauiIcon Icon="{mi:Cupertino Airplane, OnPlatforms='WinUI, Android'}" EntranceAnimationType="Scale" IconColor="Cyan" OnPlatforms="MacCatalyst, WinUI"/>
+                <Label Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}"/>
 
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="{fluent:Icon AddCircle20, IconColor=Violet, IconSize=Large}"/>
-                <Button Text="{fluentFilled:Icon AccessibilityCheckmark24Filled, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{material:Icon ABC, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{segoeFluent:Icon AdjustHologram, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{cuppertino:Icon Icon=Alarm, IconColor=Blue}"/>
+                <Button Text="{mi:Cupertino Icon=Airplane, OnPlatforms='WinUI, Android'}"/>
+                <Button Text="{mi:Fluent Icon=AppFolder48, IconColor=Violet, IconSize=Large}"/>
+                <Button Text="{mi:FluentFilled Icon=AppFolder48Filled, IconColor=BlueViolet, IconSize=Large}"/>
+                <Button Text="{mi:Material ABC, IconSize=Large}"/>
+                <Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}"/>
             </HorizontalStackLayout>
 
-            <Label HorizontalOptions="Center">Label Based Icons</Label>
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Label  Text="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
-                <Label Text="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=Rounded}"/>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Image Aspect="Center" Source="{mi:SegoeFluent Icon=ActionCenterQuiet, IconColor=Yellow}"/>
+                <Image Aspect="Center" Source="{mi:Material Icon=AddRoad, IconColor=BlueViolet}"/>
+                <Image Aspect="Center" Source="{mi:Fluent Icon=AddSquare20}"/>
+                <Image Aspect="Center" Source="{mi:FluentFilled Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
+                <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill, IconColor=LightBlue}"/>
             </HorizontalStackLayout>
 
-            <Label Text="Material Variant" HorizontalOptions="Center"/>
-            <HorizontalStackLayout HorizontalOptions="Center" BackgroundColor="White" Padding="12,12">
-                <material:MauiIcon Icon="AccountCircle" IconColor="LightGreen"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Outlined" IconColor="Aqua"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="Aquamarine"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Sharp" IconColor="Blue"/>
-                <material:MauiIcon Icon="AccountCircle" Variant="Rounded" IconColor="DarkCyan"/>
-            </HorizontalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <Image BackgroundColor="Red">
+                    <Image.Source>
+                        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
+                            <On Platform="MacCatalyst, WinUI" Value="{mi:Cupertino Icon=Airplane, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
+                        </OnPlatform>
+                    </Image.Source>
+                </Image>
 
-            <Label Text="Material Variant Extension" HorizontalOptions="Center"/>
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=Yellow}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=BlueViolet, Variant=Outlined}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, Variant=Rounded}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=DarkGreen, Variant=Sharp}"/>
-                <Image Aspect="Center" Source="{material:Icon Icon=AccountCircle, IconColor=LightBlue, Variant=Rounded}"/>
-            </HorizontalStackLayout>
-
-            <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="{material:Icon Home, IconColor=Violet, IconSize=Large, Variant=Regular}"/>
-                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Outlined}"/>
-                <Button Text="{material:Icon Home, IconColor=BlueViolet, IconSize=Large, Variant=Rounded}"/>
-                <Button Text="{material:Icon Icon=Home, IconColor=BlueViolet, IconSize=Large, Variant=Sharp}"/>
-                <Button Text="{material:Icon Icon=AccountCircle, IconColor=Blue, Variant=Rounded}"/>
-            </HorizontalStackLayout>
-
-            <Label Text="Material Variant Code Behind" HorizontalOptions="Center"/>
-            <HorizontalStackLayout x:Name="StackMaterialCodeBehind" HorizontalOptions="Center">
-                
+                <Image BackgroundColor="Red">
+                    <Image.Source>
+                        <OnIdiom Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" Desktop="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
+                        </OnIdiom>
+                    </Image.Source>
+                </Image>
             </HorizontalStackLayout>
 
         </VerticalStackLayout>

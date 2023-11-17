@@ -1,10 +1,23 @@
 ﻿namespace MauiIcons.Core.Helpers;
-internal sealed class ThemeHelper
+internal static class ThemeHelper
 {
-    internal static Color SetDefaultIconColor()
+    internal static Color SetDefaultOrAssignedColor(this Color value, Color originalColor)
     {
-        return Application.Current.RequestedTheme == AppTheme.Dark ? Colors.White 
-            : Application.Current.RequestedTheme == AppTheme.Light ? Colors.Black 
-            : Colors.White;
+        if (value is null)
+        {
+            return originalColor;
+        }
+        return value;
+    }
+
+    internal static Color SetDefaultOrAssignedColor(this Color value)
+    {
+        if (value is null)
+        {
+            return Application.Current is null ? Colors.Black : Application.Current.RequestedTheme == AppTheme.Dark
+               ? Colors.White
+               : Colors.Black;
+        }
+        return value;
     }
 }

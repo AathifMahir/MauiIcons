@@ -11,13 +11,9 @@ public static class BuilderExtensions
     /// 
     public static MauiAppBuilder UseMaterialMauiIcons(this MauiAppBuilder builder)
     {
-
         return builder.ConfigureFonts(fonts =>
         {
             fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfRegularFontFamily, Constants.RegularFontFamily);
-            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfOutlinedFontFamily, Constants.OutlinedFontFamily);
-            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfRoundedFontFamily, Constants.RoundedFontFamily);
-            fonts.AddEmbeddedResourceFont(typeof(BuilderExtensions).Assembly, Constants.TtfSharpFontFamily, Constants.SharpFontFamily);
         });
     }
 

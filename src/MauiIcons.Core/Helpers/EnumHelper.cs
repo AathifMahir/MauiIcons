@@ -4,26 +4,38 @@ using System.Reflection;
 namespace MauiIcons.Core.Helpers;
 internal static class EnumHelper
 {
-    internal static string GetEnumDescription(this Enum enumValue)
+#nullable enable
+    public static string GetDescription(this Enum? value)
     {
-        FieldInfo field = enumValue.GetType().GetField(enumValue?.ToString());
-        if (Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute)
+        if(value is null) return string.Empty;
+
+        FieldInfo? fieldInfo = value.GetType().GetField(value.ToString());
+        if (fieldInfo is not null)
         {
-            return attribute.Description;
+            object[] attributes = fieldInfo.GetCustomAttributes(typeof(DescriptionAttribute), true);
+            if (attributes.Length > 0)
+            {
+                return ((DescriptionAttribute)attributes[0]).Description;
+            }
         }
         return string.Empty;
     }
-    internal static T GetEnumValueByDescription<T>(this string description) where T : Enum
+    public static TEnum? GetEnumByDescription<TEnum>(this string? description) where TEnum : Enum 
     {
-        foreach (Enum enumItem in Enum.GetValues(typeof(T)))
+        if (description is null) return default;
+
+        foreach (Enum enumItem in Enum.GetValues(typeof(TEnum)))
         {
-            if (enumItem.GetEnumDescription() == description)
+            if (enumItem.GetDescription() == description)
             {
-                return (T)enumItem;
+                return (TEnum)enumItem;
             }
         }
         return default;
     }
-
-
+    public static string GetFontFamily<TEnum>(this TEnum? value) where TEnum : Enum
+    {
+        if(value is null) return string.Empty;
+        return value.GetType().Name;
+    }
 }

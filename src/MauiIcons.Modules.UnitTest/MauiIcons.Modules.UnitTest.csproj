@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net7.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UseMaui>true</UseMaui>
+		<IsPackable>false</IsPackable>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GF</CompilerGeneratedFilesOutputPath>
+		<IsPackable>false</IsPackable>
+		<IsTestProject>true</IsTestProject>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoFixture.Xunit2" Version="4.18.0" />
+		<PackageReference Include="FluentAssertions" Version="6.12.0" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.7.2" />
+		<PackageReference Include="xunit" Version="2.6.0" />
+		<PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" PrivateAssets="All" />
+		<PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="All" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\MauiIcons.Cupertino\MauiIcons.Cupertino.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Fluent.Filled\MauiIcons.Fluent.Filled.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Fluent\MauiIcons.Fluent.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material.Outlined\MauiIcons.Material.Outlined.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material.Rounded\MauiIcons.Material.Rounded.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material.Sharp\MauiIcons.Material.Sharp.csproj" />
+	  <ProjectReference Include="..\MauiIcons.Material\MauiIcons.Material.csproj" />
+	  <ProjectReference Include="..\MauiIcons.SegoeFluent\MauiIcons.SegoeFluent.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="xunit.runner.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

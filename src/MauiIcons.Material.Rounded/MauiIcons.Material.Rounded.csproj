@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<PackageId>AathifMahir.Maui.MauiIcons.Material.Rounded</PackageId>
+		<Summary>Maui Icons - Material Rounded is Icon Library for .Net Maui</Summary>
+		<Product>MauiIcons - Material Rounded (net8.0)</Product>
+		<Description>Maui Icons - Material Rounded is a Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Material Icon Collection Built into Library.</Description>
+		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Rounded,Fluent,Cuppertino,SegoeFluent</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Fonts\MaterialIconsRound-Regular.otf" />
+	</ItemGroup>
+
+</Project>
