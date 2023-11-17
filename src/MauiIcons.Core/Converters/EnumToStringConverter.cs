@@ -4,18 +4,18 @@ using System.Globalization;
 namespace MauiIcons.Core.Converters;
 internal sealed class EnumToStringConverter : IValueConverter
 {
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if(value != null)
+        if (value is not null && value is Enum val)
         {
-            return EnumHelper.GetDescription((Enum)value);
+            return val.GetDescription();
         }
         return null;
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if(value != null && value is string str)
+        if (value is not null && value is string str)
         {
             return str.GetEnumByDescription<Enum>();
         }
