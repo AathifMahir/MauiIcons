@@ -1,4 +1,4 @@
-﻿v2.0.0-rc1
+﻿v2.0.0
 • New Modular Core
 • Major Core Control Enhancements
 • Icon Suffix Support on Core Control

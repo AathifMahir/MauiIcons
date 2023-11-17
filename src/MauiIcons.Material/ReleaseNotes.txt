@@ -6,13 +6,14 @@
 • New C# Markup Extension for Maui Built in Controls
 • New OnPlatform and OnIdioms Support
 • Improved Docs
-• Breaking Changes
-	• Material Modules Does Only Includes Regular Variant
-	• Outlined Variant is Move to Seperate Package
+
+• Breaking Changes - https://github.com/AathifMahir/MauiIcons/#breaking-changes-from-v2
+	- Material Modules Does Only Includes Regular Variant
+	- Outlined Variant is Move to Seperate Package
 		https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Outlined
-	• Rounded Variant is Move to Seperate Package
+	- Rounded Variant is Move to Seperate Package
 		https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Rounded
-	• Sharp Variant is Move to Seperate Package
+	- Sharp Variant is Move to Seperate Package
 		https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Sharp
 
 
