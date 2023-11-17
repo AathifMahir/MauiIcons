@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<PackageId>AathifMahir.Maui.MauiIcons.Core</PackageId>
 		<Summary>Core Library for Maui Icons</Summary>
-		<Product>MauiIcons - Core (net7.0)</Product>
+		<Product>MauiIcons - Core (net8.0)</Product>
 		<Description>Core Library for .Net Maui Icons</Description>
 		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
 	</PropertyGroup>

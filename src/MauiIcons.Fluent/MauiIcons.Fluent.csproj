@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<PackageId>AathifMahir.Maui.MauiIcons.Fluent</PackageId>
 		<Summary>Maui Icons - Fluent is a Icon Library for .Net Maui based Open Source Microsoft Fluent Icons</Summary>
-		<Product>MauiIcons - Fluent (net7.0)</Product>
+		<Product>MauiIcons - Fluent (net8.0)</Product>
 		<Description>Maui Icons - Fluent is a Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Open Source Fluent Icon Collection Built into Library.</Description>
 		<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
 	</PropertyGroup>
