@@ -139,7 +139,7 @@ new SearchBar().Icon(MaterialIcons.ABC, isPlaceHolder: false);
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
 
 ## Animation Usage
-<img src="https://raw.githubusercontent.com/AathifMahir/MauiIcons/master/images/MauiIcons_Animations.gif" alt="MauiIcons_logo" height=240 width=560>
+<img src="https://raw.githubusercontent.com/AathifMahir/MauiIcons/master/images/MauiIcons_Animations.gif" alt="MauiIcons_logo" height=240 width=560 />
 
 `Xaml`
 
