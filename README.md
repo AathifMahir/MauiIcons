@@ -210,18 +210,6 @@ new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "An
 ```
 **Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
 
-## Breaking Changes from v2
-
-```xml
-xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-
-// v1
-<mi:MauiIcon Icon="Airplane"/>
-
-// v2
-<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
-```
-
 # Properties
 
 | Parameters | Type | Description |
