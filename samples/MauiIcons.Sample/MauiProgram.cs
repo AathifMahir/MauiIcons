@@ -2,6 +2,9 @@
 using MauiIcons.Cupertino;
 using MauiIcons.Fluent;
 using MauiIcons.Fluent.Filled;
+using MauiIcons.FontAwesome;
+using MauiIcons.FontAwesome.Brand;
+using MauiIcons.FontAwesome.Solid;
 using MauiIcons.Material;
 using MauiIcons.Material.Outlined;
 using MauiIcons.Material.Rounded;
@@ -25,6 +28,9 @@ public static class MauiProgram
             .UseFluentMauiIcons()
             .UseFluentFilledMauiIcons()
             .UseCupertinoMauiIcons()
+            .UseFontAwesomeMauiIcons()
+            .UseFontAwesomeSolidMauiIcons()
+            .UseFontAwesomeBrandMauiIcons()
             .UseMauiCommunityToolkitMarkup()
             .ConfigureFonts(fonts =>
             {

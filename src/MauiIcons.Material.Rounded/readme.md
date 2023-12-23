@@ -36,6 +36,21 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 using MauiIcons.Material.Rounded;
 ```
 
+## Workaround
+
+if you came across this issue dotnet/maui#7503 when using new namespace, Make sure to create an discarded instance of MauiIcon in the codebehind like below
+
+```csharp
+
+    public MainPage()
+    {
+        InitializeComponent();
+        // Temporary Workaround for url styled namespace in xaml
+        _ = new MauiIcon();
+    }
+
+```
+
 
 ## Built in Control Usage
 

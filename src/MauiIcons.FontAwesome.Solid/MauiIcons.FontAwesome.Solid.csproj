@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+	<PackageId>AathifMahir.Maui.MauiIcons.FontAwesome.Solid</PackageId>
+	<Summary>Maui Icons - FontAwesome Solid is a FontAwesome 6 Based Icon Library for .Net Maui</Summary>
+	<Product>MauiIcons - FontAwesome Solid (net8.0)</Product>
+	<Description>Maui Icons - FontAwesome Solid is a FontAwesome 6 Based Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete FontAwesome 6 Icon Collection Built into Library.</Description>
+	<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,FontAwesome,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Fonts\FontAwesome6Free-Solid-900.otf" />
+	</ItemGroup>
+</Project>

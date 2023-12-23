@@ -16,6 +16,9 @@ Package | Latest stable | Latest Preview | Description
 `AathifMahir.Maui.MauiIcons.Material.Rounded` | [![AathifMahir.Maui.MauiIcons.Material.Rounded](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.Material.Rounded)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Rounded/) | [![AathifMahir.Maui.MauiIcons.Material.Rounded](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.Material.Rounded)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Rounded/absoluteLatest) | Maui Icons - Material Rounded Package Contains Complete Collection of Material Rounded Icons.
 `AathifMahir.Maui.MauiIcons.Material.Sharp` | [![AathifMahir.Maui.MauiIcons.Material.Sharp](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.Material.Sharp)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Sharp/) | [![AathifMahir.Maui.MauiIcons.Material.Sharp](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.Material.Sharp)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Sharp/absoluteLatest) | Maui Icons - Material Sharp Package Contains Complete Collection of Material Sharp Icons.
 `AathifMahir.Maui.MauiIcons.Cupertino` | [![AathifMahir.Maui.MauiIcons.Cupertino](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.Cupertino)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Cupertino/) | [![AathifMahir.Maui.MauiIcons.Cupertino](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.Cupertino)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.Cupertino/absoluteLatest) | Maui Icons - Cupertino Package Contains Complete Collection of Open Source Version Framework 7's iOS Icons.
+`AathifMahir.Maui.MauiIcons.FontAwesome` | [![AathifMahir.Maui.MauiIcons.FontAwesome](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.FontAwesome)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FontAwesome/) | [![AathifMahir.Maui.MauiIcons.FontAwesome](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.FontAwesome)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FontAwesome/absoluteLatest) | Maui Icons - FontAwesome Package Contains Complete Collection of Free and Open Source Version of Regular FontAwesome 6 Icons.
+`AathifMahir.Maui.MauiIcons.FontAwesome.Solid` | [![AathifMahir.Maui.MauiIcons.FontAwesome.Solid](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.FontAwesome.Solid)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FontAwesome.Solid/) | [![AathifMahir.Maui.MauiIcons.FontAwesome.Solid](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.FontAwesome.Solid)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FontAwesome.Solid/absoluteLatest) | Maui Icons - FontAwesome Solid Package Contains Complete Collection of Free and Open Source Version of Solid FontAwesome 6 Icons.
+`AathifMahir.Maui.MauiIcons.FontAwesome.Brand` | [![AathifMahir.Maui.MauiIcons.FontAwesome.Brand](https://img.shields.io/nuget/v/AathifMahir.Maui.MauiIcons.FontAwesome.Brand)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FontAwesome.Brand/) | [![AathifMahir.Maui.MauiIcons.FontAwesome.Brand](https://img.shields.io/nuget/vpre/AathifMahir.Maui.MauiIcons.FontAwesome.Brand)](https://nuget.org/packages/AathifMahir.Maui.MauiIcons.FontAwesome.Brand/absoluteLatest) | Maui Icons - FontAwesome Brand Package Contains Complete Collection of Free and Open Source Version of Brand FontAwesome 6 Icons.
 
 
 
@@ -152,6 +155,23 @@ new SearchBar().Icon(MaterialIcons.ABC, isPlaceHolder: false);
 ```
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
+
+## Icon Suffix
+
+The Built in MauiIcon Control Does Support IconSuffix and It's Customizations, You can use Icon Suffix Feature by Following Below Examples
+
+`Xaml`
+```xml
+<mi:MauiIcon Icon="{mi:Material Icon=AirplanemodeActive}" IconSuffixTextColor="Red" IconSuffix="Off" IconSuffixFontSize="16"/>
+<mi:MauiIcon Icon="{mi:FontAwesomeBrand Icon=Github}" IconSuffixTextColor="Cyan" IconSuffix="Repo" IconSuffixFontSize="16"/>
+```
+
+`C#`
+```csharp
+new MauiIcon().Icon(FontAwesomeBrandIcons.Pinterest).IconColor(Colors.Red).IconSuffix("Pin").IconSuffixBackgroundColor(Colors.White);
+new MauiIcon().Icon(CupertinoIcons.Airplane).IconColor(Colors.Cyan).IconSuffix("Flying");
+```
+
 
 ## Animation Usage
 <img src="https://raw.githubusercontent.com/AathifMahir/MauiIcons/master/images/MauiIcons_Animations.gif" alt="MauiIcons_logo" height=240 width=560 />

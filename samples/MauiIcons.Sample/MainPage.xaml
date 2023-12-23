@@ -61,6 +61,14 @@
                 </Image>
             </HorizontalStackLayout>
 
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+                <mi:MauiIcon Icon="{mi:FontAwesome Icon=Building}"/>
+                <mi:MauiIcon Icon="{mi:FontAwesomeSolid Icon=Building}"/>
+                <mi:MauiIcon Icon="{mi:FontAwesomeBrand Icon=Github}" IconSuffixTextColor="Cyan" IconSuffix="Repo" IconSuffixFontSize="16"/>
+                <Image Aspect="Center" Source="{mi:FontAwesomeBrand Icon=Twitter, IconColor=Cyan}"/>
+                <Label Text="{mi:FontAwesomeSolid Icon=AddressCard}" TextColor="LightGreen"/>
+            </HorizontalStackLayout>
+
         </VerticalStackLayout>
     </ScrollView>
 
