@@ -1,4 +1,7 @@
-﻿v2.0.0
+﻿v2.1.0
+• New FontAwesome Modules Support
+
+v2.0.0
 • New Modular Core
 • Major Core Control Enhancements
 • Icon Suffix Support on Core Control
