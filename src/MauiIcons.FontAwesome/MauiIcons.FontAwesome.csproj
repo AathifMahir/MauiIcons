@@ -2,10 +2,10 @@
 
 	<PropertyGroup>
 	<PackageId>AathifMahir.Maui.MauiIcons.FontAwesome</PackageId>
-	<Summary>Maui Icons - Segoe Fluent is a Windows Default Icon Library for .Net Maui</Summary>
-	<Product>MauiIcons - Segoe Fluent (net8.0)</Product>
-	<Description>Maui Icons - Segoe Fluent is a Windows Default Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Fluent Icon Collection Built into Library.</Description>
-	<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
+	<Summary>Maui Icons - FontAwesome is a FontAwesome 6 Based Icon Library for .Net Maui</Summary>
+	<Product>MauiIcons - FontAwesome (net8.0)</Product>
+	<Description>Maui Icons - FontAwesome is a FontAwesome 6 Based Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete FontAwesome 6 Icon Collection Built into Library.</Description>
+	<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,FontAwesome,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
 	</PropertyGroup>
 
 	<ItemGroup>
