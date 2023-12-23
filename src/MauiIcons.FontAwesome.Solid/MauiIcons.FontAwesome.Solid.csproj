@@ -8,4 +8,19 @@
 	<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<EmbeddedResource Include="Fonts\FontAwesome6Free-Solid-900.otf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="readme.md">
+	    <PackagePath>\</PackagePath>
+	    <Pack>true</Pack>
+	  </None>
+	  <None Update="ReadMe.txt">
+	    <PackagePath>.</PackagePath>
+	    <pack>true</pack>
+	  </None>
+	</ItemGroup>
+
 </Project>
