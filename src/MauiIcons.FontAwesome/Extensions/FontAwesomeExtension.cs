@@ -1,5 +1,4 @@
 ﻿using MauiIcons.Core;
-using MauiIcons.FontAwesome.Icons;
 
-namespace MauiIcons.FontAwesome.Extensions;
+namespace MauiIcons.FontAwesome;
 public sealed class FontAwesomeExtension : BaseIconExtension<FontAwesomeIcons>;

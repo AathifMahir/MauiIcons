@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MauiIcons.FontAwesome.Icons;
+namespace MauiIcons.FontAwesome;
 public enum FontAwesomeIcons
 {
     [Description("\u0020")]

@@ -1,4 +1,4 @@
-﻿namespace MauiIcons.Fluent.Filled;
+﻿namespace MauiIcons.FontAwesome;
 public static class BuilderExtensions
 {
     /// <summary>

@@ -16,7 +16,7 @@ public static MauiApp CreateMauiApp()
 
 Usage
 
-In order to make use of the .Net Maui Icons - Segoe Fluent you can use the below namespace:
+In order to make use of the .Net Maui Icons - FontAwesome you can use the below namespace:
 
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
