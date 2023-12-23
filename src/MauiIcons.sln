@@ -36,11 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{83957CA1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Modules.UnitTest", "MauiIcons.Modules.UnitTest\MauiIcons.Modules.UnitTest.csproj", "{4932175B-3C62-47AB-819E-FD22A18DEF9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.FontAwesome", "MauiIcons.FontAwesome\MauiIcons.FontAwesome.csproj", "{EEE9B2A6-DD66-4F2B-8981-AD8D943D5DB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.FontAwesome", "MauiIcons.FontAwesome\MauiIcons.FontAwesome.csproj", "{EEE9B2A6-DD66-4F2B-8981-AD8D943D5DB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.FontAwesome.Solid", "MauiIcons.FontAwesome.Solid\MauiIcons.FontAwesome.Solid.csproj", "{CD0A4522-AAF7-4362-8A73-74E8BE667EDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.FontAwesome.Solid", "MauiIcons.FontAwesome.Solid\MauiIcons.FontAwesome.Solid.csproj", "{CD0A4522-AAF7-4362-8A73-74E8BE667EDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.FontAwesome.Brands", "MauiIcons.FontAwesome.Brands\MauiIcons.FontAwesome.Brands.csproj", "{D54A9F21-4853-4383-B0E0-40F98F3FD26D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.FontAwesome.Brand", "MauiIcons.FontAwesome.Brand\MauiIcons.FontAwesome.Brand.csproj", "{D54A9F21-4853-4383-B0E0-40F98F3FD26D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
