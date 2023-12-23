@@ -1,13 +1,13 @@
 # .Net Maui Icons
 
-The **.NET MAUI Icons - Segoe Fluent** library serves as a lightweight icon library, addressing icon and font icon management in .NET MAUI by offering controls that utilize the Windows version of the Segoe Fluent Icon Collection, seamlessly integrated into the library.
+The **.NET MAUI Icons - Font Awesome** library serves as a lightweight icon library, addressing icon and font icon management in .NET MAUI by offering controls that utilize the Free and Open Source Version of FontAwesome 6 Icons, seamlessly integrated into the library.
 **[Check out the Repository for Docs](https://github.com/AathifMahir/MauiIcons)**
 
 # Get Started
-In order to use the .Net Maui Icons - Segoe Fluent you need to call the extension method in your `MauiProgram.cs` file as follows:
+In order to use the .Net Maui Icons - Font Awesome you need to call the extension method in your `MauiProgram.cs` file as follows:
 
 ```csharp
-using MauiIcons.SegoeFluent;
+using MauiIcons.FontAwesome;
 
 public static class MauiProgram
 {
@@ -15,8 +15,8 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		
-		// Initialise the .Net Maui Icons - Fluent
-		builder.UseMauiApp<App>().UseSegoeFluentMauiIcons();
+		// Initialise the .Net Maui Icons - FontAwesome
+		builder.UseMauiApp<App>().UseFontAwesomeMauiIcons();
 	}
 }
 ```
@@ -24,7 +24,7 @@ public static class MauiProgram
 # Usage
 
 
-In order to make use of the **.Net Maui Icons - Segoe Fluent** you can use the below namespace:
+In order to make use of the **.Net Maui Icons - Font Awesome** you can use the below namespace:
 
 `Xaml`
 
@@ -34,38 +34,35 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 `C#`
 ```csharp
-using MauiIcons.SegoeFluent;
+using MauiIcons.FontAwesome;
 ```
 
-## Breaking Changes from v2
+## Workaround
 
-`Old (v1)`
+if you came across this issue dotnet/maui#7503 when using new namespace, Make sure to create an discarded instance of MauiIcon in the codebehind like below
 
-```xml
-xmlns:segoeFluent="clr-namespace:MauiIcons.SegoeFluent;assembly=MauiIcons.SegoeFluent"
+```csharp
 
-<segoeFluent:MauiIcon Icon="ActionCenterQuiet"/>
-```
+    public MainPage()
+    {
+        InitializeComponent();
+        // Temporary Workaround for url styled namespace in xaml
+        _ = new MauiIcon();
+    }
 
-`New (v2)`
-
-```xml
-xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-
-<mi:MauiIcon Icon="{mi:SegoeFluent ActionCenterQuiet}"/>
 ```
 
 ## Built in Control Usage
 
 `Xaml`
 ```xml
-<mi:MauiIcon Icon="{mi:SegoeFluent ActionCenterQuiet}"/>
+<mi:MauiIcon Icon="{mi:FontAwesome Hashtag}"/>
 ```
 `C#`
 ```csharp
-new MauiIcon() {Icon = SegoeFluent.ActionCenterQuiet, IconColor = Colors.Green};
+new MauiIcon() {Icon = FontAwesomeIcons.Hashtag, IconColor = Colors.Green};
 
-new MauiIcon().Icon(SegoeFluentIcons.AdjustHologram).IconColor(Colors.Purple);
+new MauiIcon().Icon(FontAwesomeIcons.Asterisk).IconColor(Colors.Purple);
 ```
 
 All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons)**
@@ -73,21 +70,21 @@ All the Properties and Features of Built in Control, **[Check Here](https://gith
 
 ## Xaml Extension Usage
 ```xml
-<Image Aspect="Center" Source="{mi:SegoeFluent Icon=AdjustHologram}"/>
+<Image Aspect="Center" Source="{mi:FontAwesome Icon=Asterisk}"/>
 
-<Label Text="{mi:SegoeFluent Icon=ActionCenterQuiet}"/>
+<Label Text="{mi:FontAwesome Icon=Hashtag}"/>
 ```
 
 ## C# Markup Usage
 
 ```csharp
-new ImageButton().Icon(SegoeFluentIcons.ActionCenterQuiet),
+new ImageButton().Icon(FontAwesomeIcons.Asterisk),
 
-new Image().Icon(SegoeFluentIcons.AdjustHologram),
+new Image().Icon(FontAwesomeIcons.Hashtag),
 
-new Label().Icon(SegoeFluentIcons.ActionCenterQuiet).IconSize(40.0).IconColor(Colors.Red),
+new Label().Icon(FontAwesomeIcons.GreaterThan).IconSize(40.0).IconColor(Colors.Red),
 
-new Entry().Icon(SegoeFluentIcons.AdjustHologram).IconSize(20.0).IconColor(Colors.Aqua),
+new Entry().Icon(FontAwesomeIcons.Star).IconSize(20.0).IconColor(Colors.Aqua),
 ```
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
@@ -97,9 +94,9 @@ Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text,
 Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
 
 ```csharp
-new Entry().Icon(SegoeFluentIcons.AdjustHologram, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
+new Entry().Icon(FontAwesomeIcons.Star, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
 
-new SearchBar().Icon(SegoeFluentIcons.ActionCenterQuiet, isPlaceHolder: false);
+new SearchBar().Icon(FontAwesomeIcons.PenToSquare, isPlaceHolder: false);
 ```
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
@@ -108,16 +105,16 @@ new SearchBar().Icon(SegoeFluentIcons.ActionCenterQuiet, isPlaceHolder: false);
 `Xaml`
 
 ```xml
-<mi:MauiIcon Icon="{mi:SegoeFluent ActionCenterQuiet}" OnPlatforms="WinUI, Android, MacCatalyst"/>
-<mi:MauiIcon Icon="{mi:SegoeFluent AdjustHologram}" OnIdioms="Desktop, Phone, Tablet"/>
-<mi:MauiIcon Icon="{mi:SegoeFluent ActionCenterQuiet}" OnPlatforms="Android" OnIdioms="Phone"/>
+<mi:MauiIcon Icon="{mi:FontAwesome Star}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Icon="{mi:FontAwesome PenToSquare}" OnIdioms="Desktop, Phone, Tablet"/>
+<mi:MauiIcon Icon="{mi:FontAwesome Asterisk}" OnPlatforms="Android" OnIdioms="Phone"/>
 ```
 
 `C#`
 ```csharp
-new MauiIcon().Icon(SegoeFluentIcons.ActionCenterQuiet).OnPlatforms(new List<string>{"WinUI", "Android"});
-new MauiIcon().Icon(SegoeFluentIcons.AdjustHologram).OnIdioms(new List<string>{"Desktop", "Phone"});
-new MauiIcon().Icon(SegoeFluentIcons.ActionCenterQuiet).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
+new MauiIcon().Icon(FontAwesomeIcons.GreaterThan).OnPlatforms(new List<string>{"WinUI", "Android"});
+new MauiIcon().Icon(FontAwesomeIcons.Asterisk).OnIdioms(new List<string>{"Desktop", "Phone"});
+new MauiIcon().Icon(FontAwesomeIcons.PenToSquare).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
 
 ## Maui Built in OnPlatform and OnIdiom Usage
@@ -125,17 +122,17 @@ new MauiIcon().Icon(SegoeFluentIcons.ActionCenterQuiet).OnPlatforms(new List<str
 ```xml
 <Image>
     <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:SegoeFluent Icon=AdjustHologram, TypeArgument={x:Type ImageSource}}">
+        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:FontAwesome Icon=GreaterThan, TypeArgument={x:Type ImageSource}}">
             <On Platform="MacCatalyst, WinUI" 
-			Value="{mi:SegoeFluent Icon=ActionCenterQuiet, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
+			Value="{mi:FontAwesome Icon=Star, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
         </OnPlatform>
     </Image.Source>
 </Image>
 
 <Image>
     <Image.Source>
-        <OnIdiom Default="{mi:SegoeFluent Icon=ActionCenterQuiet, TypeArgument={x:Type ImageSource}}" 
-		Desktop="{mi:SegoeFluent Icon=AdjustHologram, TypeArgument={x:Type ImageSource}}">
+        <OnIdiom Default="{mi:FontAwesome Icon=Star, TypeArgument={x:Type ImageSource}}" 
+		Desktop="{mi:FontAwesome Icon=Asterisk, TypeArgument={x:Type ImageSource}}">
         </OnIdiom>
     </Image.Source>
 </Image>
@@ -145,10 +142,10 @@ new MauiIcon().Icon(SegoeFluentIcons.ActionCenterQuiet).OnPlatforms(new List<str
 
 # License
 
-**MauiIcons.SegoeFluent**  
-MauiIcons.SegoeFluent is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
+**MauiIcons.FontAwesome**  
+MauiIcons.FontAwesome is Licensed Under [MIT License](https://github.com/AathifMahir/MauiIcons/blob/master/LICENSE).
 
-**Segoe Fluent Icons**  
-Segoe FLuent Icons is Licensed by Microsoft Under Couple of [License](https://learn.microsoft.com/en-us/typography/font-list/segoe-mdl2-assets).
+**Font Awesome Free Icons**  
+Font Awesome Free Icons is Licensed by FontAwesome Under Couple of [License](https://fontawesome.com/license/free).
 
 

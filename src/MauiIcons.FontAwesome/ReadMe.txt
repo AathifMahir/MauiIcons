@@ -2,16 +2,16 @@
 
 Initializing
 
-In order to use the .NET MAUI Icons - Segoe Fluent you need to call the extension method in your `MauiProgram.cs` file as follows:
+In order to use the .NET MAUI Icons - FontAwesome you need to call the extension method in your `MauiProgram.cs` file as follows:
 
-using MauiIcons.SegoeFluent;
+using MauiIcons.FontAwesome;
 
 public static MauiApp CreateMauiApp()
 {
     var builder = MauiApp.CreateBuilder();
 
-    // Initialise the .Net Maui Icons - Segoe Fluent
-	builder.UseMauiApp<App>().UseSegoeFluentMauiIcons();
+    // Initialise the .Net Maui Icons - FontAwesome
+	builder.UseMauiApp<App>().UseFontAwesomeMauiIcons();
 }
 
 Usage
@@ -26,33 +26,33 @@ Built in Control Usage:
 
 Xaml:
 
-<mi:MauiIcon Icon="{mi:SegoeFluent AdjustHologram}"/>
+<mi:MauiIcon Icon="{mi:FontAwesome Hashtag}"/>
 
 C#:
 
-new MauiIcon() {Icon = SegoeFluentIcons.ActionCenterQuiet, IconColor = Colors.Green};
+new MauiIcon() {Icon = FontAwesomeIcons.Asterisk, IconColor = Colors.Green};
 
-new MauiIcon().Icon(SegoeFluentIcons.AdjustHologram).IconColor(Colors.Purple);
+new MauiIcon().Icon(FontAwesomeIcons.GreaterThan).IconColor(Colors.Purple);
 
 ----------------------------------------------------------------------------------------------
 
 Xaml Extension Usage:
 
-<Image Aspect="Center" Source="{mi:SegoeFluent Icon=AdjustHologram}"/>
+<Image Aspect="Center" Source="{mi:FontAwesome Icon=Asterisk}"/>
 
-<Label Text="{mi:SegoeFluent Icon=ActionCenterQuiet}"/>
+<Label Text="{mi:FontAwesome Icon=Hashtag}"/>
 
 ----------------------------------------------------------------------------------------------
 
 C# Markup Usage:
 
-new ImageButton().Icon(SegoeFluentIcons.ActionCenterQuiet),
+new ImageButton().Icon(FontAwesomeIcons.Hashtag),
 
-new Image().Icon(SegoeFluentIcons.AdjustHologram),
+new Image().Icon(FontAwesomeIcons.GreaterThan),
 
-new Label().Icon(SegoeFluentIcons.ActionCenterQuiet).IconSize(40.0).IconColor(Colors.Red),
+new Label().Icon(FontAwesomeIcons.Asterisk).IconSize(40.0).IconColor(Colors.Red),
 
-new Entry().Icon(SegoeFluentIcons.AdjustHologram).IconSize(20.0).IconColor(Colors.Aqua),
+new Entry().Icon(FontAwesomeIcons.Hashtag).IconSize(20.0).IconColor(Colors.Aqua),
 
 
 Disclaimer: It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: 
