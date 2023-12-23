@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 	<PackageId>AathifMahir.Maui.MauiIcons.FontAwesome</PackageId>
@@ -7,5 +7,9 @@
 	<Description>Maui Icons - Segoe Fluent is a Windows Default Icon Library to Resolves Icons or Font Icon Management on .Net Maui by Providing Controls with Complete Fluent Icon Collection Built into Library.</Description>
 	<PackageTags>MauiIcons,Icon,Dotnet,Maui,Icons,Icon,MauiIcon,iOSIcon,AndroidIcon,Material,Fluent,Cuppertino,SegoeFluent</PackageTags>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Fonts\FontAwesome6Free-Regular-400.otf" />
+	</ItemGroup>
 
 </Project>
