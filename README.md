@@ -263,6 +263,8 @@ new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "An
 
 >**Cupertino Icons** is Licensed Under [MIT License](https://github.com/framework7io/framework7-icons/blob/master/LICENSE).
 
+>**FontAwesome Icons** is Licensed by FontAwesome Under Couple of [License](https://fontawesome.com/license/free)
+
 
 # Contribute
 
