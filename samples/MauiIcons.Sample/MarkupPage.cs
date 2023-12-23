@@ -3,6 +3,8 @@ using MauiIcons.Core;
 using MauiIcons.Cupertino;
 using MauiIcons.Fluent;
 using MauiIcons.Fluent.Filled;
+using MauiIcons.FontAwesome;
+using MauiIcons.FontAwesome.Brand;
 using MauiIcons.Material;
 using MauiIcons.Material.Outlined;
 using MauiIcons.Material.Rounded;
@@ -77,6 +79,19 @@ public class MarkupPage : ContentPage
                          button,
                          image,
                          new Label().Icon(FluentIcons.Accessibility24).IconSize(40.0).IconColor(Colors.Pink).OnIdioms(new List<string>{"Desktop", "Phone"}).OnPlatforms(new List<string>{"WinUI", "MacCatalyst", "Android"}),
+                    }
+                },
+                new HorizontalStackLayout ()
+                {
+                    Margin = new Thickness (0,12,0,12),
+                    Spacing = 15,
+                    HorizontalOptions = LayoutOptions.Center,
+                    VerticalOptions = LayoutOptions.Center,
+                    Children =
+                    {
+                        new MauiIcon().Icon(FontAwesomeBrandIcons.Pinterest).IconColor(Colors.Red),
+                        new Button().Icon(FontAwesomeBrandIcons.Github).IconSize(30),
+                        new Entry().Icon(FontAwesomeIcons.Building).IconSize(20.0),
                     }
                 }
 
