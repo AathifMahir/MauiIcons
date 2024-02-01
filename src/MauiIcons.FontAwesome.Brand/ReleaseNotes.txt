@@ -1,2 +1,5 @@
-﻿v2.1.0
+﻿v2.1.1
+• Minor Patch on Issue #83
+
+v2.1.0
 • New FontAwesome Icons
