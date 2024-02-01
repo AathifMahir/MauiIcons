@@ -1,72 +1,89 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MauiIcons.Sample"
-             xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-             x:DataType="local:MainPage"
-             x:Class="MauiIcons.Sample.MainPage">
+<ContentPage
+    x:Class="MauiIcons.Sample.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiIcons.Sample"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    x:DataType="local:MainPage">
 
     <ScrollView>
         <VerticalStackLayout
-            Spacing="25"
             Padding="30,0"
+            Spacing="25"
             VerticalOptions="Center">
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
 
-                <mi:MauiIcon Icon="{mi:Fluent Icon=Airplane20}" IconColor="Cyan" EntranceAnimationType="Fade"/>
-                <mi:MauiIcon Icon="{mi:SegoeFluent Icon=Airplane}" EntranceAnimationType="Scale"/>
-                <mi:MauiIcon Icon="{mi:Material Icon=AirplanemodeActive}" EntranceAnimationType="Fade"/>
-                <mi:MauiIcon Icon="{mi:FluentFilled Icon=Airplane20Filled}" EntranceAnimationType="Rotate"/>
-                <mi:MauiIcon Icon="{mi:Cupertino Airplane}" EntranceAnimationType="Scale"/>
-                <mi:MauiIcon Icon="{mi:Fluent Icon=Airplane20}"  EntranceAnimationType="Fade"/>
-                <mi:MauiIcon Icon="{mi:SegoeFluent Icon=Airplane}" EntranceAnimationType="Scale"/>
-                <mi:MauiIcon Icon="{mi:Material Icon=AirplanemodeActive}"  EntranceAnimationType="Fade"/>
-                <mi:MauiIcon Icon="{mi:FluentFilled Icon=Airplane20Filled}" EntranceAnimationType="Rotate"/>
-                <mi:MauiIcon Icon="{mi:Cupertino Airplane, OnPlatforms='WinUI, Android'}" EntranceAnimationType="Scale" IconColor="Cyan" OnPlatforms="MacCatalyst, WinUI"/>
-                <Label Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}"/>
+                <mi:MauiIcon
+                    EntranceAnimationType="Fade"
+                    Icon="{mi:Fluent Icon=Airplane20}"
+                    IconColor="Cyan" />
+                <mi:MauiIcon EntranceAnimationType="Scale" Icon="{mi:SegoeFluent Icon=Airplane}" />
+                <mi:MauiIcon
+                    BackgroundColor="White"
+                    HorizontalOptions="Start"
+                    Icon="{mi:Material Icon=Assignment}"
+                    IconColor="Black"
+                    VerticalOptions="Center" />
+                <mi:MauiIcon EntranceAnimationType="Rotate" Icon="{mi:FluentFilled Icon=Airplane20Filled}" />
+                <mi:MauiIcon EntranceAnimationType="Scale" Icon="{mi:Cupertino Airplane}" />
+                <mi:MauiIcon EntranceAnimationType="Fade" Icon="{mi:Fluent Icon=Airplane20}" />
+                <mi:MauiIcon EntranceAnimationType="Scale" Icon="{mi:SegoeFluent Icon=Airplane}" />
+                <mi:MauiIcon EntranceAnimationType="Fade" Icon="{mi:Material Icon=AirplanemodeActive}" />
+                <mi:MauiIcon EntranceAnimationType="Rotate" Icon="{mi:FluentFilled Icon=Airplane20Filled}" />
+                <mi:MauiIcon
+                    EntranceAnimationType="Scale"
+                    Icon="{mi:Cupertino Airplane,
+                                        OnPlatforms='WinUI, Android'}"
+                    IconColor="Cyan"
+                    OnPlatforms="MacCatalyst, WinUI" />
+                <Label Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}" />
 
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
-                <Button Text="{mi:Cupertino Icon=Airplane, OnPlatforms='WinUI, Android'}"/>
-                <Button Text="{mi:Fluent Icon=AppFolder48, IconColor=Violet, IconSize=Large}"/>
-                <Button Text="{mi:FluentFilled Icon=AppFolder48Filled, IconColor=BlueViolet, IconSize=Large}"/>
-                <Button Text="{mi:Material ABC, IconSize=Large}"/>
-                <Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}"/>
+                <Button Text="{mi:Cupertino Icon=Airplane, OnPlatforms='WinUI, Android'}" />
+                <Button Text="{mi:Fluent Icon=AppFolder48, IconColor=Violet, IconSize=Large}" />
+                <Button Text="{mi:FluentFilled Icon=AppFolder48Filled, IconColor=BlueViolet, IconSize=Large}" />
+                <Button Text="{mi:Material ABC, IconSize=Large}" />
+                <Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                <Image Aspect="Center" Source="{mi:SegoeFluent Icon=ActionCenterQuiet, IconColor=Yellow}"/>
-                <Image Aspect="Center" Source="{mi:Material Icon=AddRoad, IconColor=BlueViolet}"/>
-                <Image Aspect="Center" Source="{mi:Fluent Icon=AddSquare20}"/>
-                <Image Aspect="Center" Source="{mi:FluentFilled Icon=AddSquare20Filled, IconColor=DarkGreen}"/>
-                <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill, IconColor=LightBlue}"/>
+                <Image Aspect="Center" Source="{mi:SegoeFluent Icon=ActionCenterQuiet, IconColor=Yellow}" />
+                <Image Aspect="Center" Source="{mi:Material Icon=AddRoad, IconColor=BlueViolet}" />
+                <Image Aspect="Center" Source="{mi:Fluent Icon=AddSquare20}" />
+                <Image Aspect="Center" Source="{mi:FluentFilled Icon=AddSquare20Filled, IconColor=DarkGreen}" />
+                <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill, IconColor=LightBlue}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
                 <Image BackgroundColor="Red">
                     <Image.Source>
                         <OnPlatform x:TypeArguments="ImageSource" Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
-                            <On Platform="MacCatalyst, WinUI" Value="{mi:Cupertino Icon=Airplane, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
+                            <On Platform="MacCatalyst, WinUI" Value="{mi:Cupertino Icon=Airplane, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}" />
                         </OnPlatform>
                     </Image.Source>
                 </Image>
 
                 <Image BackgroundColor="Red">
                     <Image.Source>
-                        <OnIdiom Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" Desktop="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
-                        </OnIdiom>
+                        <OnIdiom Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" Desktop="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" />
                     </Image.Source>
                 </Image>
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-                <mi:MauiIcon Icon="{mi:FontAwesome Icon=Building}"/>
-                <mi:MauiIcon Icon="{mi:FontAwesomeSolid Icon=Building}"/>
-                <mi:MauiIcon Icon="{mi:FontAwesomeBrand Icon=Github}" IconSuffixTextColor="Cyan" IconSuffix="Repo" IconSuffixFontSize="16"/>
-                <Image Aspect="Center" Source="{mi:FontAwesomeBrand Icon=Twitter, IconColor=Cyan}"/>
-                <Label Text="{mi:FontAwesomeSolid Icon=AddressCard}" TextColor="LightGreen"/>
+                <mi:MauiIcon Icon="{mi:FontAwesome Icon=Building}" />
+                <mi:MauiIcon Icon="{mi:FontAwesomeSolid Icon=Building}" />
+                <mi:MauiIcon
+                    Icon="{mi:FontAwesomeBrand Icon=Github}"
+                    IconSuffix="Repo"
+                    IconSuffixFontSize="16"
+                    IconSuffixTextColor="Cyan" />
+                <Image Aspect="Center" Source="{mi:FontAwesomeBrand Icon=Twitter, IconColor=Cyan}" />
+                <Label Text="{mi:FontAwesomeSolid Icon=AddressCard}" TextColor="LightGreen" />
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
