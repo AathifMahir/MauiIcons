@@ -1,4 +1,7 @@
-﻿v2.1.1
+﻿v2.1.2
+• Minor Fixes and Improvements for Base Extension
+
+v2.1.1
 • Minor Patch on Issue #83
 
 v2.1.0

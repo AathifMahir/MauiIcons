@@ -3,7 +3,7 @@
 namespace MauiIcons.Core;
 
 [ContentProperty(nameof(Icon))]
-public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where TEnum : Enum
+public abstract class BaseIconExtension<TEnum> : IMarkupExtension where TEnum : Enum
 {
 #nullable enable
     public TEnum? Icon { get; set; }
@@ -25,11 +25,11 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
     const double DefaultIconSize = 30.0;
     public object ProvideValue(IServiceProvider serviceProvider)
     {
-        IProvideValueTarget provideValueTarget = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
-        Type returnType = (provideValueTarget.TargetProperty as BindableProperty)?.ReturnType;
+        var valueProvider = serviceProvider.GetService<IProvideValueTarget>() ?? throw new ArgumentException();
+        Type returnType = (valueProvider.TargetProperty as BindableProperty)?.ReturnType;
 
         if (PlatformHelper.IsValidPlatformsAndIdioms(OnPlatforms, OnIdioms))
-            return AssignIconsBasedOnType(provideValueTarget.TargetObject, returnType);
+            return AssignIconsBasedOnType(valueProvider.TargetObject, returnType);
 
         return null;
     }
@@ -55,6 +55,9 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
         else if (returnType is null && targetObject is On && (TypeArgument is null || TypeArgument != typeof(ImageSource) || TypeArgument != typeof(FontImageSource)))
             throw new MauiIconsExpection("MauiIcons only supports ImageSource or FontImageSource in conjunction with OnPlatform and OnIdiom After Assigning TypeArgument." +
                 "it is recommended to utilize MauiIcon's integrated OnPlatform or OnIdiom functionalities for optimal compatibility.");
+
+        else if (returnType is null && targetObject is Setter)
+            throw new MauiIconsExpection("MauiIcons doesn't support style setter to be used in conjunction with xaml extension.");
 
         throw new MauiIconsExpection($"MauiIcons extension does not provide {returnType} support");
     }
@@ -111,6 +114,13 @@ public abstract class BaseIconExtension<TEnum> : IMarkupExtension<object> where 
                 mauiIcon.IconBackgroundColor = IconBackgroundColor.SetDefaultOrAssignedColor(mauiIcon.IconBackgroundColor);
                 mauiIcon.IconSize = IconSize;
                 mauiIcon.IconAutoScaling = IconAutoScaling;
+                break;
+            case FontImageSource fontImageSource:
+                fontImageSource.Glyph = Icon.GetDescription();
+                fontImageSource.FontFamily = Icon.GetFontFamily();
+                fontImageSource.Size = IconSize;
+                fontImageSource.Color = IconColor;
+                fontImageSource.FontAutoScalingEnabled = IconAutoScaling;
                 break;
             default:
                 throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
