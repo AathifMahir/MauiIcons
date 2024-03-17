@@ -4,7 +4,7 @@
 
 # .Net Maui Icons
 
->The **.NET Maui Icons** is a comprehensive library collection that facilitates icon and font icon management within the .NET Maui framework. This library includes controls that seamlessly integrate three iconic design systems: Fluent, Material, and Cupertino. These controls offer complete access to the Material Icon Collection, delivering a rich and versatile iconography solution for .NET Maui applications.
+>The **.NET Maui Icons** is a comprehensive library collection that facilitates icon and font icon management within the .NET Maui framework. This library includes controls that seamlessly integrate three iconic design systems: Fluent, Material, Cupertino and FontAwesome. These controls offer complete access to the mentioned Icon collections, delivering a rich and versatile iconography solution for .NET Maui applications.
 
 Package | Latest stable | Latest Preview | Description
 ---------|---------------|---------------|------------
@@ -30,16 +30,16 @@ public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
 	{
-		var builder = MauiApp.CreateBuilder();
+		var builder = MauiApp.CreateBuilder();	
 		
-		// Initialise the .Net Maui Icons - Fluent
-		builder.UseMauiApp<App>().UseFluentMauiIcons();
-		
-		// Initialise the .Net Maui Icons - Material
-		builder.UseMauiApp<App>().UseMaterialMauiIcons();
-
-		// Initialise the .Net Maui Icons - Cupertino
-		builder.UseMauiApp<App>().UseCupertinoMauiIcons();
+        // Maui App Builder that Comes with Default Maui App
+		builder.UseMauiApp<App>()
+        // Initialises the .Net Maui Icons - Fluent
+        .UseFluentMauiIcons();
+        // Initialises the .Net Maui Icons - Material
+        .UseMaterialMauiIcons();
+        // Initialises the .Net Maui Icons - Cupertino
+        .UseCupertinoMauiIcons();
 	}
 }
 ```
