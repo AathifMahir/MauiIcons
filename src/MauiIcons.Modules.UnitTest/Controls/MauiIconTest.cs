@@ -168,7 +168,7 @@ public class MauiIconTest : BaseHandlerTest
         // Assert
         label.FormattedText.Should().NotBeNull();
         label.FormattedText.Spans[1].Should().NotBeNull();
-        label.FormattedText.Spans[1].Text.Should().Be(" ");
+        label.FormattedText.Spans[1].Text.Should().Be("");
     }
 
     [Fact]
