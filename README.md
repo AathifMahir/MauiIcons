@@ -35,11 +35,11 @@ public static class MauiProgram
         // Maui App Builder that Comes with Default Maui App
 		builder.UseMauiApp<App>()
         // Initialises the .Net Maui Icons - Fluent
-        .UseFluentMauiIcons();
+        	.UseFluentMauiIcons()
         // Initialises the .Net Maui Icons - Material
-        .UseMaterialMauiIcons();
+        	.UseMaterialMauiIcons()
         // Initialises the .Net Maui Icons - Cupertino
-        .UseCupertinoMauiIcons();
+        	.UseCupertinoMauiIcons();
 	}
 }
 ```
