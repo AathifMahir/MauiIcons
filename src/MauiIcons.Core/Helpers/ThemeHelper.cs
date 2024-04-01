@@ -1,7 +1,7 @@
 ﻿namespace MauiIcons.Core.Helpers;
 internal static class ThemeHelper
 {
-    internal static Color SetDefaultOrAssignedColor(this Color value, Color originalColor)
+    internal static Color SetDefaultOrAssignedColor(this Color? value, Color originalColor)
     {
         if (value is null)
         {
@@ -10,7 +10,7 @@ internal static class ThemeHelper
         return value;
     }
 
-    internal static Color SetDefaultOrAssignedColor(this Color value)
+    internal static Color SetDefaultOrAssignedColor(this Color? value)
     {
         if (value is null)
         {
