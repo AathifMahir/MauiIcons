@@ -92,6 +92,7 @@ public class MarkupPage : ContentPage
                         new MauiIcon().Icon(FontAwesomeBrandIcons.Pinterest).IconColor(Colors.Red),
                         new Button().Icon(FontAwesomeBrandIcons.Github).IconSize(30),
                         new Entry().Icon(FontAwesomeIcons.Building).IconSize(20.0),
+                        new Image{ Source = MaterialIcons.Favorite.ToImageSource(iconColor: Colors.Blue, iconSize: 50) },
                     }
                 }
 
