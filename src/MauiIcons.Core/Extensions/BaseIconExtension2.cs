@@ -4,7 +4,7 @@ using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
-public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtension where TEnum : struct
+public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtension where TEnum : Enum
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension2<TEnum>), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIconExtension2<TEnum>), 30.0);
@@ -67,7 +67,10 @@ public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtensi
 
     object AssignIconsBasedOnType(object targetObject, Type? returnType)
     {
-        if (returnType == typeof(Enum) || returnType == typeof(string))
+        if(returnType == typeof(Enum))
+            return AssignFontProperties(targetObject, disableConverter: true);
+
+        if (returnType == typeof(string))
             return AssignFontProperties(targetObject);
 
         if (returnType == typeof(ImageSource) || returnType == typeof(FontImageSource))
@@ -90,7 +93,7 @@ public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtensi
         throw new MauiIconsExpection($"MauiIcons extension does not provide {returnType} support");
     }
 
-    Binding AssignFontProperties(object targetObject)
+    Binding AssignFontProperties(object targetObject, bool disableConverter = false)
     {
         switch (targetObject)
         {
@@ -151,7 +154,8 @@ public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtensi
             default:
                 throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
         }
-        return new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this);
+        return disableConverter ? new Binding(nameof(Icon), mode: BindingMode.OneWay, source: this) : 
+            new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this);
     }
     FontImageSource AssignImageSource()
     {
