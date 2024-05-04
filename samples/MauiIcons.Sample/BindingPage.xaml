@@ -16,18 +16,18 @@
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
 
-                <Label Text="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                <Label Text="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
                 <Image>
                     <Image.Source>
-                        <FontImageSource Glyph="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                        <FontImageSource Glyph="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
                     </Image.Source>
                 </Image>
 
-                <Image Source="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                <Image Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
 
-                <ImageButton Source="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}, OnPlatforms={Binding MyPlatforms}}" />
+                <ImageButton Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
 
-                <mi:MauiIcon Icon="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                <mi:MauiIcon Icon="{mi:Fluent}" />
             </HorizontalStackLayout>
 
             <Button Clicked="Button_Clicked" Text="Change Icon and Color" />
