@@ -25,7 +25,7 @@
 
                 <Image Source="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
 
-                <ImageButton Source="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                <ImageButton Source="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}, OnPlatforms={Binding MyPlatforms}}" />
 
                 <mi:MauiIcon Icon="{mi:Fluent2 BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
             </HorizontalStackLayout>
