@@ -4,6 +4,7 @@ using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
+[ContentProperty(nameof(Icon))]
 public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtension where TEnum : Enum
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension<TEnum>), null);
