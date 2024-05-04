@@ -4,14 +4,13 @@ using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
-public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtension where TEnum : Enum
+public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtension where TEnum : struct, Enum
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension2<TEnum>), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIconExtension2<TEnum>), 30.0);
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(BaseIconExtension2<TEnum>), null);
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(BaseIconExtension2<TEnum>), null);
     public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(BaseIconExtension2<TEnum>), false);
-
 
     public TEnum? Icon
     {
@@ -60,28 +59,27 @@ public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtensi
         Type? returnType = (valueProvider.TargetProperty as BindableProperty)?.ReturnType;
 
         if (PlatformHelper.IsValidPlatformsAndIdioms(OnPlatforms, OnIdioms))
-            return AssignIconsBasedOnType(valueProvider.TargetObject, returnType);
+            return SetMauiIconBasedOnType(valueProvider.TargetObject, returnType);
 
         return new Binding();
     }
 
-    object AssignIconsBasedOnType(object targetObject, Type? returnType)
+    object SetMauiIconBasedOnType(object targetObject, Type? returnType)
     {
         if(returnType == typeof(Enum))
-            return AssignFontProperties(targetObject, disableConverter: true);
+            return SetFontProperties(targetObject, disableConverter: true);
 
         if (returnType == typeof(string))
-            return AssignFontProperties(targetObject);
+            return SetFontProperties(targetObject);
 
         if (returnType == typeof(ImageSource) || returnType == typeof(FontImageSource))
-            return AssignImageSource();
+            return SetImageSourceProperties();
 
-        if (returnType is null && (targetObject is On || targetObject is OnPlatform<ImageSource>
-            || targetObject is OnPlatform<FontImageSource> || targetObject is OnPlatformExtension
-            || targetObject is OnIdiom<ImageSource> || targetObject is OnIdiom<FontImageSource>
-            || targetObject is OnIdiomExtension) &&
-            (TypeArgument == typeof(ImageSource) || TypeArgument == typeof(FontImageSource)))
-            return AssignImageSource();
+        if (returnType is null && (targetObject is On or OnPlatform<ImageSource>
+            or OnPlatform<FontImageSource> or OnPlatformExtension
+            or OnIdiom<ImageSource> or OnIdiom<FontImageSource>
+            or OnIdiomExtension) && (TypeArgument == typeof(ImageSource) || TypeArgument == typeof(FontImageSource)))
+            return SetImageSourceProperties();
 
         else if (returnType is null && targetObject is On && (TypeArgument is null || TypeArgument != typeof(ImageSource) || TypeArgument != typeof(FontImageSource)))
             throw new MauiIconsExpection("MauiIcons only supports ImageSource or FontImageSource in conjunction with OnPlatform and OnIdiom After Assigning TypeArgument." +
@@ -93,7 +91,7 @@ public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtensi
         throw new MauiIconsExpection($"MauiIcons extension does not provide {returnType} support");
     }
 
-    Binding AssignFontProperties(object targetObject, bool disableConverter = false)
+    Binding SetFontProperties(object targetObject, bool disableConverter = false)
     {
         switch (targetObject)
         {
@@ -154,10 +152,9 @@ public abstract class BaseIconExtension2<TEnum> : BindableObject, IMarkupExtensi
             default:
                 throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
         }
-        return disableConverter ? new Binding(nameof(Icon), mode: BindingMode.OneWay, source: this) : 
-            new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this);
+        return new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: !disableConverter ? new EnumToStringConverter() : null, source: this);
     }
-    FontImageSource AssignImageSource()
+    FontImageSource SetImageSourceProperties()
     {
         var fontImageSource = new FontImageSource();
         fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this));
