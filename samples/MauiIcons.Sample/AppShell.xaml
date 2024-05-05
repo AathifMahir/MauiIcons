@@ -9,15 +9,20 @@
 
     <TabBar>
         <ShellContent
-     Title="Xaml"
-     ContentTemplate="{DataTemplate local:MainPage}"
-     Route="MainPage" Icon="{mi:Fluent Icon=Home12}">
-        </ShellContent>
+            Title="Xaml"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Icon="{mi:Fluent Icon=Home12}"
+            Route="MainPage" />
+        <ShellContent
+            Title="Code"
+            ContentTemplate="{DataTemplate local:BindingPage}"
+            Icon="{mi:FluentFilled Icon=BuildingHome24Filled}"
+            Route="MainPage" />
         <ShellContent
             Title="Markup"
             ContentTemplate="{DataTemplate local:MarkupPage}"
-            Route="MainPage" Icon="{mi:FluentFilled Icon=Home12Filled}">
-        </ShellContent>
+            Icon="{mi:FluentFilled Icon=Home12Filled}"
+            Route="MainPage" />
     </TabBar>
 
 

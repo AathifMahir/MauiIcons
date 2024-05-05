@@ -5,8 +5,6 @@ internal static class PlatformHelper
     {
         if (platforms is null) return true;
 
-        // Avoided Using Linq in this scenerio to free up the small difference in memory usage that we measured between this implementation and linq, Since this code runs on startup of the app
-
         string targetPlatform = DeviceInfo.Platform.ToString();
 
         foreach (var value in platforms)
@@ -20,8 +18,6 @@ internal static class PlatformHelper
     public static bool IsValidIdiom(IList<string> idioms)
     {
         if(idioms is null) return true;
-
-        // Avoided Using Linq in this scenerio to free up the small difference in memory usage that we measured between this implementation and linq, Since this code runs on startup of the app
 
         string targetIdiom = DeviceInfo.Idiom.ToString();
 
@@ -61,8 +57,6 @@ internal static class PlatformHelper
 
         string targetPlatform = DeviceInfo.Platform.ToString();
         string targetIdiom = DeviceInfo.Idiom.ToString();
-
-        // Avoided Using Linq in this scenerio to free up the small difference in memory usage that we measured between this implementation and linq, Since this code runs on startup of the app
 
         for (int i = 0; i < indexMax; i++)
         {
