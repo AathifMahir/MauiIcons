@@ -31,7 +31,7 @@
 		<PackageIcon>icon.png</PackageIcon>
 		<AssemblyVersion>2.2.0.0</AssemblyVersion>
 		<AssemblyFileVersion>2.2.0.0</AssemblyFileVersion>
-		<Version>2.2.0-pre</Version>
+		<Version>2.2.0</Version>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
