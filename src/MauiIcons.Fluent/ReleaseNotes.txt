@@ -1,4 +1,4 @@
-﻿v2.2.0
+﻿v2.2.5
 • New and Improved Xaml Markup Extension with Binding Support
 
 v2.1.5
