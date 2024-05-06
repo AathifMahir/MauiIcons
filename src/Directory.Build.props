@@ -29,9 +29,9 @@
 	<PropertyGroup Condition="'$(MSBuildProjectName)' != 'MauiIcons.Sample' and $(MSBuildProjectName) != 'MauiIcons.Modules.UnitTest'">
 		<Title>MauiIcons</Title>
 		<PackageIcon>icon.png</PackageIcon>
-		<AssemblyVersion>2.2.0.0</AssemblyVersion>
-		<AssemblyFileVersion>2.2.0.0</AssemblyFileVersion>
-		<Version>2.2.0</Version>
+		<AssemblyVersion>2.2.5.0</AssemblyVersion>
+		<AssemblyFileVersion>2.2.5.0</AssemblyFileVersion>
+		<Version>2.2.5</Version>
 		<Product>$(AssemblyName) ($(TargetFramework))</Product>
 		<PackageVersion>$(Version)$(VersionSuffix)</PackageVersion>
 		<UseFullSemVerForNuGet>false</UseFullSemVerForNuGet>
