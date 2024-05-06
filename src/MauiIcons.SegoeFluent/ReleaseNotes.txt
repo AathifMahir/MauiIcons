@@ -1,4 +1,7 @@
-﻿v2.1.5
+﻿v2.2.5
+• New and Improved Xaml Markup Extension with Binding Support
+
+v2.1.5
 • New and Improved Extension for MauiIcon C#
 
 v2.1.2

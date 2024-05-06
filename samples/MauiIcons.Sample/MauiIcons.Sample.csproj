@@ -73,4 +73,10 @@
 		<PackageReference Include="CommunityToolkit.Maui.Markup" Version="3.3.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="BindingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

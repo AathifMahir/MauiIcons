@@ -128,6 +128,42 @@ new MauiIcon().Icon(MaterialIcons.ABC).IconColor(Colors.Violet);
 <Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
 <Label Text="{mi:Fluent Icon=Accounts}"/>
+
+<ImageButton Source="{mi:Material Icon=AccessAlarm}"/>
+
+<Entry Placeholder="{mi:FontAwesome Icon=AddressBook}"/>
+
+<Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+```
+
+## Xaml Extension Data Binding Usage
+
+The below example, Make Sures that BindingContext Inside the Xaml Extension is Set to Root of this Page, Likewise make sure to set the BindingContext When using Binding Inside the MauiIcons Xaml Extension, Additionally This example Binds to MyIcon and MyColor Properties Which Present in Code Behind But Not Included in this Example.
+```xml
+<ContentPage
+    x:Class="MauiIcons.Sample.BindingPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiIcons.Sample"
+    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    x:Name="thisRoot">
+        <HorizontalStackLayout>
+            <Label Text="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+            <Image>
+                <Image.Source>
+                    <FontImageSource 
+                    Glyph="{mi:Fluent BindingContext={x:Reference thisRoot}, 
+                    Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                </Image.Source>
+            </Image>
+
+            <Image Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+
+            <ImageButton Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}" />
+
+            <mi:MauiIcon Icon="{mi:Fluent}" />
+        </HorizontalStackLayout>
+</ContentPage>
 ```
 
 ## C# Markup Usage
