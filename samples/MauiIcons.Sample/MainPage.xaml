@@ -59,19 +59,8 @@
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-                <Image BackgroundColor="Red">
-                    <Image.Source>
-                        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}">
-                            <On Platform="MacCatalyst, WinUI" Value="{mi:Cupertino Icon=Airplane, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}" />
-                        </OnPlatform>
-                    </Image.Source>
-                </Image>
-
-                <Image BackgroundColor="Red">
-                    <Image.Source>
-                        <OnIdiom Default="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" Desktop="{mi:FluentFilled Icon=Airplane20Filled, TypeArgument={x:Type ImageSource}}" />
-                    </Image.Source>
-                </Image>
+                <Image BackgroundColor="Red" Source="{mi:FluentFilled Icon=ZoomIn24Filled, OnPlatforms='MacCatalyst, Android, WinUI'}" />
+                <Image BackgroundColor="Red" Source="{mi:FluentFilled Icon=Airplane20Filled, OnIdioms='Desktop, Mobile'}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
