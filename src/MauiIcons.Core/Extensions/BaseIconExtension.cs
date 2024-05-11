@@ -5,7 +5,7 @@ using Microsoft.Maui.Graphics.Converters;
 namespace MauiIcons.Core;
 
 [ContentProperty(nameof(Icon))]
-public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtension where TEnum : Enum
+public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtension<BindingBase> where TEnum : Enum
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension<TEnum>), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIconExtension<TEnum>), 30.0);
@@ -51,10 +51,10 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
     public IList<string> OnIdioms { get; set; } = new List<string>();
-
     public Type? TypeArgument { get; set; }
 
-    public object ProvideValue(IServiceProvider serviceProvider)
+
+    public BindingBase ProvideValue(IServiceProvider serviceProvider)
     {
         var valueProvider = serviceProvider.GetService<IProvideValueTarget>() ?? throw new ArgumentException();
         Type? returnType = (valueProvider.TargetProperty as BindableProperty)?.ReturnType;
@@ -65,7 +65,12 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         return new Binding();
     }
 
-    object SetMauiIconBasedOnType(object targetObject, Type? returnType)
+    object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider)
+    {
+        return (this as IMarkupExtension<BindingBase>).ProvideValue(serviceProvider);
+    }
+
+    Binding SetMauiIconBasedOnType(object targetObject, Type? returnType)
     {
         if(returnType == typeof(Enum))
             return SetFontProperties(targetObject, disableConverter: true);
@@ -170,18 +175,28 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         }
         return new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: !disableConverter ? new EnumToStringConverter() : null, source: this);
     }
-    FontImageSource SetImageSourceProperties()
+
+    Binding SetImageSourceProperties()
     {
-        var fontImageSource = new FontImageSource();
-        fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this));
-        fontImageSource.FontFamily = Icon.GetFontFamily();
-        fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this, mode: BindingMode.OneWay));
-        fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this, mode: BindingMode.OneWay,
-            converter: new DefaultColorConverter(), converterParameter: fontImageSource.Color));
-        fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this, mode: BindingMode.OneWay));
-        return fontImageSource;
+        InternalSource = new FontImageSource();
+        ((FontImageSource)InternalSource).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this));
+        ((FontImageSource)InternalSource).FontFamily = Icon.GetFontFamily();
+        ((FontImageSource)InternalSource).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this));
+        ((FontImageSource)InternalSource).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this,
+                           converter: new DefaultColorConverter(), converterParameter: ((FontImageSource)InternalSource).Color));
+        ((FontImageSource)InternalSource).SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
+        return new Binding(nameof(InternalSource), mode: BindingMode.OneWay, source: this);
     }
 
+    public static readonly BindableProperty InternalSourceProperty = BindableProperty.Create(nameof(InternalSource), typeof(ImageSource), typeof(BaseIconExtension<TEnum>), null);
 
+    /// <summary>
+    /// This is Used Internally, Don't Use it in XAML or CodeBehind
+    /// </summary>
+    public ImageSource InternalSource
+    {
+        get => (ImageSource)GetValue(InternalSourceProperty);
+        set => SetValue(InternalSourceProperty, value);
+    }
     
 }
