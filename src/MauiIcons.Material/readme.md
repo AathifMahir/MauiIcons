@@ -52,14 +52,16 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 
 ```
 
-## Breaking Changes from v2
+## Breaking Changes
+
+### Version 1 to 2
 
 `Old (v1)`
 
 ```xml
-xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
+xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
 
-<material:MauiIcon Icon="AddRoad"/>
+<cupertino:MauiIcon Icon="Airplane"/>
 ```
 
 `New (v2)`
@@ -67,8 +69,13 @@ xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
-<mi:MauiIcon Icon="{mi:Material AddRoad}"/>
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
 ```
+
+### Version 2 to 3
+
+  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
+  - Removal of **Dotnet 7** Support
 
 ### Nuget Package Changes
 
@@ -168,29 +175,6 @@ new MauiIcon().Icon(MaterialIcons.AddRoad).OnPlatforms(new List<string>{"WinUI",
 new MauiIcon().Icon(MaterialIcons.ABC).OnIdioms(new List<string>{"Desktop", "Phone"});
 new MauiIcon().Icon(MaterialIcons.AddRoad).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
-
-## Maui Built in OnPlatform and OnIdiom Usage
-
-```xml
-<Image>
-    <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:Material Icon=ABC, TypeArgument={x:Type ImageSource}}">
-            <On Platform="MacCatalyst, WinUI" 
-			Value="{mi:Material Icon=AddRoad, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
-        </OnPlatform>
-    </Image.Source>
-</Image>
-
-<Image>
-    <Image.Source>
-        <OnIdiom Default="{mi:Material Icon=AddRoad, TypeArgument={x:Type ImageSource}}" 
-		Desktop="{mi:Material Icon=ABC, TypeArgument={x:Type ImageSource}}">
-        </OnIdiom>
-    </Image.Source>
-</Image>
-
-```
-**Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
 
 # License
 

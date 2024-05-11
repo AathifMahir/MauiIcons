@@ -52,7 +52,9 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 
 ```
 
-## Breaking Changes from v2
+## Breaking Changes
+
+### Version 1 to 2
 
 `Old (v1)`
 
@@ -69,6 +71,11 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 <mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
 ```
+
+### Version 2 to 3
+
+  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
+  - Removal of **Dotnet 7** Support
 
 ## Built in Control Usage
 
@@ -160,29 +167,6 @@ new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI"
 new MauiIcon().Icon(CupertinoIcons.Airplane).OnIdioms(new List<string>{"Desktop", "Phone"});
 new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
-
-## Maui Built in OnPlatform and OnIdiom Usage
-
-```xml
-<Image>
-    <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:Cupertino Icon=Airplane, TypeArgument={x:Type ImageSource}}">
-            <On Platform="MacCatalyst, WinUI" 
-			Value="{mi:Cupertino Icon=AntFill, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
-        </OnPlatform>
-    </Image.Source>
-</Image>
-
-<Image>
-    <Image.Source>
-        <OnIdiom Default="{mi:Cupertino Icon=AntFill, TypeArgument={x:Type ImageSource}}" 
-		Desktop="{mi:Cupertino Icon=Airplane, TypeArgument={x:Type ImageSource}}">
-        </OnIdiom>
-    </Image.Source>
-</Image>
-
-```
-**Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
 
 # License
 
