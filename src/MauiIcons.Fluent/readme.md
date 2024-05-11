@@ -59,9 +59,9 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 `Old (v1)`
 
 ```xml
-xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
+xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
 
-<cupertino:MauiIcon Icon="Airplane"/>
+<fluent:MauiIcon Icon="AppFolder48"/>
 ```
 
 `New (v2)`
@@ -69,7 +69,7 @@ xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
-<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 ```
 
 ### Version 2 to 3
