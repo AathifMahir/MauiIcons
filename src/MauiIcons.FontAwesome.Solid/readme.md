@@ -52,6 +52,13 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 
 ```
 
+## Breaking Changes
+
+### Version 2 to 3
+
+  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
+  - Removal of **Dotnet 7** Support
+
 ## Built in Control Usage
 
 `Xaml`
@@ -142,29 +149,6 @@ new MauiIcon().Icon(FontAwesomeSolidIcons.GreaterThanEqual).OnPlatforms(new List
 new MauiIcon().Icon(FontAwesomeSolidIcons.Asterisk).OnIdioms(new List<string>{"Desktop", "Phone"});
 new MauiIcon().Icon(FontAwesomeSolidIcons.PenToSquare).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
-
-## Maui Built in OnPlatform and OnIdiom Usage
-
-```xml
-<Image>
-    <Image.Source>
-        <OnPlatform x:TypeArguments="ImageSource" Default="{mi:FontAwesomeSolid Icon=GreaterThanEqual, TypeArgument={x:Type ImageSource}}">
-            <On Platform="MacCatalyst, WinUI" 
-			Value="{mi:FontAwesomeSolid Icon=RankingStar, IconBackgroundColor=Cyan, TypeArgument={x:Type ImageSource}}"/>
-        </OnPlatform>
-    </Image.Source>
-</Image>
-
-<Image>
-    <Image.Source>
-        <OnIdiom Default="{mi:FontAwesomeSolid Icon=RankingStar, TypeArgument={x:Type ImageSource}}" 
-		Desktop="{mi:FontAwesomeSolid Icon=Asterisk, TypeArgument={x:Type ImageSource}}">
-        </OnIdiom>
-    </Image.Source>
-</Image>
-
-```
-**Disclaimer:**  Only **ImageSource** or **FontImageSource** Supports Maui's Built in OnPlatform or OnIdiom and **TypeArgument** Should be Assigned to Work Optimally, Therefore It's Recommended to use MauiIcons Custom OnPlatform and OnIdioms
 
 # License
 

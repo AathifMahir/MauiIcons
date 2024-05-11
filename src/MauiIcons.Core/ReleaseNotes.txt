@@ -1,4 +1,9 @@
-﻿v2.2.5
+﻿v3.0.0
+• Critical Fixes for Xaml Markup Binding Support
+• Breaking Changes: Removal of Dotnet 7 Support
+• Breaking Changes: Removal of Maui OnPlatform and OnIdioms Support Instead Use MauiIcons Integrated Custom OnPlatforms and OnIdioms Feature
+
+v2.2.5
 • New and Improved Xaml Markup Extension with Binding Support
 
 v2.1.5
