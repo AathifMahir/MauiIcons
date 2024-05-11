@@ -51,8 +51,6 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
     public IList<string> OnIdioms { get; set; } = new List<string>();
-    public Type? TypeArgument { get; set; }
-
 
     public BindingBase ProvideValue(IServiceProvider serviceProvider)
     {
@@ -65,10 +63,8 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         return new Binding();
     }
 
-    object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider)
-    {
-        return (this as IMarkupExtension<BindingBase>).ProvideValue(serviceProvider);
-    }
+    object IMarkupExtension.ProvideValue(IServiceProvider serviceProvider) =>
+        (this as IMarkupExtension<BindingBase>).ProvideValue(serviceProvider);
 
     Binding SetMauiIconBasedOnType(object targetObject, Type? returnType)
     {
@@ -84,17 +80,14 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         if (returnType is null && (targetObject is On or OnPlatform<ImageSource>
             or OnPlatform<FontImageSource> or OnPlatformExtension
             or OnIdiom<ImageSource> or OnIdiom<FontImageSource>
-            or OnIdiomExtension) && (TypeArgument == typeof(ImageSource) || TypeArgument == typeof(FontImageSource)))
-            return SetImageSourceProperties();
-
-        else if (returnType is null && targetObject is On && (TypeArgument is null || TypeArgument != typeof(ImageSource) || TypeArgument != typeof(FontImageSource)))
-            throw new MauiIconsExpection("MauiIcons only supports ImageSource or FontImageSource in conjunction with OnPlatform and OnIdiom After Assigning TypeArgument." +
-                "it is recommended to utilize MauiIcon's integrated OnPlatform or OnIdiom functionalities for optimal compatibility.");
+            or OnIdiomExtension))
+            throw new MauiIconsExpection("MauiIcons doesn't support Maui OnPlatform or OnIdiom," +
+                "Therefore it is recommended to utilize MauiIcon's integrated Custom OnPlatform or OnIdiom functionalities.");
 
         else if (returnType is null && targetObject is Setter)
-            throw new MauiIconsExpection("MauiIcons doesn't support style setter to be used in conjunction with xaml extension.");
+            throw new MauiIconsExpection("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.");
 
-        throw new MauiIconsExpection($"MauiIcons extension does not provide {returnType} support");
+        throw new MauiIconsExpection($"MauiIcons Extension does not provide {returnType} support");
     }
 
     Binding SetFontProperties(object targetObject, bool disableConverter = false)
