@@ -3,14 +3,11 @@
 namespace MauiIcons.Core;
 public interface IMauiIcon
 {
-
-#nullable enable
     /// <summary>
     /// Gets or sets the icon enum value.
     /// </summary>
-    Enum? Icon { get;  }
+    Enum? IconValue { get; }
 
-#nullable disable
 
     /// <summary>
     /// Gets or sets the size of the icon.
