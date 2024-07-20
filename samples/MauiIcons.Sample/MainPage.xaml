@@ -5,7 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiIcons.Sample"
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    x:Name="thisRoot"
     x:DataType="local:MainPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="mi:MauiIcon.Icon" Value="{mi:Cupertino Icon={Binding MyIcon}, BindingContext={x:Reference thisRoot}}" />
+        </Style>
+    </ContentPage.Resources>
 
     <ScrollView>
         <VerticalStackLayout
@@ -40,6 +47,24 @@
                     OnPlatforms="MacCatalyst, WinUI" />
                 <Label Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}" />
 
+                <Label Style="{DynamicResource LabelStyle}" />
+                <Label mi:MauiIcon.Icon="{mi:Cupertino Icon=Alt}" />
+                <mi:MauiIcon Icon="{mi:Material Icon=ABC}" />
+                <mi:MauiIcon Icon="{mi:Material Icon=AccessAlarms, IconSize=Large}" />
+                <mi:MauiIcon IconValue="{mi:Material Icon=Accessibility, IconSize=Large}" />
+                <Image mi:MauiIcon.Icon="{mi:FontAwesomeBrand Icon={Binding MyIcon1}, BindingContext={x:Reference thisRoot}, IconColor=LightGreen}" />
+                <Image Source="{mi:FontAwesomeBrand Icon=_500px}" />
+                <Image>
+                    <Image.Source>
+                        <FontImageSource mi:MauiIcon.Icon="{mi:FontAwesomeBrand Icon=Amazon, IconColor=Orange}" />
+                    </Image.Source>
+                </Image>
+
+                <ImageButton mi:MauiIcon.Icon="{mi:Material Icon=AccountCircle}" />
+                <mi:MauiIcon Icon="{mi:FontAwesome Icon=Bell, IconColor=LightBlue}" />
+
+
+
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
@@ -48,6 +73,7 @@
                 <Button Text="{mi:FluentFilled Icon=AppFolder48Filled, IconColor=BlueViolet, IconSize=Large}" />
                 <Button Text="{mi:Material ABC, IconSize=Large}" />
                 <Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+                <Button mi:MauiIcon.Icon="{mi:FontAwesomeBrand Icon=Microsoft}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
@@ -74,6 +100,8 @@
                 <Image Aspect="Center" Source="{mi:FontAwesomeBrand Icon=Twitter, IconColor=Cyan}" />
                 <Label Text="{mi:FontAwesomeSolid Icon=AddressCard}" TextColor="LightGreen" />
             </HorizontalStackLayout>
+
+            <Button Clicked="Button_Clicked" Text="Change" />
 
         </VerticalStackLayout>
     </ScrollView>
