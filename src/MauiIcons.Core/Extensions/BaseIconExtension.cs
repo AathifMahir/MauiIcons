@@ -47,10 +47,10 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
     }
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
-    public IList<string> OnPlatforms { get; set; } = new List<string>();
+    public IList<string> OnPlatforms { get; set; } = [];
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
-    public IList<string> OnIdioms { get; set; } = new List<string>();
+    public IList<string> OnIdioms { get; set; } = [];
 
     public BindingBase ProvideValue(IServiceProvider serviceProvider)
     {
@@ -68,7 +68,7 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
 
     Binding SetMauiIconBasedOnType(object targetObject, Type? returnType)
     {
-        if(returnType == typeof(Enum))
+        if (returnType == typeof(Enum))
             return SetFontProperties(targetObject, disableConverter: true);
 
         if (returnType == typeof(string))
@@ -77,15 +77,20 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         if (returnType == typeof(ImageSource) || returnType == typeof(FontImageSource))
             return SetImageSourceProperties();
 
+        if(returnType == typeof(BaseIcon))
+            return SetBaseIconProperties();
+
+        if (returnType is null && targetObject is Setter setter)
+            return setter.Property.DeclaringType != typeof(MauiIcon)
+                    ? throw new MauiIconsExpection("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.")
+                    : SetBaseIconProperties();
+
         if (returnType is null && (targetObject is On or OnPlatform<ImageSource>
             or OnPlatform<FontImageSource> or OnPlatformExtension
             or OnIdiom<ImageSource> or OnIdiom<FontImageSource>
             or OnIdiomExtension))
             throw new MauiIconsExpection("MauiIcons doesn't support Maui OnPlatform or OnIdiom," +
                 "Therefore it is recommended to utilize MauiIcon's integrated Custom OnPlatform or OnIdiom functionalities.");
-
-        else if (returnType is null && targetObject is Setter)
-            throw new MauiIconsExpection("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.");
 
         throw new MauiIconsExpection($"MauiIcons Extension does not provide {returnType} support");
     }
@@ -96,7 +101,7 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         {
             case Button button:
                 button.FontFamily = Icon.GetFontFamily();
-                button.SetBinding(Button.TextColorProperty, new Binding(nameof(IconColor), source: this, mode: BindingMode.OneWay, 
+                button.SetBinding(Button.TextColorProperty, new Binding(nameof(IconColor), source: this, mode: BindingMode.OneWay,
                     converter: new DefaultColorConverter(), converterParameter: button.TextColor));
                 button.SetBinding(Button.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, mode: BindingMode.OneWay,
                     converter: new DefaultColorConverter(), converterParameter: button.BackgroundColor));
@@ -166,13 +171,13 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
             default:
                 throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
         }
-        return new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: !disableConverter ? new EnumToStringConverter() : null, source: this);
+        return new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: !disableConverter ? new IconToGlyphConverter() : null, source: this);
     }
 
     Binding SetImageSourceProperties()
     {
         InternalSource = new FontImageSource();
-        ((FontImageSource)InternalSource).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new EnumToStringConverter(), source: this));
+        ((FontImageSource)InternalSource).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: new IconToGlyphConverter(), source: this));
         ((FontImageSource)InternalSource).FontFamily = Icon.GetFontFamily();
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this));
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this,
@@ -181,7 +186,19 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         return new Binding(nameof(InternalSource), mode: BindingMode.OneWay, source: this);
     }
 
+    Binding SetBaseIconProperties()
+    {
+        InternalBaseSource = new BaseIcon();
+        InternalBaseSource.SetBinding(BaseIcon.IconProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, source: this));
+        InternalBaseSource.SetBinding(BaseIcon.IconSizeProperty, new Binding(nameof(IconSize), source: this));
+        InternalBaseSource.SetBinding(BaseIcon.IconColorProperty, new Binding(nameof(IconColor), source: this));
+        InternalBaseSource.SetBinding(BaseIcon.IconBackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
+        InternalBaseSource.SetBinding(BaseIcon.IconAutoScalingProperty, new Binding(nameof(IconAutoScaling), source: this));
+        return new Binding(nameof(InternalBaseSource), mode: BindingMode.OneWay, source: this);
+    }
+
     public static readonly BindableProperty InternalSourceProperty = BindableProperty.Create(nameof(InternalSource), typeof(ImageSource), typeof(BaseIconExtension<TEnum>), null);
+    public static readonly BindableProperty InternalBaseSourceProperty = BindableProperty.Create(nameof(InternalBaseSource), typeof(BaseIcon), typeof(BaseIconExtension<TEnum>), null);
 
     /// <summary>
     /// This is Used Internally, Don't Use it in XAML or CodeBehind
@@ -191,5 +208,16 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
         get => (ImageSource)GetValue(InternalSourceProperty);
         set => SetValue(InternalSourceProperty, value);
     }
+
+    /// <summary>
+    /// This is Used Internally, Don't Use it in XAML or CodeBehind
+    /// </summary>
+    public BaseIcon InternalBaseSource
+    {
+        get => (BaseIcon)GetValue(InternalBaseSourceProperty);
+        set => SetValue(InternalBaseSourceProperty, value);
+    }
+
     
+
 }
