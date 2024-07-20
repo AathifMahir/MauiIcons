@@ -39,7 +39,7 @@ internal static class EnumHelper
         return value.GetType().Name;
     }
 
-    public static string GetFontFamily<TEnum>(this TEnum? value) where TEnum : Enum
+    public static string GetFontFamily<TEnum>(this TEnum value) where TEnum : Enum?
     {
         if (value is null) return string.Empty;
         return value.GetType().Name;
