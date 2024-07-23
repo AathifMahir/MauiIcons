@@ -44,10 +44,25 @@ public partial class MainPage : ContentPage
         }
     }
 
+    private Color _labelColor = Colors.Coral;
+    public Color MyLabelColor 
+    { 
+        get => _labelColor;
+        set
+        {
+            if (value != _labelColor)
+            {
+                _labelColor = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
         MyIcon = MyIcon == CupertinoIcons.Airplane ? CupertinoIcons.Alarm : CupertinoIcons.Airplane;
         MyIcon1 = MyIcon1 == FontAwesomeBrandIcons.Microsoft ? FontAwesomeBrandIcons.Apple : FontAwesomeBrandIcons.Microsoft;
+        MyLabelColor = MyLabelColor == Colors.Coral ? Colors.Blue : Colors.Coral;
     }
 }
 

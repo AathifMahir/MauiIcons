@@ -12,6 +12,9 @@
         <Style x:Key="LabelStyle" TargetType="Label">
             <Setter Property="mi:MauiIcon.Icon" Value="{mi:Cupertino Icon={Binding MyIcon}, BindingContext={x:Reference thisRoot}}" />
         </Style>
+        <Style x:Key="LabelColorStyle" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="{x:OnIdiom Desktop={Binding MyLabelColor}}" />
+        </Style>
     </ContentPage.Resources>
 
     <ScrollView>
@@ -51,8 +54,8 @@
                 <Label mi:MauiIcon.Icon="{mi:Cupertino Icon=Alt}" />
                 <mi:MauiIcon Icon="{mi:Material Icon=ABC}" />
                 <mi:MauiIcon Icon="{mi:Material Icon=AccessAlarms, IconSize=Large}" />
-                <mi:MauiIcon IconValue="{mi:Material Icon=Accessibility, IconSize=Large}" />
-                <Image mi:MauiIcon.Icon="{mi:FontAwesomeBrand Icon={Binding MyIcon1}, BindingContext={x:Reference thisRoot}, IconColor=LightGreen}" />
+                <mi:MauiIcon Icon="{mi:Material Icon=Accessibility, IconSize=Large}" />
+                <Image mi:MauiIcon.Icon="{mi:FontAwesomeBrand Icon={Binding MyIcon1}, IconColor=LightGreen, BindingContext={x:Reference thisRoot}}" />
                 <Image Source="{mi:FontAwesomeBrand Icon=_500px}" />
                 <Image>
                     <Image.Source>
@@ -62,8 +65,8 @@
 
                 <ImageButton mi:MauiIcon.Icon="{mi:Material Icon=AccountCircle}" />
                 <mi:MauiIcon Icon="{mi:FontAwesome Icon=Bell, IconColor=LightBlue}" />
-
-
+                <Label Style="{StaticResource LabelColorStyle}" Text="Bg Color" />
+                <mi:MauiIcon Icon="{mi:Material Icon=AccountCircle, IconColor={Binding MyLabelColor}, BindingContext={x:Reference thisRoot}}" />
 
             </HorizontalStackLayout>
 
