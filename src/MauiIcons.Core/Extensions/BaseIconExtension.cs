@@ -1,49 +1,18 @@
-﻿using MauiIcons.Core.Converters;
+﻿using MauiIcons.Core.Base;
+using MauiIcons.Core.Converters;
 using MauiIcons.Core.Helpers;
-using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
 [ContentProperty(nameof(Icon))]
-public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtension<BindingBase> where TEnum : Enum
+public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<BindingBase> where TEnum : Enum
 {
-    public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension<TEnum>), null);
-    public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIconExtension<TEnum>), 30.0);
-    public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(BaseIconExtension<TEnum>), null);
-    public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(BaseIconExtension<TEnum>), null);
-    public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(BaseIconExtension<TEnum>), false);
+    public static new readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension<TEnum>), null);
 
-    public TEnum? Icon
+    public new TEnum? Icon
     {
         get => (TEnum?)GetValue(IconProperty);
         set => SetValue(IconProperty, value);
-    }
-
-    [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
-    public double IconSize
-    {
-        get => (double)GetValue(IconSizeProperty);
-        set => SetValue(IconSizeProperty, value);
-    }
-
-    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
-    public Color IconColor
-    {
-        get => (Color)GetValue(IconColorProperty);
-        set => SetValue(IconColorProperty, value);
-    }
-
-    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
-    public Color IconBackgroundColor
-    {
-        get => (Color)GetValue(IconBackgroundColorProperty);
-        set => SetValue(IconBackgroundColorProperty, value);
-    }
-
-    public bool IconAutoScaling
-    {
-        get => (bool)GetValue(IconAutoScalingProperty);
-        set => SetValue(IconAutoScalingProperty, value);
     }
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
@@ -188,17 +157,11 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
 
     Binding SetBaseIconProperties()
     {
-        InternalBaseSource = new BaseIcon();
-        InternalBaseSource.SetBinding(BaseIcon.IconProperty, new Binding(nameof(Icon), mode: BindingMode.OneWay, source: this));
-        InternalBaseSource.SetBinding(BaseIcon.IconSizeProperty, new Binding(nameof(IconSize), source: this));
-        InternalBaseSource.SetBinding(BaseIcon.IconColorProperty, new Binding(nameof(IconColor), source: this));
-        InternalBaseSource.SetBinding(BaseIcon.IconBackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
-        InternalBaseSource.SetBinding(BaseIcon.IconAutoScalingProperty, new Binding(nameof(IconAutoScaling), source: this));
-        return new Binding(nameof(InternalBaseSource), mode: BindingMode.OneWay, source: this);
+        base.Icon = Icon;
+        return new Binding(".", mode: BindingMode.OneWay, source: this);
     }
 
     public static readonly BindableProperty InternalSourceProperty = BindableProperty.Create(nameof(InternalSource), typeof(ImageSource), typeof(BaseIconExtension<TEnum>), null);
-    public static readonly BindableProperty InternalBaseSourceProperty = BindableProperty.Create(nameof(InternalBaseSource), typeof(BaseIcon), typeof(BaseIconExtension<TEnum>), null);
 
     /// <summary>
     /// This is Used Internally, Don't Use it in XAML or CodeBehind
@@ -207,15 +170,6 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
     {
         get => (ImageSource)GetValue(InternalSourceProperty);
         set => SetValue(InternalSourceProperty, value);
-    }
-
-    /// <summary>
-    /// This is Used Internally, Don't Use it in XAML or CodeBehind
-    /// </summary>
-    public BaseIcon InternalBaseSource
-    {
-        get => (BaseIcon)GetValue(InternalBaseSourceProperty);
-        set => SetValue(InternalBaseSourceProperty, value);
     }
 
     
