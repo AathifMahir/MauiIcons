@@ -11,7 +11,7 @@ public static class MauiIconMarkupExtension
     {
         if(bindable is IMauiIcon)
         {
-            bindable.SetValue(MauiIcon.IconValueProperty, Icon);
+            bindable.SetValue(MauiIcon.ValueProperty, Icon);
         }
         return bindable;
     }
