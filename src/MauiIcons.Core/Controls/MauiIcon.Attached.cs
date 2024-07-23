@@ -1,4 +1,5 @@
-﻿using MauiIcons.Core.Converters;
+﻿using MauiIcons.Core.Base;
+using MauiIcons.Core.Converters;
 using MauiIcons.Core.Helpers;
 
 namespace MauiIcons.Core;
@@ -87,7 +88,7 @@ public partial class MauiIcon
                 break;
 
             case MauiIcon mauiIcon:
-                mauiIcon.SetBinding(MauiIcon.IconValueProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay));
+                mauiIcon.SetBinding(MauiIcon.ValueProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay));
                 mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
                     converter: new DefaultColorConverter(), converterParameter: mauiIcon.IconColor));
                 mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,

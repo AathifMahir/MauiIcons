@@ -1,13 +1,17 @@
-﻿using MauiIcons.Core.Converters;
+﻿using MauiIcons.Core.Base;
+using MauiIcons.Core.Converters;
 using MauiIcons.Core.Helpers;
 using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
-public sealed partial class MauiIcon : BaseIcon, IMauiIcon
+public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
 {
-    public static readonly BindableProperty IconValueProperty = BindableProperty.Create(nameof(IconValue), typeof(Enum), typeof(MauiIcon), null);
-   
+    public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(Enum), typeof(BaseIcon), null);
+    public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIcon), 30.0);
+    public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(BaseIcon), null);
+    public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(BaseIcon), null);
+    public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(BaseIcon), false);
     public static readonly BindableProperty IconSuffixProperty = BindableProperty.Create(nameof(IconSuffix), typeof(string), typeof(MauiIcon), null, propertyChanged: IconSuffixPropertyChanged);
     public static readonly BindableProperty IconSuffixFontFamilyProperty = BindableProperty.Create(nameof(IconSuffixFontFamily), typeof(string), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixFontSizeProperty = BindableProperty.Create(nameof(IconSuffixFontSize), typeof(double), typeof(MauiIcon), 20.0);
@@ -23,10 +27,37 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
     private static void IconSuffixPropertyChanged(BindableObject bindable, object oldValue, object newValue) =>
         ((MauiIcon)bindable)._iconSuffixSpacer.Text = !string.IsNullOrEmpty((string)newValue) ? " " : null;
 
-    public Enum? IconValue
+    public Enum? Value
     {
-        get => (Enum)GetValue(IconValueProperty);
-        set => SetValue(IconValueProperty, value);
+        get => (Enum?)GetValue(ValueProperty);
+        set => SetValue(ValueProperty, value);
+    }
+
+    [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
+    public double IconSize
+    {
+        get => (double)GetValue(IconSizeProperty);
+        set => SetValue(IconSizeProperty, value);
+    }
+
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
+    public Color IconColor
+    {
+        get => (Color)GetValue(IconColorProperty);
+        set => SetValue(IconColorProperty, value);
+    }
+
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
+    public Color IconBackgroundColor
+    {
+        get => (Color)GetValue(IconBackgroundColorProperty);
+        set => SetValue(IconBackgroundColorProperty, value);
+    }
+
+    public bool IconAutoScaling
+    {
+        get => (bool)GetValue(IconAutoScalingProperty);
+        set => SetValue(IconAutoScalingProperty, value);
     }
     public string IconSuffix
     {
@@ -105,7 +136,7 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
         Loaded += async (s, r) =>
         {
             RemoveContentBasedOnPlatformAndIdiom();
-            _iconSpan.FontFamily = IconValue.GetFontFamily();
+            _iconSpan.FontFamily = Value?.GetFontFamily();
             await AnimateIcon(_rootLabel);
         };
     }
@@ -116,7 +147,7 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
     private Span _suffixSpan = new();
     private Label BuildIconControl()
     {
-        _iconSpan.SetBinding(Span.TextProperty, new Binding(nameof(IconValue), converter: new IconToGlyphConverter(), source: this));
+        _iconSpan.SetBinding(Span.TextProperty, new Binding(nameof(Value), converter: new IconToGlyphConverter(), source: this));
         _iconSpan.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
         _iconSpan.SetBinding(Span.FontSizeProperty, new Binding(nameof(IconSize), source: this));
         _iconSpan.SetBinding(Span.TextColorProperty, new Binding(nameof(IconColor), source: this));
@@ -162,9 +193,9 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
     {
         Source = new FontImageSource()
         {
-            Glyph = baseIcon.IconValue.GetDescription(),
+            Glyph = baseIcon.Value.GetDescription(),
             Color = baseIcon.IconColor.SetDefaultOrAssignedColor(),
-            FontFamily = baseIcon.IconValue.GetFontFamily(),
+            FontFamily = baseIcon.Value.GetFontFamily(),
             Size = baseIcon.IconSize,
             FontAutoScalingEnabled = baseIcon.IconAutoScaling,
         },
@@ -173,9 +204,9 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
 
     public static explicit operator FontImageSource(MauiIcon mi) => new()
     {
-        Glyph = mi.IconValue.GetDescription(),
+        Glyph = mi.Value.GetDescription(),
         Color = mi.IconColor.SetDefaultOrAssignedColor(),
-        FontFamily = mi.IconValue.GetFontFamily(),
+        FontFamily = mi.Value.GetFontFamily(),
         Size = mi.IconSize,
         FontAutoScalingEnabled = mi.IconAutoScaling,
     };
@@ -183,7 +214,7 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
     public static explicit operator Label(MauiIcon mi)
     {
         var label = mi._rootLabel;
-        mi._iconSpan.FontFamily = mi.IconValue.GetFontFamily();
+        mi._iconSpan.FontFamily = mi.Value.GetFontFamily();
         label.Loaded += async (s, r) =>
         {
             await mi.AnimateIcon(label);
@@ -195,8 +226,8 @@ public sealed partial class MauiIcon : BaseIcon, IMauiIcon
     {
         var button = new Button
         {
-            Text = mi.IconValue.GetDescription(),
-            FontFamily = mi.IconValue.GetFontFamily(),
+            Text = mi.Value.GetDescription(),
+            FontFamily = mi.Value.GetFontFamily(),
             FontSize = mi.IconSize,
             FontAutoScalingEnabled = mi.IconAutoScaling
         };

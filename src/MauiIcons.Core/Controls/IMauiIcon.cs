@@ -6,7 +6,7 @@ public interface IMauiIcon
     /// <summary>
     /// Gets or sets the icon enum value.
     /// </summary>
-    Enum? IconValue { get; }
+    Enum? Value { get; }
 
 
     /// <summary>
