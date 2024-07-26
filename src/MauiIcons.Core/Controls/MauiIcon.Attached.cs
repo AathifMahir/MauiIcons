@@ -13,136 +13,121 @@ public partial class MauiIcon
             return;
 
         BaseIcon baseIcon = (BaseIcon)newValue;
+
+        if(!baseIcon.IsSet(BindableObject.BindingContextProperty))
+            baseIcon.SetBinding(BindableObject.BindingContextProperty, new Binding(nameof(BindingContext), source: bindable));
+
         switch (bindable)
         {
             case Button button:
                 button.SetValue(Button.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                button.SetBinding(Button.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
+                button.SetBinding(Button.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                button.SetBinding(Button.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                button.SetBinding(Button.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: button.TextColor));
-                button.SetBinding(Button.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                button.SetBinding(Button.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: button.BackgroundColor));
-                button.SetBinding(Button.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                button.SetBinding(Button.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                button.SetBinding(Button.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                button.SetBinding(Button.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case Label label:
                 label.SetValue(Label.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                label.SetBinding(Label.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
+                label.SetBinding(Label.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                label.SetBinding(Label.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                label.SetBinding(Label.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: label.TextColor));
-                label.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                label.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: label.BackgroundColor));
-                label.SetBinding(Label.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                label.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                label.SetBinding(Label.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                label.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case Span span:
                 span.SetValue(Span.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                span.SetBinding(Span.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
+                span.SetBinding(Span.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                span.SetBinding(Span.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                span.SetBinding(Span.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: span.TextColor));
-                span.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                span.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: span.BackgroundColor));
-                span.SetBinding(Span.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                span.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                span.SetBinding(Span.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                span.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case Entry entry:
                 entry.SetValue(Entry.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                entry.SetBinding(Entry.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
+                entry.SetBinding(Entry.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                entry.SetBinding(Entry.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                entry.SetBinding(Entry.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: entry.TextColor));
-                entry.SetBinding(Entry.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                entry.SetBinding(Entry.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: entry.BackgroundColor));
-                entry.SetBinding(Entry.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                entry.SetBinding(Entry.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                entry.SetBinding(Entry.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                entry.SetBinding(Entry.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case Editor editor:
                 editor.SetValue(Editor.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                editor.SetBinding(Editor.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
+                editor.SetBinding(Editor.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                editor.SetBinding(Editor.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                editor.SetBinding(Editor.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: editor.TextColor));
-                editor.SetBinding(Editor.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                editor.SetBinding(Editor.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: editor.BackgroundColor));
-                editor.SetBinding(Editor.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                editor.SetBinding(Editor.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                editor.SetBinding(Editor.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                editor.SetBinding(Editor.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case SearchBar searchBar:
                 searchBar.SetValue(SearchBar.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                searchBar.SetBinding(SearchBar.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
+                searchBar.SetBinding(SearchBar.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                searchBar.SetBinding(SearchBar.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                searchBar.SetBinding(SearchBar.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: searchBar.TextColor));
-                searchBar.SetBinding(SearchBar.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                searchBar.SetBinding(SearchBar.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: searchBar.BackgroundColor));
-                searchBar.SetBinding(SearchBar.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                searchBar.SetBinding(SearchBar.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                searchBar.SetBinding(SearchBar.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                searchBar.SetBinding(SearchBar.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case MauiIcon mauiIcon:
-                mauiIcon.SetBinding(MauiIcon.ValueProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay));
-                mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
+                mauiIcon.SetBinding(MauiIcon.ValueProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon));
+                mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: mauiIcon.IconColor));
-                mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon, mode: BindingMode.OneWay,
+                mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
-                mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
                 break;
 
             case Image image:
                 image.SetValue(Image.SourceProperty, new FontImageSource());
-                ((FontImageSource)image.Source).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new IconToGlyphConverter()));
-                ((FontImageSource)image.Source).SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                ((FontImageSource)image.Source).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                ((FontImageSource)image.Source).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new DefaultColorConverter(), converterParameter: ((FontImageSource)image.Source).Color));
-                ((FontImageSource)image.Source).SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                SetFontImageSourceBinding((FontImageSource)image.Source, baseIcon);
                 break;
-
             case ImageButton imageButton:
                 imageButton.SetValue(ImageButton.SourceProperty, new FontImageSource());
-                ((FontImageSource)imageButton.Source).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new IconToGlyphConverter()));
-                ((FontImageSource)imageButton.Source).SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                ((FontImageSource)imageButton.Source).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                ((FontImageSource)imageButton.Source).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new DefaultColorConverter(), converterParameter: ((FontImageSource)imageButton.Source).Color));
-                ((FontImageSource)imageButton.Source).SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                SetFontImageSourceBinding((FontImageSource)imageButton.Source, baseIcon);
                 break;
-
             case ImageCell imageCell:
                 imageCell.SetValue(ImageCell.ImageSourceProperty, new FontImageSource());
-                ((FontImageSource)imageCell.ImageSource).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new IconToGlyphConverter()));
-                ((FontImageSource)imageCell.ImageSource).SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                ((FontImageSource)imageCell.ImageSource).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                ((FontImageSource)imageCell.ImageSource).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new DefaultColorConverter(), converterParameter: ((FontImageSource)imageCell.ImageSource).Color));
-                ((FontImageSource)imageCell.ImageSource).SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+                SetFontImageSourceBinding((FontImageSource)imageCell.ImageSource, baseIcon);
                 break;
-
-            case FontImageSource fontImageSource:
-                fontImageSource.SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new IconToGlyphConverter()));
-                fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon, mode: BindingMode.OneWay));
-                fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, mode: BindingMode.OneWay,
-                    converter: new DefaultColorConverter(), converterParameter: fontImageSource.Color));
-                fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon, mode: BindingMode.OneWay));
+            case FontImageSource fontImage:
+                SetFontImageSourceBinding(fontImage, baseIcon);
                 break;
-
             default:
                 throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {bindable}");
         }
+    }
+
+    static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon)
+    {
+        fontImageSource.SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
+        fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
+        fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+        fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: fontImageSource.Color));
+        fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
     }
 
 
