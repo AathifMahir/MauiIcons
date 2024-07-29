@@ -15,12 +15,6 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
         set => SetValue(IconProperty, value);
     }
 
-    [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
-    public IList<string> OnPlatforms { get; set; } = [];
-
-    [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
-    public IList<string> OnIdioms { get; set; } = [];
-
     public BindingBase ProvideValue(IServiceProvider serviceProvider)
     {
         var valueProvider = serviceProvider.GetService<IProvideValueTarget>() ?? throw new ArgumentException();
@@ -132,6 +126,8 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
                     converter: new DefaultColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
                 mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(IconSize), source: this));
                 mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(IconAutoScaling), source: this));
+                mauiIcon.SetBinding(MauiIcon.OnPlatformsProperty, new Binding(nameof(OnPlatforms), source: this));
+                mauiIcon.SetBinding(MauiIcon.OnIdiomsProperty, new Binding(nameof(OnIdioms), source: this));
                 break;
             case FontImageSource fontImageSource:
                 fontImageSource.SetValue(FontImageSource.FontFamilyProperty, Icon.GetFontFamily());
