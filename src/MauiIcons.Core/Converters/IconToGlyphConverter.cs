@@ -17,7 +17,7 @@ internal sealed class IconToGlyphConverter : IValueConverter
     {
         if (value is not null && value is string str)
         {
-            return str.GetEnumByDescription<Enum>();
+            return str.GetEnumByDescription(targetType);
         }
         return null;
     }
