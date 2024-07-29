@@ -33,6 +33,21 @@ internal static class EnumHelper
         }
         return default;
     }
+
+    public static Enum? GetEnumByDescription(this string? description, Type type)
+    {
+        if (description is null) return default;
+        if(!type.IsEnum) throw new NotSupportedException("Type must be an Enum");
+
+        foreach (Enum enumItem in Enum.GetValues(type))
+        {
+            if (enumItem.GetDescription() == description)
+            {
+                return enumItem;
+            }
+        }
+        return default;
+    }
     public static string GetFontFamily<TEnum>(this TEnum? value) where TEnum : struct
     {
         if(value is null) return string.Empty;
