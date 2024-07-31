@@ -45,13 +45,16 @@ public class BaseIcon : BindableObject
     /// <summary>
     /// Property Name is Used to Set the Icon to Different Property that the Specific Control Uses Instead of Default Property that Set by MauiIcon
     /// </summary>
-    public string PropertyName { get; set; } = string.Empty;
+    public string TargetName { get; set; } = string.Empty;
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
     public IList<string> OnPlatforms { get; set; } = [];
 
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
     public IList<string> OnIdioms { get; set; } = [];
+
+    public string PlaceHolder { get; set; } = string.Empty;
+
 
 
 }
