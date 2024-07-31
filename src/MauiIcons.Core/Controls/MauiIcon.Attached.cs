@@ -13,23 +13,31 @@ public partial class MauiIcon
             return;
 
         BaseIcon baseIcon = (BaseIcon)newValue;
-        bool isAllSetPropertyName = baseIcon.PropertyName.Equals(".");
+        bool isAllSetProperty = baseIcon.TargetName.Equals(".");
 
-        if(!baseIcon.IsSet(BindableObject.BindingContextProperty))
+        if (!baseIcon.IsSet(BindableObject.BindingContextProperty))
             baseIcon.SetBinding(BindableObject.BindingContextProperty, new Binding(nameof(BindingContext), source: bindable));
 
         switch (bindable)
         {
             case Button button:
-                button.SetValue(Button.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                button.SetBinding(Button.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
-                    converter: new IconToGlyphConverter()));
                 button.SetBinding(Button.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: button.TextColor));
                 button.SetBinding(Button.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
                     converter: new DefaultColorConverter(), converterParameter: button.BackgroundColor));
                 button.SetBinding(Button.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
                 button.SetBinding(Button.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
+
+                SetConditionalBinding(nameof(Button.Text),
+                    matchBinding: () => {
+                        button.SetValue(Button.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
+                        button.SetBinding(Button.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
+                            converter: new IconToGlyphConverter()));
+                    }, 
+                    defaultBinding: () => {
+                        button.SetValue(Button.ImageSourceProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)button.ImageSource, baseIcon);
+                    });
                 break;
 
             case Label label:
@@ -63,17 +71,15 @@ public partial class MauiIcon
                 entry.SetBinding(Entry.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
                 entry.SetBinding(Entry.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
 
-                if (isAllSetPropertyName || IsPropertyNameIsSet(nameof(Entry.Text)))
-                {
-                    entry.SetBinding(Entry.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
-                    entry.SetBinding(Entry.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: entry.TextColor));
-
-                    if(!isAllSetPropertyName)
-                        break;
-                }
-                entry.SetBinding(Entry.PlaceholderProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
-                entry.SetBinding(Entry.PlaceholderColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: entry.PlaceholderColor));
-
+                SetConditionalBinding(nameof(Entry.Text),
+                    matchBinding: () => {
+                        entry.SetBinding(Entry.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
+                        entry.SetBinding(Entry.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: entry.TextColor));
+                    },
+                    defaultBinding: () => {
+                        entry.SetBinding(Entry.PlaceholderProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconAndPlaceholderToStringConverter(), converterParameter: baseIcon.PlaceHolder));
+                        entry.SetBinding(Entry.PlaceholderColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: entry.PlaceholderColor));
+                    });
                 break;
 
             case Editor editor:
@@ -83,17 +89,15 @@ public partial class MauiIcon
                 editor.SetBinding(Editor.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
                 editor.SetBinding(Editor.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
 
-                if (isAllSetPropertyName || IsPropertyNameIsSet(nameof(Editor.Text)))
-                {
-                    editor.SetBinding(Editor.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
-                    editor.SetBinding(Editor.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: editor.TextColor));
-
-                    if (!isAllSetPropertyName)
-                        break;
-                }
-                editor.SetBinding(Editor.PlaceholderProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
-                editor.SetBinding(Editor.PlaceholderColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: editor.PlaceholderColor));
-
+                SetConditionalBinding(nameof(Editor.Text),
+                    matchBinding: () => {
+                        editor.SetBinding(Editor.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
+                        editor.SetBinding(Editor.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: editor.TextColor));
+                    },
+                    defaultBinding: () => {
+                        editor.SetBinding(Editor.PlaceholderProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconAndPlaceholderToStringConverter(), converterParameter: baseIcon.PlaceHolder));
+                        editor.SetBinding(Editor.PlaceholderColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: editor.PlaceholderColor));
+                    });
                 break;
 
             case SearchBar searchBar:
@@ -102,18 +106,15 @@ public partial class MauiIcon
                    converter: new DefaultColorConverter(), converterParameter: searchBar.BackgroundColor));
                 searchBar.SetBinding(SearchBar.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
                 searchBar.SetBinding(SearchBar.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
-
-                if (isAllSetPropertyName || IsPropertyNameIsSet(nameof(SearchBar.Text)))
-                {
-                    searchBar.SetBinding(SearchBar.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
-                    searchBar.SetBinding(SearchBar.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: searchBar.TextColor));
-
-                    if (!isAllSetPropertyName)
-                        break;
-                }
-                searchBar.SetBinding(SearchBar.PlaceholderProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
-                searchBar.SetBinding(SearchBar.PlaceholderColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: searchBar.PlaceholderColor));
-
+                SetConditionalBinding(nameof(SearchBar.Text),
+                    matchBinding: () => {
+                        searchBar.SetBinding(SearchBar.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
+                        searchBar.SetBinding(SearchBar.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: searchBar.TextColor));
+                    },
+                    defaultBinding: () => {
+                        searchBar.SetBinding(SearchBar.PlaceholderProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
+                        searchBar.SetBinding(SearchBar.PlaceholderColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: searchBar.PlaceholderColor));
+                    });
                 break;
 
             case MauiIcon mauiIcon:
@@ -143,61 +144,71 @@ public partial class MauiIcon
             case FontImageSource fontImage:
                 SetFontImageSourceBinding(fontImage, baseIcon);
                 break;
+
             case TabBar tabBar:
-                if (isAllSetPropertyName || IsPropertyNameIsSet(nameof(TabBar.FlyoutIcon)))
-                {
-                    tabBar.SetValue(TabBar.FlyoutIconProperty, new FontImageSource());
-                    SetFontImageSourceBinding((FontImageSource)tabBar.FlyoutIcon, baseIcon);
-
-                    if (!isAllSetPropertyName)
-                        break;
-                }
-
-                tabBar.SetValue(TabBar.IconProperty, new FontImageSource());
-                SetFontImageSourceBinding((FontImageSource)tabBar.Icon, baseIcon);
+                SetConditionalBinding(nameof(TabBar.FlyoutIcon),
+                    matchBinding: () => {
+                        tabBar.SetValue(TabBar.FlyoutIconProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)tabBar.FlyoutIcon, baseIcon);
+                    },
+                    defaultBinding: () => {
+                        tabBar.SetValue(TabBar.IconProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)tabBar.Icon, baseIcon);
+                    });
                 break;
+
             case ShellContent shellContent:
-                if(isAllSetPropertyName || IsPropertyNameIsSet(nameof(ShellContent.FlyoutIcon)))
-                {
-                    shellContent.SetValue(ShellContent.IconProperty, new FontImageSource());
-                    SetFontImageSourceBinding((FontImageSource)shellContent.FlyoutIcon, baseIcon);
-
-                    if (!isAllSetPropertyName)
-                        break;
-                }
-                shellContent.SetValue(ShellContent.IconProperty, new FontImageSource());
-                SetFontImageSourceBinding((FontImageSource)shellContent.Icon, baseIcon);
+                SetConditionalBinding(nameof(ShellContent.FlyoutIcon),
+                    matchBinding: () => {
+                        shellContent.SetValue(ShellContent.FlyoutIconProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)shellContent.FlyoutIcon, baseIcon);
+                    },
+                    defaultBinding: () => {
+                        shellContent.SetValue(ShellContent.IconProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)shellContent.Icon, baseIcon);
+                    });
                 break;
-            case Tab tab:
-                if (isAllSetPropertyName || IsPropertyNameIsSet(nameof(Tab.FlyoutIcon)))
-                {
-                    tab.SetValue(Tab.FlyoutIconProperty, new FontImageSource());
-                    SetFontImageSourceBinding((FontImageSource)tab.FlyoutIcon, baseIcon);
 
-                    if(!isAllSetPropertyName)
-                        break;
-                }
-                tab.SetValue(Tab.IconProperty, new FontImageSource());
-                SetFontImageSourceBinding((FontImageSource)tab.Icon, baseIcon);
+            case Tab tab:
+                SetConditionalBinding(nameof(Tab.FlyoutIcon),
+                    matchBinding: () => {
+                        tab.SetValue(Tab.FlyoutIconProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)tab.FlyoutIcon, baseIcon);
+                    },
+                    defaultBinding: () => {
+                        tab.SetValue(Tab.IconProperty, new FontImageSource());
+                        SetFontImageSourceBinding((FontImageSource)tab.Icon, baseIcon);
+                    });
                 break;
             default:
                 throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {bindable}");
         }
 
-        bool IsPropertyNameIsSet(ReadOnlySpan<char> propertyName) =>
-            baseIcon.PropertyName.AsSpan().CompareTo(propertyName, StringComparison.OrdinalIgnoreCase) == 0;
+        void SetConditionalBinding(string propertyName, Action matchBinding, Action defaultBinding)
+        {
+            if (isAllSetProperty || IsPropertyNameIsSet(propertyName))
+            {
+                matchBinding();
+
+                if (!isAllSetProperty)
+                    return;
+            }
+
+            defaultBinding();
+
+            bool IsPropertyNameIsSet(ReadOnlySpan<char> propertyName) =>
+                baseIcon.TargetName.AsSpan().CompareTo(propertyName, StringComparison.OrdinalIgnoreCase) == 0;
+        }
     }
 
     static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon)
     {
         fontImageSource.SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-        fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconToGlyphConverter()));
+        fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon, converter: new IconAndPlaceholderToStringConverter(), converterParameter: baseIcon.PlaceHolder));
         fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
         fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon, converter: new DefaultColorConverter(), converterParameter: fontImageSource.Color));
         fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
     }
-
-    
 
 
     public static BaseIcon? GetIcon(BindableObject view)
