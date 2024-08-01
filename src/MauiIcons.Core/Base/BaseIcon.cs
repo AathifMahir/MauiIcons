@@ -53,7 +53,7 @@ public class BaseIcon : BindableObject
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
     public IList<string> OnIdioms { get; set; } = [];
 
-    public string PlaceHolder { get; set; } = string.Empty;
+    public bool OverrideFontProperties { get; set; } = false;
 
 
 
