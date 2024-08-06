@@ -4,10 +4,10 @@ namespace MauiIcons.Core.Base;
 public class BaseIcon : BindableObject
 {
     public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(Enum), typeof(BaseIcon), null);
-    public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIcon), 30.0);
+    public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIcon), Options.DefaultIconSize);
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(BaseIcon), null);
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(BaseIcon), null);
-    public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool), typeof(BaseIcon), false);
+    public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool?), typeof(BaseIcon), Options.DefaultFontAutoScalingEnabled);
 
     public Enum? Icon
     {
@@ -36,9 +36,9 @@ public class BaseIcon : BindableObject
         set => SetValue(IconBackgroundColorProperty, value);
     }
 
-    public bool IconAutoScaling
+    public bool? IconAutoScaling
     {
-        get => (bool)GetValue(IconAutoScalingProperty);
+        get => (bool?)GetValue(IconAutoScalingProperty);
         set => SetValue(IconAutoScalingProperty, value);
     }
 
@@ -53,7 +53,10 @@ public class BaseIcon : BindableObject
     [System.ComponentModel.TypeConverter(typeof(ListStringTypeConverter))]
     public IList<string> OnIdioms { get; set; } = [];
 
-    public bool OverrideFontProperties { get; set; } = false;
+    /// <summary>
+    /// This is Used to Override the FontFamily and Styles to Make Use Rendering Icon Directly in the Font
+    /// </summary>
+    public bool FontOverride { get; set; } = false;
 
 
 
