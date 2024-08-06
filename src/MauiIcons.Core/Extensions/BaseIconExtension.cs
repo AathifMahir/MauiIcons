@@ -68,62 +68,49 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
             case Button button:
                 button.SetValue(Button.FontFamilyProperty, Icon.GetFontFamily());
                 button.SetBinding(Button.TextColorProperty, new Binding(nameof(IconColor), source: this,
-                    converter: new DefaultColorConverter(), converterParameter: button.TextColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: button.TextColor));
                 button.SetBinding(Button.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this,
-                    converter: new DefaultColorConverter(), converterParameter: button.BackgroundColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: button.BackgroundColor));
                 button.SetBinding(Button.FontSizeProperty, new Binding(nameof(IconSize), source: this));
                 button.SetBinding(Button.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
                 break;
             case Label label:
                 label.SetValue(Label.FontFamilyProperty, Icon.GetFontFamily());
                 label.SetBinding(Label.TextColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: label.TextColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: label.TextColor));
                 label.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: label.BackgroundColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: label.BackgroundColor));
                 label.SetBinding(Label.FontSizeProperty, new Binding(nameof(IconSize), source: this));
                 label.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
                 break;
             case Span span:
                 span.SetValue(Span.FontFamilyProperty, Icon.GetFontFamily());
                 span.SetBinding(Span.TextColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: span.TextColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: span.TextColor));
                 span.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: span.BackgroundColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: span.BackgroundColor));
                 span.SetBinding(Span.FontSizeProperty, new Binding(nameof(IconSize), source: this));
                 span.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
                 break;
-            case Entry entry:
-                entry.SetValue(Entry.FontFamilyProperty, Icon.GetFontFamily());
-                entry.SetBinding(Entry.TextColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: entry.TextColor));
-                entry.SetBinding(Entry.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: entry.BackgroundColor));
-                entry.SetBinding(Entry.FontSizeProperty, new Binding(nameof(IconSize), source: this));
-                entry.SetBinding(Entry.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
-                break;
-            case Editor editor:
-                editor.SetValue(Editor.FontFamilyProperty, Icon.GetFontFamily());
-                editor.SetBinding(Editor.TextColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: editor.TextColor));
-                editor.SetBinding(Editor.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: editor.BackgroundColor));
-                editor.SetBinding(Editor.FontSizeProperty, new Binding(nameof(IconSize), source: this));
-                editor.SetBinding(Editor.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
-                break;
-            case SearchBar searchBar:
-                searchBar.SetValue(SearchBar.FontFamilyProperty, Icon.GetFontFamily());
-                searchBar.SetBinding(SearchBar.TextColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: searchBar.TextColor));
-                searchBar.SetBinding(SearchBar.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: searchBar.BackgroundColor));
-                searchBar.SetBinding(SearchBar.FontSizeProperty, new Binding(nameof(IconSize), source: this));
-                searchBar.SetBinding(SearchBar.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
+            case InputView input:
+                if(!FontOverride && !Options.SuppressExceptionsInFontOverride)
+                    throw new MauiIconsExpection("This input control does not natively support icons or image sources. To apply an icon, " +
+                        "set OverrideFont to true. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
+                        "Additionally, using OverrideFont may cause unexpected behavior, such as issues with text rendering.");
+
+                input.SetValue(InputView.FontFamilyProperty, Icon.GetFontFamily());
+                input.SetBinding(InputView.TextColorProperty, new Binding(nameof(IconColor), source: this, 
+                    converter: new DefaultFontColorConverter(), converterParameter: input.TextColor));
+                input.SetBinding(InputView.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
+                    converter: new DefaultFontColorConverter(), converterParameter: input.BackgroundColor));
+                input.SetBinding(InputView.FontSizeProperty, new Binding(nameof(IconSize), source: this));
+                input.SetBinding(InputView.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
                 break;
             case MauiIcon mauiIcon:
                 mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: mauiIcon.IconColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconColor));
                 mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
+                    converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
                 mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(IconSize), source: this));
                 mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(IconAutoScaling), source: this));
                 mauiIcon.SetBinding(MauiIcon.OnPlatformsProperty, new Binding(nameof(OnPlatforms), source: this));
@@ -133,7 +120,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
                 fontImageSource.SetValue(FontImageSource.FontFamilyProperty, Icon.GetFontFamily());
                 fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this));
                 fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultColorConverter(), converterParameter: fontImageSource.Color));
+                    converter: new DefaultFontColorConverter(), converterParameter: fontImageSource.Color));
                 fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
                 break;
             default:
@@ -153,7 +140,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
         ((FontImageSource)InternalSource).SetValue(FontImageSource.FontFamilyProperty, Icon.GetFontFamily());
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this));
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this,
-                           converter: new DefaultColorConverter(), converterParameter: ((FontImageSource)InternalSource).Color));
+                           converter: new DefaultFontColorConverter(), converterParameter: ((FontImageSource)InternalSource).Color));
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
         return new Binding(nameof(InternalSource),  source: this);
     }
