@@ -1,14 +1,14 @@
 ﻿using System.Globalization;
 
 namespace MauiIcons.Core.Converters;
-internal sealed class DefaultColorConverter : IValueConverter
+internal sealed class DefaultFontSizeConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture) =>
-        value switch
+       value switch
         {
-            null when parameter is Color color => color,
-            Color colorValue => colorValue,
-            _ => null
+            null or double and 0 when parameter is double and > 0 => parameter,
+            double and > 0 => value,
+            _ => 30.0
         };
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
