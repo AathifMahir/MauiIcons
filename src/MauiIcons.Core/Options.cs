@@ -6,7 +6,7 @@ public class Options
     internal static bool SuppressExceptionsInFontOverride { get; private set; }
     internal static double DefaultIconSize { get; private set; } = 0;
 
-    internal static bool? DefaultFontAutoScalingEnabled { get; private set; }
+    internal static bool? DefaultIconAutoScaling { get; private set; }
 
     /// <summary>
     /// This property determines whether exceptions are suppressed when the overriding font is not set on a specific control that uses MauiIcons.
@@ -26,10 +26,10 @@ public class Options
 
 
     /// <summary>
-    /// This property determines whether the font auto-scaling is enabled by default.
+    /// This property determines whether the icon auto-scaling is enabled by default.
     /// </summary>
     /// <param name="value"></param>
-    public void SetDefaultFontAutoScalingEnabled(bool value) => DefaultFontAutoScalingEnabled = value;
+    public void SetDefaultIconAutoScaling(bool value) => DefaultIconAutoScaling = value;
 
 
 

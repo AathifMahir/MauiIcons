@@ -7,7 +7,7 @@ public class BaseIcon : BindableObject
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(BaseIcon), Options.DefaultIconSize);
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(BaseIcon), null);
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(BaseIcon), null);
-    public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool?), typeof(BaseIcon), Options.DefaultFontAutoScalingEnabled);
+    public static readonly BindableProperty IconAutoScalingProperty = BindableProperty.Create(nameof(IconAutoScaling), typeof(bool?), typeof(BaseIcon), Options.DefaultIconAutoScaling);
 
     public Enum? Icon
     {
