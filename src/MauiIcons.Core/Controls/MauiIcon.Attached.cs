@@ -9,8 +9,7 @@ public partial class MauiIcon
 
     private static void OnIconPropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
-        if (newValue is null || newValue is not BaseIcon)
-            return;
+        if (newValue is null) return;
 
         BaseIcon baseIcon = (BaseIcon)newValue;
         bool isAllSetProperty = baseIcon.TargetName.Equals(".");
@@ -45,7 +44,7 @@ public partial class MauiIcon
                     defaultBinding: () =>
                     {
                         button.SetValue(Button.ImageSourceProperty, new FontImageSource());
-                        SetFontImageSourceBinding((FontImageSource)button.ImageSource, baseIcon);
+                        SetFontImageSourceBinding((FontImageSource)button.ImageSource, baseIcon, button);
                     });
                 break;
 
@@ -239,7 +238,7 @@ public partial class MauiIcon
         }
     }
 
-    static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon)
+    static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon, IText? textElement = null)
     {
         fontImageSource.SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
         fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
@@ -247,7 +246,8 @@ public partial class MauiIcon
         fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon,
             converter: new DefaultFontSizeConverter(), converterParameter: fontImageSource.Size));
         fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
-            converter: new DefaultFontColorConverter(), converterParameter: fontImageSource.Color));
+            converter: new DefaultFontColorConverter(), 
+            converterParameter: textElement is not null ? textElement.TextColor : fontImageSource.Color));
         fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon,
             converter: new DefaultFontAutoScalingConverter(), converterParameter: fontImageSource.FontAutoScalingEnabled));
     }
