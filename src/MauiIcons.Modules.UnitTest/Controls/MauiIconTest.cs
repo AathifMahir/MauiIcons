@@ -119,13 +119,13 @@ public class MauiIconTest : BaseHandlerTest
         Label baseLabel;
 
         // Act
-        mauiiIcon = new MauiIcon() { Icon = CupertinoIcons.Airplane };
-        mauiiIcon.Icon = newIcon;
+        mauiiIcon = new MauiIcon() { Value = CupertinoIcons.Airplane };
+        mauiiIcon.Value = newIcon;
         baseLabel = (Label)mauiiIcon;
 
         // Assert
-        mauiiIcon.Icon.Should().NotBeNull();
-        mauiiIcon.Icon.Should().Be(newIcon);
+        mauiiIcon.Value.Should().NotBeNull();
+        mauiiIcon.Value.Should().Be(newIcon);
         baseLabel.FormattedText.Spans[0].Should().NotBeNull();
         baseLabel.FormattedText.Spans[0].Text.Should().Be(string.Empty);
         baseLabel.FormattedText.Spans[0].FontFamily.Should().Be("EnumTest");
@@ -142,7 +142,7 @@ public class MauiIconTest : BaseHandlerTest
         var iconAutoScaling = true;
 
         // Act
-        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconColor = iconColor, IconSize = iconSize, 
+        label = (Label)new MauiIcon() { Value = CupertinoIcons.Airplane, IconColor = iconColor, IconSize = iconSize, 
             IconBackgroundColor = iconBackgroundColor, IconAutoScaling = iconAutoScaling };
 
         // Assert
@@ -205,7 +205,7 @@ public class MauiIconTest : BaseHandlerTest
         var iconBackgroundColor = Colors.DarkCyan;
 
         // Act
-        image = (Image)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconBackgroundColor = iconBackgroundColor };
+        image = (Image)new MauiIcon() { Value = CupertinoIcons.Airplane, IconBackgroundColor = iconBackgroundColor };
 
         // Assert
         image.Source.Should().NotBeNull();
@@ -223,7 +223,7 @@ public class MauiIconTest : BaseHandlerTest
         var iconAutoScaling = true;
 
         // Act
-        fontImage = (FontImageSource)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconColor = iconColor, 
+        fontImage = (FontImageSource)new MauiIcon() { Value = CupertinoIcons.Airplane, IconColor = iconColor, 
             IconSize = iconSize, IconAutoScaling = iconAutoScaling };
 
         // Assert
@@ -380,12 +380,12 @@ public class MauiIconTest : BaseHandlerTest
                 changedSignaled = true;
             }
         };
-        mauiiIcon.IconAndSuffixBackgroundColor = assignedColor;
+        mauiiIcon.BackgroundColor = assignedColor;
 
 
         // Assert
-        mauiiIcon.IconAndSuffixBackgroundColor.Should().NotBeNull();
-        mauiiIcon.IconAndSuffixBackgroundColor.Should().Be(assignedColor);
+        mauiiIcon.BackgroundColor.Should().NotBeNull();
+        mauiiIcon.BackgroundColor.Should().Be(assignedColor);
         changedSignaled.Should().BeTrue();
     }
 
@@ -397,12 +397,12 @@ public class MauiIconTest : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon() { IconAndSuffixBackgroundColor = Colors.Green };
-        mauiiIcon.IconAndSuffixBackgroundColor = assignedColor;
+        mauiiIcon = new MauiIcon() { BackgroundColor = Colors.Green };
+        mauiiIcon.BackgroundColor = assignedColor;
 
 
         // Assert
-        mauiiIcon.IconAndSuffixBackgroundColor.Should().BeNull();
+        mauiiIcon.BackgroundColor.Should().BeNull();
     }
 
     [Fact]
@@ -480,7 +480,7 @@ public class MauiIconTest : BaseHandlerTest
 
         // Act
         mauiiIcon = new MauiIcon() { IconSuffix = suffix };
-        mauiiIcon.IconSuffix = null;
+        mauiiIcon.IconSuffix = null!;
 
 
         // Assert
@@ -521,7 +521,7 @@ public class MauiIconTest : BaseHandlerTest
 
         // Act
         mauiiIcon = new MauiIcon() { IconSuffixFontFamily = suffixFontFamily };
-        mauiiIcon.IconSuffixFontFamily = null;
+        mauiiIcon.IconSuffixFontFamily = null!;
 
 
         // Assert
