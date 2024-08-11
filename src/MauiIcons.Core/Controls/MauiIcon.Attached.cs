@@ -44,7 +44,7 @@ public partial class MauiIcon
                     defaultBinding: () =>
                     {
                         button.SetValue(Button.ImageSourceProperty, new FontImageSource());
-                        SetFontImageSourceBinding((FontImageSource)button.ImageSource, baseIcon, button);
+                        SetFontImageSourceBinding((FontImageSource)button.ImageSource, baseIcon, button.TextColor);
                     });
                 break;
 
@@ -125,7 +125,7 @@ public partial class MauiIcon
                 break;
             case ImageCell imageCell:
                 imageCell.SetValue(ImageCell.ImageSourceProperty, new FontImageSource());
-                SetFontImageSourceBinding((FontImageSource)imageCell.ImageSource, baseIcon);
+                SetFontImageSourceBinding((FontImageSource)imageCell.ImageSource, baseIcon, imageCell.TextColor);
                 break;
             case FontImageSource fontImage:
                 SetFontImageSourceBinding(fontImage, baseIcon);
@@ -164,12 +164,12 @@ public partial class MauiIcon
                     matchBinding: () =>
                     {
                         searchHandler.SetValue(SearchHandler.ClearIconProperty, new FontImageSource());
-                        SetFontImageSourceBinding((FontImageSource)searchHandler.ClearIcon, baseIcon);
+                        SetFontImageSourceBinding((FontImageSource)searchHandler.ClearIcon, baseIcon, searchHandler.TextColor);
                     },
                     defaultBinding: () =>
                     {
                         searchHandler.SetValue(SearchHandler.QueryIconProperty, new FontImageSource());
-                        SetFontImageSourceBinding((FontImageSource)searchHandler.QueryIcon, baseIcon);
+                        SetFontImageSourceBinding((FontImageSource)searchHandler.QueryIcon, baseIcon, searchHandler.TextColor);
                     });
                 break;
 
@@ -208,7 +208,7 @@ public partial class MauiIcon
             case RadioButton radioButton:
                 Image img = new();
                 img.SetValue(Image.SourceProperty, new FontImageSource());
-                SetFontImageSourceBinding((FontImageSource)img.Source, baseIcon);
+                SetFontImageSourceBinding((FontImageSource)img.Source, baseIcon, radioButton.TextColor);
                 radioButton.SetValue(RadioButton.ContentProperty, img);
                 break;
 
@@ -238,7 +238,7 @@ public partial class MauiIcon
         }
     }
 
-    static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon, IText? textElement = null)
+    static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon, Color? textColor = null)
     {
         fontImageSource.SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
         fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
@@ -247,7 +247,7 @@ public partial class MauiIcon
             converter: new DefaultFontSizeConverter(), converterParameter: fontImageSource.Size));
         fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
             converter: new DefaultFontColorConverter(), 
-            converterParameter: textElement is not null ? textElement.TextColor : fontImageSource.Color));
+            converterParameter: textColor ?? fontImageSource.Color));
         fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon,
             converter: new DefaultFontAutoScalingConverter(), converterParameter: fontImageSource.FontAutoScalingEnabled));
     }
