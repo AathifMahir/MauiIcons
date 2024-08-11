@@ -3,7 +3,7 @@
 #pragma warning disable CA1822 // Mark members as static
 public class Options
 {
-    internal static bool SuppressExceptionsInFontOverride { get; private set; }
+    internal static bool DefaultFontOverride { get; private set; }
     internal static double DefaultIconSize { get; private set; } = 0;
 
     internal static bool? DefaultIconAutoScaling { get; private set; }
@@ -14,7 +14,7 @@ public class Options
     /// <remarks>
     /// The default value is false.
     /// </remarks>
-    public void SetSuppressExceptionsInFontOverride(bool value) => SuppressExceptionsInFontOverride = value;
+    public void SetDefaultFontOverride(bool value) => DefaultFontOverride = value;
 
 
     /// <summary>
