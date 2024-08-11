@@ -16,7 +16,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
     public static readonly BindableProperty IconSuffixProperty = BindableProperty.Create(nameof(IconSuffix), typeof(string), typeof(MauiIcon), null, 
         propertyChanged: (bindable, oldValue, newValue) =>
         {
-            ((MauiIcon)bindable)._iconSuffixSpacer.Text = !string.IsNullOrEmpty((string)newValue) ? " " : null;
+            ((MauiIcon)bindable)._iconSuffixSpacer.Text = !string.IsNullOrEmpty((string)newValue) ? "  " : null;
         }
 );
 
@@ -24,7 +24,6 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
     public static readonly BindableProperty IconSuffixFontSizeProperty = BindableProperty.Create(nameof(IconSuffixFontSize), typeof(double), typeof(MauiIcon), 20.0);
     public static readonly BindableProperty IconSuffixTextColorProperty = BindableProperty.Create(nameof(IconSuffixTextColor), typeof(Color), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixBackgroundColorProperty = BindableProperty.Create(nameof(IconSuffixBackgroundColor), typeof(Color), typeof(MauiIcon), null);
-    public static readonly BindableProperty IconAndSuffixBackgroundColorProperty = BindableProperty.Create(nameof(IconAndSuffixBackgroundColor), typeof(Color), typeof(MauiIcon));
     public static readonly BindableProperty IconSuffixAutoScalingProperty = BindableProperty.Create(nameof(IconSuffixAutoScaling), typeof(bool), typeof(MauiIcon), false);
     public static readonly BindableProperty EntranceAnimationTypeProperty = BindableProperty.Create(nameof(EntranceAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None);
     public static readonly BindableProperty EntranceAnimationDurationProperty = BindableProperty.Create(nameof(EntranceAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
@@ -42,7 +41,23 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
             if (newValue is not null && newValue is IList<string> idioms && bindable is MauiIcon icon)
                 icon.Content = PlatformHelper.IsValidPlatformsAndIdioms(icon.OnPlatforms, idioms) ? icon.Content ?? icon.BuildIconControl() : null;
         });
-        
+
+    public static readonly BindableProperty OnClickAnimationTypeProperty = BindableProperty.Create(nameof(OnClickAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None,
+        propertyChanged: (bindable, oldValue, newValue) =>
+        {
+            if(newValue is AnimationType type && type is not AnimationType.None && bindable is MauiIcon icon)
+            {
+                var tapGestureRecognizer = new TapGestureRecognizer();
+                tapGestureRecognizer.Tapped += icon.OnIconTapped;
+                icon._iconLabel.GestureRecognizers.Add(tapGestureRecognizer);
+            }
+            else if (bindable is MauiIcon mi)
+            {
+                mi.DiposeGestureRecognizer();
+            }
+        });
+
+    public static readonly BindableProperty OnClickAnimationDurationProperty = BindableProperty.Create(nameof(OnClickAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
 
     public Enum? Value
     {
@@ -109,13 +124,6 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         set => SetValue(IconSuffixBackgroundColorProperty, value);
     }
 
-    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
-    public Color IconAndSuffixBackgroundColor
-    {
-        get => (Color)GetValue(IconAndSuffixBackgroundColorProperty);
-        set => SetValue(IconAndSuffixBackgroundColorProperty, value);
-    }
-
     public bool IconSuffixAutoScaling
     {
         get => (bool)GetValue(IconSuffixAutoScalingProperty);
@@ -146,28 +154,40 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         get => (IList<string>)GetValue(OnIdiomsProperty);
         set => SetValue(OnIdiomsProperty, value);
     }
+    public AnimationType OnClickAnimationType
+    {
+        get => (AnimationType)GetValue(OnClickAnimationTypeProperty);
+        set => SetValue(OnClickAnimationTypeProperty, value);
+    }
+    public uint OnClickAnimationDuration
+    {
+        get => (uint)GetValue(OnClickAnimationDurationProperty);
+        set => SetValue(OnClickAnimationDurationProperty, value);
+    }
 
     public MauiIcon()
     {
         Content = BuildIconControl();
         Loaded += async (s, r) =>
         {
-            _iconSpan.SetValue(Span.FontFamilyProperty, Value.GetFontFamily());
-            await AnimateIcon(_rootLabel);
+            _iconLabel.SetValue(Label.FontFamilyProperty, Value.GetFontFamily());
+            await AnimationHelper.AnimateIconAsync(EntranceAnimationType, _iconLabel, EntranceAnimationDuration);
         };
     }
 
-    private readonly Label _rootLabel = new();
-    private readonly Span _iconSpan = new();
+    private readonly HorizontalStackLayout _root = new();
+    private readonly Label _iconLabel = new();
+    private readonly Label _suffixLabel = new();
     private readonly Span _iconSuffixSpacer = new();
     private readonly Span _suffixSpan = new();
-    private Label BuildIconControl()
+
+    private HorizontalStackLayout BuildIconControl()
     {
-        _iconSpan.SetBinding(Span.TextProperty, new Binding(nameof(Value), converter: new IconToGlyphConverter(), source: this));
-        _iconSpan.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
-        _iconSpan.SetBinding(Span.FontSizeProperty, new Binding(nameof(IconSize), source: this));
-        _iconSpan.SetBinding(Span.TextColorProperty, new Binding(nameof(IconColor), source: this));
-        _iconSpan.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
+        _iconLabel.SetBinding(Label.TextProperty, new Binding(nameof(Value), converter: new IconToGlyphConverter(), source: this));
+        _iconLabel.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
+        _iconLabel.SetBinding(Label.FontSizeProperty, new Binding(nameof(IconSize), source: this));
+        _iconLabel.SetBinding(Label.TextColorProperty, new Binding(nameof(IconColor), source: this));
+        _iconLabel.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
 
         _suffixSpan.SetBinding(Span.TextProperty, new Binding(nameof(IconSuffix), source: this));
         _suffixSpan.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconSuffixAutoScaling), source: this));
@@ -176,32 +196,27 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         _suffixSpan.SetBinding(Span.TextColorProperty, new Binding(nameof(IconSuffixTextColor), source: this));
         _suffixSpan.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(IconSuffixBackgroundColor), source: this));
 
-        _rootLabel.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(IconAndSuffixBackgroundColor), source: this));
-        _rootLabel.SetValue(Label.FormattedTextProperty, new FormattedString());
-        _rootLabel.FormattedText.Spans.Add(_iconSpan);
-        _rootLabel.FormattedText.Spans.Add(_iconSuffixSpacer);
-        _rootLabel.FormattedText.Spans.Add(_suffixSpan);
-        return _rootLabel;
+        _suffixLabel.SetValue(Label.FormattedTextProperty, new FormattedString());
+        _suffixLabel.SetValue(Label.VerticalOptionsProperty, LayoutOptions.Center);
+        _suffixLabel.FormattedText.Spans.Add(_iconSuffixSpacer);
+        _suffixLabel.FormattedText.Spans.Add(_suffixSpan);
+
+        _root.Children.Add(_iconLabel);
+        _root.Children.Add(_suffixLabel);
+        return _root;
     }
 
-    private async Task AnimateIcon(Label label)
+    private async void OnIconTapped(object? sender, TappedEventArgs e)
     {
-        switch (EntranceAnimationType)
+        await AnimationHelper.AnimateIconAsync(OnClickAnimationType, _iconLabel, OnClickAnimationDuration);
+    }
+
+    public void DiposeGestureRecognizer()
+    {
+        if (_iconLabel.GestureRecognizers.Count > 0 && _iconLabel.GestureRecognizers[0] is TapGestureRecognizer tapGestureRecognizer)
         {
-            case AnimationType.None:
-                return;
-            case AnimationType.Fade:
-                label.Opacity = 0;
-                await label.FadeTo(1, EntranceAnimationDuration);
-                return;
-            case AnimationType.Scale:
-                await label.ScaleTo(1.5, EntranceAnimationDuration);
-                await label.ScaleTo(1, EntranceAnimationDuration);
-                return;
-            case AnimationType.Rotate:
-                await label.RotateTo(360, EntranceAnimationDuration);
-                label.Rotation = 0;
-                return;
+            tapGestureRecognizer.Tapped -= OnIconTapped;
+            _iconLabel.GestureRecognizers.Clear();
         }
     }
 
@@ -229,11 +244,11 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
 
     public static explicit operator Label(MauiIcon mi)
     {
-        var label = mi._rootLabel;
-        mi._iconSpan.FontFamily = mi.Value.GetFontFamily();
+        var label = mi._iconLabel;
+        mi._iconLabel.FontFamily = mi.Value.GetFontFamily();
         label.Loaded += async (s, r) =>
         {
-            await mi.AnimateIcon(label);
+            await AnimationHelper.AnimateIconAsync(mi.EntranceAnimationType, label, mi.EntranceAnimationDuration);
         };
         return label;
     }

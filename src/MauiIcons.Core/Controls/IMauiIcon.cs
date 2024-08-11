@@ -64,7 +64,7 @@ public interface IMauiIcon
     /// Gets or sets the background color for the icon and Suffix, It applies the color to whole control.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
-    Color IconAndSuffixBackgroundColor { get; }
+    Color BackgroundColor { get; }
 
     /// <summary>
     /// Gets or sets a value indicating whether the icon suffix should automatically scale.
