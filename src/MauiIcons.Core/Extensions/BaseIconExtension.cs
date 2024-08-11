@@ -99,7 +99,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
                     converter: new DefaultFontAutoScalingConverter(), converterParameter: span.FontAutoScalingEnabled));
                 break;
             case InputView input:
-                if(!FontOverride && !Options.SuppressExceptionsInFontOverride)
+                if(!FontOverride && !Options.DefaultFontOverride)
                     throw new MauiIconsExpection("This input control does not natively support icons or image sources. To apply an icon, " +
                         "set OverrideFont to true. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
                         "Additionally, using OverrideFont may cause unexpected behavior, such as issues with text rendering.");

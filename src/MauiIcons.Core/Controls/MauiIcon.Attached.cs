@@ -13,7 +13,7 @@ public partial class MauiIcon
 
         BaseIcon baseIcon = (BaseIcon)newValue;
         bool isAllSetProperty = baseIcon.TargetName.Equals(".");
-        bool isNotFontOverridenOrSuppressed = !baseIcon.FontOverride && !Options.SuppressExceptionsInFontOverride;
+        bool isNotFontOverridenOrSuppressed = !baseIcon.FontOverride && !Options.DefaultFontOverride;
 
         if (!baseIcon.IsSet(BindableObject.BindingContextProperty))
             baseIcon.SetBinding(BindableObject.BindingContextProperty, new Binding(nameof(BindingContext), source: bindable));
