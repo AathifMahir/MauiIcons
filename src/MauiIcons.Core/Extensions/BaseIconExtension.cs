@@ -145,7 +145,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
     {
         if (!IsSet(BindableObject.BindingContextProperty))
             SetBinding(BindableObject.BindingContextProperty, new Binding(nameof(BindingContext), source: targetObject));
-
+        IText? element = targetObject as IText;
         InternalSource = new FontImageSource();
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(Icon),
             converter: new IconToGlyphConverter(), source: this));
@@ -153,7 +153,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.SizeProperty, new Binding(nameof(IconSize), source: this,
             converter: new DefaultFontSizeConverter(), converterParameter: ((FontImageSource)InternalSource).Size));
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.ColorProperty, new Binding(nameof(IconColor), source: this,
-                           converter: new DefaultFontColorConverter(), converterParameter: ((FontImageSource)InternalSource).Color));
+                           converter: new DefaultFontColorConverter(), converterParameter: element is not null ? element.TextColor : ((FontImageSource)InternalSource).Color));
         ((FontImageSource)InternalSource).SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this,
             converter: new DefaultFontAutoScalingConverter(), converterParameter: ((FontImageSource)InternalSource).FontAutoScalingEnabled));
         return new Binding(nameof(InternalSource),  source: this);
