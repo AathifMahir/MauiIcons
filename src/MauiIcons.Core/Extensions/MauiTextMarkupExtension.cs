@@ -7,7 +7,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets the icon.
     /// </summary>
-    public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, bool isPlaceHolder = true) where TIcon : BindableObject, IText
+    public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, bool isPlaceHolder = true, bool fontOverride = false) where TIcon : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -28,9 +28,9 @@ public static class MauiTextMarkupExtension
             return bindable;
         }
 
-        if (!Options.SuppressExceptionsInFontOverride)
+        if (!Options.DefaultFontOverride && !fontOverride)
             throw new MauiIconsExpection("the input controls does not natively support icons or image sources. To apply an icon to text or placholder, " +
-                        "Add UseMauiIconsCore to MauiProgram.cs and SetFontOverride to True. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
+                        "Set fontOverride Parameter to True. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
                         "Additionally, using FontOverride may cause unexpected behavior, such as issues with text rendering.");
 
         if (bindable is IEntry)
