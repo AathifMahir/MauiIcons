@@ -27,6 +27,12 @@ public static class MauiTextMarkupExtension
             bindable.SetValue(Span.FontFamilyProperty, icon.GetType().Name);
             return bindable;
         }
+
+        if (!Options.SuppressExceptionsInFontOverride)
+            throw new MauiIconsExpection("the input controls does not natively support icons or image sources. To apply an icon to text or placholder, " +
+                        "Add UseMauiIconsCore to MauiProgram.cs and SetFontOverride to True. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
+                        "Additionally, using FontOverride may cause unexpected behavior, such as issues with text rendering.");
+
         if (bindable is IEntry)
         {
             if (isPlaceHolder)
