@@ -81,13 +81,13 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
             or OnPlatform<FontImageSource> or OnPlatformExtension
             or OnIdiom<ImageSource> or OnIdiom<FontImageSource>
             or OnIdiomExtension))
-            throw new MauiIconsExpection("MauiIcons doesn't support Maui OnPlatform or OnIdiom," +
+            throw new MauiIconsException("MauiIcons doesn't support Maui OnPlatform or OnIdiom," +
                 "Therefore it is recommended to utilize MauiIcon's integrated Custom OnPlatform or OnIdiom functionalities.");
 
         else if (returnType is null && targetObject is Setter)
-            throw new MauiIconsExpection("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.");
+            throw new MauiIconsException("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.");
 
-        throw new MauiIconsExpection($"MauiIcons Extension does not provide {returnType} support");
+        throw new MauiIconsException($"MauiIcons Extension does not provide {returnType} support");
     }
 
     Binding SetFontProperties(object targetObject, bool disableConverter = false)
@@ -164,7 +164,7 @@ public abstract class BaseIconExtension<TEnum> : BindableObject, IMarkupExtensio
                 fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this, mode: BindingMode.OneWay));
                 break;
             default:
-                throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
+                throw new MauiIconsException($"MauiIcons extension doesn't support this control {targetObject}");
         }
         return new Binding(nameof(Icon), mode: BindingMode.OneWay, converter: !disableConverter ? new EnumToStringConverter() : null, source: this);
     }
