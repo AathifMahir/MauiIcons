@@ -45,17 +45,17 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
 
         if (returnType is null && targetObject is Setter setter)
             return setter.Property.DeclaringType != typeof(MauiIcon)
-                    ? throw new MauiIconsExpection("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.")
+                    ? throw new MauiIconsException("MauiIcons doesn't support Style Setter to be used in conjunction with Xaml Extension.")
                     : SetBaseIconProperties();
 
         if (returnType is null && (targetObject is On or OnPlatform<ImageSource>
             or OnPlatform<FontImageSource> or OnPlatformExtension
             or OnIdiom<ImageSource> or OnIdiom<FontImageSource>
             or OnIdiomExtension))
-            throw new MauiIconsExpection("MauiIcons doesn't support Maui OnPlatform or OnIdiom," +
+            throw new MauiIconsException("MauiIcons doesn't support Maui OnPlatform or OnIdiom," +
                 "Therefore it is recommended to utilize MauiIcon's integrated Custom OnPlatform or OnIdiom functionalities.");
 
-        throw new MauiIconsExpection($"MauiIcons Extension does not provide {returnType} support");
+        throw new MauiIconsException($"MauiIcons Extension does not provide {returnType} support");
     }
 
     Binding SetFontProperties(object targetObject, bool disableConverter = false)
@@ -100,7 +100,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
                 break;
             case InputView input:
                 if(!FontOverride && !Options.DefaultFontOverride)
-                    throw new MauiIconsExpection("This input control does not natively support icons or image sources. To apply an icon, " +
+                    throw new MauiIconsException("This input control does not natively support icons or image sources. To apply an icon, " +
                         "set OverrideFont to true. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
                         "Additionally, using OverrideFont may cause unexpected behavior, such as issues with text rendering.");
 
@@ -136,7 +136,7 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
                     converter: new DefaultFontAutoScalingConverter(), converterParameter: fontImageSource.FontAutoScalingEnabled));
                 break;
             default:
-                throw new MauiIconsExpection($"MauiIcons extension doesn't support this control {targetObject}");
+                throw new MauiIconsException($"MauiIcons extension doesn't support this control {targetObject}");
         }
         return new Binding(nameof(Icon), converter: !disableConverter ? new IconToGlyphConverter() : null, source: this);
     }

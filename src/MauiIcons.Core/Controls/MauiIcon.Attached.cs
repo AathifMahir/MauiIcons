@@ -34,7 +34,7 @@ public partial class MauiIcon
                     matchBinding: () =>
                     {
                         if (isNotFontOverridenOrSuppressed)
-                            throw new MauiIconsExpection("Your Applying Icon to Button Text Property Instead of ImageSource, To apply an icon to text, " +
+                            throw new MauiIconsException("Your Applying Icon to Button Text Property Instead of ImageSource, To apply an icon to text, " +
                                 "set FontOverride to true. This will override the fonts and use default fonts instead of any assigned custom fonts.");
 
                         button.SetValue(Button.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
@@ -78,7 +78,7 @@ public partial class MauiIcon
 
             case InputView inputView:
                 if (isNotFontOverridenOrSuppressed)
-                    throw new MauiIconsExpection("This input control does not natively support icons or image sources. To apply an icon to text or placholder, " +
+                    throw new MauiIconsException("This input control does not natively support icons or image sources. To apply an icon to text or placholder, " +
                         "set FontOverride to true. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
                         "Additionally, using FontOverride may cause unexpected behavior, such as issues with text rendering.");
 
@@ -190,7 +190,7 @@ public partial class MauiIcon
 
             case Picker picker:
                 if (isNotFontOverridenOrSuppressed)
-                    throw new MauiIconsExpection("This Picker Control doesn't natively support icons or image sources. To apply an icon to Title, " +
+                    throw new MauiIconsException("This Picker Control doesn't natively support icons or image sources. To apply an icon to Title, " +
                         "set FontOverride to true. This will override the fonts and use default fonts instead of any assigned custom fonts and additionally explicitly setting font or text on the control itself would not render the icon.");
 
                 picker.SetValue(Picker.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
@@ -218,7 +218,7 @@ public partial class MauiIcon
                 break;
 
             default:
-                throw new MauiIconsExpection($"MauiIcons extension doesn't support the {bindable} control, which doesn't natively support assigning icons or images.");
+                throw new MauiIconsException($"MauiIcons extension doesn't support the {bindable} control, which doesn't natively support assigning icons or images.");
         }
 
         void SetConditionalBinding(string propertyName, Action matchBinding, Action defaultBinding)
