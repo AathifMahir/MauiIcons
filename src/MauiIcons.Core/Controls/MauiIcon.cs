@@ -25,6 +25,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
     public static readonly BindableProperty IconSuffixTextColorProperty = BindableProperty.Create(nameof(IconSuffixTextColor), typeof(Color), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixBackgroundColorProperty = BindableProperty.Create(nameof(IconSuffixBackgroundColor), typeof(Color), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixAutoScalingProperty = BindableProperty.Create(nameof(IconSuffixAutoScaling), typeof(bool), typeof(MauiIcon), false);
+    public static readonly BindableProperty IconAndSuffixBackgroundColorProperty = BackgroundColorProperty;
     public static readonly BindableProperty EntranceAnimationTypeProperty = BindableProperty.Create(nameof(EntranceAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None);
     public static readonly BindableProperty EntranceAnimationDurationProperty = BindableProperty.Create(nameof(EntranceAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
 
@@ -32,14 +33,17 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         propertyChanged: (bindable, oldValue, newValue) =>
         {
             if (newValue is not null && newValue is IList<string> platforms && bindable is MauiIcon icon)
-                icon.Content = PlatformHelper.IsValidPlatformsAndIdioms(platforms, icon.OnIdioms) ? icon.Content ?? icon.BuildIconControl() : null;
+                icon.Content = PlatformHelper.IsValidPlatformsAndIdioms(platforms, icon.OnIdioms) ? 
+                icon.Content ?? icon._root ?? icon.BuildIconControl() : null;
+
         });
 
     public static readonly BindableProperty OnIdiomsProperty = BindableProperty.Create(nameof(OnIdioms), typeof(IList<string>), typeof(MauiIcon), null, 
         propertyChanged: (bindable, oldValue, newValue) =>
         {
             if (newValue is not null && newValue is IList<string> idioms && bindable is MauiIcon icon)
-                icon.Content = PlatformHelper.IsValidPlatformsAndIdioms(icon.OnPlatforms, idioms) ? icon.Content ?? icon.BuildIconControl() : null;
+                icon.Content = PlatformHelper.IsValidPlatformsAndIdioms(icon.OnPlatforms, idioms) ? 
+                icon.Content ?? icon._root ?? icon.BuildIconControl() : null;
         });
 
     public static readonly BindableProperty OnClickAnimationTypeProperty = BindableProperty.Create(nameof(OnClickAnimationType), typeof(AnimationType), typeof(MauiIcon), AnimationType.None,
@@ -130,6 +134,13 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         set => SetValue(IconSuffixAutoScalingProperty, value);
     }
 
+    [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
+    public Color IconAndSuffixBackgroundColor
+    {
+        get => (Color)GetValue(IconAndSuffixBackgroundColorProperty);
+        set => SetValue(IconAndSuffixBackgroundColorProperty, value);
+    }
+
     public AnimationType EntranceAnimationType
     {
         get => (AnimationType)GetValue(EntranceAnimationTypeProperty);
@@ -188,6 +199,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         _iconLabel.SetBinding(Label.FontSizeProperty, new Binding(nameof(IconSize), source: this));
         _iconLabel.SetBinding(Label.TextColorProperty, new Binding(nameof(IconColor), source: this));
         _iconLabel.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this));
+        _iconLabel.SetValue(Label.VerticalOptionsProperty, LayoutOptions.Center);
 
         _suffixSpan.SetBinding(Span.TextProperty, new Binding(nameof(IconSuffix), source: this));
         _suffixSpan.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(IconSuffixAutoScaling), source: this));
