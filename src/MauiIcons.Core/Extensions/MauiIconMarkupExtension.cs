@@ -126,11 +126,11 @@ public static class MauiIconMarkupExtension
     /// <summary>
     /// Sets the background color for the icon and Suffix, It applies the color to whole control.
     /// </summary>
-    public static TColor BackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
+    public static TColor IconAndSuffixBackgroundColor<TColor>(this TColor bindable, Color color) where TColor : BindableObject, IMauiIcon
     {
         if (IsMauiIconType(bindable))
         {
-            bindable.SetValue(MauiIcon.BackgroundColorProperty, color);
+            bindable.SetValue(MauiIcon.IconAndSuffixBackgroundColorProperty, color);
         }
         return bindable;
     }
@@ -168,6 +168,30 @@ public static class MauiIconMarkupExtension
         if (IsMauiIconType(bindable))
         {
             bindable.SetValue(MauiIcon.EntranceAnimationDurationProperty, duration);
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets the type of onclick animation for the element.
+    /// </summary>
+    public static TAnimation OnClickAnimationType<TAnimation>(this TAnimation bindable, AnimationType animationType) where TAnimation : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.OnClickAnimationTypeProperty, animationType);
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets the duration of the onclick animation for the element.
+    /// </summary>
+    public static TDuration OnClickAnimationDuration<TDuration>(this TDuration bindable, uint duration) where TDuration : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.OnClickAnimationDurationProperty, duration);
         }
         return bindable;
     }
