@@ -29,7 +29,7 @@ public static class MauiTextMarkupExtension
         }
 
         if (!Options.DefaultFontOverride && !fontOverride)
-            throw new MauiIconsExpection("the input controls does not natively support icons or image sources. To apply an icon to text or placholder, " +
+            throw new MauiIconsException("the input controls does not natively support icons or image sources. To apply an icon to text or placholder, " +
                         "Set fontOverride Parameter to True. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
                         "Additionally, using FontOverride may cause unexpected behavior, such as issues with text rendering.");
 
@@ -422,6 +422,6 @@ public static class MauiTextMarkupExtension
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
         defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
         defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
-        throw new MauiIconsExpection(defaultInterpolatedStringHandler.ToStringAndClear());
+        throw new MauiIconsException(defaultInterpolatedStringHandler.ToStringAndClear());
     }
 }
