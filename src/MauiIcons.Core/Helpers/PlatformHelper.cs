@@ -1,29 +1,28 @@
-﻿namespace MauiIcons.Core.Helpers;
+﻿using System.Runtime.InteropServices;
+
+namespace MauiIcons.Core.Helpers;
 internal static class PlatformHelper
 {
+    private static readonly string _currentPlatform = DeviceInfo.Platform.ToString();
+    private static readonly string _currentIdiom = DeviceInfo.Idiom.ToString();
     public static bool IsValidPlatform(IList<string> platforms)
     {
         if (platforms is null || platforms.Count is 0) return true;
 
-        string targetPlatform = DeviceInfo.Platform.ToString();
-
-        foreach (var value in platforms)
+        foreach (var value in CollectionsMarshal.AsSpan((List<string>)platforms))
         {
-            if (value.Contains(targetPlatform))
+            if (value.Contains(_currentPlatform, StringComparison.OrdinalIgnoreCase))
                 return true;
         }
         return false;
-    }
-
+    }    
     public static bool IsValidIdiom(IList<string> idioms)
     {
         if (idioms is null || idioms.Count is 0) return true;
 
-        string targetIdiom = DeviceInfo.Idiom.ToString();
-
-        foreach (var value in idioms)
+        foreach (var value in CollectionsMarshal.AsSpan((List<string>)idioms))
         {
-            if (value.Contains(targetIdiom))
+            if (value.Contains(_currentIdiom, StringComparison.OrdinalIgnoreCase))
                 return true;
         }
         return false;
@@ -43,24 +42,24 @@ internal static class PlatformHelper
 
         static bool IsValidPlatformAndIdiom(IList<string> platforms, IList<string> idioms)
         {
-            int indexMin = Math.Min(platforms.Count, idioms.Count);
-            int indexMax = Math.Max(platforms.Count, idioms.Count);
+            var platformSpan = CollectionsMarshal.AsSpan((List<string>)platforms);
+            var idiomSpan = CollectionsMarshal.AsSpan((List<string>)idioms);
+
+            int indexMin = Math.Min(platformSpan.Length, idiomSpan.Length);
+            int indexMax = Math.Max(platformSpan.Length, idiomSpan.Length);
 
             bool onPlatform = false;
             bool onIdiom = false;
 
-            string targetPlatform = DeviceInfo.Platform.ToString();
-            string targetIdiom = DeviceInfo.Idiom.ToString();
-
             for (int i = 0; i < indexMax; i++)
             {
-                if (i < indexMin && platforms[i].Contains(targetPlatform) && idioms[i].Contains(targetIdiom))
+                if (i < indexMin && platformSpan[i].Contains(_currentPlatform, StringComparison.OrdinalIgnoreCase) && idiomSpan[i].Contains(_currentIdiom, StringComparison.OrdinalIgnoreCase))
                     return true;
 
-                if (i < platforms.Count && platforms[i].Contains(targetPlatform))
+                if (i < platforms.Count && platformSpan[i].Contains(_currentPlatform, StringComparison.OrdinalIgnoreCase))
                     onPlatform = true;
 
-                if (i < idioms.Count && idioms[i].Contains(targetIdiom))
+                if (i < idioms.Count && idiomSpan[i].Contains(_currentIdiom, StringComparison.OrdinalIgnoreCase))
                     onIdiom = true;
 
                 if (onPlatform && onIdiom)
