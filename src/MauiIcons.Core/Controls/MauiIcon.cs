@@ -57,7 +57,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
             }
             else if (bindable is MauiIcon mi)
             {
-                mi.DiposeGestureRecognizer();
+                mi.DisposeGestureRecognizer();
             }
         });
 
@@ -223,7 +223,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         await AnimationHelper.AnimateIconAsync(OnClickAnimationType, _iconLabel, OnClickAnimationDuration);
     }
 
-    public void DiposeGestureRecognizer()
+    public void DisposeGestureRecognizer()
     {
         if (_iconLabel.GestureRecognizers.Count > 0 && _iconLabel.GestureRecognizers[0] is TapGestureRecognizer tapGestureRecognizer)
         {
