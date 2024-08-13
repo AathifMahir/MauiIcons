@@ -17,8 +17,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         propertyChanged: (bindable, oldValue, newValue) =>
         {
             ((MauiIcon)bindable)._iconSuffixSpacer.Text = !string.IsNullOrEmpty((string)newValue) ? "  " : null;
-        }
-);
+        });
 
     public static readonly BindableProperty IconSuffixFontFamilyProperty = BindableProperty.Create(nameof(IconSuffixFontFamily), typeof(string), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSuffixFontSizeProperty = BindableProperty.Create(nameof(IconSuffixFontSize), typeof(double), typeof(MauiIcon), 20.0);
@@ -61,7 +60,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
             }
         });
 
-    public static readonly BindableProperty OnClickAnimationDurationProperty = BindableProperty.Create(nameof(OnClickAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)1500);
+    public static readonly BindableProperty OnClickAnimationDurationProperty = BindableProperty.Create(nameof(OnClickAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)600);
 
     public Enum? Value
     {
