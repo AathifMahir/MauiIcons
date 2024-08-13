@@ -175,7 +175,7 @@ public static class MauiImageMarkupExtension
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
         defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
         defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
-        throw new MauiIconsExpection(defaultInterpolatedStringHandler.ToStringAndClear());
+        throw new MauiIconsException(defaultInterpolatedStringHandler.ToStringAndClear());
     }
 
     static FontImageSource GetExistingSource<TType>(TType bindable) where TType : BindableObject
@@ -186,6 +186,6 @@ public static class MauiImageMarkupExtension
 
             return (FontImageSource)fontImage.Source;
         }
-        throw new MauiIconsExpection("This Image Element Does Not Support Maui Icon Extensions.");
+        throw new MauiIconsException("This Image Element Does Not Support Maui Icon Extensions.");
     }
 }

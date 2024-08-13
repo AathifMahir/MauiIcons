@@ -226,6 +226,6 @@ public static class MauiIconMarkupExtension
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
         defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
         defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
-        throw new MauiIconsExpection(defaultInterpolatedStringHandler.ToStringAndClear());
+        throw new MauiIconsException(defaultInterpolatedStringHandler.ToStringAndClear());
     }
 }
