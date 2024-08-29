@@ -7,7 +7,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets the icon.
     /// </summary>
-    public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, bool isPlaceHolder = true, bool fontOverride = false) where TIcon : BindableObject, IText
+    public static TIcon Icon<TIcon>(this TIcon bindable, Enum icon, string targetName = "placeholder", bool fontOverride = false) where TIcon : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -30,15 +30,15 @@ public static class MauiTextMarkupExtension
 
         if (!Options.DefaultFontOverride && !fontOverride)
             throw new MauiIconsException("the input controls does not natively support icons or image sources. To apply an icon to text or placholder, " +
-                        "Set fontOverride Parameter to True. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
+                        "Set fontOverride Parameter to True or UseMauiIconsCore Builder and Set DefaultFontOverride Globally. This will replace any custom fonts with the default fonts. Please be aware that explicitly setting the FontFamily on the control itself will not render the icon. " +
                         "Additionally, using FontOverride may cause unexpected behavior, such as issues with text rendering.");
 
         if (bindable is IEntry)
         {
-            if (isPlaceHolder)
-                bindable.SetValue(Entry.PlaceholderProperty, icon.GetDescription());
-            else
+            if (IsPropertyNameIsSet(targetName, "text"))
                 bindable.SetValue(Entry.TextProperty, icon.GetDescription());
+            else
+                bindable.SetValue(Entry.PlaceholderProperty, icon.GetDescription());
 
             bindable.SetValue(Entry.FontFamilyProperty, icon.GetType().Name);
 
@@ -46,26 +46,29 @@ public static class MauiTextMarkupExtension
         }
         if(bindable is ISearchBar)
         {
-            if(isPlaceHolder)
-                bindable.SetValue(SearchBar.PlaceholderProperty, icon.GetDescription());
-            else
+            if(IsPropertyNameIsSet(targetName, "text"))
                 bindable.SetValue(SearchBar.TextProperty, icon.GetDescription());
+            else
+                bindable.SetValue(SearchBar.PlaceholderProperty, icon.GetDescription());
 
             bindable.SetValue(SearchBar.FontFamilyProperty, icon.GetType().Name);
             return bindable;
         }
         if(bindable is IEditor)
         {
-            if(isPlaceHolder)
-                bindable.SetValue(Editor.PlaceholderProperty, icon.GetDescription());
-            else
+            if(IsPropertyNameIsSet(targetName, "text"))
                 bindable.SetValue(Editor.TextProperty, icon.GetDescription());
+            else
+                bindable.SetValue(Editor.PlaceholderProperty, icon.GetDescription());
 
             bindable.SetValue(Editor.FontFamilyProperty, icon.GetType().Name);
             return bindable;
         }
         return ThrowCustomExpection<TIcon>();
     }
+
+    static bool IsPropertyNameIsSet(ReadOnlySpan<char> target, ReadOnlySpan<char> propertyName) =>
+            target.Equals(propertyName, StringComparison.OrdinalIgnoreCase);
 
     /// <summary>
     /// Sets the size of the icon.
@@ -110,7 +113,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets the color of the icon.
     /// </summary>
-    public static TColor IconColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
+    public static TColor IconColor<TColor>(this TColor bindable, Color color, string targetName = "placeholder") where TColor : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -129,25 +132,29 @@ public static class MauiTextMarkupExtension
         }
         if (bindable is IEntry)
         {
-            if(isPlaceHolder)
-                bindable.SetValue(Entry.PlaceholderColorProperty, color);
-            else
+            if(IsPropertyNameIsSet(targetName, "text"))
                 bindable.SetValue(Entry.TextColorProperty, color);
+            else
+                bindable.SetValue(Entry.PlaceholderColorProperty, color);
 
             return bindable;
         }
         if (bindable is ISearchBar)
         {
-            if(isPlaceHolder)
-                bindable.SetValue(SearchBar.PlaceholderColorProperty, color);
-            else
+            if(IsPropertyNameIsSet(targetName, "text"))
                 bindable.SetValue(SearchBar.TextColorProperty, color);
+            else
+                bindable.SetValue(SearchBar.PlaceholderColorProperty, color);
 
             return bindable;
         }
         if (bindable is IEditor)
         {
-            bindable.SetValue(Editor.PlaceholderColorProperty, color);
+            if(IsPropertyNameIsSet(targetName, "text"))
+                bindable.SetValue(Editor.TextColorProperty, color);
+            else
+                bindable.SetValue(Editor.PlaceholderColorProperty, color);
+
             return bindable;
         }
 
@@ -157,7 +164,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets the background color of the icon.
     /// </summary>
-    public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color, bool isPlaceHolder = true) where TColor : BindableObject, IText
+    public static TColor IconBackgroundColor<TColor>(this TColor bindable, Color color, string targetName = "placeholder") where TColor : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -196,7 +203,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets a value indicating whether the icon should automatically scale.
     /// </summary>
-    public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value, bool isPlaceHolder = true) where TBool : BindableObject, IText
+    public static TBool IconAutoScaling<TBool>(this TBool bindable, bool value, string targetName = "placeholder") where TBool : BindableObject, IText
     {
         if (bindable is ILabel)
         {
@@ -235,7 +242,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets a value for multiple platforms that this should render.
     /// </summary>
-    public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms, bool isPlaceHolder = true) where TPlatform : BindableObject, IText
+    public static TPlatform OnPlatforms<TPlatform>(this TPlatform bindable, IList<string> platforms, string targetName = "placeholder") where TPlatform : BindableObject, IText
     {
         if (bindable is ILabel && PlatformHelper.IsValidPlatform(platforms))
             return bindable;
@@ -328,7 +335,7 @@ public static class MauiTextMarkupExtension
     /// <summary>
     /// Sets a value for multiple Idioms that this should render.
     /// </summary>
-    public static TIdiom OnIdioms<TIdiom>(this TIdiom bindable, IList<string> idioms, bool isPlaceHolder = true) where TIdiom : BindableObject, IText
+    public static TIdiom OnIdioms<TIdiom>(this TIdiom bindable, IList<string> idioms, string targetName = "placeholder") where TIdiom : BindableObject, IText
     {
         if (bindable is ILabel && PlatformHelper.IsValidIdiom(idioms))
             return bindable;
