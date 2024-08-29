@@ -52,7 +52,121 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 
 ```
 
+## Built in Control Usage
+
+`Xaml`
+```xml
+<mi:MauiIcon Value="{mi:Fluent AppFolder48}"/>
+```
+`C#`
+```csharp
+new MauiIcon() {Value = Fluent.AppFolder48, IconColor = Colors.Green};
+
+new MauiIcon().Icon(FluentIcons.Accessibility48).IconColor(Colors.Purple);
+```
+
+All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons)**
+
+
+## Xaml Extension Usage
+```xml
+<Image Aspect="Center" mi.MauiIcon.Icon="{mi:Fluent Icon=Accessibility48}"/>
+
+<Label mi.MauiIcon.Icon="{mi:Fluent Icon=AppFolder48}"/>
+```
+
+
+## C# Markup Usage
+
+```csharp
+new ImageButton().Icon(FluentIcons.AppFolder48),
+
+new Image().Icon(FluentIcons.Accessibility48),
+
+new Label().Icon(FluentIcons.AppFolder48).IconSize(40.0).IconColor(Colors.Red),
+
+new Entry().Icon(FluentIcons.Accessibility48).IconSize(20.0).IconColor(Colors.Aqua),
+```
+
+**Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
+
+## Applying Icon To Text or Placeholder
+Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
+Defaults to Placeholder but can be set to Text by Setting TargetName Parameter to `Text`
+
+```csharp
+new Entry().Icon(FluentIcons.Accessibility48, targetName: "Text").IconSize(20.0).IconColor(Colors.Aqua);
+
+new SearchBar().Icon(FluentIcons.AppFolder48, targetName: "Placeholder");
+```
+
+**Disclaimer:** It's important to note that we are Overriding Font on Input Control to Set the Icon that Could Cause Unexpected Behaviors and Rendering Issues as well.
+
+## Custom OnPlatform and OnIdiom Usage
+`Xaml`
+
+```xml
+<mi:MauiIcon Value="{mi:Fluent AppFolder48}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Value="{mi:Fluent Accessibility48}" OnIdioms="Desktop, Phone, Tablet"/>
+<mi:MauiIcon Value="{mi:Fluent AppFolder48}" OnPlatforms="Android" OnIdioms="Phone"/>
+```
+
+`C#`
+```csharp
+new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI", "Android"});
+new MauiIcon().Icon(FluentIcons.Accessibility48).OnIdioms(new List<string>{"Desktop", "Phone"});
+new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
+```
+
 ## Breaking Changes
+
+### Version 3 to 4
+
+  - Icon won't be applied to the Controls like Entry, SearchBar and etc.. by default Instead v4 would throw an Exception, Need to set **FontOverride** to true to apply the Icon to these Controls on Builder Extension Level or Control Level
+	- This Behavior can be reverted to Behavior of v3 by Using new `UseMauiIconsCore` Builder Extension and using `SetDefaultFontOverride` Method like Below
+
+```csharp
+	builder.UseMauiIconsCore(x => 
+	{
+		x.SetDefaultFontOverride(true);
+	})
+```
+
+  - Icon Size is Now Set to Control's FontSize by Default, Previously it was set to **30.0** by Default
+	- This Behavior can be reverted to Behavior of v3 by Using new `UseMauiIconsCore` Builder Extension and using `SetDefaultIconSize` Method like Below
+```csharp
+	builder.UseMauiIconsCore(x => 
+	{
+		x.SetDefaultIconSize(30.0);
+	})
+```
+
+ - Setting Icons into `IconProperty` Using Vanilla C# is no longer Supported, Instead Need to Set the Icon to `ValueProperty`, Like Below Example
+	
+`C#`
+```csharp
+        // old (v3)
+        new MauiIcon() { Icon = CupertinoIcons.Airplane };
+
+        // new (v4)
+        new MauiIcon() { Value = CupertinoIcons.Airplane };
+```
+`Xaml`
+```xml
+	<!-- old (v3) -->
+	<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+	
+	<!-- new (v4) -->
+	<mi:MauiIcon Value="{mi:Cupertino Airplane}"/>
+```
+
+**Disclaimer**: The Old `IconProperty` is still Supported and can be used in Xaml not C#, but it's recommended to use the new `ValueProperty` Since it could be cause of a Performance Penanlty
+
+
+### Version 2 to 3
+
+  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
+  - Removal of **Dotnet 7** Support
 
 ### Version 1 to 2
 
@@ -72,103 +186,65 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 ```
 
-### Version 2 to 3
+## New Changes in v4
 
-  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
-  - Removal of **Dotnet 7** Support
-
-
-## Built in Control Usage
-
-`Xaml`
+  1. We have a new way of Assigning/Setting Icons, Introducing New Attached Property for Icons,
+	 The new **AttachedProperty** Brings in Support for **Triggers**, **Behaviors**, **Styles**, etc.. which is lacking on Classic Xaml Markup Extension, and also it's more cleaner and readable
 ```xml
-<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
-```
-`C#`
-```csharp
-new MauiIcon() {Icon = Fluent.AppFolder48, IconColor = Colors.Green};
-
-new MauiIcon().Icon(FluentIcons.Accessibility48).IconColor(Colors.Purple);
-```
-
-All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons)**
-
-
-## Xaml Extension Usage
-```xml
+/// Old
 <Image Aspect="Center" Source="{mi:Fluent Icon=Accessibility48}"/>
 
-<Label Text="{mi:Fluent Icon=AppFolder48}"/>
+// New
+<Image Aspect="Center" mi.MauiIcon.Icon="{mi:Fluent Icon=Accessibility48}"/>
 ```
 
-## Xaml Extension Data Binding Usage
+**Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to depreciate the old Xaml Markup Extension in the future in favor of Attached Property
 
-The below example, Make Sures that BindingContext Inside the Xaml Extension is Set to Root of this Page, Likewise make sure to set the BindingContext When using Binding Inside the MauiIcons Xaml Extension, Additionally This example Binds to MyIcon and MyColor Properties Which Present in Code Behind But Not Included in this Example.
+### Example of Using Styles
 ```xml
-<ContentPage
-    x:Class="MauiIcons.Sample.BindingPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MauiIcons.Sample"
-    xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-    x:Name="thisRoot">
-        <HorizontalStackLayout>
-            <Label Text="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
-            <Image>
-                <Image.Source>
-                    <FontImageSource 
-                    Glyph="{mi:Fluent BindingContext={x:Reference thisRoot}, 
-                    Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
-                </Image.Source>
-            </Image>
+<Style x:Key="ButtonStyle" TargetType="Button">
+       <Setter Property="mi:MauiIcon.Icon" Value="{mi:Fluent Icon=AppFolder48}" />
+</Style>
 
-            <ImageButton Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}" />
-        </HorizontalStackLayout>
-</ContentPage>
+<Button Style="{StaticResource ButtonStyle}"/>
 ```
 
-## C# Markup Usage
+  2. Introducing New `UseMauiIconsCore` Builder Extension for Setting Default Icon Size, Font Override, Default Font Auto Scaling and etc..
+  3. Improved Built in OnPlatforms and OnIdioms with Binding Improvements and Enhanced Performance
+  4. New `OnClickAnimation` Support for MauiIcon Control
 
-```csharp
-new ImageButton().Icon(FluentIcons.AppFolder48),
 
-new Image().Icon(FluentIcons.Accessibility48),
+## Advanced Usage
 
-new Label().Icon(FluentIcons.AppFolder48).IconSize(40.0).IconColor(Colors.Red),
-
-new Entry().Icon(FluentIcons.Accessibility48).IconSize(20.0).IconColor(Colors.Aqua),
-```
-
-**Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
-
-## Applying Icon To Text or Placeholder
-Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
-Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
-
-```csharp
-new Entry().Icon(FluentIcons.Accessibility48, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
-
-new SearchBar().Icon(FluentIcons.AppFolder48, isPlaceHolder: false);
-```
-
-**Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
-
-## Custom OnPlatform and OnIdiom Usage
-`Xaml`
-
+- If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want the Icon you Set on Attached Property to Apply to All the Sources, You can do that as well, Set the TargetName to `.`, This will Apply the Icon to All the Sources
 ```xml
-<mi:MauiIcon Icon="{mi:Fluent AppFolder48}" OnPlatforms="WinUI, Android, MacCatalyst"/>
-<mi:MauiIcon Icon="{mi:Fluent Accessibility48}" OnIdioms="Desktop, Phone, Tablet"/>
-<mi:MauiIcon Icon="{mi:Fluent AppFolder48}" OnPlatforms="Android" OnIdioms="Phone"/>
+<Tab mi:MauiIcon.Icon="{mi:Fluent Icon=Home32, TargetName='.'}">
+            <ShellContent
+                Title="Xaml"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+</Tab>
+```
+- If you came across Situation Where you want to Apply the Icon to Different Source over Default Source that Set by MauiIcons, You can do that as well, Set the TargetName to Source Property Name, This will Apply the Icon to that Specific Source
+```xml
+<Tab mi:MauiIcon.Icon="{mi:Fluent Icon=Home32, TargetName='FlyoutIcon'}">
+            <ShellContent
+                Title="Xaml"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+</Tab>
+```
+- If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want different icon for those Additional Sources, You can do that by Applying the Icon Directly to Source Using Xaml Markup like Below Example
+```xml
+<Tab mi:MauiIcon.Icon="{mi:Fluent Icon=Home32}" FlyoutIcon="{mi:Fluent Icon=Accessibility48}">
+            <ShellContent
+                Title="Xaml"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+</Tab>
 ```
 
-`C#`
-```csharp
-new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI", "Android"});
-new MauiIcon().Icon(FluentIcons.Accessibility48).OnIdioms(new List<string>{"Desktop", "Phone"});
-new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
-```
-
+Overall TargetName is Behaves like a Source Property Name, If you want to Apply the Icon to Specific Source, Set the TargetName to Source Property Name, If you want to Apply the Icon to All the Sources, Set the TargetName to `.`
 # License
 
 **MauiIcons.Fluent**  
