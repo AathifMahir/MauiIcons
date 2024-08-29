@@ -65,7 +65,7 @@ new MauiIcon() {Value = Fluent.AppFolder48, IconColor = Colors.Green};
 new MauiIcon().Icon(FluentIcons.Accessibility48).IconColor(Colors.Purple);
 ```
 
-All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons)**
+All the Properties and Features of Built in Control, **[Check Here](https://github.com/AathifMahir/MauiIcons#properties)**
 
 
 ## Xaml Extension Usage
