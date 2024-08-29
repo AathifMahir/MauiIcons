@@ -146,18 +146,18 @@ new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI
 `C#`
 ```csharp
         // old (v3)
-        new MauiIcon() { Icon = CupertinoIcons.Airplane };
+        new MauiIcon() { Icon = FluentIcons.AppFolder48 };
 
         // new (v4)
-        new MauiIcon() { Value = CupertinoIcons.Airplane };
+        new MauiIcon() { Value = FluentIcons.AppFolder48 };
 ```
 `Xaml`
 ```xml
 	<!-- old (v3) -->
-	<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
+	<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 	
 	<!-- new (v4) -->
-	<mi:MauiIcon Value="{mi:Cupertino Airplane}"/>
+	<mi:MauiIcon Value="{mi:Fluent AppFolder48}"/>
 ```
 
 **Disclaimer**: The Old `IconProperty` is still Supported and can be used in Xaml not C#, but it's recommended to use the new `ValueProperty` Since it could be cause of a Performance Penanlty
@@ -244,7 +244,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 </Tab>
 ```
 
-Overall TargetName is Behaves like a Source Property Name, If you want to Apply the Icon to Specific Source, Set the TargetName to Source Property Name, If you want to Apply the Icon to All the Sources, Set the TargetName to `.`
+Overall TargetName Behaves like a Source Property Name, If you want to Apply the Icon to Specific Source, Set the TargetName to Source Property Name, If you want to Apply the Icon to All the Sources, Set the TargetName to `.`
 # License
 
 **MauiIcons.Fluent**  
