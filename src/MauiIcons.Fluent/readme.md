@@ -21,6 +21,25 @@ public static class MauiProgram
 }
 ```
 
+# Table of Contents
+
+- [Usage](#usage)
+- [Advanced Settings](#advanced-settings)
+- [New Changes in v4](#new-changes-in-v4)
+- [Workaround (Must Read)](#workaround)
+- [Built in Control Usage](#built-in-control-usage)
+- [Xaml Extension Usage](#xaml-extension-usage)
+- [C# Markup Usage](#c-markup-usage)
+- [Applying Icon To Text or Placeholder](#applying-icon-to-text-or-placeholder)
+- [OnPlatform and OnIdiom Usage](#onplatform-and-onidiom-usage)
+- [Breaking Changes](#breaking-changes)
+	- [Version 3 to 4](#version-3-to-4)
+	- [Version 2 to 3](#version-2-to-3)
+	- [Version 1 to 2](#version-1-to-2)
+- [Advanced Usage](#advanced-usage)
+- [License](#license)
+
+
 # Usage
 
 
@@ -35,6 +54,19 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 `C#`
 ```csharp
 using MauiIcons.Fluent;
+```
+
+# Advanced Settings
+
+You can set the default icon size, font override, and default font auto-scaling using the `UseMauiIconsCore` builder extension as follows:
+
+```csharp
+builder.UseMauiIconsCore(x => 
+{
+	x.SetDefaultIconSize(30.0);
+	x.SetDefaultFontOverride(true);
+	x.SetDefaultFontAutoScaling(true);
+})
 ```
 
 ## Workaround
@@ -102,7 +134,7 @@ new SearchBar().Icon(FluentIcons.AppFolder48, targetName: "Placeholder");
 
 **Disclaimer:** It's important to note that we are Overriding Font on Input Control to Set the Icon that Could Cause Unexpected Behaviors and Rendering Issues as well.
 
-## Custom OnPlatform and OnIdiom Usage
+## OnPlatform and OnIdiom Usage
 `Xaml`
 
 ```xml
@@ -160,13 +192,16 @@ new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI
 	<mi:MauiIcon Value="{mi:Fluent AppFolder48}"/>
 ```
 
-**Disclaimer**: The Old `IconProperty` is still Supported and can be used in Xaml not C#, but it's recommended to use the new `ValueProperty` Since it could be cause of a Performance Penanlty
+**Disclaimer**: The Old `IconProperty` is still Supported and can be used in Xaml not C#, but it's recommended to use the new `ValueProperty` Since it could be cause of a Little Bit of Performance Penalty and Confusion
 
+---
 
 ### Version 2 to 3
 
-  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
+  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [OnPlatform and OnIdioms Feature](#onplatform-and-onidiom-usage)
   - Removal of **Dotnet 7** Support
+
+---
 
 ### Version 1 to 2
 
