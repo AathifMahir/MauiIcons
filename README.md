@@ -147,7 +147,7 @@ The below example Binds to MyIcon and MyColor Properties Which Present in Code B
     x:Name="thisRoot">
         <HorizontalStackLayout>
             <Label mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, 
-            IconColor={Binding MyColor}, FontOverride=True}" />
+                   IconColor={Binding MyColor}, FontOverride=True}" />
 
             <Image>
                 <Image.Source>
@@ -158,7 +158,8 @@ The below example Binds to MyIcon and MyColor Properties Which Present in Code B
 
             <Image mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
 
-            <ImageButton mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}" />
+            <ImageButton mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, 
+                         IconColor={Binding MyColor}" />
 
             <mi:MauiIcon Value="{mi:Fluent Icon={Binding MyIcon}}" />
 
