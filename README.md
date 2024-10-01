@@ -104,16 +104,16 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 `Xaml`
 
 ```xml
-<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
-<mi:MauiIcon Icon="{mi:material ABC}"/>
-<mi:MauiIcon Icon="{mi:fluent Accounts}"/>
+<mi:MauiIcon Value="{mi:Cupertino Airplane}"/>
+<mi:MauiIcon Value="{mi:material ABC}"/>
+<mi:MauiIcon Value="{mi:fluent Accounts}"/>
 ```
 `C#`
 ```csharp
 // Traditional C#
-new MauiIcon() {Icon = CupertinoIcons.AppBadge, IconColor = Colors.Green};
-new MauiIcon() {Icon = FluentIcons.Accounts, IconColor = Colors.Blue};
-new MauiIcon() {Icon = MaterialIcons.ABC, IconColor = Colors.Yellow};
+new MauiIcon() {Value = CupertinoIcons.AppBadge, IconColor = Colors.Green};
+new MauiIcon() {Value = FluentIcons.Accounts, IconColor = Colors.Blue};
+new MauiIcon() {Value = MaterialIcons.ABC, IconColor = Colors.Yellow};
 
 // C# Markup
 new MauiIcon().Icon(CupertinoIcons.AntFill).IconColor(Colors.Purple);
