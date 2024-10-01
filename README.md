@@ -246,9 +246,9 @@ new MauiIcon().Icon(MaterialIcons.ABC).OnClickAnimationType(AnimationType.Scale)
 `Xaml`
 
 ```xml
-<mi:MauiIcon Icon="{mi:Cupertino Airplane}" OnPlatforms="WinUI, Android, MacCatalyst"/>
-<mi:MauiIcon Icon="{mi:material ABC}" OnIdioms="Desktop, Phone, Tablet"/>
-<mi:MauiIcon Icon="{mi:fluent Accounts}" OnPlatforms="Android" OnIdioms="Phone"/>
+<mi:MauiIcon Value="{mi:Cupertino Airplane}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Value="{mi:material ABC}" OnIdioms="Desktop, Phone, Tablet"/>
+<mi:MauiIcon Value="{mi:fluent Accounts}" OnPlatforms="Android" OnIdioms="Phone"/>
 ```
 
 `C#`
