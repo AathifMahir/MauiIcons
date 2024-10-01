@@ -146,16 +146,22 @@ The below example Binds to MyIcon and MyColor Properties Which Present in Code B
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     x:Name="thisRoot">
         <HorizontalStackLayout>
-            <Label mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}, FontOverride=True}" />
+            <Label mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, 
+            IconColor={Binding MyColor}, FontOverride=True}" />
+
             <Image>
                 <Image.Source>
                     <FontImageSource 
                     Glyph="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
                 </Image.Source>
             </Image>
+
             <Image mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+
             <ImageButton mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}" />
+
             <mi:MauiIcon Value="{mi:Fluent Icon={Binding MyIcon}}" />
+
             <mi:MauiIcon mi:MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}}">
         </HorizontalStackLayout>
 </ContentPage>
