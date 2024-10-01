@@ -233,7 +233,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <Image Aspect="Center" mi.MauiIcon.Icon="{mi:Fluent Icon=Accessibility48}"/>
 ```
 
-**Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to depreciate the old Xaml Markup Extension in the future in favor of Attached Property
+**Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to deprecate the old Xaml Markup Extension in the future in favor of Attached Property
 
 ### Example of Using Styles
 ```xml
