@@ -81,6 +81,17 @@ public interface IMauiIcon
     /// </summary>
     uint EntranceAnimationDuration { get; }
 
+
+    /// <summary>
+    /// Gets or Sets the type of on-click animation for the element.
+    /// </summary>
+    AnimationType OnClickAnimationType { get; }
+
+    /// <summary>
+    /// Gets or sets the duration of the on-click animation for the element.
+    /// </summary>
+    uint OnClickAnimationDuration { get; }
+
     /// <summary>
     /// Gets or sets the Platforms that control should render.
     /// </summary>
