@@ -156,7 +156,8 @@ The below example Binds to MyIcon and MyColor Properties Which Present in Code B
                 </Image.Source>
             </Image>
 
-            <Image mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+            <Image mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, 
+                   IconColor={Binding MyColor}}" />
 
             <ImageButton mi.MauiIcon.Icon="{mi:Fluent Icon={Binding MyIcon}, 
                          IconColor={Binding MyColor}" />
