@@ -1,13 +1,12 @@
-﻿using MauiIcons.Core.Base;
-using MauiIcons.Core.Converters;
+﻿using MauiIcons.Core.Converters;
 using MauiIcons.Core.Helpers;
 using Microsoft.Maui.Graphics.Converters;
 
 namespace MauiIcons.Core;
 
-public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
+public sealed partial class MauiIcon : ContentView, IMauiIcon
 {
-    public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(Enum), typeof(MauiIcon), null);
+    public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(Enum), typeof(MauiIcon), null);
     public static readonly BindableProperty IconSizeProperty = BindableProperty.Create(nameof(IconSize), typeof(double), typeof(MauiIcon), 30.0);
     public static readonly BindableProperty IconColorProperty = BindableProperty.Create(nameof(IconColor), typeof(Color), typeof(MauiIcon), null);
     public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(MauiIcon), null);
@@ -62,10 +61,10 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
 
     public static readonly BindableProperty OnClickAnimationDurationProperty = BindableProperty.Create(nameof(OnClickAnimationDuration), typeof(uint), typeof(MauiIcon), (uint)600);
 
-    public Enum? Value
+    public Enum? Icon
     {
-        get => (Enum?)GetValue(ValueProperty);
-        set => SetValue(ValueProperty, value);
+        get => (Enum?)GetValue(IconProperty);
+        set => SetValue(IconProperty, value);
     }
 
     [System.ComponentModel.TypeConverter(typeof(FontSizeConverter))]
@@ -180,7 +179,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
         Content = BuildIconControl();
         Loaded += async (s, r) =>
         {
-            _iconLabel.SetValue(Label.FontFamilyProperty, Value.GetFontFamily());
+            _iconLabel.SetValue(Label.FontFamilyProperty, Icon.GetFontFamily());
             await AnimationHelper.AnimateIconAsync(EntranceAnimationType, _iconLabel, EntranceAnimationDuration);
         };
     }
@@ -193,7 +192,7 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
 
     private HorizontalStackLayout BuildIconControl()
     {
-        _iconLabel.SetBinding(Label.TextProperty, new Binding(nameof(Value), converter: new IconToGlyphConverter(), source: this));
+        _iconLabel.SetBinding(Label.TextProperty, new Binding(nameof(Icon), converter: new IconToGlyphConverter(), source: this));
         _iconLabel.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(IconAutoScaling), source: this));
         _iconLabel.SetBinding(Label.FontSizeProperty, new Binding(nameof(IconSize), source: this));
         _iconLabel.SetBinding(Label.TextColorProperty, new Binding(nameof(IconColor), source: this));
@@ -235,9 +234,9 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
     {
         Source = new FontImageSource()
         {
-            Glyph = baseIcon.Value.GetDescription(),
+            Glyph = baseIcon.Icon.GetDescription(),
             Color = baseIcon.IconColor.SetDefaultOrAssignedColor(),
-            FontFamily = baseIcon.Value.GetFontFamily(),
+            FontFamily = baseIcon.Icon.GetFontFamily(),
             Size = baseIcon.IconSize,
             FontAutoScalingEnabled = baseIcon.IconAutoScaling,
         },
@@ -246,17 +245,32 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
 
     public static explicit operator FontImageSource(MauiIcon mi) => new()
     {
-        Glyph = mi.Value.GetDescription(),
+        Glyph = mi.Icon.GetDescription(),
         Color = mi.IconColor.SetDefaultOrAssignedColor(),
-        FontFamily = mi.Value.GetFontFamily(),
+        FontFamily = mi.Icon.GetFontFamily(),
         Size = mi.IconSize,
         FontAutoScalingEnabled = mi.IconAutoScaling,
     };
 
     public static explicit operator Label(MauiIcon mi)
     {
-        var label = mi._iconLabel;
-        mi._iconLabel.FontFamily = mi.Value.GetFontFamily();
+        var label = new Label
+        {
+            FormattedText = new FormattedString()
+        };
+        label.FormattedText.Spans.Add(new Span
+        {
+            Text = mi._iconLabel.Text,
+            FontSize = mi._iconLabel.FontSize,
+            FontAutoScalingEnabled = mi._iconLabel.FontAutoScalingEnabled,
+            FontFamily = mi.Icon.GetFontFamily(),
+            TextColor = mi._iconLabel.TextColor,
+            BackgroundColor = mi._iconLabel.BackgroundColor
+        });
+        label.FormattedText.Spans.Add(mi._iconSuffixSpacer);
+        label.FormattedText.Spans.Add(mi._suffixSpan);
+        label.VerticalOptions = LayoutOptions.Center;
+        label.BackgroundColor = mi.IconAndSuffixBackgroundColor.SetDefaultOrAssignedColor(label.BackgroundColor);
         label.Loaded += async (s, r) =>
         {
             await AnimationHelper.AnimateIconAsync(mi.EntranceAnimationType, label, mi.EntranceAnimationDuration);
@@ -268,8 +282,8 @@ public sealed partial class MauiIcon : BaseMauiIcon, IMauiIcon
     {
         var button = new Button
         {
-            Text = mi.Value.GetDescription(),
-            FontFamily = mi.Value.GetFontFamily(),
+            Text = mi.Icon.GetDescription(),
+            FontFamily = mi.Icon.GetFontFamily(),
             FontSize = mi.IconSize,
             FontAutoScalingEnabled = mi.IconAutoScaling
         };
