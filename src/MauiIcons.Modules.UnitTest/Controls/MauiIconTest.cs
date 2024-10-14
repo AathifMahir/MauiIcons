@@ -119,13 +119,13 @@ public class MauiIconTest : BaseHandlerTest
         Label baseLabel;
 
         // Act
-        mauiiIcon = new MauiIcon() { Value = CupertinoIcons.Airplane };
-        mauiiIcon.Value = newIcon;
+        mauiiIcon = new MauiIcon() { Icon = CupertinoIcons.Airplane };
+        mauiiIcon.Icon = newIcon;
         baseLabel = (Label)mauiiIcon;
 
         // Assert
-        mauiiIcon.Value.Should().NotBeNull();
-        mauiiIcon.Value.Should().Be(newIcon);
+        mauiiIcon.Icon.Should().NotBeNull();
+        mauiiIcon.Icon.Should().Be(newIcon);
         baseLabel.FormattedText.Spans[0].Should().NotBeNull();
         baseLabel.FormattedText.Spans[0].Text.Should().Be(string.Empty);
         baseLabel.FormattedText.Spans[0].FontFamily.Should().Be("EnumTest");
@@ -142,7 +142,7 @@ public class MauiIconTest : BaseHandlerTest
         var iconAutoScaling = true;
 
         // Act
-        label = (Label)new MauiIcon() { Value = CupertinoIcons.Airplane, IconColor = iconColor, IconSize = iconSize, 
+        label = (Label)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconColor = iconColor, IconSize = iconSize, 
             IconBackgroundColor = iconBackgroundColor, IconAutoScaling = iconAutoScaling };
 
         // Assert
@@ -205,7 +205,7 @@ public class MauiIconTest : BaseHandlerTest
         var iconBackgroundColor = Colors.DarkCyan;
 
         // Act
-        image = (Image)new MauiIcon() { Value = CupertinoIcons.Airplane, IconBackgroundColor = iconBackgroundColor };
+        image = (Image)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconBackgroundColor = iconBackgroundColor };
 
         // Assert
         image.Source.Should().NotBeNull();
@@ -223,7 +223,7 @@ public class MauiIconTest : BaseHandlerTest
         var iconAutoScaling = true;
 
         // Act
-        fontImage = (FontImageSource)new MauiIcon() { Value = CupertinoIcons.Airplane, IconColor = iconColor, 
+        fontImage = (FontImageSource)new MauiIcon() { Icon = CupertinoIcons.Airplane, IconColor = iconColor, 
             IconSize = iconSize, IconAutoScaling = iconAutoScaling };
 
         // Assert
@@ -375,17 +375,17 @@ public class MauiIconTest : BaseHandlerTest
         mauiiIcon = new MauiIcon();
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
-            if (e.PropertyName == "IconAndSuffixBackgroundColor")
+            if (e.PropertyName == "BackgroundColor")
             {
                 changedSignaled = true;
             }
         };
-        mauiiIcon.BackgroundColor = assignedColor;
+        mauiiIcon.IconAndSuffixBackgroundColor = assignedColor;
 
 
         // Assert
-        mauiiIcon.BackgroundColor.Should().NotBeNull();
-        mauiiIcon.BackgroundColor.Should().Be(assignedColor);
+        mauiiIcon.IconAndSuffixBackgroundColor.Should().NotBeNull();
+        mauiiIcon.IconAndSuffixBackgroundColor.Should().Be(assignedColor);
         changedSignaled.Should().BeTrue();
     }
 
