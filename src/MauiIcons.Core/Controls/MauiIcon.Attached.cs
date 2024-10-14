@@ -5,9 +5,9 @@ using MauiIcons.Core.Helpers;
 namespace MauiIcons.Core;
 public partial class MauiIcon
 {
-    public static new readonly BindableProperty IconProperty = BindableProperty.CreateAttached("Icon", typeof(BaseIcon), typeof(MauiIcon), null, propertyChanged: OnIconPropertyChanged);
+    public static readonly BindableProperty ValueProperty = BindableProperty.CreateAttached("Value", typeof(BaseIcon), typeof(MauiIcon), null, propertyChanged: OnValuePropertyChanged);
 
-    private static void OnIconPropertyChanged(BindableObject bindable, object oldValue, object newValue)
+    private static void OnValuePropertyChanged(BindableObject bindable, object oldValue, object newValue)
     {
         if (newValue is null) return;
 
@@ -252,13 +252,13 @@ public partial class MauiIcon
             converter: new DefaultFontAutoScalingConverter(), converterParameter: fontImageSource.FontAutoScalingEnabled));
     }
 
-    public static BaseIcon? GetIcon(BindableObject view)
+    public static BaseIcon? GetValue(BindableObject view)
     {
-        return (BaseIcon?)view.GetValue(IconProperty);
+        return (BaseIcon?)view.GetValue(ValueProperty);
     }
 
-    public static void SetIcon(BindableObject view, BaseIcon? value)
+    public static void SetValue(BindableObject view, BaseIcon? value)
     {
-        view.SetValue(IconProperty, value);
+        view.SetValue(ValueProperty, value);
     }
 }
