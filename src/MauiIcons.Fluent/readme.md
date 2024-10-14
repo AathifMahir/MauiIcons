@@ -88,11 +88,11 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
 
 `Xaml`
 ```xml
-<mi:MauiIcon Value="{mi:Fluent AppFolder48}"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
 ```
 `C#`
 ```csharp
-new MauiIcon() {Value = Fluent.AppFolder48, IconColor = Colors.Green};
+new MauiIcon() {Icon = Fluent.AppFolder48, IconColor = Colors.Green};
 
 new MauiIcon().Icon(FluentIcons.Accessibility48).IconColor(Colors.Purple);
 ```
@@ -102,9 +102,9 @@ All the Properties and Features of Built in Control, **[Check Here](https://gith
 
 ## Xaml Extension Usage
 ```xml
-<Image Aspect="Center" mi.MauiIcon.Icon="{mi:Fluent Icon=Accessibility48}"/>
+<Image Aspect="Center" mi.MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
 
-<Label mi.MauiIcon.Icon="{mi:Fluent Icon=AppFolder48}"/>
+<Label mi.MauiIcon.Value="{mi:Fluent Icon=AppFolder48}"/>
 ```
 
 
@@ -138,9 +138,9 @@ new SearchBar().Icon(FluentIcons.AppFolder48, targetName: "Placeholder");
 `Xaml`
 
 ```xml
-<mi:MauiIcon Value="{mi:Fluent AppFolder48}" OnPlatforms="WinUI, Android, MacCatalyst"/>
-<mi:MauiIcon Value="{mi:Fluent Accessibility48}" OnIdioms="Desktop, Phone, Tablet"/>
-<mi:MauiIcon Value="{mi:Fluent AppFolder48}" OnPlatforms="Android" OnIdioms="Phone"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}" OnPlatforms="WinUI, Android, MacCatalyst"/>
+<mi:MauiIcon Icon="{mi:Fluent Accessibility48}" OnIdioms="Desktop, Phone, Tablet"/>
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}" OnPlatforms="Android" OnIdioms="Phone"/>
 ```
 
 `C#`
@@ -172,28 +172,6 @@ new MauiIcon().Icon(FluentIcons.AppFolder48).OnPlatforms(new List<string>{"WinUI
 		x.SetDefaultIconSize(30.0);
 	})
 ```
-
- - Setting Icons into `IconProperty` Using Vanilla C# is no longer Supported, Instead Need to Set the Icon to `ValueProperty`, Like Below Example
-	
-`C#`
-```csharp
-        // old (v3)
-        new MauiIcon() { Icon = FluentIcons.AppFolder48 };
-
-        // new (v4)
-        new MauiIcon() { Value = FluentIcons.AppFolder48 };
-```
-`Xaml`
-```xml
-	<!-- old (v3) -->
-	<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
-	
-	<!-- new (v4) -->
-	<mi:MauiIcon Value="{mi:Fluent AppFolder48}"/>
-```
-
-**Disclaimer**: The Old `IconProperty` is still Supported and can be used in Xaml not C#, but it's recommended to use the new `ValueProperty` Since it could be cause of a Little Bit of Performance Penalty and Confusion
-
 ---
 
 ### Version 2 to 3
@@ -230,7 +208,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <Image Aspect="Center" Source="{mi:Fluent Icon=Accessibility48}"/>
 
 // New
-<Image Aspect="Center" mi.MauiIcon.Icon="{mi:Fluent Icon=Accessibility48}"/>
+<Image Aspect="Center" mi.MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
 ```
 
 **Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to deprecate the old Xaml Markup Extension in the future in favor of Attached Property
@@ -238,7 +216,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 ### Example of Using Styles
 ```xml
 <Style x:Key="ButtonStyle" TargetType="Button">
-       <Setter Property="mi:MauiIcon.Icon" Value="{mi:Fluent Icon=AppFolder48}" />
+       <Setter Property="mi:MauiIcon.Value" Value="{mi:Fluent Icon=AppFolder48}" />
 </Style>
 
 <Button Style="{StaticResource ButtonStyle}"/>
@@ -253,7 +231,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 - If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want the Icon you Set on Attached Property to Apply to All the Sources, You can do that as well, Set the TargetName to `.`, This will Apply the Icon to All the Sources
 ```xml
-<Tab mi:MauiIcon.Icon="{mi:Fluent Icon=Home32, TargetName='.'}">
+<Tab mi.MauiIcon.Value="{mi:Fluent Icon=Home32, TargetName='.'}">
             <ShellContent
                 Title="Xaml"
                 ContentTemplate="{DataTemplate local:MainPage}"
@@ -262,7 +240,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 ```
 - If you came across Situation Where you want to Apply the Icon to Different Source over Default Source that Set by MauiIcons, You can do that as well, Set the TargetName to Source Property Name, This will Apply the Icon to that Specific Source
 ```xml
-<Tab mi:MauiIcon.Icon="{mi:Fluent Icon=Home32, TargetName='FlyoutIcon'}">
+<Tab mi.MauiIcon.Value="{mi:Fluent Icon=Home32, TargetName='FlyoutIcon'}">
             <ShellContent
                 Title="Xaml"
                 ContentTemplate="{DataTemplate local:MainPage}"
@@ -271,7 +249,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 ```
 - If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want different icon for those Additional Sources, You can do that by Applying the Icon Directly to Source Using Xaml Markup like Below Example
 ```xml
-<Tab mi:MauiIcon.Icon="{mi:Fluent Icon=Home32}" FlyoutIcon="{mi:Fluent Icon=Accessibility48}">
+<Tab mi.MauiIcon.Value="{mi:Fluent Icon=Home32}" FlyoutIcon="{mi:Fluent Icon=Accessibility48}">
             <ShellContent
                 Title="Xaml"
                 ContentTemplate="{DataTemplate local:MainPage}"
