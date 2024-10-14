@@ -17,8 +17,8 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 		mauiIcon = new MauiIcon().Icon(icon);
 
 		// Assert
-		mauiIcon.Value.Should().NotBeNull();
-		mauiIcon.Value.Should().Be(icon);
+		mauiIcon.Icon.Should().NotBeNull();
+		mauiIcon.Icon.Should().Be(icon);
 	}
 
 	[Fact]
@@ -33,7 +33,7 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
         mauiiIcon = new MauiIcon();
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
-            if (e.PropertyName == "Value")
+            if (e.PropertyName == "Icon")
             {
                 changedSignaled = true;
             }
@@ -42,8 +42,8 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 
 
         // Assert
-        mauiiIcon.Value.Should().NotBeNull();
-        mauiiIcon.Value.Should().Be(assignedIcon);
+        mauiiIcon.Icon.Should().NotBeNull();
+        mauiiIcon.Icon.Should().Be(assignedIcon);
         changedSignaled.Should().BeTrue();
     }
 
@@ -59,8 +59,8 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
         mauiiIcon.Icon(newIcon);
 
         // Assert
-        mauiiIcon.Value.Should().NotBeNull();
-        mauiiIcon.Value.Should().Be(newIcon);
+        mauiiIcon.Icon.Should().NotBeNull();
+        mauiiIcon.Icon.Should().Be(newIcon);
     }
 
     [Fact]
@@ -202,12 +202,12 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
         mauiiIcon = new MauiIcon();
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
-            if (e.PropertyName == "IconAndSuffixBackgroundColor")
+            if (e.PropertyName == "BackgroundColor")
             {
                 changedSignaled = true;
             }
         };
-        mauiiIcon.BackgroundColor(assignedColor);
+        mauiiIcon.IconAndSuffixBackgroundColor(assignedColor);
 
 
         // Assert
@@ -224,8 +224,8 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
         Color assignedColor = null!;
 
         // Act
-        mauiiIcon = new MauiIcon().BackgroundColor(Colors.Green);
-        mauiiIcon.BackgroundColor(assignedColor);
+        mauiiIcon = new MauiIcon().IconAndSuffixBackgroundColor(Colors.Green);
+        mauiiIcon.IconAndSuffixBackgroundColor(assignedColor);
 
 
         // Assert
