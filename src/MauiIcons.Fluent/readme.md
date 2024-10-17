@@ -118,9 +118,7 @@ new ImageButton().Icon(FluentIcons.AppFolder48),
 
 new Image().Icon(FluentIcons.Accessibility48),
 
-new Label().Icon(FluentIcons.AppFolder48).IconSize(40.0).IconColor(Colors.Red),
-
-new Entry().Icon(FluentIcons.Accessibility48).IconSize(20.0).IconColor(Colors.Aqua),
+new Button().Icon(FluentIcons.AppFolder48).IconSize(40.0).IconColor(Colors.Red)
 ```
 
 **Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
@@ -240,35 +238,8 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
 ## Advanced Usage
 
-- If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want the Icon you Set on Attached Property to Apply to All the Sources, You can do that as well, Set the TargetName to `.`, This will Apply the Icon to All the Sources
-```xml
-<Tab mi.MauiIcon.Value="{mi:Fluent Icon=Home32, TargetName='.'}">
-            <ShellContent
-                Title="Xaml"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
-</Tab>
-```
-- If you came across Situation Where you want to Apply the Icon to Different Source over Default Source that Set by MauiIcons, You can do that as well, Set the TargetName to Source Property Name, This will Apply the Icon to that Specific Source
-```xml
-<Tab mi.MauiIcon.Value="{mi:Fluent Icon=Home32, TargetName='FlyoutIcon'}">
-            <ShellContent
-                Title="Xaml"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
-</Tab>
-```
-- If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want different icon for those Additional Sources, You can do that by Applying the Icon Directly to Source Using Xaml Markup like Below Example
-```xml
-<Tab mi.MauiIcon.Value="{mi:Fluent Icon=Home32}" FlyoutIcon="{mi:Fluent Icon=Accessibility48}">
-            <ShellContent
-                Title="Xaml"
-                ContentTemplate="{DataTemplate local:MainPage}"
-                Route="MainPage" />
-</Tab>
-```
+The **.Net Maui Icons** library offers a wide range of features and capabilities, including the ability to customize how icons applied and which property it is applied too and etc. For more information on advanced usage, please refer to the [**Advanced Usage**](https://github.com/AathifMahir/MauiIcons/#advanced-usage)
 
-Overall TargetName Behaves like a Source Property Name, If you want to Apply the Icon to Specific Source, Set the TargetName to Source Property Name, If you want to Apply the Icon to All the Sources, Set the TargetName to `.`
 # License
 
 **MauiIcons.Fluent**  
