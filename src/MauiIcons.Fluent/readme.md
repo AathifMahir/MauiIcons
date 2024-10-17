@@ -38,6 +38,7 @@ public static class MauiProgram
 	- [Version 1 to 2](#version-1-to-2)
 - [Advanced Usage](#advanced-usage)
 - [License](#license)
+- [Contribute](#contribute)
 
 
 # Usage
@@ -104,7 +105,9 @@ All the Properties and Features of Built in Control, **[Check Here](https://gith
 ```xml
 <Image Aspect="Center" mi.MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
 
-<Label mi.MauiIcon.Value="{mi:Fluent Icon=AppFolder48}"/>
+<Button mi.MauiIcon.Value="{mi:Fluent Icon=AppFolder48}"/>
+
+<ImageButton mi.MauiIcon.Value="{mi:Fluent Icon=AppFolder48}"/>
 ```
 
 
@@ -126,6 +129,14 @@ new Entry().Icon(FluentIcons.Accessibility48).IconSize(20.0).IconColor(Colors.Aq
 Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
 Defaults to Placeholder but can be set to Text by Setting TargetName Parameter to `Text`
 
+`xaml`
+```xml
+<Entry mi:MauiIcon.Value="{mi:Fluent Icon=Accessibility48, TargetName='Text'}"/>
+
+<SearchBar mi:MauiIcon.Value="{mi:Fluent Icon=AppFolder48, TargetName='Placeholder'}"/>
+```
+
+`c#`
 ```csharp
 new Entry().Icon(FluentIcons.Accessibility48, targetName: "Text").IconSize(20.0).IconColor(Colors.Aqua);
 
@@ -224,7 +235,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 
   2. Introducing New `UseMauiIconsCore` Builder Extension for Setting Default Icon Size, Font Override, Default Font Auto Scaling and etc..
   3. Improved Built in OnPlatforms and OnIdioms with Binding Improvements and Enhanced Performance
-  4. New `OnClickAnimation` Support for MauiIcon Control
+  4. New [`OnClickAnimation`](https://github.com/AathifMahir/MauiIcons/#animation-usage) Support for MauiIcon Control
 
 
 ## Advanced Usage
@@ -266,3 +277,6 @@ The MauiIcons.Fluent is library is distributed under the [MIT License](https://g
 **Fluent UI System Icons**   
 The Fluent UI System Icons library is distributed under the [MIT License](https://github.com/microsoft/fluentui-system-icons/blob/main/LICENSE).
 
+# Contribute
+
+If you wish to contribute to this project, please don't hesitate to create an [issue or request](https://github.com/AathifMahir/MauiIcons/issues). Your input and feedback are highly appreciated. Additionally, if you're interested in supporting the project by providing resources or [**becoming a sponsor**](https://github.com/sponsors/AathifMahir), your contributions would be welcomed and instrumental in its continued development and success. Thank you for your interest in contributing to this endeavor.
