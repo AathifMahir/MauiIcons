@@ -124,7 +124,7 @@ new Button().Icon(FontAwesomeSolidIcons.Five).IconSize(40.0).IconColor(Colors.Re
 
 ## Applying Icon To Text or Placeholder
 Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
-Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
+Defaults to Placeholder but can be set to Text by Setting TargetName Parameter to `Text`
 
 `xaml`
 ```xml
