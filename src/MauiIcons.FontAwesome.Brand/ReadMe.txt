@@ -38,9 +38,9 @@ new MauiIcon().Icon(FontAwesomeBrandIcons.Shopify).IconColor(Colors.Purple);
 
 Xaml Extension Usage:
 
-<Image Aspect="Center" Source="{mi:FontAwesomeBrand Icon=GooglePay}"/>
+<Image Aspect="Center" mi:MauiIcon.Value="{mi:FontAwesomeBrand Icon=GooglePay}"/>
 
-<Label Text="{mi:FontAwesomeBrand Icon=Hashtag}"/>
+<Button mi:MauiIcon.Value="{mi:FontAwesomeBrand Icon=Hashtag}"/>
 
 ----------------------------------------------------------------------------------------------
 
@@ -50,9 +50,7 @@ new ImageButton().Icon(FontAwesomeBrandIcons.Hashtag),
 
 new Image().Icon(FontAwesomeBrandIcons.Shopify),
 
-new Label().Icon(FontAwesomeBrandIcons.GooglePay).IconSize(40.0).IconColor(Colors.Red),
-
-new Entry().Icon(FontAwesomeBrandIcons.Hashtag).IconSize(20.0).IconColor(Colors.Aqua),
+new Button().Icon(FontAwesomeBrandIcons.GooglePay).IconSize(40.0).IconColor(Colors.Red),
 
 
 Disclaimer: It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: 
