@@ -1,5 +1,4 @@
-﻿using MauiIcons.Core.Helpers;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 
 namespace MauiIcons.Core;
 public static class MauiIconMarkupExtension
@@ -172,6 +171,30 @@ public static class MauiIconMarkupExtension
         }
         return bindable;
     }
+
+    /// <summary>
+    /// Sets the type of onclick animation for the element.
+    /// </summary>
+    public static TAnimation OnClickAnimationType<TAnimation>(this TAnimation bindable, AnimationType animationType) where TAnimation : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.OnClickAnimationTypeProperty, animationType);
+        }
+        return bindable;
+    }
+
+    /// <summary>
+    /// Sets the duration of the onclick animation for the element.
+    /// </summary>
+    public static TDuration OnClickAnimationDuration<TDuration>(this TDuration bindable, uint duration) where TDuration : BindableObject, IMauiIcon
+    {
+        if (IsMauiIconType(bindable))
+        {
+            bindable.SetValue(MauiIcon.OnClickAnimationDurationProperty, duration);
+        }
+        return bindable;
+    }
     /// <summary>
     /// Sets a value for multiple platforms that this should render.
     /// </summary>
@@ -203,6 +226,6 @@ public static class MauiIconMarkupExtension
         DefaultInterpolatedStringHandler defaultInterpolatedStringHandler = new(17, 1);
         defaultInterpolatedStringHandler.AppendFormatted(typeof(TType));
         defaultInterpolatedStringHandler.AppendLiteral(" is not supported");
-        throw new MauiIconsExpection(defaultInterpolatedStringHandler.ToStringAndClear());
+        throw new MauiIconsException(defaultInterpolatedStringHandler.ToStringAndClear());
     }
 }

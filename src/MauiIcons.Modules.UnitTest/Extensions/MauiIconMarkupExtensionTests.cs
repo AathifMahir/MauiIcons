@@ -202,7 +202,7 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
         mauiiIcon = new MauiIcon();
         mauiiIcon.PropertyChanged += (sender, e) =>
         {
-            if (e.PropertyName == "IconAndSuffixBackgroundColor")
+            if (e.PropertyName == "BackgroundColor")
             {
                 changedSignaled = true;
             }
@@ -211,8 +211,8 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 
 
         // Assert
-        mauiiIcon.IconAndSuffixBackgroundColor.Should().NotBeNull();
-        mauiiIcon.IconAndSuffixBackgroundColor.Should().Be(assignedColor);
+        mauiiIcon.BackgroundColor.Should().NotBeNull();
+        mauiiIcon.BackgroundColor.Should().Be(assignedColor);
         changedSignaled.Should().BeTrue();
     }
 
@@ -307,7 +307,7 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 
         // Act
         mauiiIcon = new MauiIcon().IconSuffix(suffix);
-        mauiiIcon.IconSuffix(null);
+        mauiiIcon.IconSuffix(null!);
 
 
         // Assert
@@ -348,7 +348,7 @@ public class MauiIconMarkupExtensionTests : BaseHandlerTest
 
         // Act
         mauiiIcon = new MauiIcon().IconSuffixFontFamily(suffixFontFamily);
-        mauiiIcon.IconSuffixFontFamily(null);
+        mauiiIcon.IconSuffixFontFamily(null!);
 
 
         // Assert

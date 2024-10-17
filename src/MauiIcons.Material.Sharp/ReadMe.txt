@@ -38,9 +38,9 @@ new MauiIcon().Icon(MaterialSharpIcons.AddRoad).IconColor(Colors.Purple);
 
 Xaml Extension Usage:
 
-<Image Aspect="Center" Source="{mi:MaterialSharp Icon=AddRoad}"/>
+<Image Aspect="Center" mi:MauiIcon.Value="{mi:MaterialSharp Icon=AddRoad}"/>
 
-<Label Text="{mi:MaterialSharp Icon=ABC}"/>
+<Button mi:MauiIcon.Value="{mi:MaterialSharp Icon=ABC}"/>
 
 ----------------------------------------------------------------------------------------------
 
@@ -50,9 +50,7 @@ new ImageButton().Icon(MaterialSharpIcons.ABC),
 
 new Image().Icon(MaterialSharpIcons.AddRoad),
 
-new Label().Icon(MaterialSharpIcons.ABC).IconSize(40.0).IconColor(Colors.Red),
-
-new Entry().Icon(MaterialSharpIcons.AddRoad).IconSize(20.0).IconColor(Colors.Aqua),
+new Button().Icon(MaterialSharpIcons.ABC).IconSize(40.0).IconColor(Colors.Red),
 
 
 Disclaimer: It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: 

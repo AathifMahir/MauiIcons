@@ -2,7 +2,7 @@
 using System.Globalization;
 
 namespace MauiIcons.Core.Converters;
-internal sealed class EnumToStringConverter : IValueConverter
+internal sealed class IconToGlyphConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
@@ -17,7 +17,7 @@ internal sealed class EnumToStringConverter : IValueConverter
     {
         if (value is not null && value is string str)
         {
-            return str.GetEnumByDescription<Enum>();
+            return str.GetEnumByDescription(targetType);
         }
         return null;
     }

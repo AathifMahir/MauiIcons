@@ -7,22 +7,20 @@
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     Shell.FlyoutBehavior="Disabled">
 
-    <TabBar>
-        <ShellContent
-            Title="Xaml"
-            ContentTemplate="{DataTemplate local:MainPage}"
-            Icon="{mi:Fluent Icon=Home12}"
-            Route="MainPage" />
-        <ShellContent
-            Title="Code"
-            ContentTemplate="{DataTemplate local:BindingPage}"
-            Icon="{mi:FluentFilled Icon=BuildingHome24Filled}"
-            Route="MainPage" />
-        <ShellContent
-            Title="Markup"
-            ContentTemplate="{DataTemplate local:MarkupPage}"
-            Icon="{mi:FluentFilled Icon=Home12Filled}"
-            Route="MainPage" />
+    <TabBar mi:MauiIcon.Value="{mi:Fluent Icon=AirplaneTakeOff24}">
+        <Tab Title="Xaml" mi:MauiIcon.Value="{mi:FluentFilled Icon=Home32Filled}">
+            <ShellContent Title="Xaml" ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+
+        <Tab Title="Code" mi:MauiIcon.Value="{mi:FluentFilled Icon=AddCircle28Filled}">
+            <ShellContent Title="Code" ContentTemplate="{DataTemplate local:BindingPage}" />
+        </Tab>
+
+        <Tab Title="Markup" mi:MauiIcon.Value="{mi:FluentFilled Icon=Home12Filled}">
+            <ShellContent Title="Markup" ContentTemplate="{DataTemplate local:MarkupPage}" />
+        </Tab>
+
+
     </TabBar>
 
 

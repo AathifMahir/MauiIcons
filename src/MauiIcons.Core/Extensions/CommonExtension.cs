@@ -10,13 +10,13 @@ public static class CommonExtension
     /// <param name="iconSize">sets the size of the icon. Defaults to 30.0</param>
     /// <param name="iconAutoScaling">sets a value indicating whether the icon should automatically scale. Defaults to false</param>
     /// <returns>Icon as ImageSource</returns>
-    /// <exception cref="MauiIconsExpection">
+    /// <exception cref="MauiIconsException">
     /// Thrown when the Enum is not a MauiIcons Construct
     /// </exception>
     public static ImageSource ToImageSource(this Enum icon, Color? iconColor = null, double iconSize = 30.0, bool iconAutoScaling = false)
     {
         if (icon.GetDescription() is null)
-            throw new MauiIconsExpection("MauiIcons ToImageSourceExtension Only Works on MauiIcons Constructs Not on All the Enum Types");
+            throw new MauiIconsException("MauiIcons ToImageSourceExtension Only Works on MauiIcons Constructs Not on All the Enum Types");
 
         return new FontImageSource()
         {

@@ -38,9 +38,9 @@ new MauiIcon().Icon(FontAwesomeSolidIcons.GreaterThanEqual).IconColor(Colors.Pur
 
 Xaml Extension Usage:
 
-<Image Aspect="Center" Source="{mi:FontAwesomeSolid Icon=Asterisk}"/>
+<Image Aspect="Center" mi:MauiIcon.Value="{mi:FontAwesomeSolid Icon=Asterisk}"/>
 
-<Label Text="{mi:FontAwesomeSolid Icon=Hashtag}"/>
+<Button mi:MauiIcon.Value="{mi:FontAwesomeSolid Icon=Hashtag}"/>
 
 ----------------------------------------------------------------------------------------------
 
@@ -50,9 +50,7 @@ new ImageButton().Icon(FontAwesomeSolidIcons.Hashtag),
 
 new Image().Icon(FontAwesomeSolidIcons.GreaterThanEqual),
 
-new Label().Icon(FontAwesomeSolidIcons.Asterisk).IconSize(40.0).IconColor(Colors.Red),
-
-new Entry().Icon(FontAwesomeSolidIcons.Hashtag).IconSize(20.0).IconColor(Colors.Aqua),
+new Button().Icon(FontAwesomeSolidIcons.Asterisk).IconSize(40.0).IconColor(Colors.Red),
 
 
 Disclaimer: It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: 

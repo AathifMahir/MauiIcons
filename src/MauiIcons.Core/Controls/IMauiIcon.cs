@@ -3,14 +3,11 @@
 namespace MauiIcons.Core;
 public interface IMauiIcon
 {
-
-#nullable enable
     /// <summary>
     /// Gets or sets the icon enum value.
     /// </summary>
-    Enum? Icon { get;  }
+    Enum? Icon { get; }
 
-#nullable disable
 
     /// <summary>
     /// Gets or sets the size of the icon.
@@ -67,7 +64,7 @@ public interface IMauiIcon
     /// Gets or sets the background color for the icon and Suffix, It applies the color to whole control.
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ColorTypeConverter))]
-    Color IconAndSuffixBackgroundColor { get; }
+    Color BackgroundColor { get; }
 
     /// <summary>
     /// Gets or sets a value indicating whether the icon suffix should automatically scale.
@@ -83,6 +80,17 @@ public interface IMauiIcon
     /// Gets or sets the duration of the entrance animation for the element.
     /// </summary>
     uint EntranceAnimationDuration { get; }
+
+
+    /// <summary>
+    /// Gets or Sets the type of on-click animation for the element.
+    /// </summary>
+    AnimationType OnClickAnimationType { get; }
+
+    /// <summary>
+    /// Gets or sets the duration of the on-click animation for the element.
+    /// </summary>
+    uint OnClickAnimationDuration { get; }
 
     /// <summary>
     /// Gets or sets the Platforms that control should render.

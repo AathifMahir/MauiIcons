@@ -44,12 +44,44 @@ public static class MauiProgram
 }
 ```
 
+# Table of Contents
+
+- [Usage](#usage)
+- [Advanced Settings](#advanced-settings)
+- [New Changes in v4](#new-changes-in-v4)
+- [Workaround (Must Read)](#workaround)
+- [Built in Control Usage](#built-in-control-usage)
+- [Xaml Extension Usage](#xaml-extension-usage)
+- [Data Binding Usage](#data-binding-usage)
+- [C# Markup Usage](#c-markup-usage)
+- [OnPlatform and OnIdiom Usage](#onplatform-and-onidiom-usage)
+- [Breaking Changes](#breaking-changes)
+	- [Version 3 to 4](#version-3-to-4)
+	- [Version 2 to 3](#version-2-to-3)
+	- [Version 1 to 2](#version-1-to-2)
+- [Advanced Usage](#advanced-usage)
+- [Contribute](#contribute)
+- [License](#license)
+
 # Usage
 
 In order to make use of the **.Net Maui Icons** you can use the below namespace:
 
 ```xml
 xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+```
+
+# Advanced Settings
+
+You can set the default icon size, font override, and default font auto-scaling using the `UseMauiIconsCore` builder extension as follows:
+
+```csharp
+builder.UseMauiIconsCore(x => 
+{
+	x.SetDefaultIconSize(30.0);
+	x.SetDefaultFontOverride(true);
+	x.SetDefaultFontAutoScaling(true);
+})
 ```
 
 ## Workaround
@@ -66,47 +98,6 @@ if you came across this issue dotnet/maui#7503 when using new namespace, Make su
     }
 
 ```
-
-## Breaking Changes
-
-### Version 1 to 2
-
-`Old (v1)`
-
-```xml
-xmlns:cupertino="clr-namespace:MauiIcons.Cupertino;assembly=MauiIcons.Cupertino"
-xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
-xmlns:material="clr-namespace:MauiIcons.Material;assembly=MauiIcons.Material"
-
-<cupertino:MauiIcon Icon="Airplane"/>
-<fluent:MauiIcon Icon="Accounts"/>
-<material:MauiIcon Icon="ABC"/>
-```
-
-`New (v2)`
-
-```xml
-xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
-
-<mi:MauiIcon Icon="{mi:Cupertino Airplane}"/>
-<mi:MauiIcon Icon="{mi:Fluent Accounts}"/>
-<mi:MauiIcon Icon="{mi:Material ABC}"/>
-```
-
-### Version 2 to 3
-
-  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [Custom OnPlatform and OnIdioms Feature](#custom-onplatform-and-onidiom-usage)
-  - Removal of **Dotnet 7** Support
-
-### Nuget Package Changes
-
-- **`AathifMahir.Maui.MauiIcons.Material`** doesn't contain all the Variants anymore, Now only contains **Regular version** of Material Icons. Other Variants Decoupled into Seperate Packages Like Below
-	- [`AathifMahir.Maui.MauiIcons.Material.Outlined`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Outlined/)
-	- [`AathifMahir.Maui.MauiIcons.Material.Rounded`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Rounded/)
-	- [`AathifMahir.Maui.MauiIcons.Material.Sharp`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Material.Sharp/)
-
-- **`AathifMahir.Maui.MauiIcons.FluentFilled`** is Depcrecated and Replaced by [`AathifMahir.Maui.MauiIcons.Fluent.Filled`](https://www.nuget.org/packages/AathifMahir.Maui.MauiIcons.Fluent.Filled/)
-
 
 ## Built in Control Usage
 
@@ -132,20 +123,20 @@ new MauiIcon().Icon(MaterialIcons.ABC).IconColor(Colors.Violet);
 
 ## Xaml Extension Usage
 ```xml
-<Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
+<Image Aspect="Center" mi.MauiIcon.Value="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
-<Label Text="{mi:Fluent Icon=Accounts}"/>
+<Label mi.MauiIcon.Value="{mi:Fluent Icon=Accounts, FontOverride=True}"/>
 
-<ImageButton Source="{mi:Material Icon=AccessAlarm}"/>
+<ImageButton mi.MauiIcon.Value="{mi:Material Icon=AccessAlarm}"/>
 
-<Entry Placeholder="{mi:FontAwesome Icon=AddressBook}"/>
+<Entry mi.MauiIcon.Value="{mi:FontAwesome Icon=AddressBook, FontOverride=True}"/>
 
-<Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+<Button mi.MauiIcon.Value="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
 ```
 
-## Xaml Extension Data Binding Usage
+## Data Binding Usage
 
-The below example, Make Sures that BindingContext Inside the Xaml Extension is Set to Root of this Page, Likewise make sure to set the BindingContext When using Binding Inside the MauiIcons Xaml Extension, Additionally This example Binds to MyIcon and MyColor Properties Which Present in Code Behind But Not Included in this Example.
+The below example Binds to MyIcon and MyColor Properties Which Present in Code Behind But Not Included in this Example.
 ```xml
 <ContentPage
     x:Class="MauiIcons.Sample.BindingPage"
@@ -155,20 +146,25 @@ The below example, Make Sures that BindingContext Inside the Xaml Extension is S
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     x:Name="thisRoot">
         <HorizontalStackLayout>
-            <Label Text="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+            <Label mi.MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
+                   IconColor={Binding MyColor}, FontOverride=True}" />
+
             <Image>
                 <Image.Source>
                     <FontImageSource 
-                    Glyph="{mi:Fluent BindingContext={x:Reference thisRoot}, 
-                    Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+                    Glyph="{mi:Fluent Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
                 </Image.Source>
             </Image>
 
-            <Image Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}}" />
+            <Image mi.MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
+                   IconColor={Binding MyColor}}" />
 
-            <ImageButton Source="{mi:Fluent BindingContext={x:Reference thisRoot}, Icon={Binding MyIcon}, IconColor={Binding MyColor}" />
+            <ImageButton mi.MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
+                         IconColor={Binding MyColor}" />
 
-            <mi:MauiIcon Icon="{mi:Fluent}" />
+            <mi:MauiIcon Icon="{mi:Fluent Icon={Binding MyIcon}}" />
+
+            <mi:MauiIcon mi:MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}}">
         </HorizontalStackLayout>
 </ContentPage>
 ```
@@ -180,24 +176,24 @@ new ImageButton().Icon(FluentIcons.Accounts);
 
 new Image().Icon(CupertinoIcons.AntFill);
 
-new Label().Icon(MaterialIcons.Home).IconSize(40.0).IconColor(Colors.Red);
+new Label().Icon(MaterialIcons.Home, fontOverride: true).IconSize(40.0).IconColor(Colors.Red);
 
-new Entry().Icon(CupertinoIcons.AntFill).IconSize(20.0).IconColor(Colors.Aqua);
+new Entry().Icon(CupertinoIcons.AntFill, fontOverride: true).IconSize(20.0).IconColor(Colors.Aqua);
 
-new SearchBar().Icon(MaterialIcons.ABC);
+new SearchBar().Icon(MaterialIcons.ABC, fontOverride: true);
 ```
 
-## Applying Icon To Text or Placeholder
+#### Applying Icon To Text or Placeholder
 Controls that Supports Placeholder, Can Assign the Icon To PlaceHolder or Text, 
-Defaults to Placeholder but can be set to Text by Setting isPlaceHolder Parameter to False
+Defaults to Placeholder but can be set to Text by Setting TargetName Parameter to `Text`
 
 ```csharp
-new Entry().Icon(CupertinoIcons.AntFill, isPlaceHolder: false).IconSize(20.0).IconColor(Colors.Aqua);
+new Entry().Icon(CupertinoIcons.AntFill, fontOverride: true, targetName: "Text").IconSize(20.0).IconColor(Colors.Aqua);
 
-new SearchBar().Icon(MaterialIcons.ABC, isPlaceHolder: false);
+new SearchBar().Icon(MaterialIcons.ABC, fontOverride: true, targetName: "PlaceHolder"); // Setting TargetName PlaceHolder is Redundant as it's Default
 ```
 
-**Disclaimer:** It's important to note that not all controls are compatible with C# markup. We have conducted tests with the following controls in the current release: **Label**, **Image**, **ImageButton**, **SearchBar**, **Editor**, and **Entry**. Additionally, the native **MauiIcon** control, when combined with C# markup, can prove to be quite versatile and offer extra features for various scenarios.
+**Disclaimer:** It's important to note that we are Overriding Font on Input Control to Set the Icon that Could Cause Unexpected Behaviors and Rendering Issues as well.
 
 ## Icon Suffix
 
@@ -222,19 +218,31 @@ new MauiIcon().Icon(CupertinoIcons.Airplane).IconColor(Colors.Cyan).IconSuffix("
 `Xaml`
 
 ```xml
+<!-- Entrance Animation -->
 <mi:MauiIcon Icon="{mi:Cupertino Airplane}" EntranceAnimationType="Fade"/>
 <mi:MauiIcon Icon="{mi:material ABC}" EntranceAnimationType="Rotate" EntranceAnimationDuration="4000"/>
 <mi:MauiIcon Icon="{mi:fluent Accounts}" EntranceAnimationType="Scale"/>
+
+<!-- OnClick Animation -->
+<mi:MauiIcon Icon="{mi:Cupertino Airplane}" OnClickAnimationType="Fade"/>
+<mi:MauiIcon Icon="{mi:material ABC}" OnClickAnimationType="Rotate" OnClickAnimationDuration="4000"/>
+<mi:MauiIcon Icon="{mi:fluent Accounts}" OnClickAnimationType="Scale"/>
 ```
 
 `C#`
 ```csharp
+// Entrance Animation
 new MauiIcon().Icon(CupertinoIcons.AntFill).EntranceAnimationType(AnimationType.Fade);
 new MauiIcon().Icon(FluentIcons.Accounts).EntranceAnimationType(AnimationType.Rotate);
 new MauiIcon().Icon(MaterialIcons.ABC).EntranceAnimationType(AnimationType.Scale).EntranceAnimationDuration(4000);
+
+// OnClick Animation
+new MauiIcon().Icon(CupertinoIcons.AntFill).OnClickAnimationType(AnimationType.Fade);
+new MauiIcon().Icon(FluentIcons.Accounts).OnClickAnimationType(AnimationType.Rotate);
+new MauiIcon().Icon(MaterialIcons.ABC).OnClickAnimationType(AnimationType.Scale).OnClickAnimationDuration(4000);
 ```
 
-## Custom OnPlatform and OnIdiom Usage
+## OnPlatform and OnIdiom Usage
 `Xaml`
 
 ```xml
@@ -249,6 +257,117 @@ new MauiIcon().Icon(CupertinoIcons.AntFill).OnPlatforms(new List<string>{"WinUI"
 new MauiIcon().Icon(FluentIcons.Accounts).OnIdioms(new List<string>{"Desktop", "Phone"});
 new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "Android"}).OnIdioms(new List<string>{"Desktop", "Phone"});
 ```
+
+## Breaking Changes
+
+### Version 3 to 4
+
+  - Icon won't be applied to the Controls like Entry, SearchBar and etc.. by default Instead v4 would throw an Exception, Need to set **FontOverride** to true to apply the Icon to these Controls on Builder Extension Level or Control Level
+	- This Behavior can be reverted to Behavior of v3 by Using new `UseMauiIconsCore` Builder Extension and using `SetDefaultFontOverride` Method like Below
+
+```csharp
+	builder.UseMauiIconsCore(x => 
+	{
+		x.SetDefaultFontOverride(true);
+	})
+```
+
+  - Icon Size is Now Set to Control's FontSize by Default, Previously it was set to **30.0** by Default
+	- This Behavior can be reverted to Behavior of v3 by Using new `UseMauiIconsCore` Builder Extension and using `SetDefaultIconSize` Method like Below
+```csharp
+	builder.UseMauiIconsCore(x => 
+	{
+		x.SetDefaultIconSize(30.0);
+	})
+```
+---
+
+### Version 2 to 3
+
+  - Removal of **TypeArgument** and Built in OnPlatform and OnIdiom Support, Use MauiIcons Integrated [OnPlatform and OnIdioms Feature](#onplatform-and-onidiom-usage)
+  - Removal of **Dotnet 7** Support
+
+---
+
+### Version 1 to 2
+
+`Old (v1)`
+
+```xml
+xmlns:fluent="clr-namespace:MauiIcons.Fluent;assembly=MauiIcons.Fluent"
+
+<fluent:MauiIcon Icon="AppFolder48"/>
+```
+
+`New (v2)`
+
+```xml
+xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+
+<mi:MauiIcon Icon="{mi:Fluent AppFolder48}"/>
+```
+
+## New Changes in v4
+
+  1. We have a new way of Assigning/Setting Icons, Introducing New Attached Property for Icons,
+	 The new **AttachedProperty** Brings in Support for **Triggers**, **Behaviors**, **Styles**, etc.. which is lacking on Classic Xaml Markup Extension, and also it's more cleaner and readable
+```xml
+/// Old
+<Image Aspect="Center" Source="{mi:Fluent Icon=Accessibility48}"/>
+
+// New
+<Image Aspect="Center" mi.MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
+```
+
+**Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to deprecate the old Xaml Markup Extension in the future in favor of Attached Property
+
+#### Example of Using Styles
+```xml
+<Style x:Key="ButtonStyle" TargetType="Button">
+       <Setter Property="mi:MauiIcon.Value" Value="{mi:Fluent Icon=AppFolder48}" />
+</Style>
+
+<Button Style="{StaticResource ButtonStyle}"/>
+```
+---
+  2. Introducing New `UseMauiIconsCore` Builder Extension for Setting Default Icon Size, Font Override, Default Font Auto Scaling and etc.. Check the [Advanced Settings](#advanced-settings) for More Information
+---
+  3. Improved Built in OnPlatforms and OnIdioms with Binding Improvements and Enhanced Performance
+---
+  4. New `OnClickAnimation` Support for MauiIcon Control, Check the [Animation Usage](#animation-usage) for More Information
+
+
+## Advanced Usage
+
+- If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want the Icon you Set on Attached Property to Apply to All the Sources, You can do that as well, Set the TargetName to `.`, This will Apply the Icon to All the Sources
+```xml
+<Tab mi:MauiIcon.Value="{mi:Fluent Icon=Home32, TargetName='.'}">
+            <ShellContent
+                Title="Xaml"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+</Tab>
+```
+- If you came across Situation Where you want to Apply the Icon to Different Source over Default Source that Set by MauiIcons, You can do that as well, Set the TargetName to Source Property Name, This will Apply the Icon to that Specific Source
+```xml
+<Tab mi:MauiIcon.Value="{mi:Fluent Icon=Home32, TargetName='FlyoutIcon'}">
+            <ShellContent
+                Title="Xaml"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+</Tab>
+```
+- If you came across Situation where the Controls Does Have Multiple Source to Apply Icons, You want different icon for those Additional Sources, You can do that by Applying the Icon Directly to Source Using Xaml Markup like Below Example
+```xml
+<Tab mi:MauiIcon.Value="{mi:Fluent Icon=Home32}" FlyoutIcon="{mi:Fluent Icon=Accessibility48}">
+            <ShellContent
+                Title="Xaml"
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="MainPage" />
+</Tab>
+```
+
+Overall TargetName Behaves like a Source Property Name, If you want to Apply the Icon to Specific Source, Set the TargetName to Source Property Name, If you want to Apply the Icon to All the Sources, Set the TargetName to `.`
 
 # Properties
 
@@ -268,6 +387,8 @@ new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "An
 | **IconSuffixAutoScaling** | `bool` | Gets or sets a value indicating whether the icon suffix should automatically scale. |
 | **EntranceAnimationType** | `AnimationType` | Gets or Sets the type of entrance animation for the element |
 | **EntranceAnimationDuration** | `uint` | Gets or sets the duration of the entrance animation for the element |
+| **OnClickAnimationType** | `AnimationType` | Gets or Sets the type of on-click animation for the element |
+| **OnClickAnimationDuration** | `uint` | Gets or sets the duration of the on-click animation for the element |
 | **OnPlatforms** | `IList<string>` | Gets or sets the supported platforms |
 | **OnIdioms** | `IList<string>` | Gets or sets the supported idioms |
 

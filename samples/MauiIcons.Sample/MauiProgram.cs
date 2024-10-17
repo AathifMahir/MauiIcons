@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui.Markup;
+using MauiIcons.Core;
 using MauiIcons.Cupertino;
 using MauiIcons.Fluent;
 using MauiIcons.Fluent.Filled;
@@ -20,6 +21,12 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
+            .UseMauiIconsCore(x =>
+            {
+                x.SetDefaultIconSize(30.0);
+                x.SetDefaultIconAutoScaling(true);
+                x.SetDefaultFontOverride(true);
+            })
             .UseMaterialMauiIcons()
             .UseMaterialOutlinedMauiIcons()
             .UseMaterialRoundedMauiIcons()

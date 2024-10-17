@@ -5,7 +5,25 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiIcons.Sample"
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
+    x:Name="thisRoot"
     x:DataType="local:MainPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="mi:MauiIcon.Value" Value="{mi:Cupertino Icon={Binding MyIcon}}" />
+        </Style>
+        <Style x:Key="LabelColorStyle" TargetType="Label">
+            <Setter Property="BackgroundColor" Value="{x:OnIdiom Desktop={Binding MyLabelColor}}" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.MenuBarItems>
+        <MenuBarItem Text="Media">
+            <MenuFlyoutItem mi:MauiIcon.Value="{mi:Fluent Icon=Play12}" Text="Play" />
+            <MenuFlyoutItem mi:MauiIcon.Value="{mi:Fluent Icon=Pause12}" Text="Pause" />
+            <MenuFlyoutItem mi:MauiIcon.Value="{mi:Fluent Icon=Stop16}" Text="Stop" />
+        </MenuBarItem>
+    </ContentPage.MenuBarItems>
 
     <ScrollView>
         <VerticalStackLayout
@@ -14,7 +32,6 @@
             VerticalOptions="Center">
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
-
                 <mi:MauiIcon
                     EntranceAnimationType="Fade"
                     Icon="{mi:Fluent Icon=Airplane20}"
@@ -26,7 +43,8 @@
                     Icon="{mi:Material Icon=Assignment}"
                     IconColor="Black"
                     VerticalOptions="Center" />
-                <mi:MauiIcon EntranceAnimationType="Rotate" Icon="{mi:FluentFilled Icon=Airplane20Filled}" />
+                <mi:MauiIcon />
+                <mi:MauiIcon EntranceAnimationType="Rotate" Icon="{mi:FluentFilled Icon=AnimalTurtle28Filled}" />
                 <mi:MauiIcon EntranceAnimationType="Scale" Icon="{mi:Cupertino Airplane}" />
                 <mi:MauiIcon EntranceAnimationType="Fade" Icon="{mi:Fluent Icon=Airplane20}" />
                 <mi:MauiIcon EntranceAnimationType="Scale" Icon="{mi:SegoeFluent Icon=Airplane}" />
@@ -40,6 +58,96 @@
                     OnPlatforms="MacCatalyst, WinUI" />
                 <Label Text="{mi:Material Icon=AccountCircle, IconColor=Yellow}" />
 
+                <Label Style="{DynamicResource LabelStyle}" />
+                <Label mi:MauiIcon.Value="{mi:Cupertino Icon=Alt}" />
+                <mi:MauiIcon Icon="{mi:Material Icon=ABC}" />
+                <mi:MauiIcon Icon="{mi:Material Icon=AccessAlarms, IconSize=Large}" />
+                <mi:MauiIcon Icon="{mi:Material Icon=Accessibility, IconSize=Large}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
+                <mi:MauiIcon
+                    Icon="{mi:Cupertino Icon=Flame}"
+                    IconColor="lightBlue"
+                    IconSuffix="Flame"
+                    IconSuffixFontFamily="OpenSansSemibold"
+                    IconSuffixTextColor="lightBlue"
+                    OnClickAnimationType="Wiggle"
+                    OnIdioms="desktop, phone"
+                    OnPlatforms="winui" />
+                <Button Text="Test Button" />
+                <Button HeightRequest="100" ImageSource="{mi:Cupertino Icon=Alarm}" />
+                <Button HeightRequest="100" ImageSource="car.png" />
+                <Image HeightRequest="100" Source="{mi:Cupertino Icon=Airplane}" />
+                <Image HeightRequest="100" Source="car.png" />
+
+                <Slider
+                    mi:MauiIcon.Value="{mi:Cupertino Icon=AlarmFill}"
+                    Maximum="100"
+                    Minimum="50" />
+
+                <mi:MauiIcon
+                    Padding="12,12"
+                    BackgroundColor="DarkBlue"
+                    EntranceAnimationType="Wiggle"
+                    Icon="{mi:Cupertino Icon={Binding MyIcon}}"
+                    IconColor="{Binding MyLabelColor}"
+                    IconSuffix="Suffix Test"
+                    OnClickAnimationType="Fade" />
+                <Image mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Image Source="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Image>
+                    <Image.Source>
+                        <FontImageSource mi:MauiIcon.Value="{mi:FontAwesomeBrand Icon=Amazon, IconColor=Orange}" />
+                    </Image.Source>
+                </Image>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <ImageButton mi:MauiIcon.Value="{mi:Material Icon=AccountCircle}" />
+                <Button mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}, TargetName='Text'}" />
+
+                <Editor mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Entry mi:MauiIcon.Value="{mi:Material Icon=MacroOff, FontOverride=True}" />
+                <SearchBar FontFamily="OpenSansSemibold" Placeholder="Search Text" />
+
+                <Button mi:MauiIcon.Value="{mi:Fluent Icon=Accessibility16, TargetName='Text'}" />
+                <Label mi:MauiIcon.Value="{mi:Cupertino Icon=Airplane}" />
+
+                <HorizontalStackLayout>
+                    <RadioButton mi:MauiIcon.Value="{mi:Cupertino Icon=Play}" Value="Play" />
+                    <RadioButton mi:MauiIcon.Value="{mi:Cupertino Icon=Pause}" Value="Pause" />
+                </HorizontalStackLayout>
+
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Entry Placeholder="{mi:Material Icon=AccessTime}" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor=Cyan}" />
+                            <Span
+                                FontFamily="OpenSansSemibold"
+                                Text=" This is a Placeholder"
+                                TextColor="LightBlue" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <mi:MauiIcon
+                    Icon="{mi:Cupertino Icon={Binding MyIcon},
+                                        IconColor={Binding MyLabelColor}}"
+                    OnIdioms="{Binding OnIdioms}"
+                    OnPlatforms="{Binding OnPlatforms}" />
+                <Image Source="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Button Text="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Label Style="{StaticResource LabelStyle}" TextColor="{Binding MyLabelColor}" />
+                <Label mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <ImageButton mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Image mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
+                <Entry mi:MauiIcon.Value="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}, TargetName='Text'}" />
+                <Entry Text="{mi:Cupertino Icon={Binding MyIcon}, IconColor={Binding MyLabelColor}}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center">
@@ -48,6 +156,7 @@
                 <Button Text="{mi:FluentFilled Icon=AppFolder48Filled, IconColor=BlueViolet, IconSize=Large}" />
                 <Button Text="{mi:Material ABC, IconSize=Large}" />
                 <Button Text="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+                <Button mi:MauiIcon.Value="{mi:FontAwesomeBrand Icon=Microsoft}" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout HorizontalOptions="Center" Spacing="20">
