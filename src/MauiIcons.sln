@@ -42,6 +42,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.FontAwesome.Solid
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.FontAwesome.Brand", "MauiIcons.FontAwesome.Brand\MauiIcons.FontAwesome.Brand.csproj", "{D54A9F21-4853-4383-B0E0-40F98F3FD26D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiIcons.Phosphor", "MauiIcons.Phosphor\MauiIcons.Phosphor.csproj", "{D95A7C10-68E8-44FA-94C4-1EF1B35E2BEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -106,6 +108,10 @@ Global
 		{D54A9F21-4853-4383-B0E0-40F98F3FD26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D54A9F21-4853-4383-B0E0-40F98F3FD26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D54A9F21-4853-4383-B0E0-40F98F3FD26D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D95A7C10-68E8-44FA-94C4-1EF1B35E2BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D95A7C10-68E8-44FA-94C4-1EF1B35E2BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D95A7C10-68E8-44FA-94C4-1EF1B35E2BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D95A7C10-68E8-44FA-94C4-1EF1B35E2BEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -125,6 +131,7 @@ Global
 		{EEE9B2A6-DD66-4F2B-8981-AD8D943D5DB7} = {42B0AAF7-245C-47BE-86EB-08250E5ED2A4}
 		{CD0A4522-AAF7-4362-8A73-74E8BE667EDF} = {42B0AAF7-245C-47BE-86EB-08250E5ED2A4}
 		{D54A9F21-4853-4383-B0E0-40F98F3FD26D} = {42B0AAF7-245C-47BE-86EB-08250E5ED2A4}
+		{D95A7C10-68E8-44FA-94C4-1EF1B35E2BEB} = {42B0AAF7-245C-47BE-86EB-08250E5ED2A4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6D832FA5-EFAA-40C9-87B6-CED7BFBCD5AB}
