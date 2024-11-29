@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Configurations>Debug;Release;Test</Configurations>
+        <Platforms>AnyCPU</Platforms>
+    </PropertyGroup>
+    <ItemGroup Condition="$(TargetFramework.StartsWith('net8'))">
+        <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Fonts\Phosphor-Regular.ttf" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="AathifMahir.Maui.MauiIcons.Core" Version="4.0.0" />
+    </ItemGroup>
+</Project>
