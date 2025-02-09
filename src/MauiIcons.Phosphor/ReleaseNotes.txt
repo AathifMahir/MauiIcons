@@ -1,0 +1,8 @@
+﻿v4.0.0
+• Various Enhancements and Fixes for MauiIcon Control
+• New Attached Property for Seamless Icon Integration
+• Styles and Triggers Support
+• New OnClick Animation Support for MauiIcon Control
+• Enhanced Global Customization Support using New `UseMauiIconsCore` Extension
+• Overall Fixes and Enhancements
+• Breaking Changes: [https://github.com/AathifMahir/MauiIcons/#breaking-changes]
