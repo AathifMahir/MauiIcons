@@ -16,20 +16,11 @@ public partial class MauiIcon
         bool isNotFontOverridenOrSuppressed = !baseIcon.FontOverride && !Options.DefaultFontOverride;
 
         if (!baseIcon.IsSet(BindableObject.BindingContextProperty))
-            baseIcon.SetBinding(BindableObject.BindingContextProperty, new Binding(nameof(BindingContext), source: bindable));
+            baseIcon.SetBinding(BindableObject.BindingContextProperty, Binding.Create<MauiIcon, object>(static (mi) => mi.BindingContext, source: bindable));
 
         switch (bindable)
         {
             case Button button:
-                button.SetBinding(Button.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
-                    converter: new DefaultFontColorConverter(), converterParameter: button.TextColor));
-                button.SetBinding(Button.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
-                    converter: new DefaultFontColorConverter(), converterParameter: button.BackgroundColor));
-                button.SetBinding(Button.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon,
-                    converter: new DefaultFontSizeConverter(), converterParameter: button.FontSize));
-                button.SetBinding(Button.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon,
-                    converter: new DefaultFontAutoScalingConverter(), converterParameter: button.FontAutoScalingEnabled));
-
                 SetConditionalBinding(nameof(Button.Text),
                     matchBinding: () =>
                     {
@@ -37,8 +28,17 @@ public partial class MauiIcon
                             throw new MauiIconsException("Your Applying Icon to Button Text Property Instead of ImageSource, To apply an icon to text, " +
                                 "set FontOverride to true or UseMauiIconsCore Builder and Set DefaultFontOverride Globally. This will override the fonts and use default fonts instead of any assigned custom fonts.");
 
+                        button.SetBinding(Button.TextColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconColor, source: baseIcon,
+                    converter: new DefaultFontColorConverter(), converterParameter: button.TextColor));
+                        button.SetBinding(Button.BackgroundColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconBackgroundColor, source: baseIcon,
+                            converter: new DefaultFontColorConverter(), converterParameter: button.BackgroundColor));
+                        button.SetBinding(Button.FontSizeProperty, Binding.Create<MauiIcon, double>(static (mi) => mi.IconSize, source: baseIcon,
+                            converter: new DefaultFontSizeConverter(), converterParameter: button.FontSize));
+                        button.SetBinding(Button.FontAutoScalingEnabledProperty, Binding.Create<MauiIcon, bool>(static (mi) => mi.IconAutoScaling, source: baseIcon,
+                            converter: new DefaultFontAutoScalingConverter(), converterParameter: button.FontAutoScalingEnabled));
+
                         button.SetValue(Button.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                        button.SetBinding(Button.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
+                        button.SetBinding(Button.TextProperty, Binding.Create<MauiIcon, Enum?>(static (mi) => mi.Icon, source: baseIcon,
                             converter: new IconToGlyphConverter()));
                     },
                     defaultBinding: () =>
@@ -50,29 +50,29 @@ public partial class MauiIcon
 
             case Span span:
                 span.SetValue(Span.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                span.SetBinding(Span.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
+                span.SetBinding(Span.TextProperty, Binding.Create<MauiIcon, Enum?>(static (mi) => mi.Icon, source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                span.SetBinding(Span.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
+                span.SetBinding(Span.TextColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconColor, source: baseIcon,
                     converter: new DefaultFontColorConverter(), converterParameter: span.TextColor));
-                span.SetBinding(Span.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
+                span.SetBinding(Span.BackgroundColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconBackgroundColor, source: baseIcon,
                     converter: new DefaultFontColorConverter(), converterParameter: span.BackgroundColor));
-                span.SetBinding(Span.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon,
+                span.SetBinding(Span.FontSizeProperty, Binding.Create<MauiIcon, double>(static (mi) => mi.IconSize, source: baseIcon,
                     converter: new DefaultFontSizeConverter(), converterParameter: span.FontSize));
-                span.SetBinding(Span.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon,
+                span.SetBinding(Span.FontAutoScalingEnabledProperty, Binding.Create<MauiIcon, bool>(static (mi) => mi.IconAutoScaling, source: baseIcon,
                     converter: new DefaultFontAutoScalingConverter(), converterParameter: span.FontAutoScalingEnabled));
                 break;
 
             case Label label:
                 label.SetValue(Label.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-                label.SetBinding(Label.TextProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
+                label.SetBinding(Label.TextProperty, Binding.Create<MauiIcon, Enum?>(static (mi) => mi.Icon, source: baseIcon,
                     converter: new IconToGlyphConverter()));
-                label.SetBinding(Label.TextColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
+                label.SetBinding(Label.TextColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconColor, source: baseIcon,
                     converter: new IconToGlyphConverter(), converterParameter: label.TextColor));
-                label.SetBinding(Label.BackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
+                label.SetBinding(Label.BackgroundColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconBackgroundColor, source: baseIcon,
                     converter: new DefaultFontColorConverter(), converterParameter: label.BackgroundColor));
-                label.SetBinding(Label.FontSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon,
+                label.SetBinding(Label.FontSizeProperty, Binding.Create<MauiIcon, double>(static (mi) => mi.IconSize, source: baseIcon,
                     converter: new DefaultFontSizeConverter(), converterParameter: label.FontSize));
-                label.SetBinding(Label.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon,
+                label.SetBinding(Label.FontAutoScalingEnabledProperty, Binding.Create<MauiIcon, bool>(static (mi) => mi.IconAutoScaling, source: baseIcon,
                     converter: new DefaultFontAutoScalingConverter(), converterParameter: label.FontAutoScalingEnabled));
                 break;
 
@@ -241,14 +241,14 @@ public partial class MauiIcon
     static void SetFontImageSourceBinding(FontImageSource fontImageSource, BaseIcon baseIcon, Color? textColor = null)
     {
         fontImageSource.SetValue(FontImageSource.FontFamilyProperty, baseIcon.Icon.GetFontFamily());
-        fontImageSource.SetBinding(FontImageSource.GlyphProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon,
+        fontImageSource.SetBinding(FontImageSource.GlyphProperty, Binding.Create<MauiIcon, Enum?>(static (mi) => mi.Icon, source: baseIcon,
             converter: new IconToGlyphConverter()));
-        fontImageSource.SetBinding(FontImageSource.SizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon,
+        fontImageSource.SetBinding(FontImageSource.SizeProperty, Binding.Create<MauiIcon, double>(static (mi) => mi.IconSize, source: baseIcon,
             converter: new DefaultFontSizeConverter(), converterParameter: fontImageSource.Size));
-        fontImageSource.SetBinding(FontImageSource.ColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
+        fontImageSource.SetBinding(FontImageSource.ColorProperty, Binding.Create<MauiIcon, Color>(static (mi) => mi.IconColor, source: baseIcon,
             converter: new DefaultFontColorConverter(), 
             converterParameter: textColor ?? fontImageSource.Color));
-        fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon,
+        fontImageSource.SetBinding(FontImageSource.FontAutoScalingEnabledProperty, Binding.Create<MauiIcon, bool>(static (mi) => mi.IconAutoScaling, source: baseIcon,
             converter: new DefaultFontAutoScalingConverter(), converterParameter: fontImageSource.FontAutoScalingEnabled));
     }
 
