@@ -8,7 +8,7 @@ internal sealed class DefaultFontColorConverter : IValueConverter
         {
             null when parameter is Color color => color,
             Color colorValue => colorValue,
-            _ => null
+            _ => value
         };
 
     public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)

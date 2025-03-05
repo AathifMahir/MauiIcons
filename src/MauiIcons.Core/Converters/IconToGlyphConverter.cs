@@ -1,4 +1,5 @@
 ﻿using MauiIcons.Core.Helpers;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace MauiIcons.Core.Converters;
