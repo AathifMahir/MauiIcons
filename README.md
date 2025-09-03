@@ -151,7 +151,7 @@ The below example Binds to MyIcon and MyColor Properties Which Present in Code B
     xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
     x:Name="thisRoot">
         <HorizontalStackLayout>
-            <Label mi.MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
+            <Label  mi:MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
                    IconColor={Binding MyColor}, FontOverride=True}" />
 
             <Image>
@@ -161,10 +161,10 @@ The below example Binds to MyIcon and MyColor Properties Which Present in Code B
                 </Image.Source>
             </Image>
 
-            <Image mi.MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
+            <Image  mi:MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
                    IconColor={Binding MyColor}}" />
 
-            <ImageButton mi.MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
+            <ImageButton  mi:MauiIcon.Value="{mi:Fluent Icon={Binding MyIcon}, 
                          IconColor={Binding MyColor}" />
 
             <mi:MauiIcon Icon="{mi:Fluent Icon={Binding MyIcon}}" />
@@ -324,7 +324,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <Image Aspect="Center" Source="{mi:Fluent Icon=Accessibility48}"/>
 
 // New
-<Image Aspect="Center" mi.MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
+<Image Aspect="Center" mi:MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
 ```
 
 **Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to deprecate the old Xaml Markup Extension in the future in favor of Attached Property but ImageSource is an Exception, You can use XamlExtension with Any ImageSource
