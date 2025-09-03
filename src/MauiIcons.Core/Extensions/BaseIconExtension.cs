@@ -5,6 +5,7 @@ using MauiIcons.Core.Helpers;
 namespace MauiIcons.Core;
 
 [ContentProperty(nameof(Icon))]
+[RequireService([typeof(IProvideValueTarget)])]
 public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<BindingBase> where TEnum : Enum
 {
     public static new readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Icon), typeof(TEnum?), typeof(BaseIconExtension<TEnum>), null);
