@@ -124,14 +124,19 @@ new MauiIcon().Icon(MaterialIcons.ABC).IconColor(Colors.Violet);
 ## Xaml Extension Usage
 ```xml
 <Image Aspect="Center" mi.MauiIcon.Value="{mi:Cupertino Icon=ArchiveboxFill}"/>
+<Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
 <Label mi.MauiIcon.Value="{mi:Fluent Icon=Accounts, FontOverride=True}"/>
+<Label Text="{mi:Fluent Icon=Accounts, FontOverride=True}"/>
 
 <ImageButton mi.MauiIcon.Value="{mi:Material Icon=AccessAlarm}"/>
+<ImageButton Source="{mi:Material Icon=AccessAlarm}"/>
 
 <Entry mi.MauiIcon.Value="{mi:FontAwesome Icon=AddressBook, FontOverride=True}"/>
+<Entry PlaceHolder="{mi:FontAwesome Icon=AddressBook, FontOverride=True}"/>
 
 <Button mi.MauiIcon.Value="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+<Button ImageSource="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
 ```
 
 ## Data Binding Usage
