@@ -123,15 +123,20 @@ new MauiIcon().Icon(MaterialIcons.ABC).IconColor(Colors.Violet);
 
 ## Xaml Extension Usage
 ```xml
-<Image Aspect="Center"  mi:MauiIcon.Value="{mi:Cupertino Icon=ArchiveboxFill}"/>
+<Image Aspect="Center" mi.MauiIcon.Value="{mi:Cupertino Icon=ArchiveboxFill}"/>
+<Image Aspect="Center" Source="{mi:Cupertino Icon=ArchiveboxFill}"/>
 
-<Label mi:MauiIcon.Value="{mi:Fluent Icon=Accounts, FontOverride=True}"/>
+<Label mi.MauiIcon.Value="{mi:Fluent Icon=Accounts, FontOverride=True}"/>
+<Label Text="{mi:Fluent Icon=Accounts, FontOverride=True}"/>
 
-<ImageButton  mi:MauiIcon.Value="{mi:Material Icon=AccessAlarm}"/>
+<ImageButton mi.MauiIcon.Value="{mi:Material Icon=AccessAlarm}"/>
+<ImageButton Source="{mi:Material Icon=AccessAlarm}"/>
 
-<Entry  mi:MauiIcon.Value="{mi:FontAwesome Icon=AddressBook, FontOverride=True}"/>
+<Entry mi.MauiIcon.Value="{mi:FontAwesome Icon=AddressBook, FontOverride=True}"/>
+<Entry PlaceHolder="{mi:FontAwesome Icon=AddressBook, FontOverride=True}"/>
 
-<Button  mi:MauiIcon.Value="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+<Button mi.MauiIcon.Value="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
+<Button ImageSource="{mi:SegoeFluent AdjustHologram, IconSize=Large, IconColor=Pink}" />
 ```
 
 ## Data Binding Usage
@@ -260,6 +265,9 @@ new MauiIcon().Icon(MaterialIcons.ABC).OnPlatforms(new List<string>{"WinUI", "An
 
 ## Breaking Changes
 
+### Version 4 to 5
+  - Removal of **Dotnet 8** Support, Minimum Supported Version is Now **Dotnet 9**
+
 ### Version 3 to 4
 
   - Icon won't be applied to the Controls like Entry, SearchBar and etc.. by default Instead v4 would throw an Exception, Need to set **FontOverride** to true to apply the Icon to these Controls on Builder Extension Level or Control Level
@@ -319,7 +327,7 @@ xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons"
 <Image Aspect="Center" mi:MauiIcon.Value="{mi:Fluent Icon=Accessibility48}"/>
 ```
 
-**Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to deprecate the old Xaml Markup Extension in the future in favor of Attached Property
+**Disclaimer**: The Old Xaml Markup Extension is still Supported and can be used, but it's recommended to use the new Attached Property for better support and readability and we have plans to deprecate the old Xaml Markup Extension in the future in favor of Attached Property but ImageSource is an Exception, You can use XamlExtension with Any ImageSource
 
 #### Example of Using Styles
 ```xml

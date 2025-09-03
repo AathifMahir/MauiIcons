@@ -105,6 +105,7 @@ public partial class MauiIcon
 
             case MauiIcon mauiIcon:
                 mauiIcon.SetBinding(MauiIcon.ValueProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon));
+                mauiIcon.SetBinding(MauiIcon.IconProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon));
                 mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
                     converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconColor));
                 mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,

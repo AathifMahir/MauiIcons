@@ -1,4 +1,8 @@
-﻿v4.0.0
+﻿v5.0.0
+• Dotnet 9 Support
+• Breaking Changes: Removal of Dotnet 8 Support
+
+v4.0.0
 • Various Enhancements and Fixes for MauiIcon Control
 • New Attached Property for Seamless Icon Integration
 • Styles and Triggers Support
