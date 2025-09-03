@@ -17,9 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Fluent.Filled", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiIcons.Cupertino", "MauiIcons.Cupertino\MauiIcons.Cupertino.csproj", "{1535A68E-A148-4CBE-8C8D-68E4A2B272A0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildPropeties", "BuildPropeties", "{0A4F69FA-00E1-4407-862E-FDAD5E39B105}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Others", "Others", "{0A4F69FA-00E1-4407-862E-FDAD5E39B105}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{FB8F9610-4B7C-4E1E-A204-DC5E63EE367F}"
