@@ -12,21 +12,21 @@ internal static class AnimationHelper
                 int noOfTimes = (int)(maxDuration / 200);
                 for (int i = 0; i < noOfTimes; i++)
                 {
-                    await view.RotateTo(15, 200, Easing.Linear);
-                    await view.RotateTo(-15, 200, Easing.Linear);
+                    await view.RotateToAsync(15, 200, Easing.Linear);
+                    await view.RotateToAsync(-15, 200, Easing.Linear);
                 }
-                await view.RotateTo(0, 200, Easing.Linear);
+                await view.RotateToAsync(0, 200, Easing.Linear);
                 return;
             case AnimationType.Fade:
                 view.Opacity = 0;
-                await view.FadeTo(1, duration);
+                await view.FadeToAsync(1, duration);
                 return;
             case AnimationType.Scale:
-                await view.ScaleTo(1.5, duration);
-                await view.ScaleTo(1, duration);
+                await view.ScaleToAsync(1.5, duration);
+                await view.ScaleToAsync(1, duration);
                 return;
             case AnimationType.Rotate:
-                await view.RotateTo(360, duration);
+                await view.RotateToAsync(360, duration);
                 view.Rotation = 0;
                 return;
         }
