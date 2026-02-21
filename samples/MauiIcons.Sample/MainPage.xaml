@@ -181,7 +181,14 @@
                     IconSuffixFontSize="16"
                     IconSuffixTextColor="Cyan" />
                 <Image Aspect="Center" Source="{mi:FontAwesomeBrand Icon=Twitter, IconColor=Cyan}" />
-                <Label Text="{mi:FontAwesomeSolid Icon=AddressCard}" TextColor="LightGreen" />
+                <Label Text="{mi:FontAwesomeSolid Icon=AddressCard}" TextColor="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource Secondary}}" />
+                <mi:MauiIcon Icon="{mi:FontAwesome Icon=AddressCard}" />
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+
+                <Button Text="Change Theme" Clicked="Button_Clicked_1"/>
+
             </HorizontalStackLayout>
 
         </VerticalStackLayout>
