@@ -106,14 +106,20 @@ public partial class MauiIcon
             case MauiIcon mauiIcon:
                 mauiIcon.SetBinding(MauiIcon.ValueProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon));
                 mauiIcon.SetBinding(MauiIcon.IconProperty, new Binding(nameof(baseIcon.Icon), source: baseIcon));
-                mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
-                    converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconColor));
-                mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
-                    converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
-                mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
-                mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
-                mauiIcon.SetBinding(MauiIcon.OnPlatformsProperty, new Binding(nameof(baseIcon.OnPlatforms), source: baseIcon));
-                mauiIcon.SetBinding(MauiIcon.OnIdiomsProperty, new Binding(nameof(baseIcon.OnIdioms), source: baseIcon));
+                if (baseIcon.IsSet(BaseIcon.IconColorProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(baseIcon.IconColor), source: baseIcon,
+                        converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconColor));
+                if (baseIcon.IsSet(BaseIcon.IconBackgroundColorProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(baseIcon.IconBackgroundColor), source: baseIcon,
+                        converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
+                if (baseIcon.IsSet(BaseIcon.IconSizeProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(baseIcon.IconSize), source: baseIcon));
+                if (baseIcon.IsSet(BaseIcon.IconAutoScalingProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(baseIcon.IconAutoScaling), source: baseIcon));
+                if (baseIcon.OnPlatforms.Count > 0)
+                    mauiIcon.SetBinding(MauiIcon.OnPlatformsProperty, new Binding(nameof(baseIcon.OnPlatforms), source: baseIcon));
+                if (baseIcon.OnIdioms.Count > 0)
+                    mauiIcon.SetBinding(MauiIcon.OnIdiomsProperty, new Binding(nameof(baseIcon.OnIdioms), source: baseIcon));
                 break;
 
             case Image image:
@@ -123,10 +129,6 @@ public partial class MauiIcon
             case ImageButton imageButton:
                 imageButton.SetValue(ImageButton.SourceProperty, new FontImageSource());
                 SetFontImageSourceBinding((FontImageSource)imageButton.Source, baseIcon);
-                break;
-            case ImageCell imageCell:
-                imageCell.SetValue(ImageCell.ImageSourceProperty, new FontImageSource());
-                SetFontImageSourceBinding((FontImageSource)imageCell.ImageSource, baseIcon, imageCell.TextColor);
                 break;
             case FontImageSource fontImage:
                 SetFontImageSourceBinding(fontImage, baseIcon);
