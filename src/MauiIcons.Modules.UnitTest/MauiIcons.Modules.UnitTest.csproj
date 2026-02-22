@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net9.0</TargetFramework>
+		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<UseMaui>true</UseMaui>
@@ -10,6 +10,7 @@
 		<CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\GF</CompilerGeneratedFilesOutputPath>
 		<IsPackable>false</IsPackable>
 		<IsTestProject>true</IsTestProject>
+		<MauiVersion>10.0.10</MauiVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
