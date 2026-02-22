@@ -116,16 +116,22 @@ public abstract class BaseIconExtension<TEnum> : BaseIcon, IMarkupExtension<Bind
                     converter: new DefaultFontAutoScalingConverter(), converterParameter: input.FontAutoScalingEnabled));
                 break;
             case MauiIcon mauiIcon:
-                mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(IconColor), source: this, 
-                    converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconColor));
-                mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
-                    converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
-                mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(IconSize), source: this,
-                    converter: new DefaultFontSizeConverter(), converterParameter: mauiIcon.IconSize));
-                mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(IconAutoScaling), source: this,
-                    converter: new DefaultFontAutoScalingConverter(), converterParameter: mauiIcon.IconAutoScaling));
-                mauiIcon.SetBinding(MauiIcon.OnPlatformsProperty, new Binding(nameof(OnPlatforms), source: this));
-                mauiIcon.SetBinding(MauiIcon.OnIdiomsProperty, new Binding(nameof(OnIdioms), source: this));
+                if (IsSet(BaseIcon.IconColorProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconColorProperty, new Binding(nameof(IconColor), source: this, 
+                        converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconColor));
+                if (IsSet(BaseIcon.IconBackgroundColorProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconBackgroundColorProperty, new Binding(nameof(IconBackgroundColor), source: this, 
+                        converter: new DefaultFontColorConverter(), converterParameter: mauiIcon.IconBackgroundColor));
+                if (IsSet(BaseIcon.IconSizeProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconSizeProperty, new Binding(nameof(IconSize), source: this,
+                        converter: new DefaultFontSizeConverter(), converterParameter: mauiIcon.IconSize));
+                if (IsSet(BaseIcon.IconAutoScalingProperty))
+                    mauiIcon.SetBinding(MauiIcon.IconAutoScalingProperty, new Binding(nameof(IconAutoScaling), source: this,
+                        converter: new DefaultFontAutoScalingConverter(), converterParameter: mauiIcon.IconAutoScaling));
+                if (OnPlatforms.Count > 0)
+                    mauiIcon.SetBinding(MauiIcon.OnPlatformsProperty, new Binding(nameof(OnPlatforms), source: this));
+                if (OnIdioms.Count > 0)
+                    mauiIcon.SetBinding(MauiIcon.OnIdiomsProperty, new Binding(nameof(OnIdioms), source: this));
                 break;
             case FontImageSource fontImageSource:
                 fontImageSource.SetValue(FontImageSource.FontFamilyProperty, Icon.GetFontFamily());

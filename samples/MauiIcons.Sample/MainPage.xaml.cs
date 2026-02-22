@@ -126,5 +126,10 @@ public partial class MainPage : ContentPage
         OnIdioms = OnIdioms.Contains("Desktop") ? ["Mobile"] : ["Desktop", "Mobile"];
         MyPlaceHolder = MyPlaceHolder == "This is a Placeholder" ? "This is a New Placeholder" : "This is a Placeholder";
     }
+
+    private void Button_Clicked_1(object sender, EventArgs e)
+    {
+        Application.Current?.UserAppTheme = Application.Current.RequestedTheme == AppTheme.Dark ? AppTheme.Light : AppTheme.Dark;
+    }
 }
 

@@ -1,4 +1,9 @@
-﻿v5.0.0
+﻿v6.0.0
+• Dotnet 10 Support
+• Breaking Changes: Removal of Dotnet 9 Support
+• Fixes and Enhancements
+
+v5.0.0
 • Dotnet 9 Support
 • Breaking Changes: Removal of Dotnet 8 Support
 
