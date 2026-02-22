@@ -11,7 +11,7 @@ public static MauiApp CreateMauiApp()
     var builder = MauiApp.CreateBuilder();
 
     // Initialise the .Net Maui Icons - Material Outlined
-	builder.UseMauiApp<App>().UseMaterialOutlinedIcons();
+	builder.UseMauiApp<App>().UseMaterialOutlinedMauiIcons();
 }
 
 Usage
