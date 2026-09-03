@@ -70,7 +70,7 @@ public partial class IconBrowserPage : ContentPage
                 _selectedIconSet = value;
                 OnPropertyChanged();
                 _allIcons = value?.Icons ?? [];
-                ApplyFilter(null);
+                ApplyFilter(SearchText);
             }
         }
     }
