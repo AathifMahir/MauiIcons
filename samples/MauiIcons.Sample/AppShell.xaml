@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="MauiIcons.Sample.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -18,6 +18,10 @@
 
         <Tab Title="Markup" mi:MauiIcon.Value="{mi:FluentFilled Icon=Home12Filled}">
             <ShellContent Title="Markup" ContentTemplate="{DataTemplate local:MarkupPage}" />
+        </Tab>
+
+        <Tab Title="Icons" mi:MauiIcon.Value="{mi:Fluent Icon=Apps24}">
+            <ShellContent Title="Icons" ContentTemplate="{DataTemplate local:IconBrowserPage}" />
         </Tab>
 
 

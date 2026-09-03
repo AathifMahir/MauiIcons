@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiIcons.Sample.IconBrowserPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiIcons.Sample"
+    Title="Icons"
+    x:DataType="local:IconBrowserPage">
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="10" RowSpacing="10">
+
+        <SearchBar
+            Grid.Row="0"
+            Placeholder="Search an icon..."
+            Text="{Binding SearchText}"
+            TextChanged="SearchBar_TextChanged" />
+
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding FilteredIcons}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="8" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:IconItem">
+                    <VerticalStackLayout Padding="8" Spacing="4" HorizontalOptions="Center">
+                        <mi:MauiIcon
+                            Icon="{Binding Icon}"
+                            IconSize="32"
+                            HorizontalOptions="Center"
+                            xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons" />
+                        <Label
+                            FontSize="11"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="TailTruncation"
+                            Text="{Binding Name}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Grid.Row="2"
+            FontSize="12"
+            HorizontalOptions="Center"
+            Text="{Binding ResultCountText}" />
+
+    </Grid>
+
+</ContentPage>
