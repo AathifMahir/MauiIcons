@@ -69,7 +69,7 @@ public partial class IconBrowserPage : ContentPage
             {
                 _selectedIconSet = value;
                 OnPropertyChanged();
-                _allIcons = value?.Icons ?? [];
+                _allIcons = value?.Icons.OrderBy(i => i.Name).ToList() ?? [];
                 ApplyFilter(SearchText);
             }
         }
