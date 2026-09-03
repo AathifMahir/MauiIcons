@@ -9,17 +9,24 @@
 
     <Grid RowDefinitions="Auto,*,Auto" Padding="10" RowSpacing="10">
 
-        <SearchBar
-            Grid.Row="0"
-            Placeholder="Search an icon..."
-            Text="{Binding SearchText}"
-            TextChanged="SearchBar_TextChanged" />
+        <Grid ColumnDefinitions="*,200"
+              ColumnSpacing="10">
+            <SearchBar Grid.Column="0"
+                       Placeholder="Search an icon..."
+                       Text="{Binding SearchText}"
+                       TextChanged="SearchBar_TextChanged" />
+            
+            <Picker Grid.Column="1"
+                    ItemDisplayBinding="{Binding Name}"
+                    ItemsSource="{Binding IconSets}"
+                    SelectedItem="{Binding SelectedIconSet}" />
+        </Grid>
 
         <CollectionView
             Grid.Row="1"
             ItemsSource="{Binding FilteredIcons}">
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="8" />
+                <GridItemsLayout Orientation="Vertical" Span="{OnIdiom Phone=8, Desktop=14, Default=14}" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="local:IconItem">
