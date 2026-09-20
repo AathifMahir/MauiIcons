@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    x:Class="MauiIcons.Sample.IconBrowserPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MauiIcons.Sample"
-    Title="Icons"
-    x:DataType="local:IconBrowserPage">
+<ContentPage x:Class="MauiIcons.Sample.IconBrowserPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiIcons.Sample"
+             Title="Icons"
+             x:DataType="local:IconBrowserPage">
 
-    <Grid RowDefinitions="Auto,*,Auto" Padding="10" RowSpacing="10">
+    <Grid RowDefinitions="Auto,*,Auto"
+          Padding="10"
+          RowSpacing="10">
 
         <Grid ColumnDefinitions="*,200"
               ColumnSpacing="10">
@@ -15,43 +16,69 @@
                        Placeholder="Search an icon..."
                        Text="{Binding SearchText}"
                        TextChanged="SearchBar_TextChanged" />
-            
+
             <Picker Grid.Column="1"
                     ItemDisplayBinding="{Binding Name}"
                     ItemsSource="{Binding IconSets}"
                     SelectedItem="{Binding SelectedIconSet}" />
         </Grid>
 
-        <CollectionView
-            Grid.Row="1"
-            ItemsSource="{Binding FilteredIcons}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="{OnIdiom Phone=8, Desktop=14, Default=14}" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="local:IconItem">
-                    <VerticalStackLayout Padding="8" Spacing="4" HorizontalOptions="Center">
-                        <mi:MauiIcon
-                            Icon="{Binding Icon}"
-                            IconSize="32"
-                            HorizontalOptions="Center"
-                            xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons" />
-                        <Label
-                            FontSize="11"
-                            HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center"
-                            LineBreakMode="TailTruncation"
-                            Text="{Binding Name}" />
-                    </VerticalStackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+        <ScrollView x:Name="IconsScrollView"
+                    Grid.Row="1"
+                    VerticalOptions="Start"
+                    Scrolled="IconsScrollView_Scrolled">
+            <FlexLayout x:Name="IconsLayout"
+                        Wrap="Wrap"
+                        Direction="Row"
+                        JustifyContent="Start"
+                        AlignItems="Stretch"
+                        BindableLayout.ItemsSource="{Binding FilteredIcons}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="local:IconItem">
+                        <VerticalStackLayout Padding="8"
+                                             Spacing="4"
+                                             WidthRequest="{OnIdiom Phone=44, Desktop=80, Default=80}"
+                                             HorizontalOptions="Center">
+                            <VerticalStackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="IconItem_Tapped" />
+                            </VerticalStackLayout.GestureRecognizers>
+                            <mi:MauiIcon Icon="{Binding Icon}"
+                                         IconSize="32"
+                                         HorizontalOptions="Center"
+                                         xmlns:mi="http://www.aathifmahir.com/dotnet/2022/maui/icons" />
+                            <Label FontSize="11"
+                                   HorizontalOptions="Center"
+                                   HorizontalTextAlignment="Center"
+                                   LineBreakMode="TailTruncation"
+                                   Text="{Binding Name}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </ScrollView>
 
-        <Label
-            Grid.Row="2"
-            FontSize="12"
-            HorizontalOptions="Center"
-            Text="{Binding ResultCountText}" />
+        <Label Grid.Row="2"
+               FontSize="12"
+               HorizontalOptions="Center"
+               Text="{Binding ResultCountText}" />
+
+        <Border x:Name="CopyToast"
+                Grid.Row="0"
+                Grid.RowSpan="3"
+                Padding="16,8"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                Margin="0,0,0,40"
+                InputTransparent="True"
+                IsVisible="False"
+                Opacity="0"
+                BackgroundColor="#2C2C2C"
+                StrokeShape="RoundRectangle 20">
+            <Label x:Name="CopyToastLabel"
+                   TextColor="White"
+                   FontSize="14"
+                   HorizontalTextAlignment="Center" />
+        </Border>
 
     </Grid>
 

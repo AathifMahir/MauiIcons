@@ -39,8 +39,13 @@ public class IconSet
 
 public partial class IconBrowserPage : ContentPage
 {
+    private const int BatchSize = 200;
+    private const double ScrollThreshold = 200;
+
     private List<IconItem> _allIcons = [];
     private List<IconItem> _filteredIcons = [];
+    private int _loadedCount;
+    private bool _isLoadingBatch;
 
     public ObservableCollection<IconItem> FilteredIcons { get; } = [];
 
@@ -122,16 +127,78 @@ public partial class IconBrowserPage : ContentPage
             ? _allIcons
             : _allIcons.Where(i => i.Name.Contains(searchText, StringComparison.OrdinalIgnoreCase)).ToList();
 
+        _loadedCount = 0;
         FilteredIcons.Clear();
-        foreach (var icon in _filteredIcons)
+        LoadNextBatch();
+        _ = IconsScrollView?.ScrollToAsync(0, 0, false);
+    }
+
+    private void LoadNextBatch()
+    {
+        if (_loadedCount >= _filteredIcons.Count)
+        {
+            return;
+        }
+
+        var nextBatch = _filteredIcons.Skip(_loadedCount).Take(BatchSize);
+        foreach (var icon in nextBatch)
         {
             FilteredIcons.Add(icon);
         }
+
+        _loadedCount = FilteredIcons.Count;
         UpdateResultCount();
+    }
+
+    private async void IconsScrollView_Scrolled(object sender, ScrolledEventArgs e)
+    {
+        if (_isLoadingBatch || _loadedCount >= _filteredIcons.Count)
+        {
+            return;
+        }
+
+        var distanceToBottom = IconsScrollView.ContentSize.Height
+                               - IconsScrollView.Height
+                               - e.ScrollY;
+
+        if (distanceToBottom > ScrollThreshold)
+        {
+            return;
+        }
+
+        _isLoadingBatch = true;
+        try
+        {
+            LoadNextBatch();
+
+            // Laisse le layout se remettre a jour avant d'autoriser un nouveau batch.
+            await Task.Yield();
+        }
+        finally
+        {
+            _isLoadingBatch = false;
+        }
+    }
+
+    private async void IconItem_Tapped(object sender, TappedEventArgs e)
+    {
+        if (sender is not Element { BindingContext: IconItem item })
+        {
+            return;
+        }
+
+        await Clipboard.SetTextAsync(item.Name);
+
+        CopyToastLabel.Text = $"{item.Name} copied";
+        CopyToast.IsVisible = true;
+        await CopyToast.FadeTo(1, 150);
+        await Task.Delay(1200);
+        await CopyToast.FadeTo(0, 250);
+        CopyToast.IsVisible = false;
     }
 
     private void UpdateResultCount()
     {
-        ResultCountText = $"{_filteredIcons.Count} icon(s) displayed out of {_allIcons.Count}";
+        ResultCountText = $"{_loadedCount} icon(s) displayed out of {_filteredIcons.Count}";
     }
 }
